@@ -167,17 +167,17 @@ make -j2 toolchains</code></pre><p>进行完这一步，我将VPS上的文件打
 <pre><code>make -j?</code></pre><p>似乎需要make两次才能正确生成文件？</p>
 <p>Step 6 - Flash the device</p>
 <p>板子拿到手以后默认的模式是Normal Mode，即开机进入预装的AOSP界面，但是我们要刷OP-TEE镜像，就要进入FastBoot模式，具体操作就是将板子上控制模式的开关1、3开启，2关闭，这样再连接电源，开启的就是FastBoot模式。</p>
-<img src="./OP-TEE-on-Hikey960/HiKey960-Mode.png">
+<img src="./HiKey960-Mode.png">
 
 <p>开启电源进入FastBoot模式后，连接Type-C接口，测试命令</p>
 <pre><code>fastboot devices</code></pre><p>会显示一串数字，此时代表设备已经成功从FastBoot模式启动了。</p>
 <p>然后进入build目录，执行命令（需加入sudo）</p>
 <pre><code>sudo make flash</code></pre><p>信息成功刷写入开发板。</p>
 <p>然后切换回Normal Mode，开机， 这时又遇到一个问题。我此时连接的还是HDMI（板子刚到的时候通过HDMI观察过自带的Android系统），希望通过屏幕来查看设备，然而接入电源后发现板子灯亮着，但是屏幕没有反应。排除了屏幕的故障后，我陷入了沉思……经过google，我找到了类似的问题，作者的回答是这样的：</p>
-<img src="./OP-TEE-on-HiKey960/HiKey960-Screen.png">
+<img src="./HiKey960-Screen.png">
 
 <p>看来我想当然了，没想到OP-TEE不支持HDMI，还需要通过串口通信。继续查找资料，找到了HiKey960的接口：</p>
-<img src="./OP-TEE-on-HiKey960/HiKey960-Interface.png">
+<img src="./HiKey960-Interface.png">
 
 <p>然后就容易多了，找到一个U转串和三根杜邦线，分别连接TXD-RXD、RXD-TXD、GND-GND三条线，就完成了接口的搭建。重新启动板子，终于在串口控制台中看见了输出！但是当我测试xtest指令时，出现了错误：</p>
 <pre><code>＃xtest
@@ -195,7 +195,7 @@ E/TC:6 0 tee_entry_std:536 Bad arg address 0x217061000
 regression_1000.c:246: res has an unexpected value: 0xffff000e = 
 TEEC_ERROR_COMMUNICATION, expected 0x0 = TEEC_SUCCESS
 Segmentation fault</code></pre><p>又是google一番，发现一篇中文帖子中的问题和我一致（<a href="https://blog.csdn.net/tulipper/article/details/88651202" target="_blank" rel="noopener">https://blog.csdn.net/tulipper/article/details/88651202</a>），粗略地看了一下解决方法，似乎是切换到稳定的release版本。所有我又下载了目前稳定的3.7.0版本，又是一番折腾，重新下载、编译、烧录、开机等，但是还是出现了上述错误。这时我将错误日志输入到搜索栏，查找到了github上相关的issue。看了几个帖子，发现最终的问题不是版本的问题，而是OP-TEE支持的HiKey960是3G RAM，而我买的板子是4G RAM，出现了地址错误。最终解决方法是：</p>
-<img src="./OP-TEE-on-HiKey960/HiKey960-Solution.png">
+<img src="./HiKey960-Solution.png">
 
 <p>最终成功运行！xtest成功，optee_example_hello_world成功！</p>
 <pre><code>$ optee_example_hello_world
@@ -255,6 +255,18 @@ D/TC:? 0 destroy_context:297 Destroy TA ctx (0x3f079e70)</code></pre><p>经过�
                     <hr class="dn-l mw4 black-50 mt5" />
                     
                     <!-- Widget 2: Categories -->
+                    
+                        <div class="mt5 tc tl-l">
+    <h3>Categories</h3>
+    
+        <p>
+            <a href="/categories/Experience/">Experience</a>
+        </p>
+    
+</div>
+
+
+                        <hr class="dn-l mw4 black-50 mt5" />
                     
 
                     <!-- Widget 3: Recent Posts -->
