@@ -154,7 +154,7 @@
 
                     <!-- Main Post Content -->
                     <h1 id="Interrupt"><a href="#Interrupt" class="headerlink" title="Interrupt"></a>Interrupt</h1><h2 id="PIC"><a href="#PIC" class="headerlink" title="PIC"></a>PIC</h2><p>PIC(Programmable Interrupt Controller)就是8259A。8259A最重要的是IR0~IR7管脚，也就是相应的8个中断，后来被扩展为级联形式，分为主从两块。尽管随着多CPU的出现，PIC模式逐渐被弃用，但是现代PC仍然兼容。</p>
-<img src=.\Interrupt-and-its-virtualization\8259.gif>
+<img src=.\8259.gif>
 
 <p>基本流程：</p>
 <ol>
@@ -166,12 +166,12 @@
 <li>最后，若处于AEOI模式，ISR中的bit直接清除，否则要等CPU处理完该中断后，向8259A进行一次EOI，才能将ISR中的bit清除</li>
 </ol>
 <h2 id="APIC"><a href="#APIC" class="headerlink" title="APIC"></a>APIC</h2><p>Intel为了适应SMP，提出了APIC(Advanced Programmable Interrupt Controller)的技术。APIC由两部分组成，一个称为LAPIC，位于CPU中；另一个称为IOAPIC，位于外部设备芯片中，连接各个产生中断的设备。IOAPIC和LAPIC通过APIC BUS连接在一起。</p>
-<img src=.\Interrupt-and-its-virtualization\APIC.png>
+<img src=.\APIC.png>
 
 <p>每个LAPIC都有自己唯一的APIC ID，IOAPIC也有自己唯一的ID。</p>
 <p>APIC模式和PIC模式显著的区别是连接关系不再是硬件连线而是通过message。IOAPIC内部有个PRT（Programmable Redirection Table）表，里面的Destination Field标识了中断的目的地。在Physical模式下，含有目标APIC ID（Logical模式略）。</p>
 <p>在中断发生时，IOAPIC收到中断，会将中断转化为message放入系统总线，而CPU中只有APIC ID和Destination Field域中一致的LAPIC才会处理这条中断。</p>
-<h1 id="Virtualization"><a href="#Virtualization" class="headerlink" title="Virtualization"></a>Virtualization</h1><img src=.\Interrupt-and-its-virtualization\virtualization.png>
+<h1 id="Virtualization"><a href="#Virtualization" class="headerlink" title="Virtualization"></a>Virtualization</h1><img src=.\virtualization.png>
                     
                     <!-- Tags Bottom -->
                     
