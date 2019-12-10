@@ -10,8 +10,8 @@
 
     <!--Description-->
     
-        <meta name="description" content="记录一下在HiKey960上配置OP-TEE的过程。
-接到任务后，第一步就是买板子。导师给的是官网链接，购买渠道都是国外的。以前没在网上买过国外的东西，而且板子还需要报销，所以没有选择在官网的渠道上购买，而是选择在京东上购买。在京东上卖板子的也有好几家店。为了保险起见，我选择了一家在官网上有链接的中">
+        <meta name="description" content="第七章 时间、延迟及延缓操作度量时间差时钟中断由系统定时硬件以周期性的间隔产生，这个间隔由内核根据HZ的值设定，HZ是一个与体系结构有关的常数，定义在&amp;lt;linux/param.h&amp;gt;中。作为一般性的规则，即使知道对应平台上的确切HZ值，也不应该在编程时依赖HZ值。
+每当时钟中断发生时，内核">
     
 
     <!--Author-->
@@ -21,7 +21,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="OP-TEE on Hikey960"/>
+        <meta property="og:title" content="LDD Reading: Chapter 7: Time, Delay, and Deferred Work"/>
     
 
     <!--Open Graph Description-->
@@ -43,7 +43,7 @@
 
     <!-- Title -->
     
-    <title>OP-TEE on Hikey960 - Hexo</title>
+    <title>LDD Reading: Chapter 7: Time, Delay, and Deferred Work - Hexo</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
@@ -123,8 +123,8 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">OP-TEE on Hikey960</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-10-29</p>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">LDD Reading: Chapter 7: Time, Delay, and Deferred Work</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-12-10</p>
         </div>
     </div>
 
@@ -144,89 +144,94 @@
                     
                         <div class="tags-container-vertical">
                             <div class="tags-sub-container">
-                                <a class="fw3 ph1 dib" href="/tags/OP-TEE/">#OP-TEE</a> <a class="fw3 ph1 dib" href="/tags/HiKey960/">#HiKey960</a>
+                                <a class="fw3 ph1 dib" href="/tags/Linux/">#Linux</a> <a class="fw3 ph1 dib" href="/tags/ARM/">#ARM</a>
                             </div>
                         </div>
                     
 
                     <!-- Main Post Content -->
-                    <p>记录一下在HiKey960上配置OP-TEE的过程。</p>
-<p>接到任务后，第一步就是买板子。导师给的是官网链接，购买渠道都是国外的。以前没在网上买过国外的东西，而且板子还需要报销，所以没有选择在官网的渠道上购买，而是选择在京东上购买。在京东上卖板子的也有好几家店。为了保险起见，我选择了一家在官网上有链接的中国旗舰店，买的是裸板子，没有其他配件，而没有选择另一家店的套装，当然这也给后来的配置造成了一定麻烦。</p>
-<p>官网链接：<a href="https://www.96boards.org/product/hikey960/" target="_blank" rel="noopener" title="Hikey960">https://www.96boards.org/product/hikey960/</a></p>
-<p>在等待板子到货的这段时间里，我先把其他工作做好。按照OP-TEE官方文档（<a href="https://optee.readthedocs.io/en/latest/building/gits/build.html#get-and-build-the-solution" target="_blank" rel="noopener" title="OP-TEE DOC">https://optee.readthedocs.io/en/latest/building/gits/build.html#get-and-build-the-solution</a>）的步骤，进行如下操作（在VPS上进行，国内网络环境不太好）：</p>
-<p>Step 1 - 安装了一些必要的包</p>
-<p>Step 2 - 安装repo</p>
-<p>Step 3 - 获取源码</p>
-<pre><code>mkdir -p &lt;optee-project&gt;
-cd &lt;optee-project&gt;
-repo init -u https://github.com/OP-TEE/manifest.git -m ${TARGET}.xml [-b ${BRANCH}]
-repo sync -j4 --no-clone-bundle</code></pre><p>Step 4 - 获取工具链</p>
-<pre><code>cd &lt;optee-project&gt;/build
-make -j2 toolchains</code></pre><p>进行完这一步，我将VPS上的文件打包，开启FTP服务，通过本地的FTP客户端（开启Socks5代理）获取了包，拷贝到相应位置。</p>
-<p>Step 5 - Build</p>
-<pre><code>make -j?</code></pre><p>似乎需要make两次才能正确生成文件？</p>
-<p>Step 6 - Flash the device</p>
-<p>板子拿到手以后默认的模式是Normal Mode，即开机进入预装的AOSP界面，但是我们要刷OP-TEE镜像，就要进入FastBoot模式，具体操作就是将板子上控制模式的开关1、3开启，2关闭，这样再连接电源，开启的就是FastBoot模式。</p>
-<img src=".\HiKey960-Mode.PNG">
+                    <h1 id="第七章-时间、延迟及延缓操作"><a href="#第七章-时间、延迟及延缓操作" class="headerlink" title="第七章 时间、延迟及延缓操作"></a>第七章 时间、延迟及延缓操作</h1><h2 id="度量时间差"><a href="#度量时间差" class="headerlink" title="度量时间差"></a>度量时间差</h2><p>时钟中断由系统定时硬件以周期性的间隔产生，这个间隔由内核根据HZ的值设定，HZ是一个与体系结构有关的常数，定义在&lt;linux/param.h&gt;中。作为一般性的规则，即使知道对应平台上的确切HZ值，也不应该在编程时依赖HZ值。</p>
+<p>每当时钟中断发生时，内核内部计数器就增加一。这个计数器在系统引导时被初始化为0，是一个64位变量，称为”jiffies_64”。但是，驱动程序开发者通常访问的是jiffies变量，它是unsigned long型的变量。</p>
+<h3 id="使用jiffies计数器"><a href="#使用jiffies计数器" class="headerlink" title="使用jiffies计数器"></a>使用jiffies计数器</h3><p>头文件：&lt;linux/sched.h&gt;文件</p>
+<p>jiffies和jiffies_64均应被看成只读变量。</p>
+<p>比较值时应使用下面的宏：</p>
+<pre><code>int time_after(unsigned long a, unsigned long b);
+int time_before(unsigned long a, unsigned long b);
+int time_after_eq(unsigned long a, unsigned long b);
+int time_before_eq(unsigned long a, unsigned long b);</code></pre><h3 id="处理器特定的寄存器"><a href="#处理器特定的寄存器" class="headerlink" title="处理器特定的寄存器"></a>处理器特定的寄存器</h3><p>TSC(时间戳计数器)，头文件&lt;asm/msr.h&gt;，使用宏：</p>
+<pre><code>rdtsc(low32, high32);
+rdtscl(low32);
+rdtscll(var64);</code></pre><h2 id="获取当前时间"><a href="#获取当前时间" class="headerlink" title="获取当前时间"></a>获取当前时间</h2><p>内核提供了将墙钟时间转换为jiffies值的函数。</p>
+<pre><code>#include&lt;linux/time.h&gt;
+unsigned long mktime(unsigned int year, unsigned int mon, unsigned int day, unsigned int hour, unsigned int min, unsigned int sec);</code></pre><p>内核提供了处理绝对时间戳的函数。</p>
+<pre><code>#include &lt;linux/time.h&gt;
+void do_gettimeofday(struct timeval *tv);</code></pre><h2 id="延迟执行"><a href="#延迟执行" class="headerlink" title="延迟执行"></a>延迟执行</h2><h3 id="长延迟：长于一个时钟滴答"><a href="#长延迟：长于一个时钟滴答" class="headerlink" title="长延迟：长于一个时钟滴答"></a>长延迟：长于一个时钟滴答</h3><h4 id="忙等待"><a href="#忙等待" class="headerlink" title="忙等待"></a>忙等待</h4><p>实现监视一个jiffies计数器的循环</p>
+<pre><code>while(time_before(jiffies, j1))
+    cpu_relax();</code></pre><h4 id="让出处理器"><a href="#让出处理器" class="headerlink" title="让出处理器"></a>让出处理器</h4><pre><code>while (time_before(jiffies, j1))
+    schedule();</code></pre><h4 id="超时"><a href="#超时" class="headerlink" title="超时"></a>超时</h4><p>实现延迟的最好方法应该是让内核为我们完成相应的工作。</p>
+<pre><code>#include&lt;linux/wait.h&gt;
+long wait_event_timeout(wait_queue_head_t q, condition, long timeout);
+long wait_event_interruptible_timeout(wait_queue_head_t q, condition, long timeout);</code></pre><p>上述函数会在给定的等待队列上休眠，但是会在超时到期时返回。</p>
+<h3 id="短延迟"><a href="#短延迟" class="headerlink" title="短延迟"></a>短延迟</h3><pre><code>#include &lt;linux/delay.h&gt;
+void ndelay(unsigned long nsecs);
+void udelay(unsigned long usecs);
+void mdelay(unsigned long msecs);</code></pre><p>上述三个函数均是忙等待函数，因而在延迟过程中无法运行其他任务。</p>
+<p>实现毫秒级延迟还有另外一种方法，这种方法不涉及忙等待。</p>
+<pre><code>#include &lt;linux/delay.h&gt;
+void msleep(unsigned int millisecs);
+unsigned long msleep_interruptible(unsigned int millisecs);
+void ssleep(unsigned int seconds);</code></pre><h2 id="内核定时器"><a href="#内核定时器" class="headerlink" title="内核定时器"></a>内核定时器</h2><h3 id="定时器API"><a href="#定时器API" class="headerlink" title="定时器API"></a>定时器API</h3><pre><code>#include &lt;linux/timer.h&gt;
+struct timer_list {
+    unsigned long expires;
+    void (*function)(unsigned long);
+    unsigned long data;
+}
 
-<p>开启电源进入FastBoot模式后，连接Type-C接口，测试命令</p>
-<pre><code>fastboot devices</code></pre><p>会显示一串数字，此时代表设备已经成功从FastBoot模式启动了。</p>
-<p>然后进入build目录，执行命令（需加入sudo）</p>
-<pre><code>sudo make flash</code></pre><p>信息成功刷写入开发板。</p>
-<p>然后切换回Normal Mode，开机， 这时又遇到一个问题。我此时连接的还是HDMI（板子刚到的时候通过HDMI观察过自带的Android系统），希望通过屏幕来查看设备，然而接入电源后发现板子灯亮着，但是屏幕没有反应。排除了屏幕的故障后，我陷入了沉思……经过google，我找到了类似的问题，作者的回答是这样的：</p>
-<img src=".\HiKey960-Screen.PNG">
+void init_timer(struct timer_list *timer);
+struct timer_list TIMER_INITALIZER(_function, _expires, _data);
 
-<p>看来我想当然了，没想到OP-TEE不支持HDMI，还需要通过串口通信。继续查找资料，找到了HiKey960的接口：</p>
-<img src=".\HiKey960-Interface.PNG">
+void add_timer(struct timer_list *timer);
+void del_timer(struct timer_list *timer);</code></pre><h3 id="内核定时器的实现"><a href="#内核定时器的实现" class="headerlink" title="内核定时器的实现"></a>内核定时器的实现</h3><h3 id="tasklet"><a href="#tasklet" class="headerlink" title="tasklet"></a>tasklet</h3><p>tasklet始终在中断期间运行，始终会在调度它们的同一CPU上运行，而且都接收一个unsigned long参数</p>
+<p>tasklet以数据结构的形式存在，并且在使用前必须初始化。</p>
+<pre><code>#include &lt;linux/interrupt.h&gt;
 
-<p>然后就容易多了，找到一个U转串和三根杜邦线，分别连接TXD-RXD、RXD-TXD、GND-GND三条线，就完成了接口的搭建。重新启动板子，终于在串口控制台中看见了输出！但是当我测试xtest指令时，出现了错误：</p>
-<pre><code>＃xtest
-Run test suite with level=0
+struct tasklet_struct {
+    void (*func)(unsigned long);
+    unsigned long data;
+}
 
-TEE test application started with device [(null)]
-######################################################
-#
-regression
-#
-######################################################
-
-* regression_1001 Core self tests
-E/TC:6 0 tee_entry_std:536 Bad arg address 0x217061000
-regression_1000.c:246: res has an unexpected value: 0xffff000e = 
-TEEC_ERROR_COMMUNICATION, expected 0x0 = TEEC_SUCCESS
-Segmentation fault</code></pre><p>又是google一番，发现一篇中文帖子中的问题和我一致（<a href="https://blog.csdn.net/tulipper/article/details/88651202" target="_blank" rel="noopener">https://blog.csdn.net/tulipper/article/details/88651202</a>），粗略地看了一下解决方法，似乎是切换到稳定的release版本。所有我又下载了目前稳定的3.7.0版本，又是一番折腾，重新下载、编译、烧录、开机等，但是还是出现了上述错误。这时我将错误日志输入到搜索栏，查找到了github上相关的issue。看了几个帖子，发现最终的问题不是版本的问题，而是OP-TEE支持的HiKey960是3G RAM，而我买的板子是4G RAM，出现了地址错误。最终解决方法是：</p>
-<img src=".\HiKey960-Solution.PNG">
-
-<p>最终成功运行！xtest成功，optee_example_hello_world成功！</p>
-<pre><code>$ optee_example_hello_world
-D/TC:? 0 tee_ta_init_pseudo_ta_session:280 Lookup pseudo TA 8aaaf200-2450-11e4-abe2-0002a5d5c51b
-D/TC:? 0 load_ldelf:707 ldelf load address 0x40006000
-D/LD:  ldelf:134 Loading TA 8aaaf200-2450-11e4-abe2-0002a5d5c51b
-D/TC:? 0 tee_ta_init_session_with_context:572 Re-open TA 3a2f8978-5dc0-11e8-9c2d-fa7ae01bbebc
-D/TC:? 0 system_open_ta_binary:239 Lookup user TA ELF 8aaaf200-2450-11e4-abe2-0002a5d5c51b (early TA)
-D/TC:? 0 system_open_ta_binary:242 res=0xffff0008
-D/TC:? 0 system_open_ta_binary:239 Lookup user TA ELF 8aaaf200-2450-11e4-abe2-0002a5d5c51b (Secure Storage TA)
-D/TC:? 0 system_open_ta_binary:242 res=0xffff0008
-D/TC:? 0 system_open_ta_binary:239 Lookup user TA ELF 8aaaf200-2450-11e4-abe2-0002a5d5c51b (REE)
-D/TC:? 0 system_open_ta_binary:242 res=0x0
-D/LD:  ldelf:169 ELF (8aaaf200-2450-11e4-abe2-0002a5d5c51b) at 0x40055000
-D/TC:? 0 tee_ta_close_session:498 csess 0x3f079a00 id 1
-D/TC:? 0 tee_ta_close_session:517 Destroy session
-Invoking TA to increment 42
-TA incremented value to 43
-D/TC:? 0 tee_ta_close_session:498 csess 0x3f07a530 id 11
-D/TC:? 0 tee_ta_close_session:517 Destroy session
-D/TC:? 0 destroy_context:297 Destroy TA ctx (0x3f079e70)</code></pre><p>经过一番折腾，最终在HiKey960上配置好了OP-TEE，这次吸取的教训：</p>
+void tasklet_init(struct tasklet_struct *t, void (*func)(unsigned long), unsigned long data);
+DECLARE_TASKLET(name, func, data);
+DECLARE_TASKLET_DISABLED(name, func, data);</code></pre><p>特性:</p>
 <ol>
-<li>严格按照官网的步骤安装</li>
-<li>开源项目查找issue</li>
+<li>一个tasklet可在稍后被禁止或者重新启用；只有启用的次数和禁止的次数相同时，tasklet才会被执行</li>
+<li>tasklet可以注册本身</li>
+<li>tasklet可被调度以在通常的优先级或者高优先级执行。</li>
+<li>如果系统负荷不重，tasklet会立即得到执行，但始终不会晚于下一个时钟滴答</li>
+<li>一个tasklet可以和其他tasklet并发，但对自身来说是严格串行处理的。</li>
 </ol>
-
+<h3 id="工作队列"><a href="#工作队列" class="headerlink" title="工作队列"></a>工作队列</h3><p>与tasklet区别：</p>
+<ol>
+<li>tasklet在软件中断上下文中运行。因此，所有的tasklet代码都必须是原子的。相反，工作队列函数在一个特殊内核进程的上下文中运行，因此它们具有更好的灵活性。</li>
+<li>tasklet始终运行在被初始提交的同一处理器上，但这只是工作队列的默认方式。</li>
+<li>内核代码可以请求工作队列函数的执行延迟给定的时间间隔。</li>
+</ol>
+<p>头文件：&lt;linux/workqueue.h&gt;</p>
+<p>创建工作队列：</p>
+<pre><code>struct workqueue_struct *create_workqueue(const char *name);
+struct workqueue_struct *create_singlethread_workqueue(const char *name);</code></pre><p>编译时提交一个任务：</p>
+<pre><code>DECLARE_WORK(name, void (*function)(void *), void *data);</code></pre><p>运行时提交一个任务：</p>
+<pre><code>INIT_WORK(struct work_struct *work, void (*function)(void *), void *data);
+PREPARE_WORK(struct work_struct *work, void (*function)(void *), void *data);</code></pre><p>将工作提交到工作队列：</p>
+<pre><code>int queue_work(struct workqueue_struct *queue, struct work_struct *work);
+int queue_delayed_work(struct workqueue_struct *queue, struct work_struct *work, unsigned long delay);</code></pre><p>取消某个挂起的工作队列入口项：</p>
+<pre><code>int cancel_delayed_work(struct work_struct *work);</code></pre><p>释放工作队列：</p>
+<pre><code>void destroy_workqueue(struct workqueue_struct *queue);</code></pre><h4 id="共享队列"><a href="#共享队列" class="headerlink" title="共享队列"></a>共享队列</h4>
                     
                     <!-- Tags Bottom -->
                     
                         <div class="tags-container-bottom">
-                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/OP-TEE/">#OP-TEE</a> <a class="fw3 ph1 dib" href="/tags/HiKey960/">#HiKey960</a>
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Linux/">#Linux</a> <a class="fw3 ph1 dib" href="/tags/ARM/">#ARM</a>
                         </div>
                     
 
@@ -260,7 +265,7 @@ D/TC:? 0 destroy_context:297 Destroy TA ctx (0x3f079e70)</code></pre><p>经过�
     <h3>Categories</h3>
     
         <p>
-            <a href="/categories/Experience/">Experience</a>
+            <a href="/categories/LDD-Reading/">LDD Reading</a>
         </p>
     
 </div>

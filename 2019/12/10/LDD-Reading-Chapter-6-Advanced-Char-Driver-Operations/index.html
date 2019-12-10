@@ -10,8 +10,8 @@
 
     <!--Description-->
     
-        <meta name="description" content="记录一下在HiKey960上配置OP-TEE的过程。
-接到任务后，第一步就是买板子。导师给的是官网链接，购买渠道都是国外的。以前没在网上买过国外的东西，而且板子还需要报销，所以没有选择在官网的渠道上购买，而是选择在京东上购买。在京东上卖板子的也有好几家店。为了保险起见，我选择了一家在官网上有链接的中">
+        <meta name="description" content="第六章 高级字符驱动程序操作ioctl函数原型：int (*ioctl) (struct inode *inode, struct file *filp, unsigned int cmd, unsigned long arg);
+选择ioctl命令 头文件：&amp;lt;linux/ioctl.h&amp;gt">
     
 
     <!--Author-->
@@ -21,7 +21,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="OP-TEE on Hikey960"/>
+        <meta property="og:title" content="LDD Reading: Chapter 6: Advanced Char Driver Operations"/>
     
 
     <!--Open Graph Description-->
@@ -43,7 +43,7 @@
 
     <!-- Title -->
     
-    <title>OP-TEE on Hikey960 - Hexo</title>
+    <title>LDD Reading: Chapter 6: Advanced Char Driver Operations - Hexo</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
@@ -123,8 +123,8 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">OP-TEE on Hikey960</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-10-29</p>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">LDD Reading: Chapter 6: Advanced Char Driver Operations</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-12-10</p>
         </div>
     </div>
 
@@ -144,89 +144,68 @@
                     
                         <div class="tags-container-vertical">
                             <div class="tags-sub-container">
-                                <a class="fw3 ph1 dib" href="/tags/OP-TEE/">#OP-TEE</a> <a class="fw3 ph1 dib" href="/tags/HiKey960/">#HiKey960</a>
+                                <a class="fw3 ph1 dib" href="/tags/Linux/">#Linux</a> <a class="fw3 ph1 dib" href="/tags/ARM/">#ARM</a>
                             </div>
                         </div>
                     
 
                     <!-- Main Post Content -->
-                    <p>记录一下在HiKey960上配置OP-TEE的过程。</p>
-<p>接到任务后，第一步就是买板子。导师给的是官网链接，购买渠道都是国外的。以前没在网上买过国外的东西，而且板子还需要报销，所以没有选择在官网的渠道上购买，而是选择在京东上购买。在京东上卖板子的也有好几家店。为了保险起见，我选择了一家在官网上有链接的中国旗舰店，买的是裸板子，没有其他配件，而没有选择另一家店的套装，当然这也给后来的配置造成了一定麻烦。</p>
-<p>官网链接：<a href="https://www.96boards.org/product/hikey960/" target="_blank" rel="noopener" title="Hikey960">https://www.96boards.org/product/hikey960/</a></p>
-<p>在等待板子到货的这段时间里，我先把其他工作做好。按照OP-TEE官方文档（<a href="https://optee.readthedocs.io/en/latest/building/gits/build.html#get-and-build-the-solution" target="_blank" rel="noopener" title="OP-TEE DOC">https://optee.readthedocs.io/en/latest/building/gits/build.html#get-and-build-the-solution</a>）的步骤，进行如下操作（在VPS上进行，国内网络环境不太好）：</p>
-<p>Step 1 - 安装了一些必要的包</p>
-<p>Step 2 - 安装repo</p>
-<p>Step 3 - 获取源码</p>
-<pre><code>mkdir -p &lt;optee-project&gt;
-cd &lt;optee-project&gt;
-repo init -u https://github.com/OP-TEE/manifest.git -m ${TARGET}.xml [-b ${BRANCH}]
-repo sync -j4 --no-clone-bundle</code></pre><p>Step 4 - 获取工具链</p>
-<pre><code>cd &lt;optee-project&gt;/build
-make -j2 toolchains</code></pre><p>进行完这一步，我将VPS上的文件打包，开启FTP服务，通过本地的FTP客户端（开启Socks5代理）获取了包，拷贝到相应位置。</p>
-<p>Step 5 - Build</p>
-<pre><code>make -j?</code></pre><p>似乎需要make两次才能正确生成文件？</p>
-<p>Step 6 - Flash the device</p>
-<p>板子拿到手以后默认的模式是Normal Mode，即开机进入预装的AOSP界面，但是我们要刷OP-TEE镜像，就要进入FastBoot模式，具体操作就是将板子上控制模式的开关1、3开启，2关闭，这样再连接电源，开启的就是FastBoot模式。</p>
-<img src=".\HiKey960-Mode.PNG">
-
-<p>开启电源进入FastBoot模式后，连接Type-C接口，测试命令</p>
-<pre><code>fastboot devices</code></pre><p>会显示一串数字，此时代表设备已经成功从FastBoot模式启动了。</p>
-<p>然后进入build目录，执行命令（需加入sudo）</p>
-<pre><code>sudo make flash</code></pre><p>信息成功刷写入开发板。</p>
-<p>然后切换回Normal Mode，开机， 这时又遇到一个问题。我此时连接的还是HDMI（板子刚到的时候通过HDMI观察过自带的Android系统），希望通过屏幕来查看设备，然而接入电源后发现板子灯亮着，但是屏幕没有反应。排除了屏幕的故障后，我陷入了沉思……经过google，我找到了类似的问题，作者的回答是这样的：</p>
-<img src=".\HiKey960-Screen.PNG">
-
-<p>看来我想当然了，没想到OP-TEE不支持HDMI，还需要通过串口通信。继续查找资料，找到了HiKey960的接口：</p>
-<img src=".\HiKey960-Interface.PNG">
-
-<p>然后就容易多了，找到一个U转串和三根杜邦线，分别连接TXD-RXD、RXD-TXD、GND-GND三条线，就完成了接口的搭建。重新启动板子，终于在串口控制台中看见了输出！但是当我测试xtest指令时，出现了错误：</p>
-<pre><code>＃xtest
-Run test suite with level=0
-
-TEE test application started with device [(null)]
-######################################################
-#
-regression
-#
-######################################################
-
-* regression_1001 Core self tests
-E/TC:6 0 tee_entry_std:536 Bad arg address 0x217061000
-regression_1000.c:246: res has an unexpected value: 0xffff000e = 
-TEEC_ERROR_COMMUNICATION, expected 0x0 = TEEC_SUCCESS
-Segmentation fault</code></pre><p>又是google一番，发现一篇中文帖子中的问题和我一致（<a href="https://blog.csdn.net/tulipper/article/details/88651202" target="_blank" rel="noopener">https://blog.csdn.net/tulipper/article/details/88651202</a>），粗略地看了一下解决方法，似乎是切换到稳定的release版本。所有我又下载了目前稳定的3.7.0版本，又是一番折腾，重新下载、编译、烧录、开机等，但是还是出现了上述错误。这时我将错误日志输入到搜索栏，查找到了github上相关的issue。看了几个帖子，发现最终的问题不是版本的问题，而是OP-TEE支持的HiKey960是3G RAM，而我买的板子是4G RAM，出现了地址错误。最终解决方法是：</p>
-<img src=".\HiKey960-Solution.PNG">
-
-<p>最终成功运行！xtest成功，optee_example_hello_world成功！</p>
-<pre><code>$ optee_example_hello_world
-D/TC:? 0 tee_ta_init_pseudo_ta_session:280 Lookup pseudo TA 8aaaf200-2450-11e4-abe2-0002a5d5c51b
-D/TC:? 0 load_ldelf:707 ldelf load address 0x40006000
-D/LD:  ldelf:134 Loading TA 8aaaf200-2450-11e4-abe2-0002a5d5c51b
-D/TC:? 0 tee_ta_init_session_with_context:572 Re-open TA 3a2f8978-5dc0-11e8-9c2d-fa7ae01bbebc
-D/TC:? 0 system_open_ta_binary:239 Lookup user TA ELF 8aaaf200-2450-11e4-abe2-0002a5d5c51b (early TA)
-D/TC:? 0 system_open_ta_binary:242 res=0xffff0008
-D/TC:? 0 system_open_ta_binary:239 Lookup user TA ELF 8aaaf200-2450-11e4-abe2-0002a5d5c51b (Secure Storage TA)
-D/TC:? 0 system_open_ta_binary:242 res=0xffff0008
-D/TC:? 0 system_open_ta_binary:239 Lookup user TA ELF 8aaaf200-2450-11e4-abe2-0002a5d5c51b (REE)
-D/TC:? 0 system_open_ta_binary:242 res=0x0
-D/LD:  ldelf:169 ELF (8aaaf200-2450-11e4-abe2-0002a5d5c51b) at 0x40055000
-D/TC:? 0 tee_ta_close_session:498 csess 0x3f079a00 id 1
-D/TC:? 0 tee_ta_close_session:517 Destroy session
-Invoking TA to increment 42
-TA incremented value to 43
-D/TC:? 0 tee_ta_close_session:498 csess 0x3f07a530 id 11
-D/TC:? 0 tee_ta_close_session:517 Destroy session
-D/TC:? 0 destroy_context:297 Destroy TA ctx (0x3f079e70)</code></pre><p>经过一番折腾，最终在HiKey960上配置好了OP-TEE，这次吸取的教训：</p>
+                    <h1 id="第六章-高级字符驱动程序操作"><a href="#第六章-高级字符驱动程序操作" class="headerlink" title="第六章 高级字符驱动程序操作"></a>第六章 高级字符驱动程序操作</h1><h2 id="ioctl"><a href="#ioctl" class="headerlink" title="ioctl"></a>ioctl</h2><p>函数原型：int (*ioctl) (struct inode *inode, struct file *filp, unsigned int cmd, unsigned long arg);</p>
+<h3 id="选择ioctl命令"><a href="#选择ioctl命令" class="headerlink" title="选择ioctl命令"></a>选择ioctl命令</h3><p> 头文件：&lt;linux/ioctl.h&gt;</p>
+<p> type：8位宽。幻数。</p>
+<p> number：8位宽。序数。</p>
+<p> direction：如果相关命令涉及到数据的传输，则该位字段定义数据传输的方向。_IOC_NONE、_IOC_READ、IOC_WRITE以及_IOC_READ | _IOC_WRITE</p>
+<p> size：所涉及的用户数据大小。</p>
+<h3 id="预定义命令"><a href="#预定义命令" class="headerlink" title="预定义命令"></a>预定义命令</h3><h2 id="阻塞型IO"><a href="#阻塞型IO" class="headerlink" title="阻塞型IO"></a>阻塞型IO</h2><h3 id="休眠的简单介绍"><a href="#休眠的简单介绍" class="headerlink" title="休眠的简单介绍"></a>休眠的简单介绍</h3><p>当一个进程被置入休眠时，它会被标记为一种特殊状态并从调度器的运行队列中移走。直到某种情况下修改了这个状态，进程才会在任意CPU上调度，也即运行该进程。</p>
+<p>原则：</p>
 <ol>
-<li>严格按照官网的步骤安装</li>
-<li>开源项目查找issue</li>
+<li>永远不要在原子上下文中进入休眠</li>
+<li>当我们被唤醒时，我们永远无法知道休眠了多长时间，或者休眠期间都发生了些什么事情。</li>
+<li>除非我们知道有其他人会在其他地方唤醒我们，否则进程不能休眠</li>
+</ol>
+<p>一个等待队列通过一个“等待队列头”来管理，等待队列头是一个类型为wait_queue_head_t的结构体，定义在&lt;linux/wait.h&gt;中</p>
+<p>DECLARE_WAIT_QUEUE_HEAD(name);</p>
+<p>or</p>
+<p>wait_queue_head_t my_queue;<br>init_waitqueue_head(&amp;my_queue);</p>
+<h3 id="简单休眠"><a href="#简单休眠" class="headerlink" title="简单休眠"></a>简单休眠</h3><p>休眠：</p>
+<p>wait_event(queue, condition);<br>wait_event_interruptible(queue, condition);<br>wait_event_timeout(queue, condition, timeout);<br>wait_event_interruptible_timeout(queue, condition, timeout);</p>
+<p>唤醒：</p>
+<p>void wake_up(wait_queue_head_t *queue);<br>void wake_up_interruptible(wait_queue_head_t *queue);</p>
+<h3 id="进程如何休眠"><a href="#进程如何休眠" class="headerlink" title="进程如何休眠"></a>进程如何休眠</h3><ol>
+<li>分配并初始化一个wait_queue_t结构，然后将其加入到对应的等待队列。</li>
+<li>设置进程的状态，将其标记为休眠</li>
+<li>检查休眠等待的条件</li>
+<li>放弃处理器</li>
+</ol>
+<h3 id="阻塞和非阻塞型操作"><a href="#阻塞和非阻塞型操作" class="headerlink" title="阻塞和非阻塞型操作"></a>阻塞和非阻塞型操作</h3><p>显式的非阻塞IO由filp-&gt;f_flags中的O_NONBLOCK标志决定。</p>
+<p>非阻塞型操作会立即返回，使得应用程序可以查询数据。在处理非阻塞型文件时，应用程序调用stdio函数必须非常小心，因为很容易把一个非阻塞返回误认为是EOF，所以必须始终检查errno。</p>
+<p>只有read、write、open文件操作受非阻塞标志的影响</p>
+<h3 id="poll和select"><a href="#poll和select" class="headerlink" title="poll和select"></a>poll和select</h3><p>功能：都允许进程决定是否可以对一个或多个打开的文件做非阻塞的读取或写入。</p>
+<p>头文件：&lt;linux/poll.h&gt;</p>
+<p>原型：unsigned int (*poll) (struct file *filp, poll_table *wait);</p>
+<p>步骤：</p>
+<ol>
+<li>在一个或多个可指示poll状态变化的等待队列上调用poll_wait。如果当前没有文件描述符可用来执行IO，则内核将使进程在传递到该系统调用的所有文件描述符对应的等待队列上等待。</li>
+<li>返回一个用来描述操作是否可以立即无阻塞执行的位掩码。</li>
+</ol>
+<h3 id="与read和write的交互"><a href="#与read和write的交互" class="headerlink" title="与read和write的交互"></a>与read和write的交互</h3><h4 id="从设备读取数据"><a href="#从设备读取数据" class="headerlink" title="从设备读取数据"></a>从设备读取数据</h4><ul>
+<li>如果缓冲区有数据，那么即使就绪的数据比程序所请求的少，并且驱动程序保证剩下的数据马上就能到达，read调用仍然应该以难以察觉的延迟立即返回。</li>
+<li>如果输入缓冲区没有数据，那么默认情况下read必须阻塞等待，直到至少有一个字节到达。另一方面，如果设置了O_NONBLOCK标志，read应该立即返回，返回值是-EAGAIN。在这种情况下poll必须报告设备不可读，直到至少有一个字节到达。</li>
+<li>如果已经到达了文件尾，read应该立即返回0，无论O_NONBLOCK是否设置。此时poll报告POLLUP。</li>
+</ul>
+<h4 id="向设备写数据"><a href="#向设备写数据" class="headerlink" title="向设备写数据"></a>向设备写数据</h4><p>同上</p>
+<h4 id="刷新待处理输出"><a href="#刷新待处理输出" class="headerlink" title="刷新待处理输出"></a>刷新待处理输出</h4><p>int (*fsync) (struct file *file, struct dentry *dentry, int datasync);</p>
+<h2 id="异步通知"><a href="#异步通知" class="headerlink" title="异步通知"></a>异步通知</h2><h2 id="设备文件的访问控制"><a href="#设备文件的访问控制" class="headerlink" title="设备文件的访问控制"></a>设备文件的访问控制</h2><ol>
+<li>独享设备</li>
+<li>限制每次只由一个用户访问</li>
+<li>打开时复制设备</li>
 </ol>
 
                     
                     <!-- Tags Bottom -->
                     
                         <div class="tags-container-bottom">
-                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/OP-TEE/">#OP-TEE</a> <a class="fw3 ph1 dib" href="/tags/HiKey960/">#HiKey960</a>
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Linux/">#Linux</a> <a class="fw3 ph1 dib" href="/tags/ARM/">#ARM</a>
                         </div>
                     
 
@@ -260,7 +239,7 @@ D/TC:? 0 destroy_context:297 Destroy TA ctx (0x3f079e70)</code></pre><p>经过�
     <h3>Categories</h3>
     
         <p>
-            <a href="/categories/Experience/">Experience</a>
+            <a href="/categories/LDD-Reading/">LDD Reading</a>
         </p>
     
 </div>

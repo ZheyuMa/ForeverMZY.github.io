@@ -10,8 +10,9 @@
 
     <!--Description-->
     
-        <meta name="description" content="记录一下在HiKey960上配置OP-TEE的过程。
-接到任务后，第一步就是买板子。导师给的是官网链接，购买渠道都是国外的。以前没在网上买过国外的东西，而且板子还需要报销，所以没有选择在官网的渠道上购买，而是选择在京东上购买。在京东上卖板子的也有好几家店。为了保险起见，我选择了一家在官网上有链接的中">
+        <meta name="description" content="第三章 字符设备驱动程序主设备号和次设备号设备文件通常位于/dev目录下，字符设备驱动程序的设备文件可通过ls -l命令输出的第一列中的’c’来识别，快设备由’b’来识别。
+设备文件项的最后修改日期前看到两个数，通常是文件的长度，对设备文件就是相应设备的主设备号和次设备号。
+主设备号标识设备对应的驱">
     
 
     <!--Author-->
@@ -21,7 +22,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="OP-TEE on Hikey960"/>
+        <meta property="og:title" content="LDD Reading: Chapter 3: Char Devices"/>
     
 
     <!--Open Graph Description-->
@@ -43,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>OP-TEE on Hikey960 - Hexo</title>
+    <title>LDD Reading: Chapter 3: Char Devices - Hexo</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
@@ -123,8 +124,8 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">OP-TEE on Hikey960</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-10-29</p>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">LDD Reading: Chapter 3: Char Devices</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-12-10</p>
         </div>
     </div>
 
@@ -144,89 +145,67 @@
                     
                         <div class="tags-container-vertical">
                             <div class="tags-sub-container">
-                                <a class="fw3 ph1 dib" href="/tags/OP-TEE/">#OP-TEE</a> <a class="fw3 ph1 dib" href="/tags/HiKey960/">#HiKey960</a>
+                                <a class="fw3 ph1 dib" href="/tags/Linux/">#Linux</a> <a class="fw3 ph1 dib" href="/tags/ARM/">#ARM</a>
                             </div>
                         </div>
                     
 
                     <!-- Main Post Content -->
-                    <p>记录一下在HiKey960上配置OP-TEE的过程。</p>
-<p>接到任务后，第一步就是买板子。导师给的是官网链接，购买渠道都是国外的。以前没在网上买过国外的东西，而且板子还需要报销，所以没有选择在官网的渠道上购买，而是选择在京东上购买。在京东上卖板子的也有好几家店。为了保险起见，我选择了一家在官网上有链接的中国旗舰店，买的是裸板子，没有其他配件，而没有选择另一家店的套装，当然这也给后来的配置造成了一定麻烦。</p>
-<p>官网链接：<a href="https://www.96boards.org/product/hikey960/" target="_blank" rel="noopener" title="Hikey960">https://www.96boards.org/product/hikey960/</a></p>
-<p>在等待板子到货的这段时间里，我先把其他工作做好。按照OP-TEE官方文档（<a href="https://optee.readthedocs.io/en/latest/building/gits/build.html#get-and-build-the-solution" target="_blank" rel="noopener" title="OP-TEE DOC">https://optee.readthedocs.io/en/latest/building/gits/build.html#get-and-build-the-solution</a>）的步骤，进行如下操作（在VPS上进行，国内网络环境不太好）：</p>
-<p>Step 1 - 安装了一些必要的包</p>
-<p>Step 2 - 安装repo</p>
-<p>Step 3 - 获取源码</p>
-<pre><code>mkdir -p &lt;optee-project&gt;
-cd &lt;optee-project&gt;
-repo init -u https://github.com/OP-TEE/manifest.git -m ${TARGET}.xml [-b ${BRANCH}]
-repo sync -j4 --no-clone-bundle</code></pre><p>Step 4 - 获取工具链</p>
-<pre><code>cd &lt;optee-project&gt;/build
-make -j2 toolchains</code></pre><p>进行完这一步，我将VPS上的文件打包，开启FTP服务，通过本地的FTP客户端（开启Socks5代理）获取了包，拷贝到相应位置。</p>
-<p>Step 5 - Build</p>
-<pre><code>make -j?</code></pre><p>似乎需要make两次才能正确生成文件？</p>
-<p>Step 6 - Flash the device</p>
-<p>板子拿到手以后默认的模式是Normal Mode，即开机进入预装的AOSP界面，但是我们要刷OP-TEE镜像，就要进入FastBoot模式，具体操作就是将板子上控制模式的开关1、3开启，2关闭，这样再连接电源，开启的就是FastBoot模式。</p>
-<img src=".\HiKey960-Mode.PNG">
+                    <h1 id="第三章-字符设备驱动程序"><a href="#第三章-字符设备驱动程序" class="headerlink" title="第三章 字符设备驱动程序"></a>第三章 字符设备驱动程序</h1><h2 id="主设备号和次设备号"><a href="#主设备号和次设备号" class="headerlink" title="主设备号和次设备号"></a>主设备号和次设备号</h2><p>设备文件通常位于/dev目录下，字符设备驱动程序的设备文件可通过ls -l命令输出的第一列中的’c’来识别，快设备由’b’来识别。</p>
+<p>设备文件项的最后修改日期前看到两个数，通常是文件的长度，对设备文件就是相应设备的主设备号和次设备号。</p>
+<p>主设备号标识设备对应的驱动程序，次设备号由内核使用，用于正确确定设备文件所指的设备。</p>
+<h3 id="设备编号的内部表达"><a href="#设备编号的内部表达" class="headerlink" title="设备编号的内部表达"></a>设备编号的内部表达</h3><p>dev_t类型用来保存设备编号——包括主设备号和次设备号。dev_t是一个32位的数，其中的12位用来表示主设备号，其余20位用来表示次设备号。我们应使用&lt;linux/kdev_t.h&gt;中的宏，MAJOR(dev_t, dev)和MINOR(dev_t, dev)</p>
+<h3 id="分配和释放设备编号"><a href="#分配和释放设备编号" class="headerlink" title="分配和释放设备编号"></a>分配和释放设备编号</h3><pre><code>int alloc_chrdev_region(dev_t *dev, unsigned int firstminor, unsigned int count, char *name);
 
-<p>开启电源进入FastBoot模式后，连接Type-C接口，测试命令</p>
-<pre><code>fastboot devices</code></pre><p>会显示一串数字，此时代表设备已经成功从FastBoot模式启动了。</p>
-<p>然后进入build目录，执行命令（需加入sudo）</p>
-<pre><code>sudo make flash</code></pre><p>信息成功刷写入开发板。</p>
-<p>然后切换回Normal Mode，开机， 这时又遇到一个问题。我此时连接的还是HDMI（板子刚到的时候通过HDMI观察过自带的Android系统），希望通过屏幕来查看设备，然而接入电源后发现板子灯亮着，但是屏幕没有反应。排除了屏幕的故障后，我陷入了沉思……经过google，我找到了类似的问题，作者的回答是这样的：</p>
-<img src=".\HiKey960-Screen.PNG">
-
-<p>看来我想当然了，没想到OP-TEE不支持HDMI，还需要通过串口通信。继续查找资料，找到了HiKey960的接口：</p>
-<img src=".\HiKey960-Interface.PNG">
-
-<p>然后就容易多了，找到一个U转串和三根杜邦线，分别连接TXD-RXD、RXD-TXD、GND-GND三条线，就完成了接口的搭建。重新启动板子，终于在串口控制台中看见了输出！但是当我测试xtest指令时，出现了错误：</p>
-<pre><code>＃xtest
-Run test suite with level=0
-
-TEE test application started with device [(null)]
-######################################################
-#
-regression
-#
-######################################################
-
-* regression_1001 Core self tests
-E/TC:6 0 tee_entry_std:536 Bad arg address 0x217061000
-regression_1000.c:246: res has an unexpected value: 0xffff000e = 
-TEEC_ERROR_COMMUNICATION, expected 0x0 = TEEC_SUCCESS
-Segmentation fault</code></pre><p>又是google一番，发现一篇中文帖子中的问题和我一致（<a href="https://blog.csdn.net/tulipper/article/details/88651202" target="_blank" rel="noopener">https://blog.csdn.net/tulipper/article/details/88651202</a>），粗略地看了一下解决方法，似乎是切换到稳定的release版本。所有我又下载了目前稳定的3.7.0版本，又是一番折腾，重新下载、编译、烧录、开机等，但是还是出现了上述错误。这时我将错误日志输入到搜索栏，查找到了github上相关的issue。看了几个帖子，发现最终的问题不是版本的问题，而是OP-TEE支持的HiKey960是3G RAM，而我买的板子是4G RAM，出现了地址错误。最终解决方法是：</p>
-<img src=".\HiKey960-Solution.PNG">
-
-<p>最终成功运行！xtest成功，optee_example_hello_world成功！</p>
-<pre><code>$ optee_example_hello_world
-D/TC:? 0 tee_ta_init_pseudo_ta_session:280 Lookup pseudo TA 8aaaf200-2450-11e4-abe2-0002a5d5c51b
-D/TC:? 0 load_ldelf:707 ldelf load address 0x40006000
-D/LD:  ldelf:134 Loading TA 8aaaf200-2450-11e4-abe2-0002a5d5c51b
-D/TC:? 0 tee_ta_init_session_with_context:572 Re-open TA 3a2f8978-5dc0-11e8-9c2d-fa7ae01bbebc
-D/TC:? 0 system_open_ta_binary:239 Lookup user TA ELF 8aaaf200-2450-11e4-abe2-0002a5d5c51b (early TA)
-D/TC:? 0 system_open_ta_binary:242 res=0xffff0008
-D/TC:? 0 system_open_ta_binary:239 Lookup user TA ELF 8aaaf200-2450-11e4-abe2-0002a5d5c51b (Secure Storage TA)
-D/TC:? 0 system_open_ta_binary:242 res=0xffff0008
-D/TC:? 0 system_open_ta_binary:239 Lookup user TA ELF 8aaaf200-2450-11e4-abe2-0002a5d5c51b (REE)
-D/TC:? 0 system_open_ta_binary:242 res=0x0
-D/LD:  ldelf:169 ELF (8aaaf200-2450-11e4-abe2-0002a5d5c51b) at 0x40055000
-D/TC:? 0 tee_ta_close_session:498 csess 0x3f079a00 id 1
-D/TC:? 0 tee_ta_close_session:517 Destroy session
-Invoking TA to increment 42
-TA incremented value to 43
-D/TC:? 0 tee_ta_close_session:498 csess 0x3f07a530 id 11
-D/TC:? 0 tee_ta_close_session:517 Destroy session
-D/TC:? 0 destroy_context:297 Destroy TA ctx (0x3f079e70)</code></pre><p>经过一番折腾，最终在HiKey960上配置好了OP-TEE，这次吸取的教训：</p>
+void unregister_chrdev_region(dev_t first, unsigned int count);</code></pre><h2 id="一些重要的数据结构"><a href="#一些重要的数据结构" class="headerlink" title="一些重要的数据结构"></a>一些重要的数据结构</h2><h3 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h3><p>file_operations结构体用来将设备操作连接到设备编号上，这个结构定义在&lt;linux/fs.h&gt;中，其中包含了一组函数指针，每个打开的文件和一组函数相关联。</p>
+<h3 id="file结构"><a href="#file结构" class="headerlink" title="file结构"></a>file结构</h3><p>file结构在&lt;linux/fs.h&gt;中定义，是一个内核结构，不会出现在用户程序中。file结构代表一个打开的文件，由内核在open时创建，并传递给在该文件上进行操作的所有函数，直到最后的close函数。</p>
+<h3 id="inode结构"><a href="#inode结构" class="headerlink" title="inode结构"></a>inode结构</h3><p>内核用inode结构在内部表示文件。对单个文件，可能会有许多个表示打开的文件描述符的file结构，但他们都指向单个inode结构。</p>
+<h2 id="字符设备的注册"><a href="#字符设备的注册" class="headerlink" title="字符设备的注册"></a>字符设备的注册</h2><p>内核内部使用struct cdev结构来表示字符设备。在内核调用设备操作之前，必须分配并注册一个或者多个上述结构，所以我们要包含&lt;linux/cdev.h&gt;</p>
+<p>分配</p>
+<pre><code>struct cdev *my_cdev = cdev_alloc();
+my_cdev -&gt; ops = &amp;my_ops;</code></pre><p>初始化</p>
+<pre><code>void cdev_init(struct cdev *cdev, struct file_operations *fops);</code></pre><p>加入内核</p>
+<pre><code>int cdev_add(struct cdev *dev, dev_t num, unsigned int count);</code></pre><p>移除设备</p>
+<pre><code>void cdev_del(struct cdev *dev);</code></pre><h2 id="文件操作-1"><a href="#文件操作-1" class="headerlink" title="文件操作"></a>文件操作</h2><h3 id="open方法"><a href="#open方法" class="headerlink" title="open方法"></a>open方法</h3><p>函数原型：</p>
+<pre><code>int (*open)(struct inode *inode, struct file *filp);</code></pre><p>完成的工作：</p>
 <ol>
-<li>严格按照官网的步骤安装</li>
-<li>开源项目查找issue</li>
+<li>检查设备特定的错误</li>
+<li>如果设备是首次打开，则对其进行初始化</li>
+<li>如有必要，更新f_op指针</li>
+<li>分配并填写置于 filp -&gt; private_data里的数据</li>
+</ol>
+<p>&lt;linux/kernel.h&gt;</p>
+<pre><code>container_of(pointer, container_type, container_field);</code></pre><h3 id="release方法"><a href="#release方法" class="headerlink" title="release方法"></a>release方法</h3><p>函数原型：</p>
+<pre><code>int (*release)(struct inode *inode, struct file *filp);</code></pre><p>完成的工作：</p>
+<ol>
+<li>释放由open分配的，保存在filp -&gt; private_data中的所有内容</li>
+<li>在最后一次关闭操作时关闭设备</li>
+</ol>
+<h3 id="read方法"><a href="#read方法" class="headerlink" title="read方法"></a>read方法</h3><p>函数原型：</p>
+<pre><code>ssize_t read(struct file *filp, char __user *buff, size_t count, loff_t *offp);</code></pre><p>注意：buff参数是用户空间的指针。因此，内核代码不能直接引用其内容。</p>
+<p>驱动程序必须访问用户空间的缓冲区以便完成自己的工作。为了确保安全，这种访问应始终通过内核提供的专用函数完成。</p>
+<pre><code>unsigned long copy_to_user(void __user *to, const void *from, unsigned long count);
+unsigned long copy_from_user(void *to, const void __user *from, unsigned long count);</code></pre><p>这两个函数的作用并不限于在内核空间和用户空间之间的拷贝数据，它们还检查用户空间的指针是否有效。如果指针无效，就不会进行拷贝；另一方面，如果在拷贝过程中遇到无效地址，则仅仅会复制部分数据。</p>
+<p>read的返回值：</p>
+<ol>
+<li>如果返回值等于传递给read系统调用的count参数，则说明所请求的字节数传输成功完成了。</li>
+<li>如果返回值是正的，但是比count小，则说明只有部分数据成功传送。</li>
+<li>如果返回值为0，则表示已经到达了文件末尾。</li>
+<li>负值意味着发生了错误，该值指明了发生了什么错误。</li>
+</ol>
+<h3 id="write方法"><a href="#write方法" class="headerlink" title="write方法"></a>write方法</h3><p>write返回值：</p>
+<ol>
+<li>如果返回值等于count，则完成了所请求数目的字节传送。</li>
+<li>如果返回值是正的，但小于count，则只传输了部分数据。程序很可能再次试图写入余下的数据。</li>
+<li>如果值为0，意味着什么也没写入。这个结果不是错误，而且也没有理由返回一个错误码，标准库会重复调用write。</li>
+<li>负值意味着发生了错误，与read相同，有效的错误码定义在&lt;linux/errno.h&gt;中。</li>
 </ol>
 
                     
                     <!-- Tags Bottom -->
                     
                         <div class="tags-container-bottom">
-                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/OP-TEE/">#OP-TEE</a> <a class="fw3 ph1 dib" href="/tags/HiKey960/">#HiKey960</a>
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Linux/">#Linux</a> <a class="fw3 ph1 dib" href="/tags/ARM/">#ARM</a>
                         </div>
                     
 
@@ -260,7 +239,7 @@ D/TC:? 0 destroy_context:297 Destroy TA ctx (0x3f079e70)</code></pre><p>经过�
     <h3>Categories</h3>
     
         <p>
-            <a href="/categories/Experience/">Experience</a>
+            <a href="/categories/LDD-Reading/">LDD Reading</a>
         </p>
     
 </div>

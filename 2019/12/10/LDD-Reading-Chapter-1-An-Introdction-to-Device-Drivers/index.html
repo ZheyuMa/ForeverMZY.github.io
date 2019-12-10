@@ -10,6 +10,22 @@
 
     <!--Description-->
     
+        <meta name="description" content="第一章 设备驱动程序简介内核功能划分
+进程管理
+内存管理
+文件系统
+设备控制
+网络功能
+
+可装载模块内核提供的特性可以在运行时进行扩展
+insmod、rmmod
+设备和模块分类
+字符设备  open、close、read、write
+块设备
+网络设备
+
+另一种划分方法：某些驱动程序类型同内核用来支持">
+    
 
     <!--Author-->
     
@@ -18,7 +34,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Hexo"/>
+        <meta property="og:title" content="LDD Reading: Chapter 1: An Introdction to Device Drivers"/>
     
 
     <!--Open Graph Description-->
@@ -29,7 +45,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -40,7 +56,7 @@
 
     <!-- Title -->
     
-    <title>LDD Reading - Hexo</title>
+    <title>LDD Reading: Chapter 1: An Introdction to Device Drivers - Hexo</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
@@ -68,8 +84,6 @@
 <body>
 
 <!-- Main Content -->
-
-
 <!-- Banner -->
 <!-- Banner -->
 <div class="w-100 bg-1 ph5-ns ph3 text-light">
@@ -122,50 +136,128 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns"># LDD Reading</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns"></p>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">LDD Reading: Chapter 1: An Introdction to Device Drivers</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-12-10</p>
         </div>
     </div>
 
     <!-- Icon -->
     <div class="relative w-100 mw8 center white dn dn-m db-ns">
-        <i class="header-icon fa fa-folder-open"></i>
+        <i class="header-icon fa fa-file-text-o"></i>
     </div>
 </div>
 
+<!-- Content -->
 <div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
     <div class="content">
         <div class="mw8 center">
-            
-                <a href="/2019/12/01/LDD-Reading-Chapter-8-Allocating-Memory/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv3">
-        <div class="dtc v-mid w-20 black-50">
-            
-                <span class="f4 fw3 lh-copy">Dec 2019</span> 
-            
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+                        <div class="tags-container-vertical">
+                            <div class="tags-sub-container">
+                                <a class="fw3 ph1 dib" href="/tags/Linux/">#Linux</a> <a class="fw3 ph1 dib" href="/tags/ARM/">#ARM</a>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Main Post Content -->
+                    <h1 id="第一章-设备驱动程序简介"><a href="#第一章-设备驱动程序简介" class="headerlink" title="第一章 设备驱动程序简介"></a>第一章 设备驱动程序简介</h1><h2 id="内核功能划分"><a href="#内核功能划分" class="headerlink" title="内核功能划分"></a>内核功能划分</h2><ol>
+<li>进程管理</li>
+<li>内存管理</li>
+<li>文件系统</li>
+<li>设备控制</li>
+<li>网络功能</li>
+</ol>
+<h2 id="可装载模块"><a href="#可装载模块" class="headerlink" title="可装载模块"></a>可装载模块</h2><p>内核提供的特性可以在运行时进行扩展</p>
+<p>insmod、rmmod</p>
+<h2 id="设备和模块分类"><a href="#设备和模块分类" class="headerlink" title="设备和模块分类"></a>设备和模块分类</h2><ol>
+<li>字符设备  open、close、read、write</li>
+<li>块设备</li>
+<li>网络设备</li>
+</ol>
+<p>另一种划分方法：某些驱动程序类型同内核用来支持某种给定类型设备的附加层一起工作。</p>
+<h2 id="许可证条款"><a href="#许可证条款" class="headerlink" title="许可证条款"></a>许可证条款</h2><p>Linux遵守GNU GPL2发布。</p>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+                        <div class="tags-container-bottom">
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Linux/">#Linux</a> <a class="fw3 ph1 dib" href="/tags/ARM/">#ARM</a>
+                        </div>
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="John Doe">
         </div>
-        <div class="dtc v-mid w-80 black-70">
-            <span class="f4 fw3 lh-copy">LDD Reading: Chapter 8 Allocating Memory<span>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            My name is Jonathan Klughertz and this is my blog.<br>I am a full stack software engineer with a strong front-end focus.<br> I currently live and work in Singapore, hit me up if you are in the region.
         </div>
-    </div>
-</a>
-            
-                <a href="/2019/12/01/LDD-Reading-Chapter-10-Interrupt-Handling/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv3">
-        <div class="dtc v-mid w-20 black-50">
-            
-                <span class="f4 fw3 lh-copy">Dec 2019</span> 
-            
-        </div>
-        <div class="dtc v-mid w-80 black-70">
-            <span class="f4 fw3 lh-copy">LDD Reading: Chapter 10 Interrupt Handling<span>
-        </div>
-    </div>
-</a>
-            
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 2: Categories -->
+                    
+                        <div class="mt5 tc tl-l">
+    <h3>Categories</h3>
+    
+        <p>
+            <a href="/categories/LDD-Reading/">LDD Reading</a>
+        </p>
+    
+</div>
+
+
+                        <hr class="dn-l mw4 black-50 mt5" />
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/2019/12/10/LDD-Reading-Chapter-11-Data-Types-in-the-Kernel/">LDD Reading: Chapter 11: Data Types in the Kernel</a>
+        </p>
+    
+        <p>
+            <a href="/2019/12/10/LDD-Reading-Chapter-7-Time-Delay-and-Deferred-Work/">LDD Reading: Chapter 7: Time, Delay, and Deferred </a>
+        </p>
+    
+        <p>
+            <a href="/2019/12/10/LDD-Reading-Chapter-6-Advanced-Char-Driver-Operations/">LDD Reading: Chapter 6: Advanced Char Driver Opera</a>
+        </p>
+    
+        <p>
+            <a href="/2019/12/10/LDD-Reading-Chapter-5-Concurrency-and-Race-Conditions/">LDD Reading: Chapter 5: Concurrency and Race Condi</a>
+        </p>
+    
+        <p>
+            <a href="/2019/12/10/LDD-Reading-Chapter-4-Debugging-Techniques/">LDD Reading: Chapter 4: Debugging Techniques</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
 
 <!-- Footer -->
 <div class="bg-1 ph2 ph5-ns pv5">
