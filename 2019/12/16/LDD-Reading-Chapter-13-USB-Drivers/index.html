@@ -10,11 +10,8 @@
 
     <!--Description-->
     
-        <meta name="description" content="InterruptPICPIC(Programmable Interrupt Controller)就是8259A。8259A最重要的是IR0~IR7管脚，也就是相应的8个中断，后来被扩展为级联形式，分为主从两块。尽管随着多CPU的出现，PIC模式逐渐被弃用，但是现代PC仍然兼容。
-
-
-基本流程：
-">
+        <meta name="description" content="第十三章 USB驱动程序一个USB子系统并不是以总线的方式来布置的；它是一棵由几个点对点的连接构建而成的树。USB主控制器负责询问每一个USB设备是否有数据需要发送。
+Linux内核主要支持两种主要类型的USB驱动程序：宿主系统上的驱动程序和设备上的驱动程序。从宿主的观点来看，宿主系统的USB驱动程">
     
 
     <!--Author-->
@@ -24,7 +21,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Interrupt and its virtualization"/>
+        <meta property="og:title" content="LDD Reading: Chapter 13: USB Drivers"/>
     
 
     <!--Open Graph Description-->
@@ -46,7 +43,7 @@
 
     <!-- Title -->
     
-    <title>Interrupt and its virtualization - Hexo</title>
+    <title>LDD Reading: Chapter 13: USB Drivers - Hexo</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
@@ -126,8 +123,8 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">Interrupt and its virtualization</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-12-07</p>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">LDD Reading: Chapter 13: USB Drivers</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-12-16</p>
         </div>
     </div>
 
@@ -147,36 +144,61 @@
                     
                         <div class="tags-container-vertical">
                             <div class="tags-sub-container">
-                                <a class="fw3 ph1 dib" href="/tags/Linux/">#Linux</a> <a class="fw3 ph1 dib" href="/tags/Driver/">#Driver</a>
+                                <a class="fw3 ph1 dib" href="/tags/Linux/">#Linux</a> <a class="fw3 ph1 dib" href="/tags/ARM/">#ARM</a>
                             </div>
                         </div>
                     
 
                     <!-- Main Post Content -->
-                    <h1 id="Interrupt"><a href="#Interrupt" class="headerlink" title="Interrupt"></a>Interrupt</h1><h2 id="PIC"><a href="#PIC" class="headerlink" title="PIC"></a>PIC</h2><p>PIC(Programmable Interrupt Controller)就是8259A。8259A最重要的是IR0~IR7管脚，也就是相应的8个中断，后来被扩展为级联形式，分为主从两块。尽管随着多CPU的出现，PIC模式逐渐被弃用，但是现代PC仍然兼容。</p>
-<img src=.\8259.gif>
+                    <h1 id="第十三章-USB驱动程序"><a href="#第十三章-USB驱动程序" class="headerlink" title="第十三章 USB驱动程序"></a>第十三章 USB驱动程序</h1><p>一个USB子系统并不是以总线的方式来布置的；它是一棵由几个点对点的连接构建而成的树。USB主控制器负责询问每一个USB设备是否有数据需要发送。</p>
+<p>Linux内核主要支持两种主要类型的USB驱动程序：宿主系统上的驱动程序和设备上的驱动程序。从宿主的观点来看，宿主系统的USB驱动程序控制插入其中的USB设备，而USB设备的驱动程序控制该设备如何作为一个USB设备和主机通信。</p>
+<h2 id="USB设备基础"><a href="#USB设备基础" class="headerlink" title="USB设备基础"></a>USB设备基础</h2><h3 id="端点"><a href="#端点" class="headerlink" title="端点"></a>端点</h3><p>SUB通信最基本的形式是通过一个名为端点的东西。USB端点只能往一个方向传送数据，端点可以看做单向的管道。</p>
+<p>USB端点有四种不同的类型，分别具有不同的传送数据的方式：控制、中断、批量、等时</p>
+<p>内核中使用struct usb_host_endpoint结构体来描述USB端点。该结构体在另一个名为struct usb_endpoint_descriptor的结构体中包含了真正的端点信息。后一个结构体包含了所有的USB特定的数据。该结构体中驱动程序需要关心的字段有：bEndpointAddress、bmAttributes、wMaxPacketSize、bInterval</p>
+<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p>USB端点被捆绑为接口。USB接口只处理一种USB逻辑连接。一些USB设备具有多个接口，一个USB接口代表了一个基本功能，而每个USB驱动程序控制一个接口。</p>
+<p>内核使用struct usb_interface结构体来描述USB接口。USB核心把该结构体传递给USB驱动程序，之后由USB驱动程序来负责控制该结构体。该结构体中的重要字段有：struct usb_host_interface *altsetting、 unsigned num_altsetting、struct usb_host_interface *cur_altsetting、int minor、struct usb_interface</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>USB接口本身被捆绑为配置。一个USB设备可以有多个配置，而且可以在配置之间切换以改变设备的状态。</p>
+<p>Linux使用struct usb_host_config结构体来描述USB配置，使用struct usb_device结构体来描述整个USB设备。</p>
+<p>USB驱动程序通常需要把一个给定的struct usb_interface结构体的数据转换为一个struct usb_device结构体。</p>
+<p>USB设备是非常复杂的，它由许多不同的逻辑单元组成。这些逻辑单元之间的关系可以简单地描述如下：</p>
+<ul>
+<li>设备通常具有一个或者更多的配置</li>
+<li>配置经常具有一个或者更多的接口</li>
+<li>接口通常具有一个或者更多的设置</li>
+<li>接口没有或者具有一个以上的端点</li>
+</ul>
+<h2 id="USB和Sysfs"><a href="#USB和Sysfs" class="headerlink" title="USB和Sysfs"></a>USB和Sysfs</h2><p>第一个USB设备是一个根集线器。这是一个USB控制器，通常包含在一个PCI设备中。该控制器是连接PCI总线和USB总线的桥，也是该总线上的第一个USB设备。所有的根集线器都由USB核心分配了一个独特的编号。</p>
+<p>概言之，USB sysfs设备命名方案为：</p>
+<pre><code>根集线器-集线器端口号：配置.接口</code></pre><h2 id="USB-urb"><a href="#USB-urb" class="headerlink" title="USB urb"></a>USB urb</h2><p>Linux内核中的USB代码通过一个称为urb的东西和所有的USB设备通信。这个请求块使用struct urb结构体描述，可以从include/linux/usb.h文件中找到。</p>
+<p>一个urb的典型生命周期如下：</p>
+<ul>
+<li>由USB设备驱动程序创建</li>
+<li>分配给一个特定USB设备的特定端点</li>
+<li>由USB设备驱动程序递交到USB核心</li>
+<li>由USB核心递交到特定设备的特定USB主控制器驱动程序</li>
+<li>由USB主控制器驱动程序处理，它从设备进行USB传送</li>
+<li>当urb结束之后，USB主控制器驱动程序通知USB设备驱动程序</li>
+</ul>
+<h2 id="编写USB驱动程序"><a href="#编写USB驱动程序" class="headerlink" title="编写USB驱动程序"></a>编写USB驱动程序</h2><h3 id="注册USB驱动程序"><a href="#注册USB驱动程序" class="headerlink" title="注册USB驱动程序"></a>注册USB驱动程序</h3><p>所有USB驱动程序都必须创建的主要结构体是struct usb_driver。该结构体必须由USB驱动程序来填写，包括许多回调函数和变量，它们向USB核心代码描述了USB驱动程序。</p>
+<pre><code>static int __int usb_skel_init(void) {
+    int result;
 
-<p>基本流程：</p>
-<ol>
-<li>IRQ0-IRQ7的其中一个引脚收到一个中断信号，则设置IRR中对应的bit</li>
-<li>8259A通过INT信号线向CPU发送中断信号</li>
-<li>CPU收到INT信号后，发出一个INTA信号，输入8259A的INTA输入引脚</li>
-<li>将IRR中的bit清除，在ISR中设置对应的bit</li>
-<li>CPU在下一个周期再发出一个INTA信号，输入8259A的INTA输入引脚，此时8259A通过数据总线向CPU发送Interrupt Vector</li>
-<li>最后，若处于AEOI模式，ISR中的bit直接清除，否则要等CPU处理完该中断后，向8259A进行一次EOI，才能将ISR中的bit清除</li>
-</ol>
-<h2 id="APIC"><a href="#APIC" class="headerlink" title="APIC"></a>APIC</h2><p>Intel为了适应SMP，提出了APIC(Advanced Programmable Interrupt Controller)的技术。APIC由两部分组成，一个称为LAPIC，位于CPU中；另一个称为IOAPIC，位于外部设备芯片中，连接各个产生中断的设备。IOAPIC和LAPIC通过APIC BUS连接在一起。</p>
-<img src=.\APIC.png>
+    result = usb_register(&amp;skel_driver);
+    if (result) {
+        err(&quot;usb_register failed. Error number %d&quot;, result);
+    }
 
-<p>每个LAPIC都有自己唯一的APIC ID，IOAPIC也有自己唯一的ID。</p>
-<p>APIC模式和PIC模式显著的区别是连接关系不再是硬件连线而是通过message。IOAPIC内部有个PRT（Programmable Redirection Table）表，里面的Destination Field标识了中断的目的地。在Physical模式下，含有目标APIC ID（Logical模式略）。</p>
-<p>在中断发生时，IOAPIC收到中断，会将中断转化为message放入系统总线，而CPU中只有APIC ID和Destination Field域中一致的LAPIC才会处理这条中断。</p>
-<h1 id="Virtualization"><a href="#Virtualization" class="headerlink" title="Virtualization"></a>Virtualization</h1><img src=.\virtualization.png>
+    return result;
+}
+
+static void __exit usb_skel_exit(void) {
+    usb_deregister(&amp;skel_driver);
+}</code></pre><h3 id="提交和控制urb"><a href="#提交和控制urb" class="headerlink" title="提交和控制urb"></a>提交和控制urb</h3><h2 id="不使用urb的USB传输445"><a href="#不使用urb的USB传输445" class="headerlink" title="不使用urb的USB传输445"></a>不使用urb的USB传输445</h2>
                     
                     <!-- Tags Bottom -->
                     
                         <div class="tags-container-bottom">
-                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Linux/">#Linux</a> <a class="fw3 ph1 dib" href="/tags/Driver/">#Driver</a>
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Linux/">#Linux</a> <a class="fw3 ph1 dib" href="/tags/ARM/">#ARM</a>
                         </div>
                     
 
@@ -205,6 +227,18 @@
                     <hr class="dn-l mw4 black-50 mt5" />
                     
                     <!-- Widget 2: Categories -->
+                    
+                        <div class="mt5 tc tl-l">
+    <h3>Categories</h3>
+    
+        <p>
+            <a href="/categories/LDD-Reading/">LDD Reading</a>
+        </p>
+    
+</div>
+
+
+                        <hr class="dn-l mw4 black-50 mt5" />
                     
 
                     <!-- Widget 3: Recent Posts -->
