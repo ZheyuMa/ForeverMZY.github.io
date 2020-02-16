@@ -10,11 +10,8 @@
 
     <!--Description-->
     
-        <meta name="description" content="第二章 构造和运行模块Hello World 模块#include &amp;lt;linux/init.h&amp;gt;
-#include &amp;lt;linux/module.h&amp;gt;
-MODULE_LICENSE(&amp;quot;Dual BSD/GPL&amp;quot;);
-
-static int hello_ini">
+        <meta name="description" content="搞定了AOSP的存储问题，下面开始编译AOSP系统了。
+Build Android 10由于众所周知的原因，我们不能按照AOSP官网上的介绍来构建AOSP，所以我开始选择了tuna镜像。按照教程http://https://mirrors.tuna.tsinghua.edu.cn/help/AOSP">
     
 
     <!--Author-->
@@ -24,7 +21,7 @@ static int hello_ini">
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="LDD Reading: Chapter 2: Building and Running Modules"/>
+        <meta property="og:title" content="Build AOSP"/>
     
 
     <!--Open Graph Description-->
@@ -46,7 +43,7 @@ static int hello_ini">
 
     <!-- Title -->
     
-    <title>LDD Reading: Chapter 2: Building and Running Modules - Hexo</title>
+    <title>Build AOSP - Hexo</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
@@ -126,8 +123,8 @@ static int hello_ini">
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">LDD Reading: Chapter 2: Building and Running Modules</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-12-10</p>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">Build AOSP</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2020-02-16</p>
         </div>
     </div>
 
@@ -147,51 +144,48 @@ static int hello_ini">
                     
                         <div class="tags-container-vertical">
                             <div class="tags-sub-container">
-                                <a class="fw3 ph1 dib" href="/tags/Linux/">#Linux</a> <a class="fw3 ph1 dib" href="/tags/ARM/">#ARM</a>
+                                <a class="fw3 ph1 dib" href="/tags/Android/">#Android</a>
                             </div>
                         </div>
                     
 
                     <!-- Main Post Content -->
-                    <h1 id="第二章-构造和运行模块"><a href="#第二章-构造和运行模块" class="headerlink" title="第二章 构造和运行模块"></a>第二章 构造和运行模块</h1><h2 id="Hello-World-模块"><a href="#Hello-World-模块" class="headerlink" title="Hello World 模块"></a>Hello World 模块</h2><pre><code>#include &lt;linux/init.h&gt;
-#include &lt;linux/module.h&gt;
-MODULE_LICENSE(&quot;Dual BSD/GPL&quot;);
-
-static int hello_init(void) {
-    printk(KERN_ALERT &quot;Hello, world!\n&quot;);
-    return 0;
-}
-
-static void hello_exit(void) {
-    printk(KERN_ALERT &quot;Goodbye, cruel world!\n&quot;);
-}
-
-module_init(hello_init);
-module_exit(hello_exit);</code></pre><h2 id="内核开发"><a href="#内核开发" class="headerlink" title="内核开发"></a>内核开发</h2><ol>
-<li>模块运行在内核空间中，应用程序运行在用户空间中</li>
-<li>内核代码必须是可重入的，必须能够同时运行在多个上下文中</li>
-<li>内核的大多数操作和某个特定的进程相关</li>
-<li>内核中具有两个下划线前缀的函数名称，通常是接口的底层组件</li>
-<li>内核代码不能实现浮点数运算</li>
+                    <p>搞定了AOSP的存储问题，下面开始编译AOSP系统了。</p>
+<h1 id="Build-Android-10"><a href="#Build-Android-10" class="headerlink" title="Build Android 10"></a>Build Android 10</h1><p>由于众所周知的原因，我们不能按照AOSP官网上的介绍来构建AOSP，所以我开始选择了tuna镜像。按照教程<a href="http://https://mirrors.tuna.tsinghua.edu.cn/help/AOSP/" target="_blank" rel="noopener" title="tuna AOSP">http://https://mirrors.tuna.tsinghua.edu.cn/help/AOSP/</a></p>
+<h2 id="传统初始化方法"><a href="#传统初始化方法" class="headerlink" title="传统初始化方法"></a>传统初始化方法</h2><p>建立工作目录：</p>
+<pre><code>mkdir DIR
+cd DIR</code></pre><p>初始化仓库：</p>
+<pre><code>repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest</code></pre><p>如果提示无法连接到 gerrit.googlesource.com，可以将如下内容复制到你的~/.bashrc里，并重启终端</p>
+<pre><code>export REPO_URL=&apos;https://mirrors.tuna.tsinghua.edu.cn/git/git-repo&apos;</code></pre><p>同步源码树：</p>
+<pre><code>repo sync</code></pre><p>在实际执行的过程中，我发现tuna似乎出了一点问题，同步特别慢，所以我又选择了下面的方式。</p>
+<h2 id="使用初始化包"><a href="#使用初始化包" class="headerlink" title="使用初始化包"></a>使用初始化包</h2><p>下载<a href="https://mirrors.tuna.tsinghua.edu.cn/aosp-monthly/aosp-latest.tar" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/aosp-monthly/aosp-latest.tar</a>，下载完成后记得根据 checksum.txt 的内容校验一下。</p>
+<pre><code>tar -xvf aosp-lastest.tar -C DIR_NAME
+cd aosp
+repo sync -l //仅checkout代码，不同步</code></pre><p>此处需要注意的是，要不就不要同步代码，要不就同步完代码，不要同步一半就停止，容易造成编译上的问题。</p>
+<p>终于成功地拿到了AOSP源码，下面进行编译。</p>
+<p>然而在编译的过程中，编译到metalava时，始终会遇到OutOfMemory错误，是由于内存空间不足造成，一时没有解决方案。</p>
+<p>解决方案：</p>
+<ol>
+<li><code>export _JAVA_OPTIONS=&quot;-Xmx6g&quot;</code></li>
+<li>修改交换空间大小</li>
+<li>减小并发数量</li>
+<li><a href="https://stackoom.com/question/3v7vy/Metalava%E9%94%99%E8%AF%AF-%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3%E9%94%99%E8%AF%AF-Java%E5%A0%86%E7%A9%BA%E9%97%B4" target="_blank" rel="noopener">https://stackoom.com/question/3v7vy/Metalava%E9%94%99%E8%AF%AF-%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3%E9%94%99%E8%AF%AF-Java%E5%A0%86%E7%A9%BA%E9%97%B4</a></li>
 </ol>
-<h2 id="编译和装载"><a href="#编译和装载" class="headerlink" title="编译和装载"></a>编译和装载</h2><pre><code>ifneq ($(KERNELRELEASE),)
-    obj-m :=hello.o
-else
-KERNELDIR ?=/lib/modules/$(shell uname -r)/build
-PWD       := $(shell pwd)
-default:
-    make -C $(KERNELDIR) M=$(PWD) modules
-endif</code></pre><h2 id="装载和卸载模块"><a href="#装载和卸载模块" class="headerlink" title="装载和卸载模块"></a>装载和卸载模块</h2><p>insmod将模块的代码和数据装入内核，然后使用内核的符号表解析模块中任何未解析的模块</p>
-<p>modprobe用来将模块装载到内核中，它会考虑要装载的模块是否引用了一些当前内核不存在的符号。如果有这类引用，modprobe会在当前模块搜索路径中查找定义了这些符号的其他模块。如果modprobe找到了这些模块，它会同时将这些模块装载到内核。</p>
-<p>rmmod从内核中移除模块。如果内核认为模块仍然在使用状态，或者内核被配置为禁止移除模块，则无法移除模块。</p>
-<p>lsmod程序列出当前装载到内核中的所有模块，还提供了其他一些信息，比如其他模块是不是在使用某个特定模块等。</p>
-<h2 id="模块参数"><a href="#模块参数" class="headerlink" title="模块参数"></a>模块参数</h2><p>在insmod改变模块参数之前，模块必须让这些参数对insmod命令可见。参数必须用module_param宏来声明。</p>
+<p>上述方案都不能解决问题，只得放弃</p>
+<h1 id="Build-Android-9"><a href="#Build-Android-9" class="headerlink" title="Build Android 9"></a>Build Android 9</h1><p>放弃编译版本10，只得退回到版本9。</p>
+<p>然而现在不能使用初始化包了，所以我又换成了中科大源。</p>
+<p>具体来说只需要修改为：</p>
+<pre><code>repo init -u git://mirrors.ustc.edu.cn/aosp/platform/manifest -b android-9.0.0_r44</code></pre><p>科大源还是非常快的，大概3个小时就完成了所有的同步工作。</p>
+<p>之后就可以按照<a href="https://source.android.com/setup/build/downloading" target="_blank" rel="noopener" title="AOSP">谷歌官方教程</a>进行了</p>
+<pre><code>source build/envsetup.sh</code></pre><p>这个过程引入了一些命令，下面要使用</p>
+<pre><code>lunch aosp_arm-eng //lunch后面的配置根据需要修改
+m -j4 //进行编译</code></pre><p>大概4个小时的时间，就完成编译了！</p>
 
                     
                     <!-- Tags Bottom -->
                     
                         <div class="tags-container-bottom">
-                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Linux/">#Linux</a> <a class="fw3 ph1 dib" href="/tags/ARM/">#ARM</a>
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Android/">#Android</a>
                         </div>
                     
 
@@ -225,7 +219,7 @@ endif</code></pre><h2 id="装载和卸载模块"><a href="#装载和卸载模块
     <h3>Categories</h3>
     
         <p>
-            <a href="/categories/LDD-Reading/">LDD Reading</a>
+            <a href="/categories/Experience/">Experience</a>
         </p>
     
 </div>
