@@ -10,8 +10,12 @@
 
     <!--Description-->
     
-        <meta name="description" content="第六章 高级字符驱动程序操作ioctl函数原型：int (*ioctl) (struct inode *inode, struct file *filp, unsigned int cmd, unsigned long arg);
-选择ioctl命令 头文件：&amp;lt;linux/ioctl.h&amp;gt">
+        <meta name="description" content="参考syzkaller 
+GCC安装GCC
+Kernel下载Linux内核，然后生成默认的配置选项
+cd $KERNEL
+make CC=&amp;quot;$GCC/bin/gcc&amp;quot; defconfig
+make CC=&amp;quot;$GCC/bin/gcc&amp;quot; kvmconfig手动编辑">
     
 
     <!--Author-->
@@ -21,7 +25,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="LDD Reading: Chapter 6: Advanced Char Driver Operations"/>
+        <meta property="og:title" content="Syzkaller"/>
     
 
     <!--Open Graph Description-->
@@ -43,7 +47,7 @@
 
     <!-- Title -->
     
-    <title>LDD Reading: Chapter 6: Advanced Char Driver Operations - Hexo</title>
+    <title>Syzkaller - Hexo</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
@@ -123,8 +127,8 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">LDD Reading: Chapter 6: Advanced Char Driver Operations</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-12-10</p>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">Syzkaller</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2020-03-05</p>
         </div>
     </div>
 
@@ -142,71 +146,87 @@
                 <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
                     <!-- Tags Vertical -->
                     
-                        <div class="tags-container-vertical">
-                            <div class="tags-sub-container">
-                                <a class="fw3 ph1 dib" href="/tags/Linux/">#Linux</a> <a class="fw3 ph1 dib" href="/tags/ARM/">#ARM</a>
-                            </div>
-                        </div>
-                    
 
                     <!-- Main Post Content -->
-                    <h1 id="第六章-高级字符驱动程序操作"><a href="#第六章-高级字符驱动程序操作" class="headerlink" title="第六章 高级字符驱动程序操作"></a>第六章 高级字符驱动程序操作</h1><h2 id="ioctl"><a href="#ioctl" class="headerlink" title="ioctl"></a>ioctl</h2><p>函数原型：int (*ioctl) (struct inode *inode, struct file *filp, unsigned int cmd, unsigned long arg);</p>
-<h3 id="选择ioctl命令"><a href="#选择ioctl命令" class="headerlink" title="选择ioctl命令"></a>选择ioctl命令</h3><p> 头文件：&lt;linux/ioctl.h&gt;</p>
-<p> type：8位宽。幻数。</p>
-<p> number：8位宽。序数。</p>
-<p> direction：如果相关命令涉及到数据的传输，则该位字段定义数据传输的方向。_IOC_NONE、_IOC_READ、IOC_WRITE以及_IOC_READ | _IOC_WRITE</p>
-<p> size：所涉及的用户数据大小。</p>
-<h3 id="预定义命令"><a href="#预定义命令" class="headerlink" title="预定义命令"></a>预定义命令</h3><h2 id="阻塞型IO"><a href="#阻塞型IO" class="headerlink" title="阻塞型IO"></a>阻塞型IO</h2><h3 id="休眠的简单介绍"><a href="#休眠的简单介绍" class="headerlink" title="休眠的简单介绍"></a>休眠的简单介绍</h3><p>当一个进程被置入休眠时，它会被标记为一种特殊状态并从调度器的运行队列中移走。直到某种情况下修改了这个状态，进程才会在任意CPU上调度，也即运行该进程。</p>
-<p>原则：</p>
-<ol>
-<li>永远不要在原子上下文中进入休眠</li>
-<li>当我们被唤醒时，我们永远无法知道休眠了多长时间，或者休眠期间都发生了些什么事情。</li>
-<li>除非我们知道有其他人会在其他地方唤醒我们，否则进程不能休眠</li>
-</ol>
-<p>一个等待队列通过一个“等待队列头”来管理，等待队列头是一个类型为wait_queue_head_t的结构体，定义在&lt;linux/wait.h&gt;中</p>
-<p>DECLARE_WAIT_QUEUE_HEAD(name);</p>
-<p>or</p>
-<p>wait_queue_head_t my_queue;<br>init_waitqueue_head(&amp;my_queue);</p>
-<h3 id="简单休眠"><a href="#简单休眠" class="headerlink" title="简单休眠"></a>简单休眠</h3><p>休眠：</p>
-<p>wait_event(queue, condition);<br>wait_event_interruptible(queue, condition);<br>wait_event_timeout(queue, condition, timeout);<br>wait_event_interruptible_timeout(queue, condition, timeout);</p>
-<p>唤醒：</p>
-<p>void wake_up(wait_queue_head_t *queue);<br>void wake_up_interruptible(wait_queue_head_t *queue);</p>
-<h3 id="进程如何休眠"><a href="#进程如何休眠" class="headerlink" title="进程如何休眠"></a>进程如何休眠</h3><ol>
-<li>分配并初始化一个wait_queue_t结构，然后将其加入到对应的等待队列。</li>
-<li>设置进程的状态，将其标记为休眠</li>
-<li>检查休眠等待的条件</li>
-<li>放弃处理器</li>
-</ol>
-<h3 id="阻塞和非阻塞型操作"><a href="#阻塞和非阻塞型操作" class="headerlink" title="阻塞和非阻塞型操作"></a>阻塞和非阻塞型操作</h3><p>显式的非阻塞IO由filp-&gt;f_flags中的O_NONBLOCK标志决定。</p>
-<p>非阻塞型操作会立即返回，使得应用程序可以查询数据。在处理非阻塞型文件时，应用程序调用stdio函数必须非常小心，因为很容易把一个非阻塞返回误认为是EOF，所以必须始终检查errno。</p>
-<p>只有read、write、open文件操作受非阻塞标志的影响</p>
-<h3 id="poll和select"><a href="#poll和select" class="headerlink" title="poll和select"></a>poll和select</h3><p>功能：都允许进程决定是否可以对一个或多个打开的文件做非阻塞的读取或写入。</p>
-<p>头文件：&lt;linux/poll.h&gt;</p>
-<p>原型：unsigned int (*poll) (struct file *filp, poll_table *wait);</p>
-<p>步骤：</p>
-<ol>
-<li>在一个或多个可指示poll状态变化的等待队列上调用poll_wait。如果当前没有文件描述符可用来执行IO，则内核将使进程在传递到该系统调用的所有文件描述符对应的等待队列上等待。</li>
-<li>返回一个用来描述操作是否可以立即无阻塞执行的位掩码。</li>
-</ol>
-<h3 id="与read和write的交互"><a href="#与read和write的交互" class="headerlink" title="与read和write的交互"></a>与read和write的交互</h3><h4 id="从设备读取数据"><a href="#从设备读取数据" class="headerlink" title="从设备读取数据"></a>从设备读取数据</h4><ul>
-<li>如果缓冲区有数据，那么即使就绪的数据比程序所请求的少，并且驱动程序保证剩下的数据马上就能到达，read调用仍然应该以难以察觉的延迟立即返回。</li>
-<li>如果输入缓冲区没有数据，那么默认情况下read必须阻塞等待，直到至少有一个字节到达。另一方面，如果设置了O_NONBLOCK标志，read应该立即返回，返回值是-EAGAIN。在这种情况下poll必须报告设备不可读，直到至少有一个字节到达。</li>
-<li>如果已经到达了文件尾，read应该立即返回0，无论O_NONBLOCK是否设置。此时poll报告POLLUP。</li>
-</ul>
-<h4 id="向设备写数据"><a href="#向设备写数据" class="headerlink" title="向设备写数据"></a>向设备写数据</h4><p>同上</p>
-<h4 id="刷新待处理输出"><a href="#刷新待处理输出" class="headerlink" title="刷新待处理输出"></a>刷新待处理输出</h4><p>int (*fsync) (struct file *file, struct dentry *dentry, int datasync);</p>
-<h2 id="异步通知"><a href="#异步通知" class="headerlink" title="异步通知"></a>异步通知</h2><h2 id="设备文件的访问控制"><a href="#设备文件的访问控制" class="headerlink" title="设备文件的访问控制"></a>设备文件的访问控制</h2><ol>
-<li>独享设备</li>
-<li>限制每次只由一个用户访问</li>
-<li>打开时复制设备</li>
-</ol>
+                    <p>参考<a href="https://github.com/google/syzkaller/blob/master/docs/linux/setup_ubuntu-host_qemu-vm_x86-64-kernel.md" target="_blank" rel="noopener">syzkaller</a> </p>
+<h1 id="GCC"><a href="#GCC" class="headerlink" title="GCC"></a>GCC</h1><p>安装GCC</p>
+<h1 id="Kernel"><a href="#Kernel" class="headerlink" title="Kernel"></a>Kernel</h1><p>下载Linux内核，然后生成默认的配置选项</p>
+<pre><code>cd $KERNEL
+make CC=&quot;$GCC/bin/gcc&quot; defconfig
+make CC=&quot;$GCC/bin/gcc&quot; kvmconfig</code></pre><p>手动编辑.config文件</p>
+<pre><code>CONFIG_KCOV=y
+CONFIG_DEBUG_INFO=y
+CONFIG_KASAN=y
+CONFIG_KASAN_INLINE=y</code></pre><p>对于较新版本的内核，还需要开启以下选项</p>
+<pre><code>CONFIG_CONFIGFS_FS=y
+CONFIG_SECURITYFS=y</code></pre><p>运行以下指令并按enter默认配置</p>
+<pre><code>make CC=&quot;$GCC/bin/gcc&quot; oldconfig</code></pre><p>编译内核</p>
+<pre><code>make CC=&quot;$GCC/bin/gcc&quot;</code></pre><h1 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h1><p>安装debootstrap</p>
+<pre><code>sudo apt-get install debootstrap</code></pre><p>创建Linux镜像</p>
+<pre><code>cd $IMAGE/
+wget https://raw.githubusercontent.com/google/syzkaller/master/tools/create-image.sh -O create-image.sh
+chmod +x create-image.sh
+./create-image.sh</code></pre><h1 id="QEMU"><a href="#QEMU" class="headerlink" title="QEMU"></a>QEMU</h1><p>安装QEMU并启动</p>
+<pre><code>qemu-system-x86_64 \
+  -kernel $KERNEL/arch/x86/boot/bzImage \
+  -append &quot;console=ttyS0 root=/dev/sda debug earlyprintk=serial slub_debug=QUZ&quot;\
+  -hda $IMAGE/stretch.img \
+  -net user,hostfwd=tcp::10021-:22 -net nic \
+  -enable-kvm \
+  -nographic \
+  -m 2G \
+  -smp 2 \
+  -pidfile vm.pid \
+  2&gt;&amp;1 | tee vm.log</code></pre><p>然后在另一个终端中使用ssh登陆</p>
+<pre><code>ssh -i $IMAGE/stretch.id_rsa -p 10021 -o &quot;StrictHostKeyChecking no&quot; root@localhost</code></pre><h1 id="syzkaller"><a href="#syzkaller" class="headerlink" title="syzkaller"></a>syzkaller</h1><p>安装Go 1.11或Go 1.12，然后下载syzkaller</p>
+<pre><code>go get -u -d github.com/google/syzkaller/...
+cd $HOME?/go/src/github.com/google/syzkaller/
+make</code></pre><p>然后创建一个配置文件</p>
+<pre><code>{
+    &quot;target&quot;: &quot;linux/amd64&quot;,
+    &quot;http&quot;: &quot;127.0.0.1:56741&quot;,
+    &quot;workdir&quot;: &quot;$GOPATH/src/github.com/google/syzkaller/workdir&quot;,
+    &quot;kernel_obj&quot;: &quot;$KERNEL&quot;,
+    &quot;image&quot;: &quot;$IMAGE/stretch.img&quot;,
+    &quot;sshkey&quot;: &quot;$IMAGE/stretch.id_rsa&quot;,
+    &quot;syzkaller&quot;: &quot;$GOPATH/src/github.com/google/syzkaller&quot;,
+    &quot;procs&quot;: 8,
+    &quot;type&quot;: &quot;qemu&quot;,
+    &quot;vm&quot;: {
+        &quot;count&quot;: 4,
+        &quot;kernel&quot;: &quot;$KERNEL/arch/x86/boot/bzImage&quot;,
+        &quot;cpu&quot;: 2,
+        &quot;mem&quot;: 2048
+    }
+}</code></pre><p>运行syzkaller</p>
+<pre><code>mkdir workdir
+./bin/syz-manager -config=my.cfg</code></pre><p>可以在浏览器中输入 <code>127.0.0.1:56741</code> 查看结果</p>
+<p>##</p>
+<p>当运行syzkaller的时候qemu出现了一个小错误：</p>
+<pre><code>error: failed to set MSR 0x480 to 0x0
+kvm_put_msrs: Assertion `ret == cpu-&gt;kvm_msr_buf-&gt;nmsrs&apos; failed.</code></pre><p>查询得知是一个bug，需要打patch</p>
+<pre><code>diff --git a/target/i386/kvm.c b/target/i386/kvm.c
+index bf1655645b..e8841dcdb9 100644
+--- a/target/i386/kvm.c
++++ b/target/i386/kvm.c
+@@ -2572,6 +2572,14 @@  static void kvm_msr_entry_add_vmx(X86CPU *cpu, FeatureWordArray f)
+     uint64_t kvm_vmx_basic =
+     kvm_arch_get_supported_msr_feature(kvm_state,
+                                        MSR_IA32_VMX_BASIC);
++    if (!kvm_vmx_basic) {
++        /* If the kernel does&apos;t support VMX feature(nested=0 in kvm)
++         * and kvm_vmx_basic will be 0. This will set 0 value to
++         * MSR_IA32_VMX_BASIC MSR.
++         */
++        return;
++    }
++
+     uint64_t kvm_vmx_misc =
+     kvm_arch_get_supported_msr_feature(kvm_state,
+                                        MSR_IA32_VMX_MISC);</code></pre><p>重新编译qemu就好了</p>
 
                     
                     <!-- Tags Bottom -->
-                    
-                        <div class="tags-container-bottom">
-                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Linux/">#Linux</a> <a class="fw3 ph1 dib" href="/tags/ARM/">#ARM</a>
-                        </div>
                     
 
                     <!-- Comments -->
@@ -234,18 +254,6 @@
                     <hr class="dn-l mw4 black-50 mt5" />
                     
                     <!-- Widget 2: Categories -->
-                    
-                        <div class="mt5 tc tl-l">
-    <h3>Categories</h3>
-    
-        <p>
-            <a href="/categories/LDD-Reading/">LDD Reading</a>
-        </p>
-    
-</div>
-
-
-                        <hr class="dn-l mw4 black-50 mt5" />
                     
 
                     <!-- Widget 3: Recent Posts -->
