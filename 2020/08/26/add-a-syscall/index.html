@@ -11,12 +11,12 @@
     <!--Description-->
     
         <meta name="description" content="在include/linux/syscalls.h中添加系统调用声明
- asmlinkage long sys_interrupt(void);
+asmlinkage long sys_interrupt(void);
+or
+asmlinkage long sys_interrupt(char __user *ptr);
 
 在kernel/sys.c中添加系统调用定义
-SYSCALL_DEFINE0(interrupt)
-{
-`printk(&amp;quot;Hello worl">
+SY">
     
 
     <!--Author-->
@@ -157,7 +157,9 @@ SYSCALL_DEFINE0(interrupt)
                     <!-- Main Post Content -->
                     <ol>
 <li><p>在include/linux/syscalls.h中添加系统调用声明</p>
-<p> <code>asmlinkage long sys_interrupt(void);</code></p>
+<p><code>asmlinkage long sys_interrupt(void);</code></p>
+<p>or</p>
+<p><code>asmlinkage long sys_interrupt(char __user *ptr);</code></p>
 </li>
 <li><p>在kernel/sys.c中添加系统调用定义</p>
 <p><code>SYSCALL_DEFINE0(interrupt)</code></p>
@@ -165,8 +167,20 @@ SYSCALL_DEFINE0(interrupt)
 <pre><code>`printk(&quot;Hello world!\n&quot;);`
 
 `return 0;`</code></pre><p><code>}</code></p>
-<p>这是一个没有参数的系统调用</p>
+<p>or</p>
+<p><code>SYSCALL_DEFINE1(interrupt, char __user *, ptr)</code></p>
+<p><code>{</code></p>
+<p>​    <code>char kbuf[256];</code></p>
 </li>
+</ol>
+<p>   ​    <code>if(copy_from_user(kbuf, ptr, sizeof(char) * 128)) {</code></p>
+<p>   ​        <code>printk(&quot;copy error.\n&quot;);</code></p>
+<p>   ​        <code>return -1;</code></p>
+<p>   ​    <code>}</code></p>
+<p>   ​    <code>printk(&quot;str : %s\n&quot;, kbuf);</code></p>
+<p>   ​    <code>return 0;</code></p>
+<p>   <code>}</code></p>
+<ol start="3">
 <li><p>在arch/x86/entry/syscalls/syscall_64.tbl中添加系统调用项</p>
 <p><code>439 common  interrupt       sys_interrupt</code></p>
 </li>
@@ -189,9 +203,26 @@ SYSCALL_DEFINE0(interrupt)
 
 `printf(&quot;%s %d ret = %ld\n&quot;, __func__, __LINE__, ret);`</code></pre><p>​      <code>return 0;</code></p>
 <p><code>}</code></p>
+<p>or</p>
+<p><code>\#include &lt;linux/unistd.h&gt;</code></p>
+<p><code>\#include &lt;sys/syscall.h&gt;</code></p>
+<p><code>\#include &lt;stdio.h&gt;</code></p>
+<p>`` </p>
+<p><code>int main(void)</code></p>
+<p><code>{</code></p>
+<p>​    <code>char buf[256] = &quot;ffffffff&quot;;</code></p>
+<p>​    <code>char *ptr = buf;</code></p>
 </li>
+</ol>
+<p>   ​    <code>long ret = syscall(439, ptr);</code></p>
+<p>   ​    <code>printf(&quot;%s %d ret = %ld\n&quot;, __func__, __LINE__, ret);</code></p>
+<p>   ​    <code>return 0;</code></p>
+<p>   <code>}</code></p>
+<ol start="7">
 <li><p>进行测试</p>
 <p><code>[  243.502496] Hello world!</code><br><code>main 8 ret = 32768</code></p>
+<p>or</p>
+<p><code>[  118.318246] str : ffffffff</code><br><code>main 11 ret = 0</code></p>
 </li>
 </ol>
 
