@@ -10,6 +10,14 @@
 
     <!--Description-->
     
+        <meta name="description" content="在include/linux/syscalls.h中添加系统调用声明
+ asmlinkage long sys_interrupt(void);
+
+在kernel/sys.c中添加系统调用定义
+SYSCALL_DEFINE0(interrupt)
+{
+`printk(&amp;quot;Hello worl">
+    
 
     <!--Author-->
     
@@ -18,7 +26,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Hexo"/>
+        <meta property="og:title" content="add a syscall"/>
     
 
     <!--Open Graph Description-->
@@ -29,7 +37,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -40,7 +48,7 @@
 
     <!-- Title -->
     
-    <title>-Linux -Driver - Hexo</title>
+    <title>add a syscall - Hexo</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
@@ -68,8 +76,6 @@
 <body>
 
 <!-- Main Content -->
-
-
 <!-- Banner -->
 <!-- Banner -->
 <div class="w-100 bg-1 ph5-ns ph3 text-light">
@@ -122,37 +128,151 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns"># -Linux -Driver</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns"></p>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">add a syscall</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2020-08-26</p>
         </div>
     </div>
 
     <!-- Icon -->
     <div class="relative w-100 mw8 center white dn dn-m db-ns">
-        <i class="header-icon fa fa-folder-open"></i>
+        <i class="header-icon fa fa-file-text-o"></i>
     </div>
 </div>
 
+<!-- Content -->
 <div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
     <div class="content">
         <div class="mw8 center">
-            
-                <a href="/2019/12/07/Interrupt-and-its-virtualization/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv3">
-        <div class="dtc v-mid w-20 black-50">
-            
-                <span class="f4 fw3 lh-copy">Dec 2019</span> 
-            
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+                        <div class="tags-container-vertical">
+                            <div class="tags-sub-container">
+                                <a class="fw3 ph1 dib" href="/tags/Syscall/">#Syscall</a>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Main Post Content -->
+                    <ol>
+<li><p>在include/linux/syscalls.h中添加系统调用声明</p>
+<p> <code>asmlinkage long sys_interrupt(void);</code></p>
+</li>
+<li><p>在kernel/sys.c中添加系统调用定义</p>
+<p><code>SYSCALL_DEFINE0(interrupt)</code></p>
+<p><code>{</code></p>
+<pre><code>`printk(&quot;Hello world!\n&quot;);`
+
+`return 0;`</code></pre><p><code>}</code></p>
+<p>这是一个没有参数的系统调用</p>
+</li>
+<li><p>在arch/x86/entry/syscalls/syscall_64.tbl中添加系统调用项</p>
+<p><code>439 common  interrupt       sys_interrupt</code></p>
+</li>
+<li><p>在include/uapi/asm-generic/unistd.h中添加关联</p>
+<p><code>#define _NR_interrupt 439</code></p>
+<p><code>__SYSCALL(_NR_interrupt, sys_interrupt)</code></p>
+<p>注意syscall总数也需要修改</p>
+</li>
+<li><p>重新编译内核</p>
+<p><code>make -j8</code></p>
+</li>
+<li><p>编写测试函数并编译</p>
+<p><code>#include &lt;linux/unistd.h&gt;</code></p>
+<p><code>#include &lt;sys/syscall.h&gt;</code></p>
+<p><code>#include &lt;stdio.h&gt;</code></p>
+<p><code></code></p>
+<p><code>int main(void)</code></p>
+<p><code>{</code></p>
+<pre><code>`long ret = syscall(439);`
+
+`printf(&quot;%s %d ret = %ld\n&quot;, __func__, __LINE__, ret);`</code></pre><p>​      <code>return 0;</code></p>
+<p><code>}</code></p>
+</li>
+<li><p>进行测试</p>
+<p><code>[  243.502496] Hello world!</code><br><code>main 8 ret = 32768</code></p>
+</li>
+</ol>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+                        <div class="tags-container-bottom">
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Syscall/">#Syscall</a>
+                        </div>
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="John Doe">
         </div>
-        <div class="dtc v-mid w-80 black-70">
-            <span class="f4 fw3 lh-copy">Interrupt and its virtualization<span>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            My name is Jonathan Klughertz and this is my blog.<br>I am a full stack software engineer with a strong front-end focus.<br> I currently live and work in Singapore, hit me up if you are in the region.
         </div>
-    </div>
-</a>
-            
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 2: Categories -->
+                    
+                        <div class="mt5 tc tl-l">
+    <h3>Categories</h3>
+    
+        <p>
+            <a href="/categories/Experience/">Experience</a>
+        </p>
+    
+</div>
+
+
+                        <hr class="dn-l mw4 black-50 mt5" />
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/2020/08/26/add-a-syscall/">add a syscall</a>
+        </p>
+    
+        <p>
+            <a href="/2020/03/05/Build-pixel-for-goldfish/">Build pixel for goldfish</a>
+        </p>
+    
+        <p>
+            <a href="/2020/03/05/The-content-of-Linux-Driver/">The content of Linux Driver</a>
+        </p>
+    
+        <p>
+            <a href="/2020/03/05/Syzkaller/">Syzkaller</a>
+        </p>
+    
+        <p>
+            <a href="/2020/02/16/Build-AOSP/">Build AOSP</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
 
 <!-- Footer -->
 <div class="bg-1 ph2 ph5-ns pv5">
