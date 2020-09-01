@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="(guest)在kernel/sys.c的syscall中添加hypercall
+1234567891011121314151617SYSCALL_DEFINE1(interrupt, char __user *, ptr)&amp;#123;	char *kbuf;kbuf = kzalloc(256, ">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="add a hypercall"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Hexo"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>add a hypercall - Hexo</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="Hexo">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="Hexo">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/" 
+                    title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/archives" 
+                    title="Archives">
+                    Archives
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/tags" 
+                    title="Tags">
+                    Tags
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/categories" 
+                    title="Categories">
+                    Categories
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/about.html" 
+                    title="About">
+                    About
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/contact.html" 
+                    title="Contact">
+                    Contact
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">add a hypercall</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2020-09-01</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+                        <div class="tags-container-vertical">
+                            <div class="tags-sub-container">
+                                <a class="fw3 ph1 dib" href="/tags/Hypercall/">#Hypercall</a>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Main Post Content -->
+                    <ol>
+<li><p>(guest)在kernel/sys.c的syscall中添加hypercall</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">SYSCALL_DEFINE1(interrupt, <span class="keyword">char</span> __user *, ptr)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">char</span> *kbuf;</span><br><span class="line"></span><br><span class="line">kbuf = kzalloc(<span class="number">256</span>, GFP_KERNEL);</span><br><span class="line"><span class="keyword">if</span>(copy_from_user(kbuf, ptr, <span class="keyword">sizeof</span>(<span class="keyword">char</span>) * <span class="number">128</span>)) &#123;</span><br><span class="line">	printk(<span class="string">"copy error.\n"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">printk(<span class="string">"syscall : %s\n"</span>, kbuf);</span><br><span class="line"></span><br><span class="line">kvm_hypercall1(KVM_HC_INTERRUPT, (<span class="keyword">unsigned</span> <span class="keyword">long</span>)kbuf);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>(host)在include/uapi/linux/kvm_para.h中添加hypercall编号</p>
+<p><code>#define KVM_HC_INTERRUPT    12</code></p>
+</li>
+<li><p>(host)在arch/x86/kvm/x86.c中添加处理程序</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> KVM_HC_INTERRUPT:</span><br><span class="line">	vcpu-&gt;run-&gt;exit_reason = KVM_EXIT_INTERRUPT;</span><br><span class="line">	vcpu-&gt;run-&gt;hypercall.args[<span class="number">0</span>] = a0;</span><br><span class="line">	printk(<span class="string">"kvm : %lu\n"</span>, a0);</span><br><span class="line">	kvm_skip_emulated_instruction(vcpu);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>(qemu)在accel/kvm/kvm-all.c的kvm_cpu_exec函数中添加处理程序</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> KVM_EXIT_INTERRUPT:</span><br><span class="line">    <span class="comment">//qemu_log("qemu kvm %lu.\n", run-&gt;hypercall.args[0]);</span></span><br><span class="line">    read_virtual_memory(run-&gt;hypercall.args[<span class="number">0</span>], data, x86_64_PAGE_SIZE, cpu);</span><br><span class="line">    qemu_log(<span class="string">"qemu kvm %s\n"</span>, data);</span><br><span class="line">    ret = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">break</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> x86_64_PAGE_SIZE    	0x1000</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> x86_64_PAGE_MASK   		~(x86_64_PAGE_SIZE - 1)</span></span><br><span class="line"><span class="keyword">uint8_t</span> data[<span class="number">0x1000</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">read_virtual_memory</span><span class="params">(<span class="keyword">uint64_t</span> address, <span class="keyword">uint8_t</span>* data, <span class="keyword">uint32_t</span> size, CPUState *cpu)</span></span>&#123;</span><br><span class="line">    <span class="keyword">uint8_t</span> tmp_buf[x86_64_PAGE_SIZE];</span><br><span class="line">	MemTxAttrs attrs;</span><br><span class="line">	hwaddr phys_addr;</span><br><span class="line">	<span class="keyword">int</span> asidx;</span><br><span class="line"></span><br><span class="line"><span class="keyword">uint64_t</span> amount_copied = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//cpu_synchronize_state(cpu);</span></span><br><span class="line">kvm_cpu_synchronize_state(cpu);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* copy per page */</span></span><br><span class="line"><span class="keyword">while</span>(amount_copied &lt; size)&#123;</span><br><span class="line">	<span class="keyword">uint64_t</span> len_to_copy = (size - amount_copied);</span><br><span class="line">    <span class="keyword">if</span>(len_to_copy &gt; x86_64_PAGE_SIZE)</span><br><span class="line">        len_to_copy = x86_64_PAGE_SIZE;</span><br><span class="line">    asidx = cpu_asidx_from_attrs(cpu, MEMTXATTRS_UNSPECIFIED);</span><br><span class="line">    attrs = MEMTXATTRS_UNSPECIFIED;</span><br><span class="line">    phys_addr = cpu_get_phys_page_attrs_debug(cpu, (address &amp; x86_64_PAGE_MASK), &amp;attrs);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (phys_addr == <span class="number">-1</span>)&#123;</span><br><span class="line">        <span class="keyword">uint64_t</span> next_page = (address &amp; x86_64_PAGE_MASK) + x86_64_PAGE_SIZE;</span><br><span class="line">        <span class="keyword">uint64_t</span> len_skipped =next_page-address;  </span><br><span class="line">        <span class="keyword">if</span>(len_skipped &gt; size-amount_copied)&#123;</span><br><span class="line">            len_skipped = size-amount_copied;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">memset</span>( data+amount_copied, <span class="string">' '</span>,  len_skipped);</span><br><span class="line">        address += len_skipped;</span><br><span class="line">        amount_copied += len_skipped;</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    phys_addr += (address &amp; ~x86_64_PAGE_MASK);</span><br><span class="line">    <span class="keyword">uint64_t</span> remaining_on_page = x86_64_PAGE_SIZE - (address &amp; ~x86_64_PAGE_MASK);</span><br><span class="line">    <span class="keyword">if</span>(len_to_copy &gt; remaining_on_page)&#123;</span><br><span class="line">        len_to_copy = remaining_on_page;</span><br><span class="line">    &#125;</span><br><span class="line">    MemTxResult txt = address_space_rw(cpu_get_address_space(cpu, asidx), phys_addr, MEMTXATTRS_UNSPECIFIED, tmp_buf, len_to_copy, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">memcpy</span>(data+amount_copied, tmp_buf, len_to_copy);</span><br><span class="line">        </span><br><span class="line">    address += len_to_copy;</span><br><span class="line">    amount_copied += len_to_copy;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+                        <div class="tags-container-bottom">
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Hypercall/">#Hypercall</a>
+                        </div>
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="John Doe">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            My name is Jonathan Klughertz and this is my blog.<br>I am a full stack software engineer with a strong front-end focus.<br> I currently live and work in Singapore, hit me up if you are in the region.
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 2: Categories -->
+                    
+                        <div class="mt5 tc tl-l">
+    <h3>Categories</h3>
+    
+        <p>
+            <a href="/categories/Experience/">Experience</a>
+        </p>
+    
+</div>
+
+
+                        <hr class="dn-l mw4 black-50 mt5" />
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/2020/09/01/add-a-hypercall/">add a hypercall</a>
+        </p>
+    
+        <p>
+            <a href="/2020/08/26/add-a-syscall/">add a syscall</a>
+        </p>
+    
+        <p>
+            <a href="/2020/03/05/Build-pixel-for-goldfish/">Build pixel for goldfish</a>
+        </p>
+    
+        <p>
+            <a href="/2020/03/05/The-content-of-Linux-Driver/">The content of Linux Driver</a>
+        </p>
+    
+        <p>
+            <a href="/2020/03/05/Syzkaller/">Syzkaller</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://twitter.com/?lang=en" target="_blank">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://dribbble.com/" target="_blank">
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://plus.google.com/" target="_blank">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.behance.net/" target="_blank">
+                            <i class="fa fa-behance"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://500px.com/" target="_blank">
+                            <i class="fa fa-500px"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="mailto:test@example.com" target="_blank">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="/#" target="_blank">
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                @Untitled. All right reserved | Design & Hexo <a class="link dim white" href="http://www.codeblocq.com/" target="_blank" rel="noopener">Jonathan Klughertz</a>
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

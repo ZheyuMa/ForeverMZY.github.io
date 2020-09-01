@@ -10,12 +10,6 @@
 
     <!--Description-->
     
-        <meta name="description" content="InterruptPICPIC(Programmable Interrupt Controller)就是8259A。8259A最重要的是IR0~IR7管脚，也就是相应的8个中断，后来被扩展为级联形式，分为主从两块。尽管随着多CPU的出现，PIC模式逐渐被弃用，但是现代PC仍然兼容。
-
-
-基本流程：
-">
-    
 
     <!--Author-->
     
@@ -24,7 +18,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Interrupt and its virtualization"/>
+        <meta property="og:title" content="Hexo"/>
     
 
     <!--Open Graph Description-->
@@ -35,7 +29,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="article" />
+        <meta property="og:type" content="website" />
     
 
     <!--Page Cover-->
@@ -46,7 +40,7 @@
 
     <!-- Title -->
     
-    <title>Interrupt and its virtualization - Hexo</title>
+    <title>Hypercall - Hexo</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
@@ -74,6 +68,8 @@
 <body>
 
 <!-- Main Content -->
+
+
 <!-- Banner -->
 <!-- Banner -->
 <div class="w-100 bg-1 ph5-ns ph3 text-light">
@@ -126,118 +122,37 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">Interrupt and its virtualization</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-12-07</p>
+            <h1 class="f1-l f2-m tc tc-m tl-ns"># Hypercall</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns"></p>
         </div>
     </div>
 
     <!-- Icon -->
     <div class="relative w-100 mw8 center white dn dn-m db-ns">
-        <i class="header-icon fa fa-file-text-o"></i>
+        <i class="header-icon fa fa-folder-open"></i>
     </div>
 </div>
 
-<!-- Content -->
 <div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
     <div class="content">
         <div class="mw8 center">
-            <div class="cf">
-                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
-                    <!-- Tags Vertical -->
-                    
-                        <div class="tags-container-vertical">
-                            <div class="tags-sub-container">
-                                <a class="fw3 ph1 dib" href="/tags/Linux/">#Linux</a> <a class="fw3 ph1 dib" href="/tags/Driver/">#Driver</a>
-                            </div>
-                        </div>
-                    
-
-                    <!-- Main Post Content -->
-                    <h1 id="Interrupt"><a href="#Interrupt" class="headerlink" title="Interrupt"></a>Interrupt</h1><h2 id="PIC"><a href="#PIC" class="headerlink" title="PIC"></a>PIC</h2><p>PIC(Programmable Interrupt Controller)就是8259A。8259A最重要的是IR0~IR7管脚，也就是相应的8个中断，后来被扩展为级联形式，分为主从两块。尽管随着多CPU的出现，PIC模式逐渐被弃用，但是现代PC仍然兼容。</p>
-<img src=.\8259.gif>
-
-<p>基本流程：</p>
-<ol>
-<li>IRQ0-IRQ7的其中一个引脚收到一个中断信号，则设置IRR中对应的bit</li>
-<li>8259A通过INT信号线向CPU发送中断信号</li>
-<li>CPU收到INT信号后，发出一个INTA信号，输入8259A的INTA输入引脚</li>
-<li>将IRR中的bit清除，在ISR中设置对应的bit</li>
-<li>CPU在下一个周期再发出一个INTA信号，输入8259A的INTA输入引脚，此时8259A通过数据总线向CPU发送Interrupt Vector</li>
-<li>最后，若处于AEOI模式，ISR中的bit直接清除，否则要等CPU处理完该中断后，向8259A进行一次EOI，才能将ISR中的bit清除</li>
-</ol>
-<h2 id="APIC"><a href="#APIC" class="headerlink" title="APIC"></a>APIC</h2><p>Intel为了适应SMP，提出了APIC(Advanced Programmable Interrupt Controller)的技术。APIC由两部分组成，一个称为LAPIC，位于CPU中；另一个称为IOAPIC，位于外部设备芯片中，连接各个产生中断的设备。IOAPIC和LAPIC通过APIC BUS连接在一起。</p>
-<img src=.\APIC.png>
-
-<p>每个LAPIC都有自己唯一的APIC ID，IOAPIC也有自己唯一的ID。</p>
-<p>APIC模式和PIC模式显著的区别是连接关系不再是硬件连线而是通过message。IOAPIC内部有个PRT（Programmable Redirection Table）表，里面的Destination Field标识了中断的目的地。在Physical模式下，含有目标APIC ID（Logical模式略）。</p>
-<p>在中断发生时，IOAPIC收到中断，会将中断转化为message放入系统总线，而CPU中只有APIC ID和Destination Field域中一致的LAPIC才会处理这条中断。</p>
-<h1 id="Virtualization"><a href="#Virtualization" class="headerlink" title="Virtualization"></a>Virtualization</h1><img src=.\virtualization.png>
-                    
-                    <!-- Tags Bottom -->
-                    
-                        <div class="tags-container-bottom">
-                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Linux/">#Linux</a> <a class="fw3 ph1 dib" href="/tags/Driver/">#Driver</a>
-                        </div>
-                    
-
-                    <!-- Comments -->
-                    
-
-
-
-                </div>
-                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
-                    
-                    <hr class="dn-l mw4 black-50 mt5" />
-                    
-                    <!-- Widget 1: About -->
-                    <div class="mt5 mt0-l">
-    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
-        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
-            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="John Doe">
+            
+                <a href="/2020/09/01/add-a-hypercall/">
+    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv3">
+        <div class="dtc v-mid w-20 black-50">
+            
+                <span class="f4 fw3 lh-copy">Sep 2020</span> 
+            
         </div>
-        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
-            My name is Jonathan Klughertz and this is my blog.<br>I am a full stack software engineer with a strong front-end focus.<br> I currently live and work in Singapore, hit me up if you are in the region.
+        <div class="dtc v-mid w-80 black-70">
+            <span class="f4 fw3 lh-copy">add a hypercall<span>
         </div>
-    </article>
-</div>
-
-                    <hr class="dn-l mw4 black-50 mt5" />
-                    
-                    <!-- Widget 2: Categories -->
-                    
-
-                    <!-- Widget 3: Recent Posts -->
-                    <div class="mt5 tc tl-l">
-    <h3>Recent Posts</h3>
-    
-        <p>
-            <a href="/2020/09/01/add-a-hypercall/">add a hypercall</a>
-        </p>
-    
-        <p>
-            <a href="/2020/08/26/add-a-syscall/">add a syscall</a>
-        </p>
-    
-        <p>
-            <a href="/2020/03/05/Build-pixel-for-goldfish/">Build pixel for goldfish</a>
-        </p>
-    
-        <p>
-            <a href="/2020/03/05/The-content-of-Linux-Driver/">The content of Linux Driver</a>
-        </p>
-    
-        <p>
-            <a href="/2020/03/05/Syzkaller/">Syzkaller</a>
-        </p>
-    
-</div>
-                </div>
-            </div>
+    </div>
+</a>
+            
         </div>
     </div>
 </div>
-
 
 <!-- Footer -->
 <div class="bg-1 ph2 ph5-ns pv5">
