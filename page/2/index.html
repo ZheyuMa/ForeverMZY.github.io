@@ -1,423 +1,1283 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Head tag -->
 <head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!--Description-->
-    
-
-    <!--Author-->
-    
-        <meta name="author" content="John Doe">
-    
-
-    <!--Open Graph Title-->
-    
-        <meta property="og:title" content="Hexo"/>
-    
-
-    <!--Open Graph Description-->
-    
-
-    <!--Open Graph Site Name-->
-    <meta property="og:site_name" content="Hexo"/>
-
-    <!--Type page-->
-    
-        <meta property="og:type" content="website" />
-    
-
-    <!--Page Cover-->
-    
-
-    <meta name="twitter:card" content="summary" />
-    
-
-    <!-- Title -->
-    
-    <title>page - Hexo</title>
-
-    <!-- Tachyons Core CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
-
-    <!-- Custom Fonts -->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Custom CSS -->
-    
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/main.css">
 
 
-    <!-- Google Analytics -->
-    
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="ForeverMZY">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/page/2/">
 
 
-<meta name="generator" content="Hexo 5.4.0"></head>
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Hexo</title>
+  
 
 
-<body>
 
-<!-- Main Content -->
-<!-- Banner -->
-<!-- Banner -->
-<div class="w-100 bg-1 ph5-ns ph3 text-light">
-    
-    <nav class="db dt-l w-100 mw8 center border-box pv3">
-        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="Hexo">
-            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="Hexo">
-        </a>
-        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
-                    href="/" 
-                    title="Home">
-                    Home
-                </a>
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
-                    href="/archives" 
-                    title="Archives">
-                    Archives
-                </a>
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
-                    href="/tags" 
-                    title="Tags">
-                    Tags
-                </a>
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
-                    href="/categories" 
-                    title="Categories">
-                    Categories
-                </a>
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
-                    href="/about.html" 
-                    title="About">
-                    About
-                </a>
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
-                    href="/contact.html" 
-                    title="Contact">
-                    Contact
-                </a>
-            
-        </div>
-    </nav>
 
-    <!-- Title -->
-    <div class="w-100 mw8 center vh-40 dt">
-        <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">Welcome to Anodyne</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">Create Websites. Make Magic.</p>
-        </div>
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
+  </div>
 
-    <!-- Icon -->
-    <div class="relative w-100 mw8 center white dn dn-m db-ns">
-        <i class="header-icon fa fa fa-magic"></i>
-    </div>
-</div>
+  <div class="site-meta">
 
-<!-- Content -->
-<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
-    <div class="content">
-        <div class="mw8 center">
-            
-                <a href="/2019/12/10/LDD-Reading-Chapter-11-Data-Types-in-the-Kernel/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
-        <div class="dtc v-mid w-90 black-70">
-            <div>
-                
-                    <span class="f5 fw3 lh-copy pr4">2019-12-10</span> 
-                
-                
-                <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/Linux/'; return false;">#Linux</span> <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/ARM/'; return false;">#ARM</span>
-                
-            </div>
-            <span class="f3 fw3 lh-copy">LDD Reading: Chapter 11: Data Types in the Kernel<span>
-        </div>
-        <div class="dtc v-mid w-10 f1 black-50 tr">
-            <i class="fa fa-file-text-o"></i>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2019/12/10/LDD-Reading-Chapter-7-Time-Delay-and-Deferred-Work/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
-        <div class="dtc v-mid w-90 black-70">
-            <div>
-                
-                    <span class="f5 fw3 lh-copy pr4">2019-12-10</span> 
-                
-                
-                <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/Linux/'; return false;">#Linux</span> <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/ARM/'; return false;">#ARM</span>
-                
-            </div>
-            <span class="f3 fw3 lh-copy">LDD Reading: Chapter 7: Time, Delay, and Deferred Work<span>
-        </div>
-        <div class="dtc v-mid w-10 f1 black-50 tr">
-            <i class="fa fa-file-text-o"></i>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2019/12/10/LDD-Reading-Chapter-6-Advanced-Char-Driver-Operations/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
-        <div class="dtc v-mid w-90 black-70">
-            <div>
-                
-                    <span class="f5 fw3 lh-copy pr4">2019-12-10</span> 
-                
-                
-                <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/Linux/'; return false;">#Linux</span> <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/ARM/'; return false;">#ARM</span>
-                
-            </div>
-            <span class="f3 fw3 lh-copy">LDD Reading: Chapter 6: Advanced Char Driver Operations<span>
-        </div>
-        <div class="dtc v-mid w-10 f1 black-50 tr">
-            <i class="fa fa-file-text-o"></i>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2019/12/10/LDD-Reading-Chapter-5-Concurrency-and-Race-Conditions/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
-        <div class="dtc v-mid w-90 black-70">
-            <div>
-                
-                    <span class="f5 fw3 lh-copy pr4">2019-12-10</span> 
-                
-                
-                <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/Linux/'; return false;">#Linux</span> <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/ARM/'; return false;">#ARM</span>
-                
-            </div>
-            <span class="f3 fw3 lh-copy">LDD Reading: Chapter 5: Concurrency and Race Conditions<span>
-        </div>
-        <div class="dtc v-mid w-10 f1 black-50 tr">
-            <i class="fa fa-file-text-o"></i>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2019/12/10/LDD-Reading-Chapter-4-Debugging-Techniques/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
-        <div class="dtc v-mid w-90 black-70">
-            <div>
-                
-                    <span class="f5 fw3 lh-copy pr4">2019-12-10</span> 
-                
-                
-                <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/Linux/'; return false;">#Linux</span> <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/ARM/'; return false;">#ARM</span>
-                
-            </div>
-            <span class="f3 fw3 lh-copy">LDD Reading: Chapter 4: Debugging Techniques<span>
-        </div>
-        <div class="dtc v-mid w-10 f1 black-50 tr">
-            <i class="fa fa-file-text-o"></i>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2019/12/10/LDD-Reading-Chapter-3-Char-Devices/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
-        <div class="dtc v-mid w-90 black-70">
-            <div>
-                
-                    <span class="f5 fw3 lh-copy pr4">2019-12-10</span> 
-                
-                
-                <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/Linux/'; return false;">#Linux</span> <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/ARM/'; return false;">#ARM</span>
-                
-            </div>
-            <span class="f3 fw3 lh-copy">LDD Reading: Chapter 3: Char Devices<span>
-        </div>
-        <div class="dtc v-mid w-10 f1 black-50 tr">
-            <i class="fa fa-file-text-o"></i>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2019/12/10/LDD-Reading-Chapter-2-Building-and-Running-Modules/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
-        <div class="dtc v-mid w-90 black-70">
-            <div>
-                
-                    <span class="f5 fw3 lh-copy pr4">2019-12-10</span> 
-                
-                
-                <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/Linux/'; return false;">#Linux</span> <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/ARM/'; return false;">#ARM</span>
-                
-            </div>
-            <span class="f3 fw3 lh-copy">LDD Reading: Chapter 2: Building and Running Modules<span>
-        </div>
-        <div class="dtc v-mid w-10 f1 black-50 tr">
-            <i class="fa fa-file-text-o"></i>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2019/12/10/LDD-Reading-Chapter-1-An-Introdction-to-Device-Drivers/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
-        <div class="dtc v-mid w-90 black-70">
-            <div>
-                
-                    <span class="f5 fw3 lh-copy pr4">2019-12-10</span> 
-                
-                
-                <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/Linux/'; return false;">#Linux</span> <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/ARM/'; return false;">#ARM</span>
-                
-            </div>
-            <span class="f3 fw3 lh-copy">LDD Reading: Chapter 1: An Introdction to Device Drivers<span>
-        </div>
-        <div class="dtc v-mid w-10 f1 black-50 tr">
-            <i class="fa fa-file-text-o"></i>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2019/12/07/Interrupt-and-its-virtualization/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
-        <div class="dtc v-mid w-90 black-70">
-            <div>
-                
-                    <span class="f5 fw3 lh-copy pr4">2019-12-07</span> 
-                
-                
-                <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/Driver/'; return false;">#Driver</span> <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/Linux/'; return false;">#Linux</span>
-                
-            </div>
-            <span class="f3 fw3 lh-copy">Interrupt and its virtualization<span>
-        </div>
-        <div class="dtc v-mid w-10 f1 black-50 tr">
-            <i class="fa fa-file-text-o"></i>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2019/12/01/LDD-Reading-Chapter-10-Interrupt-Handling/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
-        <div class="dtc v-mid w-90 black-70">
-            <div>
-                
-                    <span class="f5 fw3 lh-copy pr4">2019-12-01</span> 
-                
-                
-                <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/LDD-Reading/'; return false;">#LDD Reading</span>
-                
-            </div>
-            <span class="f3 fw3 lh-copy">LDD Reading: Chapter 10 Interrupt Handling<span>
-        </div>
-        <div class="dtc v-mid w-10 f1 black-50 tr">
-            <i class="fa fa-file-text-o"></i>
-        </div>
-    </div>
-</a>
-            
-        </div>
-    </div>
-    
-    <div class="flex items-center justify-center pa4">
-        <a href="/" 
-            class="f5 no-underline inline-flex items-center pa3 ba border-box mr4 gray hover-border-main-color hover-text-main-color">
-            <i class="w1 pr2 fa fa-chevron-left" aria-hidden="true"></i>
-            <span class="pl1">Previous</span>
-        </a>
-        <a href="/page/3/" 
-            class="f5 no-underline inline-flex items-center pa3 ba border-box gray hover-border-main-color hover-text-main-color">
-            <span class="pr1">Next</span>
-            <i class="w1 pl2 fa fa-chevron-right" aria-hidden="true"></i>
-        </a>
-    </div>
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
 
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
 </div>
 
 
-<!-- Footer -->
-<div class="bg-1 ph2 ph5-ns pv5">
-        <div class="mv8">
-            <div class="center tc">
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://twitter.com/?lang=en" target="_blank">
-                            <i class="fa fa-twitter"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank">
-                            <i class="fa fa-facebook"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://dribbble.com/" target="_blank">
-                            <i class="fa fa-dribbble"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank">
-                            <i class="fa fa-github"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://plus.google.com/" target="_blank">
-                            <i class="fa fa-google-plus"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://www.behance.net/" target="_blank">
-                            <i class="fa fa-behance"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://500px.com/" target="_blank">
-                            <i class="fa fa-500px"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="mailto:test@example.com" target="_blank">
-                            <i class="fa fa-envelope"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="/#" target="_blank">
-                            <i class="fa fa-rss"></i>
-                        </a>
-                    </div>
-                
-            </div>
-            <div class="f6 f5-ns center tc white pt5 fw3">
-                @Untitled. All right reserved | Design & Hexo <a class="link dim white" target="_blank" rel="noopener" href="http://www.codeblocq.com/">Jonathan Klughertz</a>
-            </div>
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/16/LDD-Reading-Chapter-12-PCI-Drivers/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ForeverMZY">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/16/LDD-Reading-Chapter-12-PCI-Drivers/" class="post-title-link" itemprop="url">LDD Reading: Chapter 12: PCI Drivers</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-12-16 10:19:24 / Modified: 02:20:06" itemprop="dateCreated datePublished" datetime="2019-12-16T10:19:24+00:00">2019-12-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LDD-Reading/" itemprop="url" rel="index"><span itemprop="name">LDD Reading</span></a>
+                </span>
+            </span>
+
+          
+
         </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="PCI驱动程序"><a href="#PCI驱动程序" class="headerlink" title="PCI驱动程序"></a>PCI驱动程序</h1><h2 id="PCI接口"><a href="#PCI接口" class="headerlink" title="PCI接口"></a>PCI接口</h2><h3 id="PCI寻址"><a href="#PCI寻址" class="headerlink" title="PCI寻址"></a>PCI寻址</h3><p>每个PCI外设由一个总线编号、一个设备编号和一个功能编号来标识。</p>
+<p>Linux目前支持PCI域，每个PCI域可以拥有最多256个总线。每个总线可以支持32个设备，每个设备都可以是多功能板，最多可以有8种功能。</p>
+<p>在显示硬件地址时，有时显示为两个值（一个8位的总线编号和一个8位的设备及功能编号），有时显示为三个值（总线、设备和功能），有时显示为四个值（域、总线、设备和功能）；所有的值通常都以16进制显示。</p>
+<h3 id="引导阶段"><a href="#引导阶段" class="headerlink" title="引导阶段"></a>引导阶段</h3><p>当PCI设备上电时，硬件保持未激活状态。该设备只会对配置事务做出响应。上电时，设备上不会有内核和IO端口映射到计算机的地址空间。系统引导时，固件/Linux内核在每个PCI外设上执行配置事务，以便为它提供的每个地址区域分配一个安全的位置。当驱动程序访问设备时，它的内存和IO区域已经被映射到了处理器的地址空间。</p>
+<h3 id="配置寄存器和初始化"><a href="#配置寄存器和初始化" class="headerlink" title="配置寄存器和初始化"></a>配置寄存器和初始化</h3><p>所有的PCI设备都有至少256个字节的地址空间。前64字节是标准化的，而其余的是设备相关的。</p>
+<p>PCI寄存器使用小端方式存储。</p>
+<p>vendorID、deviceID、class</p>
+<h3 id="注册PCI驱动程序"><a href="#注册PCI驱动程序" class="headerlink" title="注册PCI驱动程序"></a>注册PCI驱动程序</h3><p>所有的PCI驱动程序都必须创建的主要结构体是struct pci_driver结构体。该结构体由许多回调函数和变量组成，向PCI核心描述了PCI驱动程序。</p>
+<p>注册：</p>
+<pre><code>static int __init pci_skel_init(void) &#123;
+    return pci_register_driver(&amp;pci_driver);
+&#125;</code></pre><p>如果注册成功，pci_register_driver函数返回0；否则，返回一个负的错误的编号。</p>
+<p>移除：</p>
+<pre><code>static void __exit pci_skel_exit(void) &#123;
+    pci_unregister_driver(&amp;pci_driver);
+&#125;</code></pre><h3 id="访问配置空间"><a href="#访问配置空间" class="headerlink" title="访问配置空间"></a>访问配置空间</h3><p>在驱动程序检测到设备后，它通常需要读取或写入三个地址空间：内存、端口和配置。</p>
+<pre><code>#include &lt;linux/pci.h&gt;
+
+int pci_read_config_byte(struct pci_dev *dev, int where, u8 *val);
+int pci_read_config_word(struct pci_dev *dev, int where, u16 *val);
+int pci_read_config_dword(struct pci_dev *dev, int where, u32 *val);
+
+int pci_write_config_byte(struct pci_dev *dev, int where, u8 val);
+int pci_write_config_word(struct pci_dev *dev, int where, u16 val);
+int pci_write_config_dword(struct pci_dev *dev, int where, u32 val);</code></pre><h3 id="访问IO和内存空间"><a href="#访问IO和内存空间" class="headerlink" title="访问IO和内存空间"></a>访问IO和内存空间</h3><pre><code>unsigned long pci_resource_start(struct pci_dev *dev, int bar);
+unsigned long pci_resource_end(struct pci_dev *dev, int bar);
+unsigned long pci_resource_flags(strcut pci_dev *dev, int bar);</code></pre><h3 id="PCI中断"><a href="#PCI中断" class="headerlink" title="PCI中断"></a>PCI中断</h3><p>在LinUC的引导阶段，计算机固件已经为设备分配了一个唯一的中断号，驱动程序只需使用该中断号。中断号保存在配置寄存器60（PCI_INTERRUPT_LINE）中。该寄存器为一个字节宽。这允许多达256个中断线。</p>
+<h2 id="ISA回顾"><a href="#ISA回顾" class="headerlink" title="ISA回顾"></a>ISA回顾</h2><h3 id="硬件资源"><a href="#硬件资源" class="headerlink" title="硬件资源"></a>硬件资源</h3><p>一个ISA设备可配备有IO端口、内存区域以及中断线</p>
+<h3 id="即插即用规范"><a href="#即插即用规范" class="headerlink" title="即插即用规范"></a>即插即用规范</h3><h2 id="PC-104和PC-104"><a href="#PC-104和PC-104" class="headerlink" title="PC/104和PC/104+"></a>PC/104和PC/104+</h2><h2 id="其他的PC总线"><a href="#其他的PC总线" class="headerlink" title="其他的PC总线"></a>其他的PC总线</h2><p>MCA、VLB、SBus、NuBus</p>
+
+      
     </div>
 
-<!-- After Footer -->
-<!-- Disqus Comments -->
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/LDD-Reading-Chapter-11-Data-Types-in-the-Kernel/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ForeverMZY">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/10/LDD-Reading-Chapter-11-Data-Types-in-the-Kernel/" class="post-title-link" itemprop="url">LDD Reading: Chapter 11: Data Types in the Kernel</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-12-10 19:59:45 / Modified: 12:04:49" itemprop="dateCreated datePublished" datetime="2019-12-10T19:59:45+00:00">2019-12-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LDD-Reading/" itemprop="url" rel="index"><span itemprop="name">LDD Reading</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第十一章-内核的数据类型"><a href="#第十一章-内核的数据类型" class="headerlink" title="第十一章 内核的数据类型"></a>第十一章 内核的数据类型</h1><h2 id="使用标准的C语言类型"><a href="#使用标准的C语言类型" class="headerlink" title="使用标准的C语言类型"></a>使用标准的C语言类型</h2><p>在不同的体系架构上，普通C语言的数据类型所占空间的大小并不相同。</p>
+<p>虽然从概念上讲地址是指针，但是通过使用无符号整数类型可以更好地实现内存管理；内核把物理内存看作是一个巨型数组，一个内存地址就是该数组的一个索引。内核中的普通内存地址通常是unsigned long。</p>
+<h2 id="为数据项分配确定的空间大小"><a href="#为数据项分配确定的空间大小" class="headerlink" title="为数据项分配确定的空间大小"></a>为数据项分配确定的空间大小</h2><p>有时内核代码需要特定大小的数据项，当我们知道自己需要的数据大小时，内核提供了下列数据类型。所有这些类型都在头文件&lt;asm/types.h&gt;中声明，这个文件又被头文件&lt;linux/types.h&gt;包含；</p>
+<pre><code>u8;        //无符号字节（8位）
+u16;    //无符号字（16位）
+u32;    //无符号32位
+u64;    //无符号64位</code></pre><p>这些类型是Linux特有的。</p>
+<h2 id="接口特定的类型"><a href="#接口特定的类型" class="headerlink" title="接口特定的类型"></a>接口特定的类型</h2><p>_t类型</p>
+<h2 id="其他有关移植性的问题"><a href="#其他有关移植性的问题" class="headerlink" title="其他有关移植性的问题"></a>其他有关移植性的问题</h2><h3 id="时间间隔"><a href="#时间间隔" class="headerlink" title="时间间隔"></a>时间间隔</h3><p>在处理时间间隔时，不要假定每秒一定有100个jiffies。</p>
+<p>使用jiffies计算时间间隔时，应该用HZ来衡量。</p>
+<h3 id="页大小"><a href="#页大小" class="headerlink" title="页大小"></a>页大小</h3><p>使用内存时，要记住内存页的大小是PAGE_SIZE字节，而不是4KB。</p>
+<h3 id="字节序"><a href="#字节序" class="headerlink" title="字节序"></a>字节序</h3><pre><code>u32 cpu_to_le32(u32);
+u32 le32_to_cpu(u32);</code></pre><h3 id="数据对齐"><a href="#数据对齐" class="headerlink" title="数据对齐"></a>数据对齐</h3><p>如果需要访问未对齐的数据，则应该使用下面的宏：</p>
+<pre><code>#include &lt;asm/unaligned.h&gt;
+get_unaligned(ptr);
+put_unaligned(val, ptr);</code></pre><h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2><pre><code>#include &lt;linxu/list.h&gt;
+struct list_head &#123;
+    struct list_head *next, *prev;
+&#125;</code></pre>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/LDD-Reading-Chapter-7-Time-Delay-and-Deferred-Work/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ForeverMZY">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/10/LDD-Reading-Chapter-7-Time-Delay-and-Deferred-Work/" class="post-title-link" itemprop="url">LDD Reading: Chapter 7: Time, Delay, and Deferred Work</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-12-10 19:59:25 / Modified: 12:04:22" itemprop="dateCreated datePublished" datetime="2019-12-10T19:59:25+00:00">2019-12-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LDD-Reading/" itemprop="url" rel="index"><span itemprop="name">LDD Reading</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第七章-时间、延迟及延缓操作"><a href="#第七章-时间、延迟及延缓操作" class="headerlink" title="第七章 时间、延迟及延缓操作"></a>第七章 时间、延迟及延缓操作</h1><h2 id="度量时间差"><a href="#度量时间差" class="headerlink" title="度量时间差"></a>度量时间差</h2><p>时钟中断由系统定时硬件以周期性的间隔产生，这个间隔由内核根据HZ的值设定，HZ是一个与体系结构有关的常数，定义在&lt;linux/param.h&gt;中。作为一般性的规则，即使知道对应平台上的确切HZ值，也不应该在编程时依赖HZ值。</p>
+<p>每当时钟中断发生时，内核内部计数器就增加一。这个计数器在系统引导时被初始化为0，是一个64位变量，称为”jiffies_64”。但是，驱动程序开发者通常访问的是jiffies变量，它是unsigned long型的变量。</p>
+<h3 id="使用jiffies计数器"><a href="#使用jiffies计数器" class="headerlink" title="使用jiffies计数器"></a>使用jiffies计数器</h3><p>头文件：&lt;linux/sched.h&gt;文件</p>
+<p>jiffies和jiffies_64均应被看成只读变量。</p>
+<p>比较值时应使用下面的宏：</p>
+<pre><code>int time_after(unsigned long a, unsigned long b);
+int time_before(unsigned long a, unsigned long b);
+int time_after_eq(unsigned long a, unsigned long b);
+int time_before_eq(unsigned long a, unsigned long b);</code></pre><h3 id="处理器特定的寄存器"><a href="#处理器特定的寄存器" class="headerlink" title="处理器特定的寄存器"></a>处理器特定的寄存器</h3><p>TSC(时间戳计数器)，头文件&lt;asm/msr.h&gt;，使用宏：</p>
+<pre><code>rdtsc(low32, high32);
+rdtscl(low32);
+rdtscll(var64);</code></pre><h2 id="获取当前时间"><a href="#获取当前时间" class="headerlink" title="获取当前时间"></a>获取当前时间</h2><p>内核提供了将墙钟时间转换为jiffies值的函数。</p>
+<pre><code>#include&lt;linux/time.h&gt;
+unsigned long mktime(unsigned int year, unsigned int mon, unsigned int day, unsigned int hour, unsigned int min, unsigned int sec);</code></pre><p>内核提供了处理绝对时间戳的函数。</p>
+<pre><code>#include &lt;linux/time.h&gt;
+void do_gettimeofday(struct timeval *tv);</code></pre><h2 id="延迟执行"><a href="#延迟执行" class="headerlink" title="延迟执行"></a>延迟执行</h2><h3 id="长延迟：长于一个时钟滴答"><a href="#长延迟：长于一个时钟滴答" class="headerlink" title="长延迟：长于一个时钟滴答"></a>长延迟：长于一个时钟滴答</h3><h4 id="忙等待"><a href="#忙等待" class="headerlink" title="忙等待"></a>忙等待</h4><p>实现监视一个jiffies计数器的循环</p>
+<pre><code>while(time_before(jiffies, j1))
+    cpu_relax();</code></pre><h4 id="让出处理器"><a href="#让出处理器" class="headerlink" title="让出处理器"></a>让出处理器</h4><pre><code>while (time_before(jiffies, j1))
+    schedule();</code></pre><h4 id="超时"><a href="#超时" class="headerlink" title="超时"></a>超时</h4><p>实现延迟的最好方法应该是让内核为我们完成相应的工作。</p>
+<pre><code>#include&lt;linux/wait.h&gt;
+long wait_event_timeout(wait_queue_head_t q, condition, long timeout);
+long wait_event_interruptible_timeout(wait_queue_head_t q, condition, long timeout);</code></pre><p>上述函数会在给定的等待队列上休眠，但是会在超时到期时返回。</p>
+<h3 id="短延迟"><a href="#短延迟" class="headerlink" title="短延迟"></a>短延迟</h3><pre><code>#include &lt;linux/delay.h&gt;
+void ndelay(unsigned long nsecs);
+void udelay(unsigned long usecs);
+void mdelay(unsigned long msecs);</code></pre><p>上述三个函数均是忙等待函数，因而在延迟过程中无法运行其他任务。</p>
+<p>实现毫秒级延迟还有另外一种方法，这种方法不涉及忙等待。</p>
+<pre><code>#include &lt;linux/delay.h&gt;
+void msleep(unsigned int millisecs);
+unsigned long msleep_interruptible(unsigned int millisecs);
+void ssleep(unsigned int seconds);</code></pre><h2 id="内核定时器"><a href="#内核定时器" class="headerlink" title="内核定时器"></a>内核定时器</h2><h3 id="定时器API"><a href="#定时器API" class="headerlink" title="定时器API"></a>定时器API</h3><pre><code>#include &lt;linux/timer.h&gt;
+struct timer_list &#123;
+    unsigned long expires;
+    void (*function)(unsigned long);
+    unsigned long data;
+&#125;
+
+void init_timer(struct timer_list *timer);
+struct timer_list TIMER_INITALIZER(_function, _expires, _data);
+
+void add_timer(struct timer_list *timer);
+void del_timer(struct timer_list *timer);</code></pre><h3 id="内核定时器的实现"><a href="#内核定时器的实现" class="headerlink" title="内核定时器的实现"></a>内核定时器的实现</h3><h3 id="tasklet"><a href="#tasklet" class="headerlink" title="tasklet"></a>tasklet</h3><p>tasklet始终在中断期间运行，始终会在调度它们的同一CPU上运行，而且都接收一个unsigned long参数</p>
+<p>tasklet以数据结构的形式存在，并且在使用前必须初始化。</p>
+<pre><code>#include &lt;linux/interrupt.h&gt;
+
+struct tasklet_struct &#123;
+    void (*func)(unsigned long);
+    unsigned long data;
+&#125;
+
+void tasklet_init(struct tasklet_struct *t, void (*func)(unsigned long), unsigned long data);
+DECLARE_TASKLET(name, func, data);
+DECLARE_TASKLET_DISABLED(name, func, data);</code></pre><p>特性:</p>
+<ol>
+<li>一个tasklet可在稍后被禁止或者重新启用；只有启用的次数和禁止的次数相同时，tasklet才会被执行</li>
+<li>tasklet可以注册本身</li>
+<li>tasklet可被调度以在通常的优先级或者高优先级执行。</li>
+<li>如果系统负荷不重，tasklet会立即得到执行，但始终不会晚于下一个时钟滴答</li>
+<li>一个tasklet可以和其他tasklet并发，但对自身来说是严格串行处理的。</li>
+</ol>
+<h3 id="工作队列"><a href="#工作队列" class="headerlink" title="工作队列"></a>工作队列</h3><p>与tasklet区别：</p>
+<ol>
+<li>tasklet在软件中断上下文中运行。因此，所有的tasklet代码都必须是原子的。相反，工作队列函数在一个特殊内核进程的上下文中运行，因此它们具有更好的灵活性。</li>
+<li>tasklet始终运行在被初始提交的同一处理器上，但这只是工作队列的默认方式。</li>
+<li>内核代码可以请求工作队列函数的执行延迟给定的时间间隔。</li>
+</ol>
+<p>头文件：&lt;linux/workqueue.h&gt;</p>
+<p>创建工作队列：</p>
+<pre><code>struct workqueue_struct *create_workqueue(const char *name);
+struct workqueue_struct *create_singlethread_workqueue(const char *name);</code></pre><p>编译时提交一个任务：</p>
+<pre><code>DECLARE_WORK(name, void (*function)(void *), void *data);</code></pre><p>运行时提交一个任务：</p>
+<pre><code>INIT_WORK(struct work_struct *work, void (*function)(void *), void *data);
+PREPARE_WORK(struct work_struct *work, void (*function)(void *), void *data);</code></pre><p>将工作提交到工作队列：</p>
+<pre><code>int queue_work(struct workqueue_struct *queue, struct work_struct *work);
+int queue_delayed_work(struct workqueue_struct *queue, struct work_struct *work, unsigned long delay);</code></pre><p>取消某个挂起的工作队列入口项：</p>
+<pre><code>int cancel_delayed_work(struct work_struct *work);</code></pre><p>释放工作队列：</p>
+<pre><code>void destroy_workqueue(struct workqueue_struct *queue);</code></pre><h4 id="共享队列"><a href="#共享队列" class="headerlink" title="共享队列"></a>共享队列</h4>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/LDD-Reading-Chapter-6-Advanced-Char-Driver-Operations/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ForeverMZY">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/10/LDD-Reading-Chapter-6-Advanced-Char-Driver-Operations/" class="post-title-link" itemprop="url">LDD Reading: Chapter 6: Advanced Char Driver Operations</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-12-10 19:48:56 / Modified: 12:04:03" itemprop="dateCreated datePublished" datetime="2019-12-10T19:48:56+00:00">2019-12-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LDD-Reading/" itemprop="url" rel="index"><span itemprop="name">LDD Reading</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第六章-高级字符驱动程序操作"><a href="#第六章-高级字符驱动程序操作" class="headerlink" title="第六章 高级字符驱动程序操作"></a>第六章 高级字符驱动程序操作</h1><h2 id="ioctl"><a href="#ioctl" class="headerlink" title="ioctl"></a>ioctl</h2><p>函数原型：int (*ioctl) (struct inode *inode, struct file *filp, unsigned int cmd, unsigned long arg);</p>
+<h3 id="选择ioctl命令"><a href="#选择ioctl命令" class="headerlink" title="选择ioctl命令"></a>选择ioctl命令</h3><p> 头文件：&lt;linux/ioctl.h&gt;</p>
+<p> type：8位宽。幻数。</p>
+<p> number：8位宽。序数。</p>
+<p> direction：如果相关命令涉及到数据的传输，则该位字段定义数据传输的方向。_IOC_NONE、_IOC_READ、IOC_WRITE以及_IOC_READ | _IOC_WRITE</p>
+<p> size：所涉及的用户数据大小。</p>
+<h3 id="预定义命令"><a href="#预定义命令" class="headerlink" title="预定义命令"></a>预定义命令</h3><h2 id="阻塞型IO"><a href="#阻塞型IO" class="headerlink" title="阻塞型IO"></a>阻塞型IO</h2><h3 id="休眠的简单介绍"><a href="#休眠的简单介绍" class="headerlink" title="休眠的简单介绍"></a>休眠的简单介绍</h3><p>当一个进程被置入休眠时，它会被标记为一种特殊状态并从调度器的运行队列中移走。直到某种情况下修改了这个状态，进程才会在任意CPU上调度，也即运行该进程。</p>
+<p>原则：</p>
+<ol>
+<li>永远不要在原子上下文中进入休眠</li>
+<li>当我们被唤醒时，我们永远无法知道休眠了多长时间，或者休眠期间都发生了些什么事情。</li>
+<li>除非我们知道有其他人会在其他地方唤醒我们，否则进程不能休眠</li>
+</ol>
+<p>一个等待队列通过一个“等待队列头”来管理，等待队列头是一个类型为wait_queue_head_t的结构体，定义在&lt;linux/wait.h&gt;中</p>
+<p>DECLARE_WAIT_QUEUE_HEAD(name);</p>
+<p>or</p>
+<p>wait_queue_head_t my_queue;<br>init_waitqueue_head(&amp;my_queue);</p>
+<h3 id="简单休眠"><a href="#简单休眠" class="headerlink" title="简单休眠"></a>简单休眠</h3><p>休眠：</p>
+<p>wait_event(queue, condition);<br>wait_event_interruptible(queue, condition);<br>wait_event_timeout(queue, condition, timeout);<br>wait_event_interruptible_timeout(queue, condition, timeout);</p>
+<p>唤醒：</p>
+<p>void wake_up(wait_queue_head_t *queue);<br>void wake_up_interruptible(wait_queue_head_t *queue);</p>
+<h3 id="进程如何休眠"><a href="#进程如何休眠" class="headerlink" title="进程如何休眠"></a>进程如何休眠</h3><ol>
+<li>分配并初始化一个wait_queue_t结构，然后将其加入到对应的等待队列。</li>
+<li>设置进程的状态，将其标记为休眠</li>
+<li>检查休眠等待的条件</li>
+<li>放弃处理器</li>
+</ol>
+<h3 id="阻塞和非阻塞型操作"><a href="#阻塞和非阻塞型操作" class="headerlink" title="阻塞和非阻塞型操作"></a>阻塞和非阻塞型操作</h3><p>显式的非阻塞IO由filp-&gt;f_flags中的O_NONBLOCK标志决定。</p>
+<p>非阻塞型操作会立即返回，使得应用程序可以查询数据。在处理非阻塞型文件时，应用程序调用stdio函数必须非常小心，因为很容易把一个非阻塞返回误认为是EOF，所以必须始终检查errno。</p>
+<p>只有read、write、open文件操作受非阻塞标志的影响</p>
+<h3 id="poll和select"><a href="#poll和select" class="headerlink" title="poll和select"></a>poll和select</h3><p>功能：都允许进程决定是否可以对一个或多个打开的文件做非阻塞的读取或写入。</p>
+<p>头文件：&lt;linux/poll.h&gt;</p>
+<p>原型：unsigned int (*poll) (struct file *filp, poll_table *wait);</p>
+<p>步骤：</p>
+<ol>
+<li>在一个或多个可指示poll状态变化的等待队列上调用poll_wait。如果当前没有文件描述符可用来执行IO，则内核将使进程在传递到该系统调用的所有文件描述符对应的等待队列上等待。</li>
+<li>返回一个用来描述操作是否可以立即无阻塞执行的位掩码。</li>
+</ol>
+<h3 id="与read和write的交互"><a href="#与read和write的交互" class="headerlink" title="与read和write的交互"></a>与read和write的交互</h3><h4 id="从设备读取数据"><a href="#从设备读取数据" class="headerlink" title="从设备读取数据"></a>从设备读取数据</h4><ul>
+<li>如果缓冲区有数据，那么即使就绪的数据比程序所请求的少，并且驱动程序保证剩下的数据马上就能到达，read调用仍然应该以难以察觉的延迟立即返回。</li>
+<li>如果输入缓冲区没有数据，那么默认情况下read必须阻塞等待，直到至少有一个字节到达。另一方面，如果设置了O_NONBLOCK标志，read应该立即返回，返回值是-EAGAIN。在这种情况下poll必须报告设备不可读，直到至少有一个字节到达。</li>
+<li>如果已经到达了文件尾，read应该立即返回0，无论O_NONBLOCK是否设置。此时poll报告POLLUP。</li>
+</ul>
+<h4 id="向设备写数据"><a href="#向设备写数据" class="headerlink" title="向设备写数据"></a>向设备写数据</h4><p>同上</p>
+<h4 id="刷新待处理输出"><a href="#刷新待处理输出" class="headerlink" title="刷新待处理输出"></a>刷新待处理输出</h4><p>int (*fsync) (struct file *file, struct dentry *dentry, int datasync);</p>
+<h2 id="异步通知"><a href="#异步通知" class="headerlink" title="异步通知"></a>异步通知</h2><h2 id="设备文件的访问控制"><a href="#设备文件的访问控制" class="headerlink" title="设备文件的访问控制"></a>设备文件的访问控制</h2><ol>
+<li>独享设备</li>
+<li>限制每次只由一个用户访问</li>
+<li>打开时复制设备</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/LDD-Reading-Chapter-5-Concurrency-and-Race-Conditions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ForeverMZY">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/10/LDD-Reading-Chapter-5-Concurrency-and-Race-Conditions/" class="post-title-link" itemprop="url">LDD Reading: Chapter 5: Concurrency and Race Conditions</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-12-10 19:48:38 / Modified: 12:03:45" itemprop="dateCreated datePublished" datetime="2019-12-10T19:48:38+00:00">2019-12-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LDD-Reading/" itemprop="url" rel="index"><span itemprop="name">LDD Reading</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第五章-并发和竞态"><a href="#第五章-并发和竞态" class="headerlink" title="第五章 并发和竞态"></a>第五章 并发和竞态</h1><h2 id="信号量和互斥体"><a href="#信号量和互斥体" class="headerlink" title="信号量和互斥体"></a>信号量和互斥体</h2><p>一个信号量本质上是一个整数值，它和一对函数联合使用，这一对函数通常称为P和V。希望进入临界区的进程在相关信号量上调用P；如果信号量的值大于0，则该值会减一，而进程可以继续。相反，如果信号量的值为0，进程必须等到其他进程释放信号量。对信号量的解锁通过调用V来完成，该函数增加信号量的值，并在必要时唤醒等待的线程。</p>
+<h3 id="Linux中信号量的实现"><a href="#Linux中信号量的实现" class="headerlink" title="Linux中信号量的实现"></a>Linux中信号量的实现</h3><h2 id="自旋锁"><a href="#自旋锁" class="headerlink" title="自旋锁"></a>自旋锁</h2><p>自旋锁可以在不能休眠的代码中使用，比如中断处理例程。</p>
+<p>一个自旋锁是一个互斥设备，它只能有两个值：锁定和解锁。它通常实现为某个整数值中的单个位。希望获得某特定锁的代码测试相关的位。如果锁可用，则锁定位被设置，而代码继续进入临界区；相反，如果锁被其他人获得，则代码进入忙循环并重复检查这个锁，直到该锁可用。</p>
+<h3 id="自旋锁API"><a href="#自旋锁API" class="headerlink" title="自旋锁API"></a>自旋锁API</h3><p>头文件：&lt;linux/spinlock.h&gt;</p>
+<p>初始化：spinlock_t my_lock = SPIN_LOCK_UNLOCKED; or void spin_lock_init(spinlock_t *lock);</p>
+<p>获得锁：void spin_lock(spinlock_t *lock);</p>
+<p>释放锁：void spin_unlock(spinlock_t *lock);</p>
+<h3 id="自旋锁原则"><a href="#自旋锁原则" class="headerlink" title="自旋锁原则"></a>自旋锁原则</h3><ol>
+<li>任何拥有自旋锁的代码都必须是原子的。它不能休眠。</li>
+<li>拥有自旋锁时需要避免中断</li>
+<li>自旋锁必须在可能的最短时间内拥有。</li>
+</ol>
+<h2 id="不用锁"><a href="#不用锁" class="headerlink" title="不用锁"></a>不用锁</h2><h3 id="原子变量"><a href="#原子变量" class="headerlink" title="原子变量"></a>原子变量</h3><p>内核提供了一种原子的整数类型，称为atomic_t，定义在&lt;asm/atomic.h&gt;中。</p>
+<h3 id="位操作"><a href="#位操作" class="headerlink" title="位操作"></a>位操作</h3><p>头文件：&lt;asm/bitops.h&gt;</p>
+<h3 id="seqlock"><a href="#seqlock" class="headerlink" title="seqlock"></a>seqlock</h3>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/LDD-Reading-Chapter-4-Debugging-Techniques/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ForeverMZY">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/10/LDD-Reading-Chapter-4-Debugging-Techniques/" class="post-title-link" itemprop="url">LDD Reading: Chapter 4: Debugging Techniques</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-12-10 19:48:21 / Modified: 12:03:26" itemprop="dateCreated datePublished" datetime="2019-12-10T19:48:21+00:00">2019-12-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LDD-Reading/" itemprop="url" rel="index"><span itemprop="name">LDD Reading</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第四章-调试技术"><a href="#第四章-调试技术" class="headerlink" title="第四章 调试技术"></a>第四章 调试技术</h1><h2 id="内核中的调试支持"><a href="#内核中的调试支持" class="headerlink" title="内核中的调试支持"></a>内核中的调试支持</h2><p>运行自己内核的一个重要的原因之一是因为内核开发者已经在内核中建立了多项用于调试的功能。但这些功能会造成额外的输出，并导致性能下降，因此发行版厂商通常会禁止发行版内核中的这些功能。</p>
+<h2 id="通过打印调试"><a href="#通过打印调试" class="headerlink" title="通过打印调试"></a>通过打印调试</h2><h3 id="printk"><a href="#printk" class="headerlink" title="printk"></a>printk</h3><p>通过附加不同的消息优先级，可让printk根据这些级别所表示的严重程度对消息分类。通常采用宏来指示日志级别，宏会展开为一个字符串，在编译时由预处理器将它和消息文本拼接在一起。每个字符串表示一个尖括号中的整数。整数值的范围0~7，数值越小，优先级就越高。</p>
+<h3 id="重定向控制台消息"><a href="#重定向控制台消息" class="headerlink" title="重定向控制台消息"></a>重定向控制台消息</h3><h3 id="消息如何被记录"><a href="#消息如何被记录" class="headerlink" title="消息如何被记录"></a>消息如何被记录</h3><h3 id="开启及关闭消息"><a href="#开启及关闭消息" class="headerlink" title="开启及关闭消息"></a>开启及关闭消息</h3><h3 id="速度限制"><a href="#速度限制" class="headerlink" title="速度限制"></a>速度限制</h3><h3 id="打印设备编号"><a href="#打印设备编号" class="headerlink" title="打印设备编号"></a>打印设备编号</h3><h2 id="通过查询调试"><a href="#通过查询调试" class="headerlink" title="通过查询调试"></a>通过查询调试</h2><h3 id="使用-proc文件系统"><a href="#使用-proc文件系统" class="headerlink" title="使用/proc文件系统"></a>使用/proc文件系统</h3><p>/proc文件系统是一种特殊的、由软件创建的文件系统，内核使用它向外界导出信息，/proc下面的每个文件都绑定于一个内核函数，用户读取其中的文件时，该函数动态地生成文件的“内容”。</p>
+<h4 id="在-proc中实现文件"><a href="#在-proc中实现文件" class="headerlink" title="在/proc中实现文件"></a>在/proc中实现文件</h4><p>使用/proc模块必须包含&lt;linux/proc_fs.h&gt;，并通过这个头文件来定义正确的函数。</p>
+<pre><code>int (*read_proc)(char *page, char **start, off_t offset, int count, int *eof, void *data)</code></pre><h4 id="创建自己的-proc文件"><a href="#创建自己的-proc文件" class="headerlink" title="创建自己的/proc文件"></a>创建自己的/proc文件</h4><pre><code>struct proc_dir_entry *create_proc_read_entry(const char *name, mode_t mode, struct proc_dir_entry *base,read_proc_t *read_proc, void *data);</code></pre><h4 id="seq-file接口"><a href="#seq-file接口" class="headerlink" title="seq_file接口"></a>seq_file接口</h4><h3 id="ioctl方法"><a href="#ioctl方法" class="headerlink" title="ioctl方法"></a>ioctl方法</h3><h2 id="通过监视调试"><a href="#通过监视调试" class="headerlink" title="通过监视调试"></a>通过监视调试</h2><p>strace</p>
+<h2 id="调试系统故障"><a href="#调试系统故障" class="headerlink" title="调试系统故障"></a>调试系统故障</h2><h3 id="oops消息"><a href="#oops消息" class="headerlink" title="oops消息"></a>oops消息</h3><h3 id="系统挂起"><a href="#系统挂起" class="headerlink" title="系统挂起"></a>系统挂起</h3><h2 id="调试器和调试工具"><a href="#调试器和调试工具" class="headerlink" title="调试器和调试工具"></a>调试器和调试工具</h2><h3 id="使用gdb"><a href="#使用gdb" class="headerlink" title="使用gdb"></a>使用gdb</h3><h3 id="kdb内核调试器"><a href="#kdb内核调试器" class="headerlink" title="kdb内核调试器"></a>kdb内核调试器</h3><h3 id="kgdb补丁"><a href="#kgdb补丁" class="headerlink" title="kgdb补丁"></a>kgdb补丁</h3><h3 id="用户模式的Linux虚拟机"><a href="#用户模式的Linux虚拟机" class="headerlink" title="用户模式的Linux虚拟机"></a>用户模式的Linux虚拟机</h3><h3 id="Linux跟踪工具包"><a href="#Linux跟踪工具包" class="headerlink" title="Linux跟踪工具包"></a>Linux跟踪工具包</h3><h3 id="动态探测"><a href="#动态探测" class="headerlink" title="动态探测"></a>动态探测</h3>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/LDD-Reading-Chapter-3-Char-Devices/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ForeverMZY">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/10/LDD-Reading-Chapter-3-Char-Devices/" class="post-title-link" itemprop="url">LDD Reading: Chapter 3: Char Devices</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-12-10 19:48:05 / Modified: 12:03:08" itemprop="dateCreated datePublished" datetime="2019-12-10T19:48:05+00:00">2019-12-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LDD-Reading/" itemprop="url" rel="index"><span itemprop="name">LDD Reading</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第三章-字符设备驱动程序"><a href="#第三章-字符设备驱动程序" class="headerlink" title="第三章 字符设备驱动程序"></a>第三章 字符设备驱动程序</h1><h2 id="主设备号和次设备号"><a href="#主设备号和次设备号" class="headerlink" title="主设备号和次设备号"></a>主设备号和次设备号</h2><p>设备文件通常位于/dev目录下，字符设备驱动程序的设备文件可通过ls -l命令输出的第一列中的’c’来识别，快设备由’b’来识别。</p>
+<p>设备文件项的最后修改日期前看到两个数，通常是文件的长度，对设备文件就是相应设备的主设备号和次设备号。</p>
+<p>主设备号标识设备对应的驱动程序，次设备号由内核使用，用于正确确定设备文件所指的设备。</p>
+<h3 id="设备编号的内部表达"><a href="#设备编号的内部表达" class="headerlink" title="设备编号的内部表达"></a>设备编号的内部表达</h3><p>dev_t类型用来保存设备编号——包括主设备号和次设备号。dev_t是一个32位的数，其中的12位用来表示主设备号，其余20位用来表示次设备号。我们应使用&lt;linux/kdev_t.h&gt;中的宏，MAJOR(dev_t, dev)和MINOR(dev_t, dev)</p>
+<h3 id="分配和释放设备编号"><a href="#分配和释放设备编号" class="headerlink" title="分配和释放设备编号"></a>分配和释放设备编号</h3><pre><code>int alloc_chrdev_region(dev_t *dev, unsigned int firstminor, unsigned int count, char *name);
+
+void unregister_chrdev_region(dev_t first, unsigned int count);</code></pre><h2 id="一些重要的数据结构"><a href="#一些重要的数据结构" class="headerlink" title="一些重要的数据结构"></a>一些重要的数据结构</h2><h3 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h3><p>file_operations结构体用来将设备操作连接到设备编号上，这个结构定义在&lt;linux/fs.h&gt;中，其中包含了一组函数指针，每个打开的文件和一组函数相关联。</p>
+<h3 id="file结构"><a href="#file结构" class="headerlink" title="file结构"></a>file结构</h3><p>file结构在&lt;linux/fs.h&gt;中定义，是一个内核结构，不会出现在用户程序中。file结构代表一个打开的文件，由内核在open时创建，并传递给在该文件上进行操作的所有函数，直到最后的close函数。</p>
+<h3 id="inode结构"><a href="#inode结构" class="headerlink" title="inode结构"></a>inode结构</h3><p>内核用inode结构在内部表示文件。对单个文件，可能会有许多个表示打开的文件描述符的file结构，但他们都指向单个inode结构。</p>
+<h2 id="字符设备的注册"><a href="#字符设备的注册" class="headerlink" title="字符设备的注册"></a>字符设备的注册</h2><p>内核内部使用struct cdev结构来表示字符设备。在内核调用设备操作之前，必须分配并注册一个或者多个上述结构，所以我们要包含&lt;linux/cdev.h&gt;</p>
+<p>分配</p>
+<pre><code>struct cdev *my_cdev = cdev_alloc();
+my_cdev -&gt; ops = &amp;my_ops;</code></pre><p>初始化</p>
+<pre><code>void cdev_init(struct cdev *cdev, struct file_operations *fops);</code></pre><p>加入内核</p>
+<pre><code>int cdev_add(struct cdev *dev, dev_t num, unsigned int count);</code></pre><p>移除设备</p>
+<pre><code>void cdev_del(struct cdev *dev);</code></pre><h2 id="文件操作-1"><a href="#文件操作-1" class="headerlink" title="文件操作"></a>文件操作</h2><h3 id="open方法"><a href="#open方法" class="headerlink" title="open方法"></a>open方法</h3><p>函数原型：</p>
+<pre><code>int (*open)(struct inode *inode, struct file *filp);</code></pre><p>完成的工作：</p>
+<ol>
+<li>检查设备特定的错误</li>
+<li>如果设备是首次打开，则对其进行初始化</li>
+<li>如有必要，更新f_op指针</li>
+<li>分配并填写置于 filp -&gt; private_data里的数据</li>
+</ol>
+<p>&lt;linux/kernel.h&gt;</p>
+<pre><code>container_of(pointer, container_type, container_field);</code></pre><h3 id="release方法"><a href="#release方法" class="headerlink" title="release方法"></a>release方法</h3><p>函数原型：</p>
+<pre><code>int (*release)(struct inode *inode, struct file *filp);</code></pre><p>完成的工作：</p>
+<ol>
+<li>释放由open分配的，保存在filp -&gt; private_data中的所有内容</li>
+<li>在最后一次关闭操作时关闭设备</li>
+</ol>
+<h3 id="read方法"><a href="#read方法" class="headerlink" title="read方法"></a>read方法</h3><p>函数原型：</p>
+<pre><code>ssize_t read(struct file *filp, char __user *buff, size_t count, loff_t *offp);</code></pre><p>注意：buff参数是用户空间的指针。因此，内核代码不能直接引用其内容。</p>
+<p>驱动程序必须访问用户空间的缓冲区以便完成自己的工作。为了确保安全，这种访问应始终通过内核提供的专用函数完成。</p>
+<pre><code>unsigned long copy_to_user(void __user *to, const void *from, unsigned long count);
+unsigned long copy_from_user(void *to, const void __user *from, unsigned long count);</code></pre><p>这两个函数的作用并不限于在内核空间和用户空间之间的拷贝数据，它们还检查用户空间的指针是否有效。如果指针无效，就不会进行拷贝；另一方面，如果在拷贝过程中遇到无效地址，则仅仅会复制部分数据。</p>
+<p>read的返回值：</p>
+<ol>
+<li>如果返回值等于传递给read系统调用的count参数，则说明所请求的字节数传输成功完成了。</li>
+<li>如果返回值是正的，但是比count小，则说明只有部分数据成功传送。</li>
+<li>如果返回值为0，则表示已经到达了文件末尾。</li>
+<li>负值意味着发生了错误，该值指明了发生了什么错误。</li>
+</ol>
+<h3 id="write方法"><a href="#write方法" class="headerlink" title="write方法"></a>write方法</h3><p>write返回值：</p>
+<ol>
+<li>如果返回值等于count，则完成了所请求数目的字节传送。</li>
+<li>如果返回值是正的，但小于count，则只传输了部分数据。程序很可能再次试图写入余下的数据。</li>
+<li>如果值为0，意味着什么也没写入。这个结果不是错误，而且也没有理由返回一个错误码，标准库会重复调用write。</li>
+<li>负值意味着发生了错误，与read相同，有效的错误码定义在&lt;linux/errno.h&gt;中。</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/LDD-Reading-Chapter-2-Building-and-Running-Modules/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ForeverMZY">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/10/LDD-Reading-Chapter-2-Building-and-Running-Modules/" class="post-title-link" itemprop="url">LDD Reading: Chapter 2: Building and Running Modules</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-12-10 19:47:53 / Modified: 12:02:48" itemprop="dateCreated datePublished" datetime="2019-12-10T19:47:53+00:00">2019-12-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LDD-Reading/" itemprop="url" rel="index"><span itemprop="name">LDD Reading</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第二章-构造和运行模块"><a href="#第二章-构造和运行模块" class="headerlink" title="第二章 构造和运行模块"></a>第二章 构造和运行模块</h1><h2 id="Hello-World-模块"><a href="#Hello-World-模块" class="headerlink" title="Hello World 模块"></a>Hello World 模块</h2><pre><code>#include &lt;linux/init.h&gt;
+#include &lt;linux/module.h&gt;
+MODULE_LICENSE(&quot;Dual BSD/GPL&quot;);
+
+static int hello_init(void) &#123;
+    printk(KERN_ALERT &quot;Hello, world!\n&quot;);
+    return 0;
+&#125;
+
+static void hello_exit(void) &#123;
+    printk(KERN_ALERT &quot;Goodbye, cruel world!\n&quot;);
+&#125;
+
+module_init(hello_init);
+module_exit(hello_exit);</code></pre><h2 id="内核开发"><a href="#内核开发" class="headerlink" title="内核开发"></a>内核开发</h2><ol>
+<li>模块运行在内核空间中，应用程序运行在用户空间中</li>
+<li>内核代码必须是可重入的，必须能够同时运行在多个上下文中</li>
+<li>内核的大多数操作和某个特定的进程相关</li>
+<li>内核中具有两个下划线前缀的函数名称，通常是接口的底层组件</li>
+<li>内核代码不能实现浮点数运算</li>
+</ol>
+<h2 id="编译和装载"><a href="#编译和装载" class="headerlink" title="编译和装载"></a>编译和装载</h2><pre><code>ifneq ($(KERNELRELEASE),)
+    obj-m :=hello.o
+else
+KERNELDIR ?=/lib/modules/$(shell uname -r)/build
+PWD       := $(shell pwd)
+default:
+    make -C $(KERNELDIR) M=$(PWD) modules
+endif</code></pre><h2 id="装载和卸载模块"><a href="#装载和卸载模块" class="headerlink" title="装载和卸载模块"></a>装载和卸载模块</h2><p>insmod将模块的代码和数据装入内核，然后使用内核的符号表解析模块中任何未解析的模块</p>
+<p>modprobe用来将模块装载到内核中，它会考虑要装载的模块是否引用了一些当前内核不存在的符号。如果有这类引用，modprobe会在当前模块搜索路径中查找定义了这些符号的其他模块。如果modprobe找到了这些模块，它会同时将这些模块装载到内核。</p>
+<p>rmmod从内核中移除模块。如果内核认为模块仍然在使用状态，或者内核被配置为禁止移除模块，则无法移除模块。</p>
+<p>lsmod程序列出当前装载到内核中的所有模块，还提供了其他一些信息，比如其他模块是不是在使用某个特定模块等。</p>
+<h2 id="模块参数"><a href="#模块参数" class="headerlink" title="模块参数"></a>模块参数</h2><p>在insmod改变模块参数之前，模块必须让这些参数对insmod命令可见。参数必须用module_param宏来声明。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/LDD-Reading-Chapter-1-An-Introdction-to-Device-Drivers/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ForeverMZY">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/10/LDD-Reading-Chapter-1-An-Introdction-to-Device-Drivers/" class="post-title-link" itemprop="url">LDD Reading: Chapter 1: An Introdction to Device Drivers</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-12-10 19:47:15 / Modified: 12:02:32" itemprop="dateCreated datePublished" datetime="2019-12-10T19:47:15+00:00">2019-12-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LDD-Reading/" itemprop="url" rel="index"><span itemprop="name">LDD Reading</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第一章-设备驱动程序简介"><a href="#第一章-设备驱动程序简介" class="headerlink" title="第一章 设备驱动程序简介"></a>第一章 设备驱动程序简介</h1><h2 id="内核功能划分"><a href="#内核功能划分" class="headerlink" title="内核功能划分"></a>内核功能划分</h2><ol>
+<li>进程管理</li>
+<li>内存管理</li>
+<li>文件系统</li>
+<li>设备控制</li>
+<li>网络功能</li>
+</ol>
+<h2 id="可装载模块"><a href="#可装载模块" class="headerlink" title="可装载模块"></a>可装载模块</h2><p>内核提供的特性可以在运行时进行扩展</p>
+<p>insmod、rmmod</p>
+<h2 id="设备和模块分类"><a href="#设备和模块分类" class="headerlink" title="设备和模块分类"></a>设备和模块分类</h2><ol>
+<li>字符设备  open、close、read、write</li>
+<li>块设备</li>
+<li>网络设备</li>
+</ol>
+<p>另一种划分方法：某些驱动程序类型同内核用来支持某种给定类型设备的附加层一起工作。</p>
+<h2 id="许可证条款"><a href="#许可证条款" class="headerlink" title="许可证条款"></a>许可证条款</h2><p>Linux遵守GNU GPL2发布。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/07/Interrupt-and-its-virtualization/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ForeverMZY">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/07/Interrupt-and-its-virtualization/" class="post-title-link" itemprop="url">Interrupt and its virtualization</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-12-07 16:57:04 / Modified: 09:46:29" itemprop="dateCreated datePublished" datetime="2019-12-07T16:57:04+00:00">2019-12-07</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Interrupt"><a href="#Interrupt" class="headerlink" title="Interrupt"></a>Interrupt</h1><h2 id="PIC"><a href="#PIC" class="headerlink" title="PIC"></a>PIC</h2><p>PIC(Programmable Interrupt Controller)就是8259A。8259A最重要的是IR0~IR7管脚，也就是相应的8个中断，后来被扩展为级联形式，分为主从两块。尽管随着多CPU的出现，PIC模式逐渐被弃用，但是现代PC仍然兼容。</p>
+<img src=.\8259.gif>
+
+<p>基本流程：</p>
+<ol>
+<li>IRQ0-IRQ7的其中一个引脚收到一个中断信号，则设置IRR中对应的bit</li>
+<li>8259A通过INT信号线向CPU发送中断信号</li>
+<li>CPU收到INT信号后，发出一个INTA信号，输入8259A的INTA输入引脚</li>
+<li>将IRR中的bit清除，在ISR中设置对应的bit</li>
+<li>CPU在下一个周期再发出一个INTA信号，输入8259A的INTA输入引脚，此时8259A通过数据总线向CPU发送Interrupt Vector</li>
+<li>最后，若处于AEOI模式，ISR中的bit直接清除，否则要等CPU处理完该中断后，向8259A进行一次EOI，才能将ISR中的bit清除</li>
+</ol>
+<h2 id="APIC"><a href="#APIC" class="headerlink" title="APIC"></a>APIC</h2><p>Intel为了适应SMP，提出了APIC(Advanced Programmable Interrupt Controller)的技术。APIC由两部分组成，一个称为LAPIC，位于CPU中；另一个称为IOAPIC，位于外部设备芯片中，连接各个产生中断的设备。IOAPIC和LAPIC通过APIC BUS连接在一起。</p>
+<img src=.\APIC.png>
+
+<p>每个LAPIC都有自己唯一的APIC ID，IOAPIC也有自己唯一的ID。</p>
+<p>APIC模式和PIC模式显著的区别是连接关系不再是硬件连线而是通过message。IOAPIC内部有个PRT（Programmable Redirection Table）表，里面的Destination Field标识了中断的目的地。在Physical模式下，含有目标APIC ID（Logical模式略）。</p>
+<p>在中断发生时，IOAPIC收到中断，会将中断转化为message放入系统总线，而CPU中只有APIC ID和Destination Field域中一致的LAPIC才会处理这条中断。</p>
+<h1 id="Virtualization"><a href="#Virtualization" class="headerlink" title="Virtualization"></a>Virtualization</h1><img src=.\virtualization.png>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
 
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ForeverMZY"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">ForeverMZY</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ForeverMZY</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
 
 </body>
-
 </html>

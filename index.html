@@ -1,415 +1,1479 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Head tag -->
 <head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!--Description-->
-    
-
-    <!--Author-->
-    
-        <meta name="author" content="John Doe">
-    
-
-    <!--Open Graph Title-->
-    
-        <meta property="og:title" content="Hexo"/>
-    
-
-    <!--Open Graph Description-->
-    
-
-    <!--Open Graph Site Name-->
-    <meta property="og:site_name" content="Hexo"/>
-
-    <!--Type page-->
-    
-        <meta property="og:type" content="website" />
-    
-
-    <!--Page Cover-->
-    
-
-    <meta name="twitter:card" content="summary" />
-    
-
-    <!-- Title -->
-    
-    <title>Hexo</title>
-
-    <!-- Tachyons Core CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
-
-    <!-- Custom Fonts -->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Custom CSS -->
-    
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/main.css">
 
 
-    <!-- Google Analytics -->
-    
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="ForeverMZY">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/">
 
 
-<meta name="generator" content="Hexo 5.4.0"></head>
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Hexo</title>
+  
 
 
-<body>
 
-<!-- Main Content -->
-<!-- Banner -->
-<!-- Banner -->
-<div class="w-100 bg-1 ph5-ns ph3 text-light">
-    
-    <nav class="db dt-l w-100 mw8 center border-box pv3">
-        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="Hexo">
-            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="Hexo">
-        </a>
-        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
-                    href="/" 
-                    title="Home">
-                    Home
-                </a>
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
-                    href="/archives" 
-                    title="Archives">
-                    Archives
-                </a>
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
-                    href="/tags" 
-                    title="Tags">
-                    Tags
-                </a>
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
-                    href="/categories" 
-                    title="Categories">
-                    Categories
-                </a>
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
-                    href="/about.html" 
-                    title="About">
-                    About
-                </a>
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
-                    href="/contact.html" 
-                    title="Contact">
-                    Contact
-                </a>
-            
-        </div>
-    </nav>
 
-    <!-- Title -->
-    <div class="w-100 mw8 center vh-40 dt">
-        <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">Welcome to Anodyne</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">Create Websites. Make Magic.</p>
-        </div>
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
+  </div>
 
-    <!-- Icon -->
-    <div class="relative w-100 mw8 center white dn dn-m db-ns">
-        <i class="header-icon fa fa fa-magic"></i>
-    </div>
-</div>
+  <div class="site-meta">
 
-<!-- Content -->
-<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
-    <div class="content">
-        <div class="mw8 center">
-            
-                <a href="/2021/03/25/hello-world/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
-        <div class="dtc v-mid w-90 black-70">
-            <div>
-                
-                    <span class="f5 fw3 lh-copy pr4">2021-03-25</span> 
-                
-                
-            </div>
-            <span class="f3 fw3 lh-copy">Hello World<span>
-        </div>
-        <div class="dtc v-mid w-10 f1 black-50 tr">
-            <i class="fa fa-file-text-o"></i>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2020/09/01/add-a-hypercall/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
-        <div class="dtc v-mid w-90 black-70">
-            <div>
-                
-                    <span class="f5 fw3 lh-copy pr4">2020-09-01</span> 
-                
-                
-                <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/Hypercall/'; return false;">#Hypercall</span>
-                
-            </div>
-            <span class="f3 fw3 lh-copy">add a hypercall<span>
-        </div>
-        <div class="dtc v-mid w-10 f1 black-50 tr">
-            <i class="fa fa-file-text-o"></i>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2020/08/26/add-a-syscall/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
-        <div class="dtc v-mid w-90 black-70">
-            <div>
-                
-                    <span class="f5 fw3 lh-copy pr4">2020-08-26</span> 
-                
-                
-                <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/Syscall/'; return false;">#Syscall</span>
-                
-            </div>
-            <span class="f3 fw3 lh-copy">add a syscall<span>
-        </div>
-        <div class="dtc v-mid w-10 f1 black-50 tr">
-            <i class="fa fa-file-text-o"></i>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2020/03/05/Build-pixel-for-goldfish/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
-        <div class="dtc v-mid w-90 black-70">
-            <div>
-                
-                    <span class="f5 fw3 lh-copy pr4">2020-03-05</span> 
-                
-                
-                <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/Driver/'; return false;">#Driver</span>
-                
-            </div>
-            <span class="f3 fw3 lh-copy">Build pixel for goldfish<span>
-        </div>
-        <div class="dtc v-mid w-10 f1 black-50 tr">
-            <i class="fa fa-file-text-o"></i>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2020/03/05/The-content-of-Linux-Driver/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
-        <div class="dtc v-mid w-90 black-70">
-            <div>
-                
-                    <span class="f5 fw3 lh-copy pr4">2020-03-05</span> 
-                
-                
-            </div>
-            <span class="f3 fw3 lh-copy">The content of Linux Driver<span>
-        </div>
-        <div class="dtc v-mid w-10 f1 black-50 tr">
-            <i class="fa fa-file-text-o"></i>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2020/03/05/Syzkaller/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
-        <div class="dtc v-mid w-90 black-70">
-            <div>
-                
-                    <span class="f5 fw3 lh-copy pr4">2020-03-05</span> 
-                
-                
-            </div>
-            <span class="f3 fw3 lh-copy">Syzkaller<span>
-        </div>
-        <div class="dtc v-mid w-10 f1 black-50 tr">
-            <i class="fa fa-file-text-o"></i>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2020/02/16/Build-AOSP/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
-        <div class="dtc v-mid w-90 black-70">
-            <div>
-                
-                    <span class="f5 fw3 lh-copy pr4">2020-02-16</span> 
-                
-                
-                <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/Android/'; return false;">#Android</span>
-                
-            </div>
-            <span class="f3 fw3 lh-copy">Build AOSP<span>
-        </div>
-        <div class="dtc v-mid w-10 f1 black-50 tr">
-            <i class="fa fa-file-text-o"></i>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2020/02/16/Adjust-hard-drive-partition/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
-        <div class="dtc v-mid w-90 black-70">
-            <div>
-                
-                    <span class="f5 fw3 lh-copy pr4">2020-02-16</span> 
-                
-                
-            </div>
-            <span class="f3 fw3 lh-copy">Adjust hard drive partition<span>
-        </div>
-        <div class="dtc v-mid w-10 f1 black-50 tr">
-            <i class="fa fa-file-text-o"></i>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2019/12/16/LDD-Reading-Chapter-13-USB-Drivers/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
-        <div class="dtc v-mid w-90 black-70">
-            <div>
-                
-                    <span class="f5 fw3 lh-copy pr4">2019-12-16</span> 
-                
-                
-                <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/Linux/'; return false;">#Linux</span> <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/ARM/'; return false;">#ARM</span>
-                
-            </div>
-            <span class="f3 fw3 lh-copy">LDD Reading: Chapter 13: USB Drivers<span>
-        </div>
-        <div class="dtc v-mid w-10 f1 black-50 tr">
-            <i class="fa fa-file-text-o"></i>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2019/12/16/LDD-Reading-Chapter-12-PCI-Drivers/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
-        <div class="dtc v-mid w-90 black-70">
-            <div>
-                
-                    <span class="f5 fw3 lh-copy pr4">2019-12-16</span> 
-                
-                
-                <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/Linux/'; return false;">#Linux</span> <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/ARM/'; return false;">#ARM</span>
-                
-            </div>
-            <span class="f3 fw3 lh-copy">LDD Reading: Chapter 12: PCI Drivers<span>
-        </div>
-        <div class="dtc v-mid w-10 f1 black-50 tr">
-            <i class="fa fa-file-text-o"></i>
-        </div>
-    </div>
-</a>
-            
-        </div>
-    </div>
-    
-    <div class="flex items-center justify-center pa4">
-        <a href="/" 
-            class="f5 no-underline inline-flex items-center pa3 ba border-box mr4 light-gray cursor-default">
-            <i class="w1 pr2 fa fa-chevron-left" aria-hidden="true"></i>
-            <span class="pl1">Previous</span>
-        </a>
-        <a href="/page/2/" 
-            class="f5 no-underline inline-flex items-center pa3 ba border-box gray hover-border-main-color hover-text-main-color">
-            <span class="pr1">Next</span>
-            <i class="w1 pl2 fa fa-chevron-right" aria-hidden="true"></i>
-        </a>
-    </div>
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
 
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
 </div>
 
 
-<!-- Footer -->
-<div class="bg-1 ph2 ph5-ns pv5">
-        <div class="mv8">
-            <div class="center tc">
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://twitter.com/?lang=en" target="_blank">
-                            <i class="fa fa-twitter"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank">
-                            <i class="fa fa-facebook"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://dribbble.com/" target="_blank">
-                            <i class="fa fa-dribbble"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank">
-                            <i class="fa fa-github"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://plus.google.com/" target="_blank">
-                            <i class="fa fa-google-plus"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://www.behance.net/" target="_blank">
-                            <i class="fa fa-behance"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://500px.com/" target="_blank">
-                            <i class="fa fa-500px"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="mailto:test@example.com" target="_blank">
-                            <i class="fa fa-envelope"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="/#" target="_blank">
-                            <i class="fa fa-rss"></i>
-                        </a>
-                    </div>
-                
-            </div>
-            <div class="f6 f5-ns center tc white pt5 fw3">
-                @Untitled. All right reserved | Design & Hexo <a class="link dim white" target="_blank" rel="noopener" href="http://www.codeblocq.com/">Jonathan Klughertz</a>
-            </div>
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/25/FIBRE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ForeverMZY">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/25/FIBRE/" class="post-title-link" itemprop="url">FIBRE</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-03-25 13:00:00 / Modified: 05:59:38" itemprop="dateCreated datePublished" datetime="2021-03-25T13:00:00+00:00">2021-03-25</time>
+            </span>
+
+          
+
         </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>FIBRE_wiki</title><style>
+/* webkit printing magic: print all background colors */
+html {
+    -webkit-print-color-adjust: exact;
+}
+* {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact;
+}
+
+<p>html,<br>body {<br>    margin: 0;<br>    padding: 0;<br>}<br>@media only screen {<br>    body {<br>        margin: 2em auto;<br>        max-width: 900px;<br>        color: rgb(55, 53, 47);<br>    }<br>}</p>
+<p>body {<br>    line-height: 1.5;<br>    white-space: pre-wrap;<br>}</p>
+<p>a,<br>a.visited {<br>    color: inherit;<br>    text-decoration: underline;<br>}</p>
+<p>.pdf-relative-link-path {<br>    font-size: 80%;<br>    color: #444;<br>}</p>
+<p>h1,<br>h2,<br>h3 {<br>    letter-spacing: -0.01em;<br>    line-height: 1.2;<br>    font-weight: 600;<br>    margin-bottom: 0;<br>}</p>
+<p>.page-title {<br>    font-size: 2.5rem;<br>    font-weight: 700;<br>    margin-top: 0;<br>    margin-bottom: 0.75em;<br>}</p>
+<p>h1 {<br>    font-size: 1.875rem;<br>    margin-top: 1.875rem;<br>}</p>
+<p>h2 {<br>    font-size: 1.5rem;<br>    margin-top: 1.5rem;<br>}</p>
+<p>h3 {<br>    font-size: 1.25rem;<br>    margin-top: 1.25rem;<br>}</p>
+<p>.source {<br>    border: 1px solid #ddd;<br>    border-radius: 3px;<br>    padding: 1.5em;<br>    word-break: break-all;<br>}</p>
+<p>.callout {<br>    border-radius: 3px;<br>    padding: 1rem;<br>}</p>
+<p>figure {<br>    margin: 1.25em 0;<br>    page-break-inside: avoid;<br>}</p>
+<p>figcaption {<br>    opacity: 0.5;<br>    font-size: 85%;<br>    margin-top: 0.5em;<br>}</p>
+<p>mark {<br>    background-color: transparent;<br>}</p>
+<p>.indented {<br>    padding-left: 1.5em;<br>}</p>
+<p>hr {<br>    background: transparent;<br>    display: block;<br>    width: 100%;<br>    height: 1px;<br>    visibility: visible;<br>    border: none;<br>    border-bottom: 1px solid rgba(55, 53, 47, 0.09);<br>}</p>
+<p>img {<br>    max-width: 100%;<br>}</p>
+<p>@media only print {<br>    img {<br>        max-height: 100vh;<br>        object-fit: contain;<br>    }<br>}</p>
+<p>@page {<br>    margin: 1in;<br>}</p>
+<p>.collection-content {<br>    font-size: 0.875rem;<br>}</p>
+<p>.column-list {<br>    display: flex;<br>    justify-content: space-between;<br>}</p>
+<p>.column {<br>    padding: 0 1em;<br>}</p>
+<p>.column:first-child {<br>    padding-left: 0;<br>}</p>
+<p>.column:last-child {<br>    padding-right: 0;<br>}</p>
+<p>.table_of_contents-item {<br>    display: block;<br>    font-size: 0.875rem;<br>    line-height: 1.3;<br>    padding: 0.125rem;<br>}</p>
+<p>.table_of_contents-indent-1 {<br>    margin-left: 1.5rem;<br>}</p>
+<p>.table_of_contents-indent-2 {<br>    margin-left: 3rem;<br>}</p>
+<p>.table_of_contents-indent-3 {<br>    margin-left: 4.5rem;<br>}</p>
+<p>.table_of_contents-link {<br>    text-decoration: none;<br>    opacity: 0.7;<br>    border-bottom: 1px solid rgba(55, 53, 47, 0.18);<br>}</p>
+<p>table,<br>th,<br>td {<br>    border: 1px solid rgba(55, 53, 47, 0.09);<br>    border-collapse: collapse;<br>}</p>
+<p>table {<br>    border-left: none;<br>    border-right: none;<br>}</p>
+<p>th,<br>td {<br>    font-weight: normal;<br>    padding: 0.25em 0.5em;<br>    line-height: 1.5;<br>    min-height: 1.5em;<br>    text-align: left;<br>}</p>
+<p>th {<br>    color: rgba(55, 53, 47, 0.6);<br>}</p>
+<p>ol,<br>ul {<br>    margin: 0;<br>    margin-block-start: 0.6em;<br>    margin-block-end: 0.6em;<br>}</p>
+<p>li &gt; ol:first-child,<br>li &gt; ul:first-child {<br>    margin-block-start: 0.6em;<br>}</p>
+<p>ul &gt; li {<br>    list-style: disc;<br>}</p>
+<p>ul.to-do-list {<br>    text-indent: -1.7em;<br>}</p>
+<p>ul.to-do-list &gt; li {<br>    list-style: none;<br>}</p>
+<p>.to-do-children-checked {<br>    text-decoration: line-through;<br>    opacity: 0.375;<br>}</p>
+<p>ul.toggle &gt; li {<br>    list-style: none;<br>}</p>
+<p>ul {<br>    padding-inline-start: 1.7em;<br>}</p>
+<p>ul &gt; li {<br>    padding-left: 0.1em;<br>}</p>
+<p>ol {<br>    padding-inline-start: 1.6em;<br>}</p>
+<p>ol &gt; li {<br>    padding-left: 0.2em;<br>}</p>
+<p>.mono ol {<br>    padding-inline-start: 2em;<br>}</p>
+<p>.mono ol &gt; li {<br>    text-indent: -0.4em;<br>}</p>
+<p>.toggle {<br>    padding-inline-start: 0em;<br>    list-style-type: none;<br>}</p>
+<p>/* Indent toggle children */<br>.toggle &gt; li &gt; details {<br>    padding-left: 1.7em;<br>}</p>
+<p>.toggle &gt; li &gt; details &gt; summary {<br>    margin-left: -1.1em;<br>}</p>
+<p>.selected-value {<br>    display: inline-block;<br>    padding: 0 0.5em;<br>    background: rgba(206, 205, 202, 0.5);<br>    border-radius: 3px;<br>    margin-right: 0.5em;<br>    margin-top: 0.3em;<br>    margin-bottom: 0.3em;<br>    white-space: nowrap;<br>}</p>
+<p>.collection-title {<br>    display: inline-block;<br>    margin-right: 1em;<br>}</p>
+<p>time {<br>    opacity: 0.5;<br>}</p>
+<p>.icon {<br>    display: inline-block;<br>    max-width: 1.2em;<br>    max-height: 1.2em;<br>    text-decoration: none;<br>    vertical-align: text-bottom;<br>    margin-right: 0.5em;<br>}</p>
+<p>img.icon {<br>    border-radius: 3px;<br>}</p>
+<p>.user-icon {<br>    width: 1.5em;<br>    height: 1.5em;<br>    border-radius: 100%;<br>    margin-right: 0.5rem;<br>}</p>
+<p>.user-icon-inner {<br>    font-size: 0.8em;<br>}</p>
+<p>.text-icon {<br>    border: 1px solid #000;<br>    text-align: center;<br>}</p>
+<p>.page-cover-image {<br>    display: block;<br>    object-fit: cover;<br>    width: 100%;<br>    height: 30vh;<br>}</p>
+<p>.page-header-icon {<br>    font-size: 3rem;<br>    margin-bottom: 1rem;<br>}</p>
+<p>.page-header-icon-with-cover {<br>    margin-top: -0.72em;<br>    margin-left: 0.07em;<br>}</p>
+<p>.page-header-icon img {<br>    border-radius: 3px;<br>}</p>
+<p>.link-to-page {<br>    margin: 1em 0;<br>    padding: 0;<br>    border: none;<br>    font-weight: 500;<br>}</p>
+<p>p &gt; .user {<br>    opacity: 0.5;<br>}</p>
+<p>td &gt; .user,<br>td &gt; time {<br>    white-space: nowrap;<br>}</p>
+<p>input[type=”checkbox”] {<br>    transform: scale(1.5);<br>    margin-right: 0.6em;<br>    vertical-align: middle;<br>}</p>
+<p>p {<br>    margin-top: 0.5em;<br>    margin-bottom: 0.5em;<br>}</p>
+<p>.image {<br>    border: none;<br>    margin: 1.5em 0;<br>    padding: 0;<br>    border-radius: 0;<br>    text-align: center;<br>}</p>
+<p>.code,<br>code {<br>    background: rgba(135, 131, 120, 0.15);<br>    border-radius: 3px;<br>    padding: 0.2em 0.4em;<br>    border-radius: 3px;<br>    font-size: 85%;<br>    tab-size: 2;<br>}</p>
+<p>code {<br>    color: #eb5757;<br>}</p>
+<p>.code {<br>    padding: 1.5em 1em;<br>}</p>
+<p>.code-wrap {<br>    white-space: pre-wrap;<br>    word-break: break-all;<br>}</p>
+<p>.code &gt; code {<br>    background: none;<br>    padding: 0;<br>    font-size: 100%;<br>    color: inherit;<br>}</p>
+<p>blockquote {<br>    font-size: 1.25em;<br>    margin: 1em 0;<br>    padding-left: 1em;<br>    border-left: 3px solid rgb(55, 53, 47);<br>}</p>
+<p>.bookmark {<br>    text-decoration: none;<br>    max-height: 8em;<br>    padding: 0;<br>    display: flex;<br>    width: 100%;<br>    align-items: stretch;<br>}</p>
+<p>.bookmark-title {<br>    font-size: 0.85em;<br>    overflow: hidden;<br>    text-overflow: ellipsis;<br>    height: 1.75em;<br>    white-space: nowrap;<br>}</p>
+<p>.bookmark-text {<br>    display: flex;<br>    flex-direction: column;<br>}</p>
+<p>.bookmark-info {<br>    flex: 4 1 180px;<br>    padding: 12px 14px 14px;<br>    display: flex;<br>    flex-direction: column;<br>    justify-content: space-between;<br>}</p>
+<p>.bookmark-image {<br>    width: 33%;<br>    flex: 1 1 180px;<br>    display: block;<br>    position: relative;<br>    object-fit: cover;<br>    border-radius: 1px;<br>}</p>
+<p>.bookmark-description {<br>    color: rgba(55, 53, 47, 0.6);<br>    font-size: 0.75em;<br>    overflow: hidden;<br>    max-height: 4.5em;<br>    word-break: break-word;<br>}</p>
+<p>.bookmark-href {<br>    font-size: 0.75em;<br>    margin-top: 0.25em;<br>}</p>
+<p>.sans { font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Helvetica, “Apple Color Emoji”, Arial, sans-serif, “Segoe UI Emoji”, “Segoe UI Symbol”; }<br>.code { font-family: “SFMono-Regular”, Consolas, “Liberation Mono”, Menlo, Courier, monospace; }<br>.serif { font-family: Lyon-Text, Georgia, YuMincho, “Yu Mincho”, “Hiragino Mincho ProN”, “Hiragino Mincho Pro”, “Songti TC”, “Songti SC”, “SimSun”, “Nanum Myeongjo”, NanumMyeongjo, Batang, serif; }<br>.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }<br>.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, “Segoe UI”, Helvetica, “Apple Color Emoji”, Arial, sans-serif, “Segoe UI Emoji”, “Segoe UI Symbol”, ‘Twemoji’, ‘Noto Color Emoji’, ‘Noto Sans CJK SC’, ‘Noto Sans CJK KR’; }</p>
+<p>.pdf .code { font-family: Source Code Pro, “SFMono-Regular”, Consolas, “Liberation Mono”, Menlo, Courier, monospace, ‘Twemoji’, ‘Noto Color Emoji’, ‘Noto Sans Mono CJK SC’, ‘Noto Sans Mono CJK KR’; }</p>
+<p>.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, “Yu Mincho”, “Hiragino Mincho ProN”, “Hiragino Mincho Pro”, “Songti TC”, “Songti SC”, “SimSun”, “Nanum Myeongjo”, NanumMyeongjo, Batang, serif, ‘Twemoji’, ‘Noto Color Emoji’, ‘Noto Sans CJK SC’, ‘Noto Sans CJK KR’; }</p>
+<p>.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, ‘Twemoji’, ‘Noto Color Emoji’, ‘Noto Sans Mono CJK SC’, ‘Noto Sans Mono CJK KR’; }</p>
+<p>.highlight-default {<br>}<br>.highlight-gray {<br>    color: rgb(155,154,151);<br>}<br>.highlight-brown {<br>    color: rgb(100,71,58);<br>}<br>.highlight-orange {<br>    color: rgb(217,115,13);<br>}<br>.highlight-yellow {<br>    color: rgb(223,171,1);<br>}<br>.highlight-teal {<br>    color: rgb(15,123,108);<br>}<br>.highlight-blue {<br>    color: rgb(11,110,153);<br>}<br>.highlight-purple {<br>    color: rgb(105,64,165);<br>}<br>.highlight-pink {<br>    color: rgb(173,26,114);<br>}<br>.highlight-red {<br>    color: rgb(224,62,62);<br>}<br>.highlight-gray_background {<br>    background: rgb(235,236,237);<br>}<br>.highlight-brown_background {<br>    background: rgb(233,229,227);<br>}<br>.highlight-orange_background {<br>    background: rgb(250,235,221);<br>}<br>.highlight-yellow_background {<br>    background: rgb(251,243,219);<br>}<br>.highlight-teal_background {<br>    background: rgb(221,237,234);<br>}<br>.highlight-blue_background {<br>    background: rgb(221,235,241);<br>}<br>.highlight-purple_background {<br>    background: rgb(234,228,242);<br>}<br>.highlight-pink_background {<br>    background: rgb(244,223,235);<br>}<br>.highlight-red_background {<br>    background: rgb(251,228,228);<br>}<br>.block-color-default {<br>    color: inherit;<br>    fill: inherit;<br>}<br>.block-color-gray {<br>    color: rgba(55, 53, 47, 0.6);<br>    fill: rgba(55, 53, 47, 0.6);<br>}<br>.block-color-brown {<br>    color: rgb(100,71,58);<br>    fill: rgb(100,71,58);<br>}<br>.block-color-orange {<br>    color: rgb(217,115,13);<br>    fill: rgb(217,115,13);<br>}<br>.block-color-yellow {<br>    color: rgb(223,171,1);<br>    fill: rgb(223,171,1);<br>}<br>.block-color-teal {<br>    color: rgb(15,123,108);<br>    fill: rgb(15,123,108);<br>}<br>.block-color-blue {<br>    color: rgb(11,110,153);<br>    fill: rgb(11,110,153);<br>}<br>.block-color-purple {<br>    color: rgb(105,64,165);<br>    fill: rgb(105,64,165);<br>}<br>.block-color-pink {<br>    color: rgb(173,26,114);<br>    fill: rgb(173,26,114);<br>}<br>.block-color-red {<br>    color: rgb(224,62,62);<br>    fill: rgb(224,62,62);<br>}<br>.block-color-gray_background {<br>    background: rgb(235,236,237);<br>}<br>.block-color-brown_background {<br>    background: rgb(233,229,227);<br>}<br>.block-color-orange_background {<br>    background: rgb(250,235,221);<br>}<br>.block-color-yellow_background {<br>    background: rgb(251,243,219);<br>}<br>.block-color-teal_background {<br>    background: rgb(221,237,234);<br>}<br>.block-color-blue_background {<br>    background: rgb(221,235,241);<br>}<br>.block-color-purple_background {<br>    background: rgb(234,228,242);<br>}<br>.block-color-pink_background {<br>    background: rgb(244,223,235);<br>}<br>.block-color-red_background {<br>    background: rgb(251,228,228);<br>}<br>.select-value-color-default { background-color: rgba(206,205,202,0.5); }<br>.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }<br>.select-value-color-brown { background-color: rgba(140,46,0,0.2); }<br>.select-value-color-orange { background-color: rgba(245,93,0,0.2); }<br>.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }<br>.select-value-color-green { background-color: rgba(0,135,107,0.2); }<br>.select-value-color-blue { background-color: rgba(0,120,223,0.2); }<br>.select-value-color-purple { background-color: rgba(103,36,222,0.2); }<br>.select-value-color-pink { background-color: rgba(221,0,129,0.2); }<br>.select-value-color-red { background-color: rgba(255,0,26,0.2); }</p>
+<p>.checkbox {<br>    display: inline-flex;<br>    vertical-align: text-bottom;<br>    width: 16;<br>    height: 16;<br>    background-size: 16px;<br>    margin-left: 2px;<br>    margin-right: 5px;<br>}</p>
+<p>.checkbox-on {<br>    background-image: url(“data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2F<a href="http://www.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E&quot;">www.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E&quot;</a>);<br>}</p>
+<p>.checkbox-off {<br>    background-image: url(“data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2F<a href="http://www.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E&quot;">www.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E&quot;</a>);<br>}</p>
+<p></style></head><body><article id="b282bb9b-e8d6-409d-88f7-7652937a5fc0" class="page sans"><header><h1 class="page-title">FIBRE_wiki</h1></header><div class="page-body"><h1 id="a17206ac-ab51-48aa-b6e7-dafed7e11d96" class="">Information</h1><hr id="a489093c-210c-49b6-801f-c9d280541ddb"/><ul id="9c391b38-1a72-4b30-915f-0f9d3c8c5d5d" class="bulleted-list"><li>Paper: <a target="_blank" rel="noopener" href="http://static1.1.sqspcdn.com/static/f/543048/28391424/1610229123433/FIBRE_USENIX_21.pdf">http://static1.1.sqspcdn.com/static/f/543048/28391424/1610229123433/FIBRE_USENIX_21.pdf</a></li></ul><ul id="40bdf701-668c-4a4d-bd60-bfe261af0426" class="bulleted-list"><li>Authors: Stefan Nagy, Anh Nguyen-Tuong, Jason D. Hiser, Jack W. Davidson,Matthew Hicks</li></ul><ul id="49fcd63d-666d-4f2b-80e9-fe4dab6d8506" class="bulleted-list"><li>Slides: Anonymous</li></ul><ul id="129d4b70-de62-4754-ac94-f7f80bc947c4" class="bulleted-list"><li>Reference: <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=y05uja2o6GE">https://www.youtube.com/watch?v=y05uja2o6GE</a></li></ul><h1 id="02a86fa9-7c4f-4d6f-85ab-848b7d1d3b47" class="">testTL;DR</h1><hr id="ef76ad06-e97e-4402-aa27-fbbe48a0636b"/><p id="c683db34-b0da-4af1-9e41-ba92f010cc4d" class="">本文的目标是对二进制程序进行fuzz，主要的做法是将二进制程序提升到IR，然后在IR层面做一些变换，最后将IR重新编译为二进制文件。</p><h1 id="7d72c1d9-de99-4775-be7b-a30d752fe7f5" class="">Background</h1><hr id="cd8d84da-acf7-4d12-9248-019b07cd5e2d"/><h2 id="13dcc301-add2-4ef6-9e58-a01e253907bc" class="">Fuzzing</h2><p id="c4774cc3-d908-4a15-a3e1-2f6a6d6d0fd0" class="">Fuzzing是一种流行的漏洞挖掘的技术，从有无源码的角度来，Fuzzing可以分为基于源码的Fuzzing技术和针对二进制程序的Fuzzing技术。</p><figure id="0474d8ad-15ac-44d7-9513-ceb0b59225d6" class="image"><a href="Untitled.png"><img style="width:641px" src="Untitled.png"/></a></figure><p id="64897c91-fd1f-4b96-88cc-5583552c5f8b" class=""></p>
+</p><p id="f0533ea7-2a21-4eed-a171-4116d6554f21" class="">在基于源码的Fuzzing技术中，目前学术界研究最多的，同时也是应用最广泛的就是覆盖率引导的灰盒Fuzzing技术。代表性的Fuzzer有AFL[1],AFL++[2],libFuzzer[3],honggFuzz[4]等。</p><p id="7b08753a-e0c9-4939-bc6e-008cbe991a42" class="">基于覆盖率引导的灰盒Fuzzing技术能成功的核心原因在于其应用了遗传算法，可以筛选出优良的种子并且不断遗传变异产生下一代。在遗传算法中，一个很重要的部分是反馈机制，只有通过良好的反馈机制，遗传算法才能筛选出表现良好的种子，从而保留这个种子并对其进行进一步变异，将种子优良的特性遗传下去。在Fuzzing技术中，反馈的收集是通过插装技术来实现的，Fuzzer通过编译时插装，可以在运行时收集覆盖率信息。但是二进制程序覆盖率的收集要困难得多。</p><h2 id="223714b9-7431-46f5-9a14-282fabb8dfc8" class="">Feedback-enhancing Transformation</h2><p id="df3b2fd3-043b-4ad1-b428-92c4f6791a38" class="">由上文的分析可知，要想在二进制的Fuzzing中取得良好的效果，必须设计良好的覆盖率反馈机制，所以首先来探讨一下基于源码的Fuzzing技术的优势，才能更好地将这些技巧应用到二进制Fuzzing中。</p><h3 id="ab168e92-b53e-4fff-8aa4-e80c6e941f55" class="">Instrumentation Pruning</h3><p id="c06f9e8a-1b90-49ce-95a5-78982862dda5" class="">这一技巧的是减少插装的数量，进而降低运行时的开销，AFL就应用了这种技术。AFL工具可以使用<strong>AFL_INST_RATIO</strong>宏来调节插装的比例。在默认的设置下，<strong>AFL_INST_RATIO</strong>为100，即AFL默认对所有基本块都进行了插装。但是如果在编译时开启了ASAN，默认的插装比例就会变为33，即插装原来1/3的基本块。当<strong>AFL_INST_RATIO</strong>为0时，不代表不对基本块进行插装，而是每个函数仅插装一个基本块，收集的是函数之间转移的覆盖率。</p><p id="d8fbc3bd-e74f-410c-9e5b-5423a491393a" class=""><strong>AFL_INST_RATIO</strong>的实现机制如图所示，通过生成随机数模100实现随机跳过基本块。</p><figure id="6018ef2c-cab0-4e54-b28c-7b99a1a3a010" class="image"><a href="Untitled%201.png"><img style="width:402px" src="Untitled%201.png"/></a></figure><h3 id="63083ee2-4461-47a2-a7bc-130a99e4963f" class="">Instrumentation Downgrading</h3><p id="16fe86f0-7512-4eb4-873c-5a2a06d7922b" class="">这一技巧没有从插装的数量入手分析，而是希望减少插装本身的开销，。AFL默认的覆盖率收集方式是边覆盖率，其实现为：</p><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css')</style><pre id="b0f7bf90-a2e6-419f-821e-bd201661d8a0" class="code"><code>hash <span class="token operator">=</span> cur <span class="token operator">^</span> <span class="token punctuation">(</span> prev <span class="token operator">>></span> <span class="token number">1</span> <span class="token punctuation">)</span>
+bitmap<span class="token punctuation">[</span>hash<span class="token punctuation">]</span><span class="token operator">++</span></code></pre><p id="6ec65ca3-2c88-4033-be04-400353f96ba6" class="">CollAFL[5]对于特定的情况实现了开销更小的方案。对于只有单个前驱基本块的基本块来说，CollAFL的实现方案大大简化为：</p><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css')</style><pre id="33670711-0ee1-422a-849e-7537468d9f4c" class="code"><code>bitmap<span class="token punctuation">[</span>c<span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span>
+store _prev<span class="token punctuation">,</span> <span class="token punctuation">(</span> _cur <span class="token operator">>></span> y <span class="token punctuation">)</span></code></pre><p id="91c49f0d-a12f-4e23-928d-d104e4cc0e8e" class="">这样就减少了桩点本身的开销。</p><h3 id="862800cb-691d-41e9-8d0d-3e2ca3c8742c" class="">Sub-instruction profiling</h3><p id="66024d37-7b6e-49d1-81d7-a4d95cae69f1" class="">这一技巧被许多Fuzzer应用，比如laf-Intel[6]和honggfuzz，它所要解决的难点是Magic bytes的问题，如下所示：</p><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css')</style><pre id="f6fbb419-820c-41f5-8806-77b5a1561d6b" class="code"><code><span class="token keyword">if</span> <span class="token punctuation">(</span>input <span class="token operator">==</span> <span class="token number">0xabcdef</span>gh<span class="token punctuation">)</span>
+    <span class="token comment">// terrible buggy code</span>
+<span class="token keyword">else</span>
+    <span class="token comment">// secure code</span></code></pre><p id="1520c503-1474-41fb-8ab7-20d89b916bfb" class="">通常Fuzzer的变异算法很难恰好变异出符合if条件的输入，Fuzzer可能会在if语句处卡住，无法通过检查。但是如果一个input是0xab000000，另一个input是0xabcdefga，这两个输入在fuzzer看来是一样的，但是实际上第二个input更接近通过if条件检查，sub-instruction profiling技术就是为了解决这个问题。</p><p id="f4fef87e-70ba-4183-a248-394f6f676731" class="">这种技术通过将较长的常数分解为单个字节的常数实现，比如对这个例子应用Sub-instruction profiling技术就会变成：</p><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css')</style><pre id="e1394ea2-6000-436b-97fb-b0c5bbc6a38c" class="code"><code><span class="token keyword">if</span> <span class="token punctuation">(</span>input <span class="token operator">>></span> <span class="token number">24</span> <span class="token operator">==</span> <span class="token number">0xab</span><span class="token punctuation">)</span> 
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>input <span class="token operator">&amp;</span> <span class="token number">0xff0000</span><span class="token punctuation">)</span> <span class="token operator">>></span> <span class="token number">16</span> <span class="token operator">==</span> <span class="token number">0xcd</span><span class="token punctuation">)</span> 
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>input <span class="token operator">&amp;</span> <span class="token number">0xff00</span><span class="token punctuation">)</span> <span class="token operator">>></span> <span class="token number">8</span> <span class="token operator">==</span> <span class="token number">0xef</span><span class="token punctuation">)</span> 
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>input <span class="token operator">&amp;</span> <span class="token number">0xff</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span>xgh<span class="token punctuation">)</span> 
+          <span class="token comment">// terrible buggy code</span></code></pre><p id="4858a043-51e8-4763-a538-d7b436462343" class="">经过这样的变换，丰富了程序的控制流信息，让Fuzzer对输入的变化更加敏感。</p><h3 id="f78c4c6d-8654-47bc-aa0e-0b154febdfca" class="">Extra-coverage behavior tracking</h3><p id="ebd42ef7-5d47-4b0f-b668-dfd2a123dc14" class="">这一技术实现了更加精确的覆盖率制导，具体来说就是在覆盖率信息中加入了上下文信息。比如，</p><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css')</style><pre id="87956f8d-6377-426e-82bd-2dea8fd79b2a" class="code"><code>A <span class="token operator">-></span> B <span class="token operator">-></span> C
+B <span class="token operator">-></span> C <span class="token operator">-></span> A</code></pre><p id="dc350eec-8955-4ecf-83bc-54f6ba887e4a" class="">在AFL原生的实现中不能区分上述的情况。</p><p id="fb443ec8-092e-4935-a7f7-91d9ad626c9a" class="">在Angora的实现中，覆盖率使用以下方式记录，这样就实现了更加精准的覆盖率制导技术</p><figure id="77a59571-1f7e-4919-8154-c8b93c923210" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>l</mi><mrow><mi>p</mi><mi>r</mi><mi>e</mi><mi>v</mi></mrow></msub><mo separator="true">,</mo><msub><mi>l</mi><mrow><mi>c</mi><mi>u</mi><mi>r</mi></mrow></msub><mo separator="true">,</mo><mi>h</mi><mi>a</mi><mi>s</mi><mi>h</mi><mo stretchy="false">(</mo><mi>c</mi><mi>a</mi><mi>l</mi><mi>l</mi><mi>s</mi><mi>t</mi><mi>a</mi><mi>c</mi><mi>k</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(l_{prev}, l_{cur}, hash(call stack))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mord mathdefault mtight">e</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">c</span><span class="mord mathdefault mtight">u</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">h</span><span class="mord mathdefault">a</span><span class="mord mathdefault">s</span><span class="mord mathdefault">h</span><span class="mopen">(</span><span class="mord mathdefault">c</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span></span></div></figure><h1 id="55dec43d-6581-4942-8d64-6a962741a3aa" class="">Motivation</h1><hr id="729f5667-2dc0-446b-ae65-410414d3ab66"/><h2 id="78ccd96e-4e26-4fe1-9b1d-338f4703d7fa" class="">Binary-only Fuzzing</h2><p id="9269fe7f-4031-4755-a581-2f9a40e667b7" class="">针对二进制程序的分析可以应用在以下几个方面：</p><ul id="25976aec-2f77-4a46-a2ca-d4372227bd8a" class="bulleted-list"><li>第三方的SDK。有时候我们的代码引入了第三方的库，但是又不想被第三方库的漏洞所拖累，就需要对第三方的SDK进行漏洞挖掘。</li></ul><ul id="87de7c01-83ee-4d7e-8868-c1732d87472a" class="bulleted-list"><li>特定平台的二进制程序，如高通、三星等。这些程序通常是不开源的，我们只能对二进制程序进行Fuzz</li></ul><ul id="4a78b57f-feca-4d8c-97d9-ad5321cf54f7" class="bulleted-list"><li>较为复杂的二进制程序。有些程序可能部署起来较为复杂，比如需要模拟器的支持，这是我们只能进行二进制Fuzzing。</li></ul><h2 id="f65bf2a0-d045-4c2b-a5cb-4686ba3d6c3a" class="">Existing Platforms</h2><p id="e09fdefe-8ad6-446d-b5a8-63d2a1ec9d8f" class="">二进制漏洞挖掘的核心还是要获取覆盖率信息，目前主流的方式有三种：</p><h3 id="c91ce616-5113-471d-9ffc-4ae75e923bf7" class="">Hardware-assisted Tracking</h3><p id="6c4a9b4b-e36f-45d4-a502-8126f40f6460" class="">第一种主流的方式是使用硬件辅助的方式。目前一些先进的处理器从硬件的角度实现了跟踪PC的功能，其中典型的代表就是<strong>Intel PT</strong>技术，使用Intel PT技术辅助Fuzzing的典型代表工作是REDQUEEN[7]。使用Intel PT技术的方法包括两个步骤：</p><ol id="b1344e40-8d7f-4270-8c65-e677dd8ef402" class="numbered-list" start="1"><li>在程序运行的过程中捕获覆盖率信息</li></ol><ol id="8a107cf7-b412-4486-a0ac-e84b872949ea" class="numbered-list" start="2"><li>处理捕获到的信息</li></ol><p id="f4732940-e089-4933-8ef4-771544157bdf" class="">虽然使用Intel PT技术可以很方便地获取覆盖率信息，但是这种技术也存在一些缺点：</p><ol id="d47d0fa1-d06c-46be-a02d-d2eb8ff7b551" class="numbered-list" start="1"><li>是需要特殊的硬件支持，并不是一种通用的技术</li></ol><ol id="90ff46e8-f664-4c41-b34e-e001ee0c5203" class="numbered-list" start="2"><li>Intel PT带来的开销在50%左右</li></ol><ol id="7fbdd08a-5f11-43e5-8d15-c61b35c0c316" class="numbered-list" start="3"><li>使用Intel PT技术带来方便的同时也造成了不能对二进制程序进行修改</li></ol><h3 id="8e2ee7f6-9734-4cb6-a519-1d2f0f721828" class="">Dynamic Binary Translators</h3><p id="85a26dd3-31bf-46e5-922e-f82a3bb27c16" class="">第二种主流的技术是动态二进制翻译，在程序的执行过程中收集覆盖率信息。由于原生的二进制程序并没有实现插装，这种方式是在运行的时候进行动态插装，一个代表性的工作就是AFL的QEMU模式，其工作流程如图所示：</p><figure id="008b9101-8f8e-46dd-84f6-18a77a1994d5" class="image"><a href="Untitled%202.png"><img style="width:404px" src="Untitled%202.png"/></a><figcaption>QEMU工作流程</figcaption></figure><p id="51394fa2-c52f-4a72-820b-39cd551ceb71" class="">动态二进制翻译方式的优点有：</p><ol id="9d85bffa-70a3-4043-a055-9271c25cf6d9" class="numbered-list" start="1"><li>支持多种平台。由于这种方式通常利用QEMU等Hypervisor进行动态翻译，所以可以进行跨平台的Fuzzing</li></ol><ol id="aca7273d-3dc7-4b5c-a092-5857067b6362" class="numbered-list" start="2"><li>可以获得更多的信息。</li></ol><p id="378ea5df-4591-466f-be4e-07d589e7bfac" class="">动态二进制翻译的缺点就是开销太大， 平均在<mark class="highlight-red">600%</mark>左右</p><h3 id="e263ca49-efe8-42ce-8b65-3c92899aaf7e" class="">Static Binary Rewriter</h3><p id="32c3a5d4-18cf-45a4-ad60-768aef675e8c" class="">第三种主流技术是静态二进制重写，这种技术在运行二进制程序之前对其进行静态改写，实现插装，一个代表性的工作就是<strong>AFL-Dyninst[8]</strong>。这种方式的缺点也在于Overhead高达<mark class="highlight-red">500%</mark>，同时高度依赖于反汇编的结果。</p><p id="545ff840-1fa5-4c60-b716-80b061e8ce49" class="">这三种主流技术的对比如图所示：</p><figure id="3bc68994-5838-4418-bba0-6007429089b0" class="image"><a href="Untitled%203.png"><img style="width:762px" src="Untitled%203.png"/></a></figure><p id="c06f523d-adc6-4289-914a-ae32ea65f5de" class="">下面我们来讨论一下二进制Fuzzing到底应该怎样实现，是否能提出一些准则。</p><h3 id="956efdc2-cdc6-4bc8-b606-875934f7d514" class="">Rewriting versus Translation</h3><p id="93da883b-7e82-4266-b75e-12f70605af90" class="">首先要讨论的就是采用静态重写的方式还是动态翻译的方式，其对比如下表所示：</p><div id="cba9e8bc-fb39-4146-945e-d2a313fa4aee" class="collection-content"><h4 class="collection-title">动态翻译与静态重写对比</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"></path></svg></span>方式</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>优点</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>缺点</th></tr></thead><tbody><tr id="05e648fc-2a43-42d9-9707-31298cf90621"><td class="cell-title"><a target="_blank" rel="noopener" href="https://www.notion.so/05e648fc2a4342d9970731298cf90621">动态翻译</a></td><td class="cell-r^jG">支持多种架构</td><td class="cell-EP~p">开销较高</td></tr><tr id="bbe34795-88f3-4749-a921-75a477b7ea16"><td class="cell-title"><a target="_blank" rel="noopener" href="https://www.notion.so/bbe3479588f34749a92175a477b7ea16">静态重写</a></td><td class="cell-r^jG">运行时开销较小</td><td class="cell-EP~p">依赖反汇编结果</td></tr></tbody></table></div><p id="75c4acb1-10cb-4032-a45c-2209a16beb54" class=""><strong>结论</strong>：应该采用静态重写方式进行插装</p><h3 id="69c834de-197b-4968-9d8b-080e04e92f8a" class="">Inlining versus Trampolining</h3><p id="823756b2-d9a5-4ddc-b38b-9f08efc485e9" class="">所谓Trampolining的插装方式，是指通过跳到一个payload函数来实现的，但是这种方式的Overhead较高，分别存在于跳到payload和跳回callee的开销。</p><p id="412f88cc-9ea5-4589-b700-1ca714cf9d27" class="">Inlining的插装方式是指直接将插装代码插入到原来的基本块中。</p><p id="a2fe6fe8-51da-4baf-ba75-ce7183712170" class=""><strong>结论</strong>：应该使用inlining的方式进行插装</p><h3 id="097ba3ab-f984-4699-9bba-3fea26843dbf" class="">Real-world Scalability</h3><p id="5ab98144-8d41-4f2b-b0e5-6e962e2e843a" class="">上面两个讨论的是应该采取的技术路线，下面讨论一下如何让二进制Fuzzing更加有效，对于真实世界的程序扩展性更好。</p><p id="b35b3249-65b1-443d-bb68-0b98293ed466" class="">在这一点上动态翻译方式无疑做得更好，更加灵活。</p><p id="f4429dda-1ee0-4717-8d09-c9fb65e7fc23" class="">而静态重写方式的灵活性要差一些，可能存在以下情况不能处理：</p><ol id="46679ee6-caf9-4920-aa18-ea96f20b1534" class="numbered-list" start="1"><li>一些静态重写工具只能处理C语言写的程序</li></ol><ol id="e9d222dd-69b2-4d17-b167-4fa1dae89232" class="numbered-list" start="2"><li>一些静态重写工具只能处理position-independent代码</li></ol><ol id="411d6396-afe6-4797-8901-ecdc780e19ac" class="numbered-list" start="3"><li>一些静态重写工具需要符号表</li></ol><ol id="92c47536-1041-419d-8c85-e960579079e1" class="numbered-list" start="4"><li>一些静态重写工具只能处理Linux兼容的程序</li></ol><p id="74b2ace2-1726-4b7f-bd95-3f825e1994f4" class=""><strong>结论</strong>：需要支持多种二进制文件的格式和平台</p><h1 id="2f1be4aa-0ad2-47b2-995a-f131ab620303" class="">Design</h1><hr id="66e84d17-9db3-4e83-8e86-95f59932d583"/><p id="b947ff14-170b-45cb-8ccf-b439174a4e01" class="">FIBRE的框架如图所示：</p><figure id="b7a05cdc-7b59-478c-aa9c-1c0290b528b4" class="image"><a href="Untitled%204.png"><img style="width:762px" src="Untitled%204.png"/></a></figure><p id="d4db3b2d-5e30-4c93-83c5-cd3df4e3ab85" class="">主要由两部分组成：</p><ol id="c753c775-d46c-4c8a-a0c8-068e1917ceb5" class="numbered-list" start="1"><li>静态重写引擎，负责将二进制程序提升到IR并从IR重新编译到二进制程序</li></ol><ol id="700da58c-d8c5-4557-b775-950c8d67e42e" class="numbered-list" start="2"><li>FIBRE平台，其中包含4个子模块<ol id="58ce86d7-925a-43ae-a0ac-389160f36232" class="numbered-list" start="1"><li>控制流优化模块</li></ol><ol id="6d8079e7-360d-4708-bc90-4ee06c4bbf4d" class="numbered-list" start="2"><li>控制流分析模块</li></ol><ol id="b4124371-0582-4989-9199-90a7ec726135" class="numbered-list" start="3"><li>选择插装点</li></ol><ol id="0b805bca-0490-48d9-a9cd-4af02e13bcc9" class="numbered-list" start="4"><li>应用插装</li></ol></li></ol><h2 id="5858a83c-88fa-4fa8-ae24-867c9d168711" class="">Static Rewriting Engine</h2><p id="121e85e4-7cc5-4766-98a8-db786109a47d" class="">在开始作者的想法是使用<strong>Mcsema[9]</strong>作为提升到IR的工具，但是作者由于Mcsema的开销而放弃了。作者最终选择了<strong>Zipr[10]</strong>这个工具，Zipr基于GCC的IR实现设计了自己的IR，可以达到取得更小的开销。</p><h2 id="f12ed581-5ccb-400e-9bbc-08e4f938ec88" class="">FIBRE</h2><h3 id="f78ee5f9-684b-4b29-b0bf-765373138685" class="">Optimization</h3><p id="5546c7ee-9a12-4624-844e-e98d545a5a40" class="">在提升到IR之后，要做的第一件事情就是优化控制流。具体来说有三个步骤：</p><ol id="d9c7df71-6cb5-4993-b19d-7c024cca8038" class="numbered-list" start="1"><li>给定一个提前定义好的优化标准</li></ol><ol id="28901c11-c8ec-4d0d-9cef-2089b8ea9af2" class="numbered-list" start="2"><li>扫描目标二进制的CFG</li></ol><ol id="8df25a90-87f4-48f3-a36e-d61da628d2ce" class="numbered-list" start="3"><li>应用IR级别的变换</li></ol><p id="05d8f77d-2864-4d14-b397-8eac44101868" class="">在这一阶段，我们可以应用的技术就是Sub-instruction Profiling</p><h3 id="8d963a4e-ae09-403b-9aee-a377401b54de" class="">Analysis</h3><p id="7890828b-ed9f-424a-814a-1572dc39f1f8" class="">第二阶段是对CFG进行详细分析，在这一阶段中会计算一些与CFG相关的元数据，比如前驱-后继和支配关系</p><h3 id="8dc93b07-a748-459e-a97c-02e6923b2c59" class="">Point Selection</h3><p id="ac7f1096-70ce-4d42-b3f5-0e59bd90f261" class="">第三阶段是选择插装点。在这一阶段中，会遍历所有的基本块选择插装点，有两种基本块例外：</p><ol id="abe1479e-6471-4fde-835d-4f36e61a9296" class="numbered-list" start="1"><li>只有单个后继基本块的基本块</li></ol><ol id="a24bf23a-d2b8-49c1-a285-052bfbd86965" class="numbered-list" start="2"><li>支配树的叶子节点</li></ol><h3 id="54677c8c-b3b3-406a-b2fa-9fbc484269c1" class="">Application</h3><p id="d4540675-f948-44b7-b5d2-ecc2fb898888" class="">在这一阶段中，会实际进行插装操作，在这一阶段中可以实现上下文敏感的插装技术</p><h1 id="f791e925-179b-46a4-9e38-6457f8b88af2" class="">Evaluation</h1><p id="1e453b35-0515-434e-a8c2-4ec41f43df1e" class="">在评估FIBRE的有效性时，需要回答三个问题：</p><ol id="8ac037a4-a6c3-4289-89af-0fe42a1dac46" class="numbered-list" start="1"><li>FIBRE是否在应用编译器级别的插装后仍然保持了性能？</li></ol><ol id="a4813543-330b-469c-888a-ea84776ec500" class="numbered-list" start="2"><li>FIBRE应用新的插装技术后是否提升了二进制Fuzzing的效率？</li></ol><ol id="19ca6a73-37a2-48f6-bc65-5a18b03f5ded" class="numbered-list" start="3"><li>FIBRE是否支持现实程序的Fuzzing？</li></ol><p id="9194f630-8ca4-4f8b-baf4-86b2dfc6db1a" class="">作者做了实验分别对这几个问题进行了回答</p><h2 id="80f6429d-a220-40ea-a984-ad7e0db0d440" class="">Evaluation-wide Instrumenter Setup</h2><p id="9f21d7ee-220e-4fba-8a4c-5786df5c26d6" class="">首先我们来看一下实验的设置。</p><p id="062f7944-59c3-4da7-89a2-d41786cdf494" class="">作者进行实验的目标是与目前state-of-the-art的二进制Fuzzing工具进行比较，由于Overhead的原因放弃了AFL-PIN和AFL-DynamoRIO，由于Intel PT不支持插装也没有与它进行比较。最后作者选定的实验目标是AFL-Dyninist和AFL-QEMU</p><h2 id="77b53f4d-f0d7-4ac5-b64e-36c9374f6a6d" class="">LAVA-M Benchmarking</h2><p id="0bbd70d8-6ede-437c-9fdd-5c11460d14a2" class="">首先作者在LAVA-M数据集上进行了实验。</p><p id="6141e684-ab18-41ff-b13d-4af832fc4d9c" class="">选定了四种配置，分别是带字典的空种子、带字典的默认种子、不带字典的空种子和不带字典的默认种子。对于每种配置，作者进行了5次实验，每次实验5个小时，实验结果如图所示。</p><figure id="99a87b58-cc0e-4fba-a523-bbdef226b010" class="image"><a href="Untitled%205.png"><img style="width:438px" src="Untitled%205.png"/></a></figure><h2 id="6ae9c013-2f84-40e0-bb65-371ca7e59939" class="">Fuzzing Real-world Software</h2><p id="007f4dae-7106-4bc0-a1ef-ec6fa072ae37" class="">第二组对比实验作者选取了真实世界的程序，将每次实验的时间扩展到了24小时，实验结果如图所示：</p><figure id="7f2cf850-d08a-483a-b509-a3b61a3f519f" class="image"><a href="Untitled%206.png"><img style="width:678px" src="Untitled%206.png"/></a></figure><h2 id="586f7867-c719-4e16-901d-31018ae5d8fb" class="">Real-world Coverage-tracing Overhead</h2><p id="9a40e61f-fc11-4d70-b15a-f15f4ca6fa3e" class="">下面作者比较了跟踪覆盖率的开销：</p><figure id="ba7e3755-4fd2-45dc-8da3-76f269e8ca20" class="image"><a href="Untitled%207.png"><img style="width:526px" src="Untitled%207.png"/></a></figure><h2 id="669c40ec-88d4-4013-9aed-0bed03bd8e6f" class="">Fuzzing Closed-source Binaries</h2><p id="0aa6db8f-dedd-49c9-b198-e45907d1741e" class="">作者找了一些真实世界的程序进行Fuzz</p><figure id="e7c69cec-f291-4fec-8c8e-b663ed60187d" class="image"><a href="Untitled%208.png"><img style="width:702px" src="Untitled%208.png"/></a></figure><h1 id="7b50a286-bbd8-4976-991c-46677096cb7a" class="">Conclusion</h1><p id="f4693826-bbb9-41ef-9953-fdcc83d27b19" class="">这篇文章将基于源码的编译器级别的插装扩展到了二进制程序的Fuzzing中，取得了良好的效果。</p><h1 id="c5c52097-2692-4b04-abf8-f59d95c9f2ce" class="">References</h1><ol id="9e38f637-71d3-4c53-9953-9efd94cac71b" class="numbered-list" start="1"><li>https://lcamtuf.coredump.cx/afl/</li></ol><ol id="38b18e66-8940-438a-91a5-f560f0ae8c74" class="numbered-list" start="2"><li>Fioraldi A, Maier D, Eißfeldt H, et al. AFL++: Combining incremental steps of fuzzing research[C]//14th {USENIX} Workshop on Offensive Technologies ({WOOT} 20). 2020.</li></ol><ol id="12046b00-54da-4800-a284-c177ff9110f0" class="numbered-list" start="3"><li>https://llvm.org/docs/LibFuzzer.html</li></ol><ol id="e1d0fe95-54db-43eb-9fbf-3852a98c6c9e" class="numbered-list" start="4"><li>https://github.com/google/honggfuzz</li></ol><ol id="8b6b7301-1c37-4c79-9b93-224129eb3547" class="numbered-list" start="5"><li>Gan S, Zhang C, Qin X, et al. Collafl: Path sensitive fuzzing[C]//2018 IEEE Symposium on Security and Privacy (SP). IEEE, 2018: 679-696.</li></ol><ol id="016bb0be-9c80-4bb2-9bbb-30aebf1ffa46" class="numbered-list" start="6"><li>Circumventing Fuzzing Roadblocks with Compiler Transformations.</li></ol><ol id="5f3cc0ea-0d17-477a-b18c-0684b84bd4f8" class="numbered-list" start="7"><li>Aschermann C, Schumilo S, Blazytko T, et al. REDQUEEN: Fuzzing with Input-to-State Correspondence[C]//NDSS. 2019, 19: 1-15.</li></ol><ol id="c4c6ed26-5622-48f9-90d4-ce9224314acd" class="numbered-list" start="8"><li><a target="_blank" rel="noopener" href="https://github.com/talos-vulndev/afl-dyninst">https://github.com/talos-vulndev/afl-dyninst</a></li></ol><ol id="00cd9fef-ff06-4c48-9f83-6c087015e96e" class="numbered-list" start="9"><li>Dinaburg A, Ruef A. Mcsema: Static translation of x86 instructions to llvm[C]//ReCon 2014 Conference, Montreal, Canada. 2014.</li></ol><ol id="5c0f2e5e-13d5-4bb4-a5e3-1d221bde1ca3" class="numbered-list" start="10"><li>Hawkins W H, Hiser J D, Co M, et al. Zipr: Efficient static binary rewriting for security[C]//2017 47th Annual IEEE/IFIP International Conference on Dependable Systems and Networks (DSN). IEEE, 2017: 559-566.</li></ol><p id="3bd2e8dc-d7e1-490c-a695-a8e37a4dff75" class="">
+</p></div></article></body></html>
+
+      
     </div>
 
-<!-- After Footer -->
-<!-- Disqus Comments -->
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/25/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ForeverMZY">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/25/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-03-25 02:46:42" itemprop="dateCreated datePublished" datetime="2021-03-25T02:46:42+00:00">2021-03-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-10-24 08:34:47" itemprop="dateModified" datetime="2019-10-24T08:34:47+00:00">2019-10-24</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/deployment.html">Deployment</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/01/add-a-hypercall/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ForeverMZY">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/01/add-a-hypercall/" class="post-title-link" itemprop="url">add a hypercall</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-09-01 09:42:37 / Modified: 07:50:30" itemprop="dateCreated datePublished" datetime="2020-09-01T09:42:37+00:00">2020-09-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Experience/" itemprop="url" rel="index"><span itemprop="name">Experience</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ol>
+<li><p>(guest)在kernel/sys.c的syscall中添加hypercall</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">SYSCALL_DEFINE1(interrupt, <span class="keyword">char</span> __user *, ptr)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">char</span> *kbuf;</span><br><span class="line"></span><br><span class="line">  kbuf = kzalloc(<span class="number">256</span>, GFP_KERNEL);</span><br><span class="line">  <span class="keyword">if</span>(copy_from_user(kbuf, ptr, <span class="keyword">sizeof</span>(<span class="keyword">char</span>) * <span class="number">128</span>)) &#123;</span><br><span class="line">    printk(<span class="string">&quot;copy error.\n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  printk(<span class="string">&quot;syscall : %s\n&quot;</span>, kbuf);</span><br><span class="line"></span><br><span class="line">  kvm_hypercall1(KVM_HC_INTERRUPT, (<span class="keyword">unsigned</span> <span class="keyword">long</span>)kbuf);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>(guest &amp; host)在include/uapi/linux/kvm_para.h中添加hypercall编号</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KVM_HC_INTERRUPT    12</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>(host)在arch/x86/kvm/x86.c中添加处理程序</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> KVM_HC_INTERRUPT:</span><br><span class="line">	vcpu-&gt;run-&gt;exit_reason = KVM_EXIT_INTERRUPT;</span><br><span class="line">	vcpu-&gt;run-&gt;hypercall.args[<span class="number">0</span>] = a0;</span><br><span class="line">	printk(<span class="string">&quot;kvm : %lu\n&quot;</span>, a0);</span><br><span class="line">	kvm_skip_emulated_instruction(vcpu);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>(qemu)在linux-headers/linux/kvm.h中添加hypercall编号</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KVM_EXIT_INTERRUPT			29</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>(qemu)在accel/kvm/kvm-all.c的kvm_cpu_exec函数中添加处理程序</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> KVM_EXIT_INTERRUPT:</span><br><span class="line">    <span class="comment">//qemu_log(&quot;qemu kvm %lu.\n&quot;, run-&gt;hypercall.args[0]);</span></span><br><span class="line">    read_virtual_memory(run-&gt;hypercall.args[<span class="number">0</span>], data, x86_64_PAGE_SIZE, cpu);</span><br><span class="line">    qemu_log(<span class="string">&quot;qemu kvm %s\n&quot;</span>, data);</span><br><span class="line">    ret = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">break</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> x86_64_PAGE_SIZE    	0x1000</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> x86_64_PAGE_MASK   		~(x86_64_PAGE_SIZE - 1)</span></span><br><span class="line"><span class="keyword">uint8_t</span> data[<span class="number">0x1000</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">read_virtual_memory</span><span class="params">(<span class="keyword">uint64_t</span> address, <span class="keyword">uint8_t</span>* data, <span class="keyword">uint32_t</span> size, CPUState *cpu)</span></span>&#123;</span><br><span class="line">    <span class="keyword">uint8_t</span> tmp_buf[x86_64_PAGE_SIZE];</span><br><span class="line">    MemTxAttrs attrs;</span><br><span class="line">    hwaddr phys_addr;</span><br><span class="line">    <span class="keyword">int</span> asidx;</span><br><span class="line"></span><br><span class="line">  	<span class="keyword">uint64_t</span> amount_copied = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//cpu_synchronize_state(cpu);</span></span><br><span class="line">    kvm_cpu_synchronize_state(cpu);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* copy per page */</span></span><br><span class="line">    <span class="keyword">while</span>(amount_copied &lt; size)&#123;</span><br><span class="line">      	<span class="keyword">uint64_t</span> len_to_copy = (size - amount_copied);</span><br><span class="line">        <span class="keyword">if</span>(len_to_copy &gt; x86_64_PAGE_SIZE)</span><br><span class="line">            len_to_copy = x86_64_PAGE_SIZE;</span><br><span class="line">        asidx = cpu_asidx_from_attrs(cpu, MEMTXATTRS_UNSPECIFIED);</span><br><span class="line">        attrs = MEMTXATTRS_UNSPECIFIED;</span><br><span class="line">        phys_addr = cpu_get_phys_page_attrs_debug(cpu, (address &amp; x86_64_PAGE_MASK), &amp;attrs);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (phys_addr == <span class="number">-1</span>)&#123;</span><br><span class="line">            <span class="keyword">uint64_t</span> next_page = (address &amp; x86_64_PAGE_MASK) + x86_64_PAGE_SIZE;</span><br><span class="line">            <span class="keyword">uint64_t</span> len_skipped =next_page-address;  </span><br><span class="line">            <span class="keyword">if</span>(len_skipped &gt; size-amount_copied)&#123;</span><br><span class="line">                len_skipped = size-amount_copied;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="built_in">memset</span>( data+amount_copied, <span class="string">&#x27; &#x27;</span>,  len_skipped);</span><br><span class="line">            address += len_skipped;</span><br><span class="line">            amount_copied += len_skipped;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        phys_addr += (address &amp; ~x86_64_PAGE_MASK);</span><br><span class="line">        <span class="keyword">uint64_t</span> remaining_on_page = x86_64_PAGE_SIZE - (address &amp; ~x86_64_PAGE_MASK);</span><br><span class="line">        <span class="keyword">if</span>(len_to_copy &gt; remaining_on_page)&#123;</span><br><span class="line">            len_to_copy = remaining_on_page;</span><br><span class="line">        &#125;</span><br><span class="line">        MemTxResult txt = address_space_rw(cpu_get_address_space(cpu, asidx), phys_addr, MEMTXATTRS_UNSPECIFIED, tmp_buf, len_to_copy, <span class="number">0</span>);</span><br><span class="line">        <span class="built_in">memcpy</span>(data+amount_copied, tmp_buf, len_to_copy);</span><br><span class="line"></span><br><span class="line">        address += len_to_copy;</span><br><span class="line">        amount_copied += len_to_copy;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
+
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/26/add-a-syscall/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ForeverMZY">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/26/add-a-syscall/" class="post-title-link" itemprop="url">add a syscall</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-08-26 14:29:02 / Modified: 07:58:41" itemprop="dateCreated datePublished" datetime="2020-08-26T14:29:02+00:00">2020-08-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Experience/" itemprop="url" rel="index"><span itemprop="name">Experience</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ol>
+<li><p>在include/linux/syscalls.h中添加系统调用声明</p>
+<p><code>asmlinkage long sys_interrupt(void);</code></p>
+<p>or</p>
+<p><code>asmlinkage long sys_interrupt(char __user *ptr);</code></p>
+</li>
+<li><p>在kernel/sys.c中添加系统调用定义</p>
+<p><code>SYSCALL_DEFINE0(interrupt)</code></p>
+<p><code>&#123;</code></p>
+<pre><code>`printk(&quot;Hello world!\n&quot;);`
+
+`return 0;`</code></pre><p><code>&#125;</code></p>
+<p>or</p>
+<p><code>SYSCALL_DEFINE1(interrupt, char __user *, ptr)</code></p>
+<p><code>&#123;</code></p>
+<p>​    <code>char kbuf[256];</code></p>
+</li>
+</ol>
+<p>   ​    <code>if(copy_from_user(kbuf, ptr, sizeof(char) * 128)) &#123;</code></p>
+<p>   ​        <code>printk(&quot;copy error.\n&quot;);</code></p>
+<p>   ​        <code>return -1;</code></p>
+<p>   ​    <code>&#125;</code></p>
+<p>   ​    <code>printk(&quot;str : %s\n&quot;, kbuf);</code></p>
+<p>   ​    <code>return 0;</code></p>
+<p>   <code>&#125;</code></p>
+<ol start="3">
+<li><p>在arch/x86/entry/syscalls/syscall_64.tbl中添加系统调用项</p>
+<p><code>439 common  interrupt       sys_interrupt</code></p>
+</li>
+<li><p>在include/uapi/asm-generic/unistd.h中添加关联</p>
+<p><code>#define _NR_interrupt 439</code></p>
+<p><code>__SYSCALL(_NR_interrupt, sys_interrupt)</code></p>
+<p>注意syscall总数也需要修改</p>
+</li>
+<li><p>重新编译内核</p>
+<p><code>make -j8</code></p>
+</li>
+<li><p>编写测试函数并编译</p>
+<p><code>#include &lt;linux/unistd.h&gt;</code></p>
+<p><code>#include &lt;sys/syscall.h&gt;</code></p>
+<p><code>#include &lt;stdio.h&gt;</code></p>
+<p><code></code></p>
+<p><code>int main(void)</code></p>
+<p><code>&#123;</code></p>
+<pre><code>`long ret = syscall(439);`
+
+`printf(&quot;%s %d ret = %ld\n&quot;, __func__, __LINE__, ret);`</code></pre><p>​      <code>return 0;</code></p>
+<p><code>&#125;</code></p>
+<p>or</p>
+<p><code>\#include &lt;linux/unistd.h&gt;</code></p>
+<p><code>\#include &lt;sys/syscall.h&gt;</code></p>
+<p><code>\#include &lt;stdio.h&gt;</code></p>
+<p>`` </p>
+<p><code>int main(void)</code></p>
+<p><code>&#123;</code></p>
+<p>​    <code>char buf[256] = &quot;ffffffff&quot;;</code></p>
+<p>​    <code>char *ptr = buf;</code></p>
+</li>
+</ol>
+<p>   ​    <code>long ret = syscall(439, ptr);</code></p>
+<p>   ​    <code>printf(&quot;%s %d ret = %ld\n&quot;, __func__, __LINE__, ret);</code></p>
+<p>   ​    <code>return 0;</code></p>
+<p>   <code>&#125;</code></p>
+<ol start="7">
+<li><p>进行测试</p>
+<p><code>[  243.502496] Hello world!</code><br><code>main 8 ret = 32768</code></p>
+<p>or</p>
+<p><code>[  118.318246] str : ffffffff</code><br><code>main 11 ret = 0</code></p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/05/Build-pixel-for-goldfish/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ForeverMZY">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/05/Build-pixel-for-goldfish/" class="post-title-link" itemprop="url">Build pixel for goldfish</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-03-05 10:07:06 / Modified: 02:07:22" itemprop="dateCreated datePublished" datetime="2020-03-05T10:07:06+00:00">2020-03-05</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>下载pixel的源码。</p>
+<pre><code>repo init -u https://android.googlesource.com/kernel/manifest -b android-msm-crosshatch-4.9-pie-qpr2
+repo sync</code></pre><p>修改build.config文件，将config改为build.config.goldfish.arm64.</p>
+<p>再修改build.config.goldfish.arm64文件，将KERNEL_DIR改为private/msm-google</p>
+<p>在根目录下执行build.build.sh开始编译，出现的错误如下：</p>
+<p>1.执行savedefconfig时出现两个config不一致</p>
+<p>~~这个命令是最小化配置使用的，将最小化后的配置替换就可以了。</p>
+<p>注意自己执行的时候要加上arch，比如make ARCH=arm64 savedefconfig~~</p>
+<p>根据make savedefconfig结果来向ranchu64_defconfig中添加条目，不能删减，有时需手动添加。</p>
+<p>2.编译出错</p>
+<pre><code>arch/arm64/kernel/cpu_errata.c: In function &apos;arm64_update_smccc_conduit&apos;:
+arch/arm64/kernel/cpu_errata.c:278:10: error: &apos;psci_ops&apos; undeclared (first use in this function); did you mean &apos;sysfs_ops&apos;?
+
+arch/arm64/kernel/cpu_errata.c: In function &apos;arm64_set_ssbd_mitigation&apos;:
+arch/arm64/kernel/cpu_errata.c:311:3: error: implicit declaration of function &apos;arm_smccc_1_1_hvc&apos; [-Werror=implicit-function-declaration]
+   arm_smccc_1_1_hvc(ARM_SMCCC_ARCH_WORKAROUND_2, state, NULL);</code></pre><p>打补丁加入头文件</p>
+<pre><code>diff --git a/arch/arm64/kernel/cpu_errata.c b/arch/arm64/kernel/cpu_errata.c
+index 2b9a31a6a16a..1d2b6d768efe 100644
+--- a/arch/arm64/kernel/cpu_errata.c
++++ b/arch/arm64/kernel/cpu_errata.c
+@@ -16,6 +16,8 @@ 
+  * along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+  */
+
++#include &lt;linux/arm-smccc.h&gt;
++#include &lt;linux/psci.h&gt;
+ #include &lt;linux/types.h&gt;
+ #include &lt;asm/cpu.h&gt;
+ #include &lt;asm/cputype.h&gt;</code></pre><p>3.driver/platform/goldfish中goldfish_pipe出错</p>
+<p>找到新版源码替换</p>
+<p>4.driver/platform/goldfish中编译goldfish_pipe出现warning: the frame size of xxxx bytes is larger than 2048 bytes</p>
+<p>编译内核的堆栈出错，在config中加入</p>
+<pre><code>CONFIG_FRAME_WARN=4096</code></pre><p>5.编译错误，找不到命令mkdtimg</p>
+<p>在aosp目录下执行</p>
+<pre><code>mmm system/libufdt/util/src</code></pre><p>编译后的工具在out/host/linux-x86/bin/中，加入到环境变量中即可</p>
+<p>6.找不到dtbo文件</p>
+<p>在Makefile中删除dtbo目标即可</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/05/The-content-of-Linux-Driver/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ForeverMZY">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/05/The-content-of-Linux-Driver/" class="post-title-link" itemprop="url">The content of Linux Driver</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-03-05 10:06:13 / Modified: 02:06:47" itemprop="dateCreated datePublished" datetime="2020-03-05T10:06:13+00:00">2020-03-05</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="http://https://www.cnblogs.com/sky-heaven/p/6972669.html" title="参考">参考</a></p>
+<p>accessibility - 这些驱动提供支持一些辅助设备。在Linux 3.9.4中，这个文件夹中只有一个驱动就是盲文设备驱动。</p>
+<p>acpi - 高级配置和电源接口（ACPI : Advanced Configuration and Power Interface）驱动用来管理电源使用。</p>
+<p>amba - 高级微控制器总线架构（AMBA : Advanced Microcontroller Bus Architecture）是与片上系统（SoC）的管理和互连的协议。SoC是一块包含许多或所有必要的计算机组件的芯片。这里的AMBA驱动让内核能够运行在这上面。</p>
+<p>ata - 该目录包含PATA和SATA设备的驱动程序。串行ATA（SATA）是一种连接主机总线适配器到像硬盘那样的存储器的计算机总线接口。并行ATA（PATA）用于连接存储设备，如硬盘驱动器，软盘驱动器，光盘驱动器的标准。PATA就是我们所说的IDE。</p>
+<p>atm - 异步通信模式(ATM : Asynchronous Transfer Mode)是一种通信标准。这里有各种接到PCI桥的驱动(他们连接到PCI总线)和以太网控制器(控制以太网通信的集成电路芯片)。</p>
+<p>auxdisplay - 这个文件夹提供了三个驱动。LCD 帧缓存（framebuffer）驱动、LCD控制器驱动和一个LCD驱动。这些驱动用于管理液晶显示器 —— 液晶显示器会在按压时显示波纹。注意:按压会损害屏幕,所以请不要用力戳LCD显示屏。</p>
+<p>base - 这是个重要的目录包含了固件、系统总线、虚拟化能力等基本的驱动。</p>
+<p>bcma - 这些驱动用于使用基于AMBA协议的总线。AMBA是由博通公司开发。</p>
+<p>block - 这些驱动提供对块设备的支持，像软驱、SCSI磁带、TCP网络块设备等等。</p>
+<p>bluetooth - 蓝牙是一种安全的无线个人区域网络标准(PANs)。蓝牙驱动就在这个文件夹，它允许系统使用各种蓝牙设备。例如，一个蓝牙鼠标不用电缆，并且计算机有一个电子狗(小型USB接收器)。Linux系统必须能够知道进入电子狗的信号，否则蓝牙设备无法工作。</p>
+<p>bus - 这个目录包含了三个驱动。一个转换ocp接口协议到scp协议。一个是设备间的互联驱动，第三个是用于处理互联中的错误处理。</p>
+<p>cdrom - 这个目录包含两个驱动。一个是cd-rom，包括DVD和CD的读写。第二个是gd-rom(只读GB光盘)，GD光盘是1.2GB容量的光盘，这像一个更大的CD或者更小的DVD。GD通常用于世嘉游戏机中。<br>char - 字符设备驱动就在这里。字符设备每次传输数据传输一个字符。这个文件夹里的驱动包括打印机、PS3闪存驱动、东芝SMM驱动和随机数发生器驱动等。</p>
+<p>clk - 这些驱动用于系统时钟。</p>
+<p>clocksource - 这些驱动用于作为定时器的时钟。</p>
+<p>connector - 这些驱动使内核知道当进程fork并使用proc连接器更改UID(用户ID)、GID(组ID)和SID(会话ID)。内核需要知道什么时候进程fork(CPU中运行多个任务)并执行。否则,内核可能会低效管理资源。</p>
+<p>cpufreq - 这些驱动改变CPU的电源能耗。<br>cpuidle - 这些驱动用来管理空闲的CPU。一些系统使用多个CPU，其中一个驱动可以让这些CPU负载相当。<br>crypto - 这些驱动提供加密功能。</p>
+<p>dca - 直接缓存访问（DCA ： Direct Cache Access）驱动允许内核访问CPU缓存。CPU缓存就像CPU内置的RAM。CPU缓存的速度比RAM更快。然而,CPU缓存的容量比RAM小得多。CPU在这个缓存系统上存储了最重要的和执行的代码。</p>
+<p>devfreq - 这个驱动程序提供了一个通用的动态电压和频率调整(DVFS ： Generic Dynamic Voltage and Frequency Scaling)框架，可以根据需要改变CPU频率来节约能源。这就是所谓的CPU节能。</p>
+<p>dio - 数字输入/输出（DIO ：Digital Input/Output）总线驱动允许内核可以使用DIO总线。</p>
+<p>dma - 直接内存访问(DMA)驱动允许设备无需CPU直接访问内存。这减少了CPU的负载。</p>
+<p>edac - 错误检测和校正（ Error Detection And Correction）驱动帮助减少和纠正错误。</p>
+<p>eisa - 扩展工业标准结构总线（Extended Industry Standard Architecture）驱动提供内核对EISA总线的支持。</p>
+<p>extcon - 外部连接器（EXTernal CONnectors）驱动用于检测设备插入时的变化。例如，extcon会检测用户是否插入了USB驱动器。</p>
+<p>esoc-嵌入式只能平台</p>
+<p>extcon-用户空间可以监视外部连接器如USB和AC口</p>
+<p>firewire - 这些驱动用于控制苹果制造的类似于USB的火线设备。</p>
+<p>firmware - 这些驱动用于和像BIOS(计算机的基本输入输出系统固件)这样的设备的固件通信。BIOS用于启动操作系统和控制硬件与设备的固件。一些BIOS允许用户超频CPU。超频是使CPU运行在一个更快的速度。CPU速度以MHz(百万赫兹)或GHz衡量。一个3.7 GHz的CPU的的速度明显快于一个700Mhz的处理器。</p>
+<p>gpio - 通用输入/输出(GPIO ：General Purpose Input/Output)是可由用户控制行为的芯片的管脚。这里的驱动就是控制GPIO。</p>
+<p>gpu - 这些驱动控制VGA、GPU和直接渲染管理(DRM ：Direct Rendering Manager )。VGA是640*480的模拟计算机显示器或是简化的分辨率标准。GPU是图形处理器。DRM是一个Unix渲染系统。<br>hid - 这驱动用于对USB人机界面设备的支持。</p>
+<p>hsi - 这个驱动用于内核访问像Nokia N900这样的蜂窝式调制解调器。</p>
+<p>hv - 这个驱动用于提供Linux中的键值对(KVP ：Key Value Pair)功能。</p>
+<p>hwmon - 硬件监控驱动用于内核读取硬件传感器上的信息。比如，CPU上有个温度传感器。那么内核就可以追踪温度的变化并相应地调节风扇的速度。</p>
+<p>hwspinlock - 硬件转锁驱动允许系统同时使用两个或者更多的处理器，或使用一个处理器上的两个或更多的核心。</p>
+<p>i2c - I2C驱动可以使计算机用I2C协议处理主板上的低速外设。系统管理总线(SMBus ：System Management Bus)驱动管理SMBus,这是一种用于轻量级通信的two-wire总线。</p>
+<p>ide - 这些驱动用来处理像CDROM和硬盘这些PATA/IDE设备。</p>
+<p>idle - 这个驱动用来管理Intel处理器的空闲功能。</p>
+<p>iio - 工业I/O核心驱动程序用来处理数模转换器或模数转换器。</p>
+<p>infiniband - Infiniband是在企业数据中心和一些超级计算机中使用的一种高性能的端口。这个目录中的驱动用来支持Infiniband硬件。</p>
+<p>input - 这里包含了很多驱动，这些驱动都用于输入处理，包括游戏杆、鼠标、键盘、游戏端口（旧式的游戏杆接口）、遥控器、触控、耳麦按钮和许多其他的驱动。如今的操纵杆使用USB端口，但是在上世纪80、90年代，操纵杆是插在游戏端口的。</p>
+<p>iommu - 输入/输出内存管理单元(IOMMU ：Input/Output Memory Management Unit)驱动用来管理内存管理单元中的IOMMU。IOMMU连接DMA IO总线到内存上。IOMMU是设备在没有CPU帮助下直接访问内存的桥梁。这有助于减少处理器的负载。</p>
+<p>ipack - Ipack代表的是IndustryPack。 这个驱动是一个虚拟总线,允许在载体和夹板之间操作。<br>irqchip - 这些驱动程序允许硬件的中断请求(IRQ)发送到处理器，暂时挂起一个正在运行的程序而去运行一个特殊的程序（称为一个中断处理程序）。</p>
+<p>isdn - 这些驱动用于支持综合业务数字网(ISDN)，这是用于同步数字传输语音、视频、数据和其他网络服务使用传统电话网络的电路的通信标准。</p>
+<p>leds - 用于LED的驱动。</p>
+<p>lguest - lguest用于管理客户机系统的中断。中断是CPU被重要任务打断的硬件或软件信号。CPU接着给硬件或软件一些处理资源。</p>
+<p>macintosh - 苹果设备的驱动在这个文件夹里。</p>
+<p>mailbox - 这个文件夹(pl320-pci)中的驱动用于管理邮箱系统的连接。</p>
+<p>md - 多设备驱动用于支持磁盘阵列，一种多块硬盘间共享或复制数据的系统。</p>
+<p>media - 媒体驱动提供了对收音机、调谐器、视频捕捉卡、DVB标准的数字电视等等的支持。驱动还提供了对不同通过USB或火线端口插入的多媒体设备的支持。</p>
+<p>memory - 支持内存的重要驱动。</p>
+<p>memstick - 这个驱动用于支持Sony记忆棒。</p>
+<p>message - 这些驱动用于运行LSI Fusion MPT(一种消息传递技术)固件的LSI PCI芯片/适配器。LSI大规模集成，这代表每片芯片上集成了几万晶体管、</p>
+<p>mfd - 多用途设备(MFD)驱动提供了对可以提供诸如电子邮件、传真、复印机、扫描仪、打印机功能的多用途设备的支持。这里的驱动还给MFD设备提供了一个通用多媒体通信端口(MCP)层。</p>
+<p>misc - 这个目录包含了不适合在其他目录的各种驱动。就像光线传感器驱动。</p>
+<p>mmc - MMC卡驱动用于处理用于MMC标准的闪存卡。</p>
+<p>mtd - 内存技术设备(MTD ：Memory technology devices)驱动程序用于Linux和闪存的交互，这就就像一层闪存转换层。其他块设备和字符设备的驱动程序不会以闪存设备的操作方式来做映射。尽管USB记忆卡和SD卡是闪存设备，但它们不使用这个驱动，因为他们隐藏在系统的块设备接口后。这个驱动用于新型闪存设备的通用闪存驱动器驱动。</p>
+<p>net - 网络驱动提供像AppleTalk、TCP和其他的网络协议。这些驱动也提供对调制解调器、USB 2.0的网络设备、和射频设备的支持。</p>
+<p>nfc - 这个驱动是德州仪器的共享传输层之间的接口和NCI核心。</p>
+<p>ntb - 不透明的桥接驱动提供了在PCIe系统的不透明桥接。PCIe是一种高速扩展总线标准。</p>
+<p>nubus - NuBus是一种32位并行计算总线。用于支持苹果设备。</p>
+<p>of - 此驱动程序提供设备树中创建、访问和解释程序的OF助手。设备树是一种数据结构，用于描述硬件。</p>
+<p>oprofile - 这个驱动用于从驱动到用户空间进程(运行在用户态下的应用)评测整个系统。这帮助开发人员找到性能问题</p>
+<p>parisc - 这些驱动用于HP生产的PA-RISC架构设备。PA-RISC是一种特殊指令集的处理器。</p>
+<p>parport - 并口驱动提供了Linux下的并口支持。</p>
+<p>pci - 这些驱动提供了PCI总线服务。</p>
+<p>pcmcia - 这些是笔记本的pc卡驱动</p>
+<p>pinctrl - 这些驱动用来处理引脚控制设备。引脚控制器可以禁用或启用I/O设备。</p>
+<p>platform -这个文件夹包含了不同的计算机平台的驱动像Acer、Dell、Toshiba、IBM、Intel、Chrombooks等等。</p>
+<p>pnp - 即插即用驱动允许用户在插入一个像USB的设备后可以立即使用而不必手动配置设备。</p>
+<p>power - 电源驱动使内核可以测量电池电量，检测充电器和进行电源管理。</p>
+<p>pps - Pulse-Per-Second驱动用来控制电流脉冲速率。这用于计时。</p>
+<p>ps3 - 这是Sony的游戏控制台驱动- PlayStation3。</p>
+<p>ptp - 图片传输协议(PTP)驱动支持一种从数码相机中传输图片的协议。</p>
+<p>pwm - 脉宽调制(PWM)驱动用于控制设备的电流脉冲。主要用于控制像CPU风扇。</p>
+<p>rapidio - RapidIO驱动用于管理RapidIO架构，它是一种高性能分组交换，用于电路板上交互芯片的交互技术，也用于互相使用底板的电路板。</p>
+<p>regulator - 校准驱动用于校准电流、温度、或其他可能系统存在的校准硬件。</p>
+<p>remoteproc - 这些驱动用来管理远程处理器。</p>
+<p>rpmsg - 这个驱动用来控制支持大量驱动的远程处理器通讯总线(rpmsg)。这些总线提供消息传递设施,促进客户端驱动程序编写自己的连接协议消息。</p>
+<p>rtc - 实时时钟(RTC)驱动使内核可以读取时钟。</p>
+<p>s390 - 用于31/32位的大型机架构的驱动。</p>
+<p>sbus - 用于管理基于SPARC的总线驱动。</p>
+<p>scsi - 允许内核使用SCSI标准外围设备。例如,Linux将在与SCSI硬件传输数据时使用SCSI驱动。<br>sfi -简单固件接口(SFI)驱动允许固件发送信息表给操作系统。这些表的数据称为SFI表。</p>
+<p>sh - 该驱动用于支持SuperHway总线。</p>
+<p>sn - 该驱动用于支持IOC3串口。</p>
+<p>spi - 这些驱动处理串行设备接口总线(SPI)，它是一个在在全双工下运行的同步串行数据链路标准,。全双工是指两个设备可以同一时间同时发送和接收信息。双工指的是双向通信。设备在主/从模式下通信(取决于设备配置)。</p>
+<p>ssb - ssb(Sonics Silicon Backplane)驱动提供对在不同博通芯片和嵌入式设备上使用的迷你总线的支持。</p>
+<p>staging - 该目录含有许多子目录。这里所有的驱动还需要在加入主内核前经过更多的开发工作。</p>
+<p>target - SCSI设备驱动</p>
+<p>tc - 这些驱动用于TURBOchannel，TURBOchannel是数字设备公司开发的32位开放总线。这主要用于DEC工作站。</p>
+<p>thermal - thermal驱动使CPU保持较低温度。</p>
+<p>tty - tty驱动用于管理物理终端连接。</p>
+<p>uio - 该驱动允许用户编译运行在用户空间而不是内核空间的驱动。这使用户驱动不会导致内核崩溃。</p>
+<p>usb - USB设备允许内核使用USB端口。闪存驱动和记忆卡已经包含了固件和控制器,所以这些驱动程序允许内核使用USB接口和与USB设备。</p>
+<p>uwb - Ultra-WideBand驱动用来管理短距离，高带宽通信的超低功耗的射频设备</p>
+<p>vfio - 允许设备访问用户空间的VFIO驱动。</p>
+<p>vhost - 这是用于宿主内核中的virtio服务器驱动。用于虚拟化中。</p>
+<p>video - 这是用来管理显卡和监视器的视频驱动。</p>
+<p>virt - 这些驱动用来虚拟化。</p>
+<p>virtio - 这个驱动用来在虚拟PCI设备上使用virtio设备。用于虚拟化中。</p>
+<p>vlynq - 这个驱动控制着由德州仪器开发的专有接口。这些都是宽带产品，像WLAN和调制解调器，VOIP处理器，音频和数字媒体信号处理芯片。</p>
+<p>vme - WMEbus最初是为摩托罗拉68000系列处理器开发的总线标准<br>w1 - 这些驱动用来控制one-wire总线。</p>
+<p>watchdog - 该驱动管理看门狗定时器，这是一个可以用来检测和恢复异常的定时器。</p>
+<p>xen - 该驱动是Xen管理程序系统。这是个允许用户运行多个操作系统在一台计算机的软件或硬件。这意味着xen的代码将允许用户在同一时间的一台计算机上运行两个或更多的Linux系统。用户也可以在Linux上运行Windows、Solaris、FreeBSD、或其他操作系统。</p>
+<p>zorro - 该驱动提供Zorro Amiga总线支持。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/05/Syzkaller/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ForeverMZY">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/05/Syzkaller/" class="post-title-link" itemprop="url">Syzkaller</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-03-05 10:05:22 / Modified: 02:05:36" itemprop="dateCreated datePublished" datetime="2020-03-05T10:05:22+00:00">2020-03-05</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>参考<a target="_blank" rel="noopener" href="https://github.com/google/syzkaller/blob/master/docs/linux/setup_ubuntu-host_qemu-vm_x86-64-kernel.md">syzkaller</a> </p>
+<h1 id="GCC"><a href="#GCC" class="headerlink" title="GCC"></a>GCC</h1><p>安装GCC</p>
+<h1 id="Kernel"><a href="#Kernel" class="headerlink" title="Kernel"></a>Kernel</h1><p>下载Linux内核，然后生成默认的配置选项</p>
+<pre><code>cd $KERNEL
+make CC=&quot;$GCC/bin/gcc&quot; defconfig
+make CC=&quot;$GCC/bin/gcc&quot; kvmconfig</code></pre><p>手动编辑.config文件</p>
+<pre><code>CONFIG_KCOV=y
+CONFIG_DEBUG_INFO=y
+CONFIG_KASAN=y
+CONFIG_KASAN_INLINE=y</code></pre><p>对于较新版本的内核，还需要开启以下选项</p>
+<pre><code>CONFIG_CONFIGFS_FS=y
+CONFIG_SECURITYFS=y</code></pre><p>运行以下指令并按enter默认配置</p>
+<pre><code>make CC=&quot;$GCC/bin/gcc&quot; oldconfig</code></pre><p>编译内核</p>
+<pre><code>make CC=&quot;$GCC/bin/gcc&quot;</code></pre><h1 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h1><p>安装debootstrap</p>
+<pre><code>sudo apt-get install debootstrap</code></pre><p>创建Linux镜像</p>
+<pre><code>cd $IMAGE/
+wget https://raw.githubusercontent.com/google/syzkaller/master/tools/create-image.sh -O create-image.sh
+chmod +x create-image.sh
+./create-image.sh</code></pre><h1 id="QEMU"><a href="#QEMU" class="headerlink" title="QEMU"></a>QEMU</h1><p>安装QEMU并启动</p>
+<pre><code>qemu-system-x86_64 \
+  -kernel $KERNEL/arch/x86/boot/bzImage \
+  -append &quot;console=ttyS0 root=/dev/sda debug earlyprintk=serial slub_debug=QUZ&quot;\
+  -hda $IMAGE/stretch.img \
+  -net user,hostfwd=tcp::10021-:22 -net nic \
+  -enable-kvm \
+  -nographic \
+  -m 2G \
+  -smp 2 \
+  -pidfile vm.pid \
+  2&gt;&amp;1 | tee vm.log</code></pre><p>然后在另一个终端中使用ssh登陆</p>
+<pre><code>ssh -i $IMAGE/stretch.id_rsa -p 10021 -o &quot;StrictHostKeyChecking no&quot; root@localhost</code></pre><h1 id="syzkaller"><a href="#syzkaller" class="headerlink" title="syzkaller"></a>syzkaller</h1><p>安装Go 1.11或Go 1.12，然后下载syzkaller</p>
+<pre><code>go get -u -d github.com/google/syzkaller/...
+cd $HOME?/go/src/github.com/google/syzkaller/
+make</code></pre><p>然后创建一个配置文件</p>
+<pre><code>&#123;
+    &quot;target&quot;: &quot;linux/amd64&quot;,
+    &quot;http&quot;: &quot;127.0.0.1:56741&quot;,
+    &quot;workdir&quot;: &quot;$GOPATH/src/github.com/google/syzkaller/workdir&quot;,
+    &quot;kernel_obj&quot;: &quot;$KERNEL&quot;,
+    &quot;image&quot;: &quot;$IMAGE/stretch.img&quot;,
+    &quot;sshkey&quot;: &quot;$IMAGE/stretch.id_rsa&quot;,
+    &quot;syzkaller&quot;: &quot;$GOPATH/src/github.com/google/syzkaller&quot;,
+    &quot;procs&quot;: 8,
+    &quot;type&quot;: &quot;qemu&quot;,
+    &quot;vm&quot;: &#123;
+        &quot;count&quot;: 4,
+        &quot;kernel&quot;: &quot;$KERNEL/arch/x86/boot/bzImage&quot;,
+        &quot;cpu&quot;: 2,
+        &quot;mem&quot;: 2048
+    &#125;
+&#125;</code></pre><p>运行syzkaller</p>
+<pre><code>mkdir workdir
+./bin/syz-manager -config=my.cfg</code></pre><p>可以在浏览器中输入 <code>127.0.0.1:56741</code> 查看结果</p>
+<p>##</p>
+<p>当运行syzkaller的时候qemu出现了一个小错误：</p>
+<pre><code>error: failed to set MSR 0x480 to 0x0
+kvm_put_msrs: Assertion `ret == cpu-&gt;kvm_msr_buf-&gt;nmsrs&apos; failed.</code></pre><p>查询得知是一个bug，需要打patch</p>
+<pre><code>diff --git a/target/i386/kvm.c b/target/i386/kvm.c
+index bf1655645b..e8841dcdb9 100644
+--- a/target/i386/kvm.c
++++ b/target/i386/kvm.c
+@@ -2572,6 +2572,14 @@  static void kvm_msr_entry_add_vmx(X86CPU *cpu, FeatureWordArray f)
+     uint64_t kvm_vmx_basic =
+     kvm_arch_get_supported_msr_feature(kvm_state,
+                                        MSR_IA32_VMX_BASIC);
++    if (!kvm_vmx_basic) &#123;
++        /* If the kernel does&apos;t support VMX feature(nested=0 in kvm)
++         * and kvm_vmx_basic will be 0. This will set 0 value to
++         * MSR_IA32_VMX_BASIC MSR.
++         */
++        return;
++    &#125;
++
+     uint64_t kvm_vmx_misc =
+     kvm_arch_get_supported_msr_feature(kvm_state,
+                                        MSR_IA32_VMX_MISC);</code></pre><p>重新编译qemu就好了</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/16/Build-AOSP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ForeverMZY">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/16/Build-AOSP/" class="post-title-link" itemprop="url">Build AOSP</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-02-16 20:46:35 / Modified: 13:12:55" itemprop="dateCreated datePublished" datetime="2020-02-16T20:46:35+00:00">2020-02-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Experience/" itemprop="url" rel="index"><span itemprop="name">Experience</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>搞定了AOSP的存储问题，下面开始编译AOSP系统了。</p>
+<h1 id="Build-Android-10"><a href="#Build-Android-10" class="headerlink" title="Build Android 10"></a>Build Android 10</h1><p>由于众所周知的原因，我们不能按照AOSP官网上的介绍来构建AOSP，所以我开始选择了tuna镜像。按照教程<a target="_blank" rel="noopener" href="http://https://mirrors.tuna.tsinghua.edu.cn/help/AOSP/" title="tuna AOSP">http://https://mirrors.tuna.tsinghua.edu.cn/help/AOSP/</a></p>
+<h2 id="传统初始化方法"><a href="#传统初始化方法" class="headerlink" title="传统初始化方法"></a>传统初始化方法</h2><p>建立工作目录：</p>
+<pre><code>mkdir DIR
+cd DIR</code></pre><p>初始化仓库：</p>
+<pre><code>repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest</code></pre><p>如果提示无法连接到 gerrit.googlesource.com，可以将如下内容复制到你的~/.bashrc里，并重启终端</p>
+<pre><code>export REPO_URL=&apos;https://mirrors.tuna.tsinghua.edu.cn/git/git-repo&apos;</code></pre><p>同步源码树：</p>
+<pre><code>repo sync</code></pre><p>在实际执行的过程中，我发现tuna似乎出了一点问题，同步特别慢，所以我又选择了下面的方式。</p>
+<h2 id="使用初始化包"><a href="#使用初始化包" class="headerlink" title="使用初始化包"></a>使用初始化包</h2><p>下载<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/aosp-monthly/aosp-latest.tar">https://mirrors.tuna.tsinghua.edu.cn/aosp-monthly/aosp-latest.tar</a>，下载完成后记得根据 checksum.txt 的内容校验一下。</p>
+<pre><code>tar -xvf aosp-lastest.tar -C DIR_NAME
+cd aosp
+repo sync -l //仅checkout代码，不同步</code></pre><p>此处需要注意的是，要不就不要同步代码，要不就同步完代码，不要同步一半就停止，容易造成编译上的问题。</p>
+<p>终于成功地拿到了AOSP源码，下面进行编译。</p>
+<p>然而在编译的过程中，编译到metalava时，始终会遇到OutOfMemory错误，是由于内存空间不足造成，一时没有解决方案。</p>
+<p>解决方案：</p>
+<ol>
+<li><code>export _JAVA_OPTIONS=&quot;-Xmx6g&quot;</code></li>
+<li>修改交换空间大小</li>
+<li>减小并发数量</li>
+<li><a target="_blank" rel="noopener" href="https://stackoom.com/question/3v7vy/Metalava%E9%94%99%E8%AF%AF-%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3%E9%94%99%E8%AF%AF-Java%E5%A0%86%E7%A9%BA%E9%97%B4">https://stackoom.com/question/3v7vy/Metalava%E9%94%99%E8%AF%AF-%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3%E9%94%99%E8%AF%AF-Java%E5%A0%86%E7%A9%BA%E9%97%B4</a></li>
+</ol>
+<p>上述方案都不能解决问题，只得放弃</p>
+<h1 id="Build-Android-9"><a href="#Build-Android-9" class="headerlink" title="Build Android 9"></a>Build Android 9</h1><p>放弃编译版本10，只得退回到版本9。</p>
+<p>然而现在不能使用初始化包了，所以我又换成了中科大源。</p>
+<p>具体来说只需要修改为：</p>
+<pre><code>repo init -u git://mirrors.ustc.edu.cn/aosp/platform/manifest -b android-9.0.0_r44</code></pre><p>科大源还是非常快的，大概3个小时就完成了所有的同步工作。</p>
+<p>之后就可以按照<a target="_blank" rel="noopener" href="https://source.android.com/setup/build/downloading" title="AOSP">谷歌官方教程</a>进行了</p>
+<pre><code>source build/envsetup.sh</code></pre><p>这个过程引入了一些命令，下面要使用</p>
+<pre><code>lunch aosp_arm-eng //lunch后面的配置根据需要修改
+m -j4 //进行编译</code></pre><p>大概4个小时的时间，就完成编译了！</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/16/Adjust-hard-drive-partition/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ForeverMZY">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/16/Adjust-hard-drive-partition/" class="post-title-link" itemprop="url">Adjust hard drive partition</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-02-16 18:50:34 / Modified: 12:41:12" itemprop="dateCreated datePublished" datetime="2020-02-16T18:50:34+00:00">2020-02-16</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>最近在弄Android相关的东西，需要安装AOSP，然而AOSP需要占用的内存空间太大，原来给Ubuntu分配的空间根本不够用，重装系统来分配空间又太过麻烦，所以想探索一下动态重新分配硬盘空间的方法。</p>
+<h1 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h1><p>根据AOSP官网的描述，需要至少400G的空间，所以自然需要减少Windows的硬盘空间了。开始我使用了Windows自带的磁盘管理工具，但是效果不太好，功能极为有限，所以我改为使用Disk Genius软件，可以更改磁盘的大小，挪动空闲空间到Ubuntu系统附近。</p>
+<h1 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h1><p>Disk Genius软件对于非Win系统的支持不太好，所以需要Gparted软件来进行Ubuntu系统的操作。在Ubuntu系统下输入</p>
+<pre><code>sudo apt-get install gparted</code></pre><p>安装gparted，发现Ubuntu磁盘空间前面都有一个小钥匙，表示当前磁盘正在使用，不能更改大小。上网查询得知，需制作Ubuntu启动盘，从启动盘中试用Ubuntu，这时才能对磁盘空间进行操作。需要注意的是，Linux交换空间仍需要先停用才能修改大小。</p>
+<p>因为更改涉及了根目录，对系统的启动有影响，所以需要重新安装grub。按照gparted官网的方法，进行如下操作：</p>
+<ol>
+<li><p>从启动盘中进入Ubuntu系统，并打开一个终端。</p>
+</li>
+<li><p>弄清根目录所在盘符</p>
+</li>
+<li><p>创建一个挂载点</p>
+<p> <code>sudo mkdir /tmp/mydir</code></p>
+</li>
+<li><p>将根目录挂载到挂载点上</p>
+<p> <code>sudo mount /dev/sdb5 /tmp/mydir</code></p>
+</li>
+<li><p>如果有单独的/boot目录，则一同挂载</p>
+<p> <code>sudo mount /dev/sdb6 /tmp/mydir/boot</code></p>
+<p> 本机的情况比较特殊，还有单独的efi目录，也需要同时挂载，否则不能安装grub</p>
+<p> <code>sudo mount /dev/sda3 /tmp/mydir/boot/efi</code></p>
+</li>
+<li><p>准备改变环境</p>
+<p> <code>sudo mount --bind /dev    /tmp/mydir/dev</code><br> <code>sudo mount --bind /proc /tmp/mydir/proc</code><br> <code>sudo mount --bind /sys /tmp/mydir/sys</code></p>
+</li>
+<li><p>改变环境</p>
+<p> <code>sudo chroot /tmp/mydir</code></p>
+</li>
+<li><p>重新安装grub到根目录所在盘符（注意没有小盘符）</p>
+<p> <code>sudo grub-install /dev/sdb</code></p>
+</li>
+<li><p>退出并重启</p>
+<p> <code>exit</code></p>
+</li>
+<li><p>重启后发现grub找不到windows启动项，使用</p>
+<p><code>sudo update-grub</code></p>
+</li>
+</ol>
+<p>以上过程就完成了整个改变硬盘空间的过程，Ubuntu系统拥有了足够的空间安装AOSP。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/16/LDD-Reading-Chapter-13-USB-Drivers/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ForeverMZY">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/16/LDD-Reading-Chapter-13-USB-Drivers/" class="post-title-link" itemprop="url">LDD Reading: Chapter 13: USB Drivers</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-12-16 10:19:43 / Modified: 02:20:11" itemprop="dateCreated datePublished" datetime="2019-12-16T10:19:43+00:00">2019-12-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LDD-Reading/" itemprop="url" rel="index"><span itemprop="name">LDD Reading</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第十三章-USB驱动程序"><a href="#第十三章-USB驱动程序" class="headerlink" title="第十三章 USB驱动程序"></a>第十三章 USB驱动程序</h1><p>一个USB子系统并不是以总线的方式来布置的；它是一棵由几个点对点的连接构建而成的树。USB主控制器负责询问每一个USB设备是否有数据需要发送。</p>
+<p>Linux内核主要支持两种主要类型的USB驱动程序：宿主系统上的驱动程序和设备上的驱动程序。从宿主的观点来看，宿主系统的USB驱动程序控制插入其中的USB设备，而USB设备的驱动程序控制该设备如何作为一个USB设备和主机通信。</p>
+<h2 id="USB设备基础"><a href="#USB设备基础" class="headerlink" title="USB设备基础"></a>USB设备基础</h2><h3 id="端点"><a href="#端点" class="headerlink" title="端点"></a>端点</h3><p>SUB通信最基本的形式是通过一个名为端点的东西。USB端点只能往一个方向传送数据，端点可以看做单向的管道。</p>
+<p>USB端点有四种不同的类型，分别具有不同的传送数据的方式：控制、中断、批量、等时</p>
+<p>内核中使用struct usb_host_endpoint结构体来描述USB端点。该结构体在另一个名为struct usb_endpoint_descriptor的结构体中包含了真正的端点信息。后一个结构体包含了所有的USB特定的数据。该结构体中驱动程序需要关心的字段有：bEndpointAddress、bmAttributes、wMaxPacketSize、bInterval</p>
+<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p>USB端点被捆绑为接口。USB接口只处理一种USB逻辑连接。一些USB设备具有多个接口，一个USB接口代表了一个基本功能，而每个USB驱动程序控制一个接口。</p>
+<p>内核使用struct usb_interface结构体来描述USB接口。USB核心把该结构体传递给USB驱动程序，之后由USB驱动程序来负责控制该结构体。该结构体中的重要字段有：struct usb_host_interface *altsetting、 unsigned num_altsetting、struct usb_host_interface *cur_altsetting、int minor、struct usb_interface</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>USB接口本身被捆绑为配置。一个USB设备可以有多个配置，而且可以在配置之间切换以改变设备的状态。</p>
+<p>Linux使用struct usb_host_config结构体来描述USB配置，使用struct usb_device结构体来描述整个USB设备。</p>
+<p>USB驱动程序通常需要把一个给定的struct usb_interface结构体的数据转换为一个struct usb_device结构体。</p>
+<p>USB设备是非常复杂的，它由许多不同的逻辑单元组成。这些逻辑单元之间的关系可以简单地描述如下：</p>
+<ul>
+<li>设备通常具有一个或者更多的配置</li>
+<li>配置经常具有一个或者更多的接口</li>
+<li>接口通常具有一个或者更多的设置</li>
+<li>接口没有或者具有一个以上的端点</li>
+</ul>
+<h2 id="USB和Sysfs"><a href="#USB和Sysfs" class="headerlink" title="USB和Sysfs"></a>USB和Sysfs</h2><p>第一个USB设备是一个根集线器。这是一个USB控制器，通常包含在一个PCI设备中。该控制器是连接PCI总线和USB总线的桥，也是该总线上的第一个USB设备。所有的根集线器都由USB核心分配了一个独特的编号。</p>
+<p>概言之，USB sysfs设备命名方案为：</p>
+<pre><code>根集线器-集线器端口号：配置.接口</code></pre><h2 id="USB-urb"><a href="#USB-urb" class="headerlink" title="USB urb"></a>USB urb</h2><p>Linux内核中的USB代码通过一个称为urb的东西和所有的USB设备通信。这个请求块使用struct urb结构体描述，可以从include/linux/usb.h文件中找到。</p>
+<p>一个urb的典型生命周期如下：</p>
+<ul>
+<li>由USB设备驱动程序创建</li>
+<li>分配给一个特定USB设备的特定端点</li>
+<li>由USB设备驱动程序递交到USB核心</li>
+<li>由USB核心递交到特定设备的特定USB主控制器驱动程序</li>
+<li>由USB主控制器驱动程序处理，它从设备进行USB传送</li>
+<li>当urb结束之后，USB主控制器驱动程序通知USB设备驱动程序</li>
+</ul>
+<h2 id="编写USB驱动程序"><a href="#编写USB驱动程序" class="headerlink" title="编写USB驱动程序"></a>编写USB驱动程序</h2><h3 id="注册USB驱动程序"><a href="#注册USB驱动程序" class="headerlink" title="注册USB驱动程序"></a>注册USB驱动程序</h3><p>所有USB驱动程序都必须创建的主要结构体是struct usb_driver。该结构体必须由USB驱动程序来填写，包括许多回调函数和变量，它们向USB核心代码描述了USB驱动程序。</p>
+<pre><code>static int __int usb_skel_init(void) &#123;
+    int result;
+
+    result = usb_register(&amp;skel_driver);
+    if (result) &#123;
+        err(&quot;usb_register failed. Error number %d&quot;, result);
+    &#125;
+
+    return result;
+&#125;
+
+static void __exit usb_skel_exit(void) &#123;
+    usb_deregister(&amp;skel_driver);
+&#125;</code></pre><h3 id="提交和控制urb"><a href="#提交和控制urb" class="headerlink" title="提交和控制urb"></a>提交和控制urb</h3><h2 id="不使用urb的USB传输445"><a href="#不使用urb的USB传输445" class="headerlink" title="不使用urb的USB传输445"></a>不使用urb的USB传输445</h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ForeverMZY"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">ForeverMZY</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ForeverMZY</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
 
 </body>
-
 </html>

@@ -1,360 +1,1220 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Head tag -->
 <head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!--Description-->
-    
-
-    <!--Author-->
-    
-        <meta name="author" content="John Doe">
-    
-
-    <!--Open Graph Title-->
-    
-        <meta property="og:title" content="Hexo"/>
-    
-
-    <!--Open Graph Description-->
-    
-
-    <!--Open Graph Site Name-->
-    <meta property="og:site_name" content="Hexo"/>
-
-    <!--Type page-->
-    
-        <meta property="og:type" content="website" />
-    
-
-    <!--Page Cover-->
-    
-
-    <meta name="twitter:card" content="summary" />
-    
-
-    <!-- Title -->
-    
-    <title>page - Hexo</title>
-
-    <!-- Tachyons Core CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
-
-    <!-- Custom Fonts -->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Custom CSS -->
-    
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/main.css">
 
 
-    <!-- Google Analytics -->
-    
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="ForeverMZY">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/page/3/">
 
 
-<meta name="generator" content="Hexo 5.4.0"></head>
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Hexo</title>
+  
 
 
-<body>
 
-<!-- Main Content -->
-<!-- Banner -->
-<!-- Banner -->
-<div class="w-100 bg-1 ph5-ns ph3 text-light">
-    
-    <nav class="db dt-l w-100 mw8 center border-box pv3">
-        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="Hexo">
-            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="Hexo">
-        </a>
-        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
-                    href="/" 
-                    title="Home">
-                    Home
-                </a>
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
-                    href="/archives" 
-                    title="Archives">
-                    Archives
-                </a>
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
-                    href="/tags" 
-                    title="Tags">
-                    Tags
-                </a>
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
-                    href="/categories" 
-                    title="Categories">
-                    Categories
-                </a>
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
-                    href="/about.html" 
-                    title="About">
-                    About
-                </a>
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
-                    href="/contact.html" 
-                    title="Contact">
-                    Contact
-                </a>
-            
-        </div>
-    </nav>
 
-    <!-- Title -->
-    <div class="w-100 mw8 center vh-40 dt">
-        <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">Welcome to Anodyne</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">Create Websites. Make Magic.</p>
-        </div>
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
+  </div>
 
-    <!-- Icon -->
-    <div class="relative w-100 mw8 center white dn dn-m db-ns">
-        <i class="header-icon fa fa fa-magic"></i>
-    </div>
-</div>
+  <div class="site-meta">
 
-<!-- Content -->
-<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
-    <div class="content">
-        <div class="mw8 center">
-            
-                <a href="/2019/12/01/LDD-Reading-Chapter-8-Allocating-Memory/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
-        <div class="dtc v-mid w-90 black-70">
-            <div>
-                
-                    <span class="f5 fw3 lh-copy pr4">2019-12-01</span> 
-                
-                
-                <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/LDD-Reading/'; return false;">#LDD Reading</span>
-                
-            </div>
-            <span class="f3 fw3 lh-copy">LDD Reading: Chapter 8 Allocating Memory<span>
-        </div>
-        <div class="dtc v-mid w-10 f1 black-50 tr">
-            <i class="fa fa-file-text-o"></i>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2019/11/27/TEEv-Virtualizing-Trusted-Execution-Environments/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
-        <div class="dtc v-mid w-90 black-70">
-            <div>
-                
-                    <span class="f5 fw3 lh-copy pr4">2019-11-27</span> 
-                
-                
-            </div>
-            <span class="f3 fw3 lh-copy">TEEv: Virtualizing Trusted Execution Environments<span>
-        </div>
-        <div class="dtc v-mid w-10 f1 black-50 tr">
-            <i class="fa fa-file-text-o"></i>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2019/11/27/NEUZZ-Efficient-Fuzzing-with-Neural-Program-Smoothing/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
-        <div class="dtc v-mid w-90 black-70">
-            <div>
-                
-                    <span class="f5 fw3 lh-copy pr4">2019-11-27</span> 
-                
-                
-            </div>
-            <span class="f3 fw3 lh-copy">NEUZZ: Efficient Fuzzing with Neural Program Smoothing<span>
-        </div>
-        <div class="dtc v-mid w-10 f1 black-50 tr">
-            <i class="fa fa-file-text-o"></i>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2019/11/27/Matryoshka-Fuzzing-Deeply-Nested-Branches/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
-        <div class="dtc v-mid w-90 black-70">
-            <div>
-                
-                    <span class="f5 fw3 lh-copy pr4">2019-11-27</span> 
-                
-                
-            </div>
-            <span class="f3 fw3 lh-copy">Matryoshka: Fuzzing Deeply Nested Branches<span>
-        </div>
-        <div class="dtc v-mid w-10 f1 black-50 tr">
-            <i class="fa fa-file-text-o"></i>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2019/11/11/IO-port-IO-memory/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
-        <div class="dtc v-mid w-90 black-70">
-            <div>
-                
-                    <span class="f5 fw3 lh-copy pr4">2019-11-11</span> 
-                
-                
-                <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/Linux/'; return false;">#Linux</span> <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/ARM/'; return false;">#ARM</span>
-                
-            </div>
-            <span class="f3 fw3 lh-copy">IO port & IO memory<span>
-        </div>
-        <div class="dtc v-mid w-10 f1 black-50 tr">
-            <i class="fa fa-file-text-o"></i>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2019/10/29/OP-TEE-on-Hikey960/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
-        <div class="dtc v-mid w-90 black-70">
-            <div>
-                
-                    <span class="f5 fw3 lh-copy pr4">2019-10-29</span> 
-                
-                
-                <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/OP-TEE/'; return false;">#OP-TEE</span> <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/HiKey960/'; return false;">#HiKey960</span>
-                
-            </div>
-            <span class="f3 fw3 lh-copy">OP-TEE on Hikey960<span>
-        </div>
-        <div class="dtc v-mid w-10 f1 black-50 tr">
-            <i class="fa fa-file-text-o"></i>
-        </div>
-    </div>
-</a>
-            
-                <a href="/2019/10/25/Paper-reading-PeriScope-An-Effective-Probing-and-Fuzzing-Framework-for-the-Hardware-OS-Boundary/">
-    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
-        <div class="dtc v-mid w-90 black-70">
-            <div>
-                
-                    <span class="f5 fw3 lh-copy pr4">2019-10-25</span> 
-                
-                
-                <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/Fuzzing/'; return false;">#Fuzzing</span> <span class="fake-link fw3 ph1 dib" onclick="location.href = '/tags/Drivers/'; return false;">#Drivers</span>
-                
-            </div>
-            <span class="f3 fw3 lh-copy">Paper reading: PeriScope An Effective Probing and Fuzzing Framework for the Hardware-OS Boundary<span>
-        </div>
-        <div class="dtc v-mid w-10 f1 black-50 tr">
-            <i class="fa fa-file-text-o"></i>
-        </div>
-    </div>
-</a>
-            
-        </div>
-    </div>
-    
-    <div class="flex items-center justify-center pa4">
-        <a href="/page/2/" 
-            class="f5 no-underline inline-flex items-center pa3 ba border-box mr4 gray hover-border-main-color hover-text-main-color">
-            <i class="w1 pr2 fa fa-chevron-left" aria-hidden="true"></i>
-            <span class="pl1">Previous</span>
-        </a>
-        <a href="/" 
-            class="f5 no-underline inline-flex items-center pa3 ba border-box light-gray cursor-default">
-            <span class="pr1">Next</span>
-            <i class="w1 pl2 fa fa-chevron-right" aria-hidden="true"></i>
-        </a>
-    </div>
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
 
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
 </div>
 
 
-<!-- Footer -->
-<div class="bg-1 ph2 ph5-ns pv5">
-        <div class="mv8">
-            <div class="center tc">
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://twitter.com/?lang=en" target="_blank">
-                            <i class="fa fa-twitter"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank">
-                            <i class="fa fa-facebook"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://dribbble.com/" target="_blank">
-                            <i class="fa fa-dribbble"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank">
-                            <i class="fa fa-github"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://plus.google.com/" target="_blank">
-                            <i class="fa fa-google-plus"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://www.behance.net/" target="_blank">
-                            <i class="fa fa-behance"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://500px.com/" target="_blank">
-                            <i class="fa fa-500px"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="mailto:test@example.com" target="_blank">
-                            <i class="fa fa-envelope"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="/#" target="_blank">
-                            <i class="fa fa-rss"></i>
-                        </a>
-                    </div>
-                
-            </div>
-            <div class="f6 f5-ns center tc white pt5 fw3">
-                @Untitled. All right reserved | Design & Hexo <a class="link dim white" target="_blank" rel="noopener" href="http://www.codeblocq.com/">Jonathan Klughertz</a>
-            </div>
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/01/LDD-Reading-Chapter-10-Interrupt-Handling/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ForeverMZY">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/01/LDD-Reading-Chapter-10-Interrupt-Handling/" class="post-title-link" itemprop="url">LDD Reading: Chapter 10 Interrupt Handling</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-12-01 17:43:00 / Modified: 09:43:54" itemprop="dateCreated datePublished" datetime="2019-12-01T17:43:00+00:00">2019-12-01</time>
+            </span>
+
+          
+
         </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第十章-中断处理"><a href="#第十章-中断处理" class="headerlink" title="第十章 中断处理"></a>第十章 中断处理</h1><h2 id="安装中断处理例程"><a href="#安装中断处理例程" class="headerlink" title="安装中断处理例程"></a>安装中断处理例程</h2><p>模块在使用中断前要先请求一个中断通道（或者中断请求IRQ），然后在使用后释放该通道。头文件&lt;linux/sched.h&gt;中声明的函数实现了该接口：</p>
+<pre><code>int request_irq(unsigned int irq, irqreturn_t (*handler)(int, void *, struct pt_regs *), unsigned long flags, const char *dev_name, void *dev_id);
+
+void free_irq(unsigned int irq, void *dev_id);</code></pre><p>从request_irq函数返回给请求函数的值为0时表示申请成功，为负值时表示错误码。函数返回-EBUSY表示已经有另一个驱动程序占用了你要请求的信号线。</p>
+<p>调用request_irq的正确位置应该是在设备第一次打开、硬件被告知产生中断之前。调用free_irq的位置是最后一次关闭设备、硬件被告知不再用中断处理器之后。</p>
+<h3 id="proc接口"><a href="#proc接口" class="headerlink" title="/proc接口"></a>/proc接口</h3><p>中断可以在/proc/interrupts文件中查看。</p>
+<p>第一列是IRQ号，只会显示那些已经安装了中断处理例程的中断。</p>
+<p>第二列是已经发送到系统上每一个CPU的中断数量。</p>
+<p>最后给出了处理中断的可编程控制器信息，以及注册了中断处理例程的设备名称。</p>
+<p>另一个与中断有关的文件是/proc/stat，stat文件的每一行都以一个字符串开始，它是这行的关键字。intr标记正是我们需要的。第一个数是所有中断的总数，而其他的每个数都代表一个单独的IRQ信号线，从中断0开始。</p>
+<h3 id="自动检测IRQ号"><a href="#自动检测IRQ号" class="headerlink" title="自动检测IRQ号"></a>自动检测IRQ号</h3><p>有些设备会简单地声明它们所要使用的中断。这样，驱动程序就可以通过从设备的某个IO端口或者PCI配置空间中读出一个状态字来获得中断号。但并不是所有的设备都对程序员很友好，自动检测可能还是需要一些探测工作。</p>
+<h4 id="内核帮助下的探测"><a href="#内核帮助下的探测" class="headerlink" title="内核帮助下的探测"></a>内核帮助下的探测</h4><p>Linux内核提供了一个底层设施来探测中断号。它只能在非共享的模式下工作。内核提供的这一设施由两个函数组成，在头文件&lt;linux/interrupt.h&gt;中声明。</p>
+<pre><code>unsigned long probe_irq_on(void);</code></pre><p>这个函数返回一个未分配中断的位掩码。驱动程序必须保存返回的位掩码，并且将它传递给后面的probe_irq_off函数，调用该函数后，驱动程序要安排设备产生一次中断。</p>
+<pre><code>int probe_irq_off(unsigned long);</code></pre><p>probe_irq_off返回“probe_irq_on”之后发生的中断编号。</p>
+<h4 id="DIY探测"><a href="#DIY探测" class="headerlink" title="DIY探测"></a>DIY探测</h4><p>这种机制与先前描述的内核帮助下的探测是一样的：启用所有未被占用的中断，然后观察会发生什么。有时，我们无法预知可能的IRQ值。在这种情况下，需要探测所有的空闲中断号，从0到NR——IRQS-1。</p>
+<h2 id="实现中断处理例程"><a href="#实现中断处理例程" class="headerlink" title="实现中断处理例程"></a>实现中断处理例程</h2><p>中断处理例程是在中断时间内运行的，因此它的行为会受到一些限制。处理例程不能向用户空间发送或者接受数据，因为它不是在任何进程的上下文中执行的，处理例程也不能做任何可能发生休眠的操作。</p>
+<p>中断处理例程的功能就是将有关中断接收的信息反馈给设备，并根据正在服务的中断的不同含义对数据进行相应的读或写，第一步通常要清除接口卡上的”interrupt-pending”位。</p>
+<p>中断处理例程的一个典型任务就是：如果中断通知进程所等待的事件已经发生，比如新的数据到达，就会唤醒在该设备上休眠的进程。</p>
+<h3 id="处理例程的参数及返回值"><a href="#处理例程的参数及返回值" class="headerlink" title="处理例程的参数及返回值"></a>处理例程的参数及返回值</h3><p>有三个参数被传给了中断处理例程：irq、dev_id和regs。</p>
+<p>如果存在任何可以打印到日志的消息时，中断号是很有用的。</p>
+<p>dev_id是一种客户数据类型，通常会为dev_id传递一个指向自己设备的数据结构指针。这样，一个管理若干同样设备的驱动程序在中断处理例程中不需要做任何额外的代码，就可以找出哪个设备产生了同样的中断事件。</p>
+<p>struct pt_reg *regs很少使用，它保存了处理器进入中断代码之前的处理器上下文快照。该监视器可被用来监视和调试，对一般的设备驱动程序任务来说通常不是必需的。</p>
+<h3 id="启用和禁用中断"><a href="#启用和禁用中断" class="headerlink" title="启用和禁用中断"></a>启用和禁用中断</h3><h4 id="禁用单个中断"><a href="#禁用单个中断" class="headerlink" title="禁用单个中断"></a>禁用单个中断</h4><p>&lt;asm/irq.h&gt;中声明</p>
+<pre><code>void disable_irq(int irq);
+void disable_irq_nosync(int irq);
+void enable_irq(int irq);</code></pre><p>调用这些函数中的任何一个都会更新可编程中断控制器中指定中断的掩码，因而就可以在所有的处理器上禁用或者启用IRQ。对这些函数的调用是可以嵌套的。</p>
+<h4 id="禁用所有的中断"><a href="#禁用所有的中断" class="headerlink" title="禁用所有的中断"></a>禁用所有的中断</h4><p>&lt;asm/system.h&gt;中声明</p>
+<pre><code>void local_irq_save(unsigned long flags);
+void local_irq_disable(void);
+
+void local_irq_restore(unsigned long flags);
+void local_irq_enable(void);</code></pre><h2 id="顶半部和底半部"><a href="#顶半部和底半部" class="headerlink" title="顶半部和底半部"></a>顶半部和底半部</h2><p>Linux通过将中断处理例程分成两部分来解决这个问题。称为“顶半部”的部分，是实际响应中断的例程，也就是用request_irq注册的中断例程；而所谓的“底半部”是一个被顶半部调度，并在稍后更安全的时间内执行的例程。当底半部处理例程执行时，所有的中断都是打开的。</p>
+<h3 id="tasklet"><a href="#tasklet" class="headerlink" title="tasklet"></a>tasklet</h3><p>tasklet是一个可以在由系统决定的安全时刻在软件中断上下文被调度运行的特殊函数。它可以被多次调度运行，但实际只会运行一次。</p>
+<p>必须使用宏DECLARE_TASKLET声明tasklet：</p>
+<pre><code>DECLARE_TASKLET(name, function, data);</code></pre><p>函数tasklet_schedule用来调度一个tasklet运行。</p>
+<h3 id="工作队列"><a href="#工作队列" class="headerlink" title="工作队列"></a>工作队列</h3><p>工作队列会在将来的某个时间、在某个特殊的工作者进程上下文中调用一个函数。因此工作队列函数运行在进程上下文中，因此可在必要时休眠。</p>
+<h2 id="中断共享"><a href="#中断共享" class="headerlink" title="中断共享"></a>中断共享</h2><h3 id="安装共享的处理程序"><a href="#安装共享的处理程序" class="headerlink" title="安装共享的处理程序"></a>安装共享的处理程序</h3><p>共享的中断也是通过request_irq安装的，但是有两处不同：</p>
+<ol>
+<li>请求中断时，必须指定flags参数中的SA_SHIRQ位。</li>
+<li>dev_id参数必须是唯一的。任何指向模块地址空间的指针都可以使用，但dev_id不能设置成NULL。</li>
+</ol>
+<h3 id="运行处理例程"><a href="#运行处理例程" class="headerlink" title="运行处理例程"></a>运行处理例程</h3><p>当内核收到中断时，所有已注册的处理例程都将被调用。一个共享中断处理例程必须能够将要处理的中断和其他设备产生的中断区分开来。</p>
+<h2 id="中断驱动的IO"><a href="#中断驱动的IO" class="headerlink" title="中断驱动的IO"></a>中断驱动的IO</h2><p>如果与驱动程序管理的硬件之间的数据传输因为某种原因被延迟的话，驱动程序作者就应该实现缓冲。数据缓冲区有助于将数据的传送和接收与系统调用write和read分离开来，从而提高系统的整体性能。一个好的缓冲机制需要采用中断驱动的IO。</p>
+
+      
     </div>
 
-<!-- After Footer -->
-<!-- Disqus Comments -->
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/01/LDD-Reading-Chapter-8-Allocating-Memory/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ForeverMZY">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/01/LDD-Reading-Chapter-8-Allocating-Memory/" class="post-title-link" itemprop="url">LDD Reading: Chapter 8 Allocating Memory</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-12-01 17:42:39 / Modified: 09:43:49" itemprop="dateCreated datePublished" datetime="2019-12-01T17:42:39+00:00">2019-12-01</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第八章-分配内存"><a href="#第八章-分配内存" class="headerlink" title="第八章 分配内存"></a>第八章 分配内存</h1><h2 id="kmalloc"><a href="#kmalloc" class="headerlink" title="kmalloc"></a>kmalloc</h2><p>函数原型：</p>
+<pre><code>#include &lt;linux/slab.h&gt;
+void *kmalloc(size_t size, int flags);</code></pre><p>kmalloc第一个参数是要分配的块的大小，第二个参数是分配标志。</p>
+<h3 id="flags参数"><a href="#flags参数" class="headerlink" title="flags参数"></a>flags参数</h3><p>GFP_ATOMIC：用于在中断处理例程或其他运行于进程上下文之外的代码中分配内存，不会休眠。</p>
+<p>GFP_KERNEL：内核内存的通用分配方法，可能引起休眠。</p>
+<p>GFP_USER：用于为用户空间页分配内存，可能会休眠。</p>
+<h3 id="size参数"><a href="#size参数" class="headerlink" title="size参数"></a>size参数</h3><p>内核使用了特殊的基于页的分配技术，以最佳地利用系统RAM。</p>
+<p>Linux处理内存分配的方法是，创建一系列的内存对象池，每个池中的内存块大小是固定一致的。处理分配请求时，就直接在包含有足够大的内存块的池中传递一个整块给请求者。所以内核只能分配一些预定义的、固定大小的字节数组。</p>
+<p>kmalloc能处理的最小的内存块是32或64，具体取决于当前体系结构的页面大小。</p>
+<p>对kmalloc能够分配的内存块大小，存在一个上限。为了保证代码的可移植性，最好不要分配大于128KB的内存。</p>
+<h2 id="后备高速缓存"><a href="#后备高速缓存" class="headerlink" title="后备高速缓存"></a>后备高速缓存</h2><pre><code>#inlucde &lt;linux/slab.h&gt;
+
+kmem_cache_t *kmem_cache_create(const char *name, size_t size, size_t offset, unsigned long flags, void (*constructor)(void *, kmem_cache_t *, unsigned long flags), void (*denstructor)(void *, kmem_cache_t *, unsigned long flags));</code></pre><p>该函数创建一个新的高速缓存对象，其中可以容纳任意数目的内存区域，这些区域的大小都相同，由size参数指定。</p>
+<p>参数name与这个高速缓存相关联。</p>
+<p>offset参数是页面中第一个对象的偏移量，它可以用来确保对已分配对象进行某种特殊的对齐，但是最常用的就是0。</p>
+<p>flags控制如何完成分配，是一个位掩码。</p>
+<pre><code>void *kmem_cache_alloc(kmem_cache_t *cache, int flags);
+void kmem_cache_free(kmem_cache_t *cache, const void *obj);
+int kmem_cache_destroy(kmem_cache_t *cache);</code></pre><h3 id="内存池"><a href="#内存池" class="headerlink" title="内存池"></a>内存池</h3><p>内核中有些地方的内存分配是不允许失败的。</p>
+<p>内存池对象的类型为mempool_t（在&lt;linux/mempool.h&gt;中定义），可使用mempool_create来创建对象。</p>
+<pre><code>mempool_t *mempool_create(int min_nr, mempool_alloc_t *alloc_fn, mempool_freee_t *free_fn, void *pool_data);</code></pre><p>min_nr表示的是内存池应始终保持的已分配对象的最少数目。</p>
+<p>构造内存池代码通常如下所示：</p>
+<pre><code>cache = kmem_cache_create(...);
+pool = mempool_create(MY_POOL_MINIMUM, mempool_alloc_slab, mempool_free_slab, cache);</code></pre><p>建立内存池后，可如下分配和释放对象：</p>
+<pre><code>void *mempool_alloc(mempool_t *pool, int gfp_mask);
+void mempool_free(void *element, mempool_t *pool);</code></pre><p>调整内存池大小：</p>
+<pre><code>int mempool_resize(mempool_t *pool, int new_min_nr, int gfp_mask);</code></pre><p>销毁内存池：</p>
+<pre><code>void mempool_destroy(mempool_t *pool);</code></pre><p>使用mempool很容易浪费大量内存，最好不使用mempool而是处理可能的分配失败。</p>
+<h2 id="get-free-page"><a href="#get-free-page" class="headerlink" title="get_free_page"></a>get_free_page</h2><p>如果模块需要分配大块的内存，则使用面向页的分配技术会更好些。</p>
+<p>分配：</p>
+<pre><code>get_zeroed_page(unsigned int flags);
+__get_free_page(unsigned int flags);
+__get_free_pages(unsigned int flags, unsigned int order);</code></pre><p>释放：</p>
+<pre><code>void free_page(unsigned long addr);
+void free_pages(unsigned long addr, unsigned long order);</code></pre><h3 id="alloc-pages接口"><a href="#alloc-pages接口" class="headerlink" title="alloc_pages接口"></a>alloc_pages接口</h3><h2 id="vmalloc及其辅助函数"><a href="#vmalloc及其辅助函数" class="headerlink" title="vmalloc及其辅助函数"></a>vmalloc及其辅助函数</h2><p>vmalloc分配虚拟地址空间的连续区域，尽管这段区域在物理上可能是不连续的。</p>
+<p>vmalloc在发生错误时返回0，成功时返回一个指针，该指针指向一个线性的、大小最少为size的线性内存区域。</p>
+<p>大多数情况下不鼓励使用vmalloc，通过vmalloc获得的内存使用起来效率不高。</p>
+<pre><code>#include &lt;linux/vmalloc.h&gt;
+
+void *vmalloc(unsigned long size);
+void vfree(void *addr);
+void *ioremap(unsigned long offset, unsigned long size);
+void iounmap(void *addr);</code></pre><h2 id="获取大的缓冲区"><a href="#获取大的缓冲区" class="headerlink" title="获取大的缓冲区"></a>获取大的缓冲区</h2><h3 id="在引导时获得专用缓冲区"><a href="#在引导时获得专用缓冲区" class="headerlink" title="在引导时获得专用缓冲区"></a>在引导时获得专用缓冲区</h3><pre><code>#include &lt;linux/bootmem.h&gt;
+
+void *alloc_bootmem(unsigned long size);
+void *alloc_bootmem_low(unsigned long size);
+void *alloc_bootmem_pages(unsigned long size);
+void *alloc_bootmem_low_pages(unsigned long size);
+
+void free_bootmem(unsigned long addr, unsigned long size);</code></pre>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/27/TEEv-Virtualizing-Trusted-Execution-Environments/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ForeverMZY">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/27/TEEv-Virtualizing-Trusted-Execution-Environments/" class="post-title-link" itemprop="url">TEEv: Virtualizing Trusted Execution Environments</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-11-27 16:48:38 / Modified: 08:48:38" itemprop="dateCreated datePublished" datetime="2019-11-27T16:48:38+00:00">2019-11-27</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/27/NEUZZ-Efficient-Fuzzing-with-Neural-Program-Smoothing/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ForeverMZY">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/27/NEUZZ-Efficient-Fuzzing-with-Neural-Program-Smoothing/" class="post-title-link" itemprop="url">NEUZZ: Efficient Fuzzing with Neural Program Smoothing</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-11-27 16:48:11 / Modified: 08:48:11" itemprop="dateCreated datePublished" datetime="2019-11-27T16:48:11+00:00">2019-11-27</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/27/Matryoshka-Fuzzing-Deeply-Nested-Branches/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ForeverMZY">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/27/Matryoshka-Fuzzing-Deeply-Nested-Branches/" class="post-title-link" itemprop="url">Matryoshka: Fuzzing Deeply Nested Branches</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-11-27 16:47:38 / Modified: 08:47:38" itemprop="dateCreated datePublished" datetime="2019-11-27T16:47:38+00:00">2019-11-27</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/11/IO-port-IO-memory/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ForeverMZY">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/11/IO-port-IO-memory/" class="post-title-link" itemprop="url">IO port & IO memory</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-11-11 14:05:01" itemprop="dateCreated datePublished" datetime="2019-11-11T14:05:01+00:00">2019-11-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-10 12:09:18" itemprop="dateModified" datetime="2019-12-10T12:09:18+00:00">2019-12-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LDD-Reading/" itemprop="url" rel="index"><span itemprop="name">LDD Reading</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>每个外设都是通过读写其寄存器来控制的，外设寄存器也称为IO端口，通常包括：控制寄存器、状态寄存器和数据寄存器三大类。</p>
+<p>CPU访问外设寄存器的方式分为两种：</p>
+<ul>
+<li><strong>通过IO端口方式访问：</strong>一类CPU（如X86），将外设的寄存器看成一个独立的地址空间，所以访问内存的指令不能用来访问这些寄存器，而要为对外设寄存器的读／写设置专用指令，如IN和OUT指令，用一个引脚M/IO来区分当前访问的是内存还是其他外设。这种设计十分不灵活，由于地址范围限制（64K）导致外设接口受限。</li>
+<li><strong>通过IO内存方式访问：</strong>一类CPU把这些寄存器看作内存的一部分，寄存器参与内存统一编址，访问寄存器就通过访问一般的内存指令进行，所以，这种CPU没有专门用于设备I/O的指令。</li>
+</ul>
+<p>ISA设备普遍使用IO端口，PCI设备大多数使用IO内存方式访问外设。</p>
+<h1 id="IO-Port"><a href="#IO-Port" class="headerlink" title="IO Port"></a>IO Port</h1><h2 id="IO-Port-Allocation"><a href="#IO-Port-Allocation" class="headerlink" title="IO Port Allocation"></a>IO Port Allocation</h2><p>在驱动还未独占设备之前，不应对端口进行操作。内核提供了一个注册接口，以允许驱动声明其需要的端口：</p>
+<pre><code>#include &lt;linux/ioport.h&gt;
+/* request_region告诉内核：要使用first开始的n个端口。参数name为设备名。如果分配成功返回值是非NULL；否则无法使用需要的端口*/
+struct resource *request_region(unsigned long first, unsigned long n, const char *name);
+/* 用完I/O端口后(可能在模块卸载时)，应当调用release_region将I/O端口返还给系统。参数start和n应与之前传递给request_region一致 */
+void release_region(unsigned long start, unsigned long n); </code></pre><h2 id="Manipulating-I-O-ports"><a href="#Manipulating-I-O-ports" class="headerlink" title="Manipulating I/O ports"></a>Manipulating I/O ports</h2><p>在驱动成功请求到I/O 端口后，就可以读写这些端口了。大部分硬件会将8位、16位和32位端口区分开，无法像访问内存那样混淆使用。驱动程序必须调用不同的函数来访问不同大小的端口。</p>
+<pre><code>/* inb/outb:读/写字节端口(8位宽)。*/
+unsigned inb(unsigned port);
+void outb(unsigned char byte, unsigned port);
+/* inw/outw:读/写字端口(16位宽） */
+unsigned inw(unsigned port);
+void outw(unsigned short word, unsigned port);
+/* inl/outl:读/写32位端口。 */
+unsigned inl(unsigned port);
+void outl(unsigned longword, unsigned port);</code></pre><p>注意，没有64位的I/O端口操作函数。即便在64位体系中，端口地址空间使用一个32位(最大)的数据通路。</p>
+<h2 id="String-Operations"><a href="#String-Operations" class="headerlink" title="String Operations"></a>String Operations</h2><p>除了一次传递一个数据的I/O操作，某些处理器实现了一次传递一个序列的数据（单位可以是字节、字和双字）的特殊指令。这些所谓的字串指令，它们完成任务比一个C语言循环更快。</p>
+<pre><code>/* insb:从I/O端口port读取count个数据(单位字节)到以内存地址addr为开始的内存空间 */
+void insb(unsigned port, void *addr, unsigned long count);
+/* outsb:将内存地址addr开始的count个数据(单位字节)写到I/O端口port */
+void outsb(unsigned port, void *addr, unsigned long count);
+/* insw:从I/O端口port读取count个数据(单位字)到以内存地址addr为开始的内存空间 */
+void insw(unsigned port, void *addr, unsigned long count);
+/* outsw:将内存地址addr开始的count个数据(单位字)写到I/O端口port */
+void outsw(unsigned port, void *addr, unsigned long count);
+/* insl:从I/O端口port读取count个数据(单位双字)到以内存地址addr为开始的内存空间 */
+void insl(unsigned port, void *addr, unsigned long count);
+/* outsl:将内存地址addr开始的count个数据(单位双字)写到I/O端口port */
+void outsl(unsigned port, void *addr, unsigned long count);</code></pre><h2 id="Port-as-IO-Memory"><a href="#Port-as-IO-Memory" class="headerlink" title="Port as IO Memory"></a>Port as IO Memory</h2><p>为了统一编程接口，使驱动程序易于编写，Linux提供了一个ioport_map函数:</p>
+<pre><code>/* ioport_map重新映射count个I/O端口，使它们看起来I/O内存。
+此后，驱动程序可以在ioport_map返回的地址上使用ioread8和同类函数。
+这样，就可以在编程时，消除了I/O端口和I/O 内存的区别 */
+void *ioport_map(unsigned long port, unsigned int count); 
+/* ioport_unmap用于释放不再需要的映射 */
+void ioport_unmap(void *addr);</code></pre><h2 id="IO-Port-Accessing-Process"><a href="#IO-Port-Accessing-Process" class="headerlink" title="IO Port Accessing Process"></a>IO Port Accessing Process</h2><p>直接访问IO端口的流程：</p>
+<img src = "IO-port-IO-memory/1.png" width=50%>
+
+<p>使用IO端口映射后再访问的流程：</p>
+<img src = "IO-port-IO-memory/2.png" width=50%>
+
+<h1 id="IO-Memory"><a href="#IO-Memory" class="headerlink" title="IO Memory"></a>IO Memory</h1><p>尽管 I/O 端口在x86世界中非常流行，但是用来和设备通讯的主要机制是通过内存映射的寄存器和设备内存，两者都称为I/O 内存，因为寄存器和内存之间的区别对软件是透明的。</p>
+<h2 id="IO-Memory-Allocation-and-Mapping"><a href="#IO-Memory-Allocation-and-Mapping" class="headerlink" title="IO Memory Allocation and Mapping"></a>IO Memory Allocation and Mapping</h2><p>I/O 内存区在使用前必须先分配。分配内存区的函数接口在&lt;linux/ioport.h&gt;定义中：</p>
+<pre><code>/* request_mem_region分配一个开始于start,len字节的I/O内存区。
+分配成功，返回一个非NULL指针；否则返回NULL。
+系统当前所有I/O内存分配信息都在/proc/iomem文件中列出。 */
+struct resource *request_mem_region(unsigned long start, unsigned long len, char *name);
+/* release_mem_region用于释放不再需要的I/O内存区 */
+void release_mem_region(unsigned long start, unsigned long len); </code></pre><p>访问I/O内存并不只是简单解引用指针，你还必须保证内核可存取该I/O内存。因此，还必须通过ioremap 函数设置一个映射。</p>
+<pre><code>/* ioremap用于将I/O内存区映射到虚拟地址。
+参数phys_addr为要映射的I/O内存起始地址，参数size为要映射的I/O内存的大小，返回值为被映射到的虚拟地址 */
+void *ioremap(unsigned long phys_addr, unsigned long size);
+/* iounmap用于释放不再需要的映射 */
+void iounmap(void * addr);</code></pre><p>注意，ioremap返回的地址不可以直接解引用；相反，应当使用内核提供的访问函数。</p>
+<h2 id="Accessing-IO-Memory"><a href="#Accessing-IO-Memory" class="headerlink" title="Accessing IO Memory"></a>Accessing IO Memory</h2><pre><code>/* I/O内存读函数。参数addr应当是从ioremap获得的地址(可能包含一个整型偏移); 返回值是从给定I/O内存读取到的值 */
+unsigned int ioread8(void *addr);
+unsigned int ioread16(void *addr);
+unsigned int ioread32(void *addr);
+/* I/O内存写函数。参数addr同I/O内存读函数，参数value为要写的值 */
+void iowrite8(u8 value, void *addr);
+void iowrite16(u16 value, void *addr);
+void iowrite32(u32 value, void *addr);
+
+unsigned readb(address);
+unsigned readw(address);
+unsigned readl(address); 
+void writeb(unsigned value, address);
+void writew(unsigned value, address);
+void writel(unsigned value, address); 
+
+/* 需要操作一块I/O 地址时，使用下列函数(这些函数的行为类似于它们的C库类似函数): */
+void memset_io(void *addr, u8 value, unsigned int count);
+void memcpy_fromio(void *dest, void *source, unsigned int count);
+void memcpy_toio(void *dest, void *source, unsigned int count);</code></pre><h2 id="IO-Memory-Accessing-Process"><a href="#IO-Memory-Accessing-Process" class="headerlink" title="IO Memory Accessing Process"></a>IO Memory Accessing Process</h2><p>直接访问IO内存的流程：</p>
+<img src = "IO-port-IO-memory/3.png" width=50%>
+
+<h1 id="ARM’s-IO-Interface"><a href="#ARM’s-IO-Interface" class="headerlink" title="ARM’s IO Interface"></a>ARM’s IO Interface</h1><p>ARM 体系下相关IO操作函数都定义在/arch/arm/include/asm/io.h中。对于ARM体系来说，没有IO端口，只有IO内存。</p>
+<h2 id="IO-Operation-Primitive"><a href="#IO-Operation-Primitive" class="headerlink" title="IO Operation Primitive"></a>IO Operation Primitive</h2><p>其他I/O操作函数都是对这些函数的再封装。</p>
+<pre><code>void __raw_writesb(volatile void __iomem *addr, const void *data, int bytelen);
+void __raw_writesw(volatile void __iomem *addr, const void *data, int wordlen);
+void __raw_writesl(volatile void __iomem *addr, const void *data, int longlen);
+void __raw_readsb(const volatile void __iomem *addr, void *data, int bytelen);
+void __raw_readsw(const volatile void __iomem *addr, void *data, int wordlen);
+void __raw_readsl(const volatile void __iomem *addr, void *data, int longlen);
+/*在/arch/arm/lib中的汇编文件中定义*/     
+
+static inline void __raw_writeb(u8 val, volatile void __iomem *addr)
+static inline void __raw_writew(u16 val, volatile void __iomem *addr)
+static inline void __raw_writel(u32 val, volatile void __iomem *addr)
+static inline u8 __raw_readb(const volatile void __iomem *addr)
+static inline u32 __raw_readl(const volatile void __iomem *addr)
+static inline u16 __raw_readw(const volatile void __iomem *addr)
+/*使用ARM指令STR LDR实现*/
+
+/* __iomem是用来修饰一个变量的，这个变量必须是非解引用（no dereference）的，即这个变量地址必须是有效的.
+而且变量所在的地址空间必须是2，即设备地址映射空间。
+0表示normal space，即普通地址空间，对内核代码来说，当然就是内核空间地址了。1表示用户地址空间，2表示是设备地址映射空间 */
+#define __iomem __attribute__((noderef, address_space(2)))</code></pre><h2 id="IO-Port-1"><a href="#IO-Port-1" class="headerlink" title="IO Port"></a>IO Port</h2><p>Linux中的ARM为了兼容性，模拟了X86下的IO端口访问</p>
+<pre><code>#define outb(v,p)   (&#123; __iowmb(); __raw_writeb(v,__io(p)); &#125;)
+#define outw(v,p)   (&#123; __iowmb(); __raw_writew((__force __u16) cpu_to_le16(v),__io(p)); &#125;)
+#define outl(v,p)   (&#123; __iowmb(); __raw_writel((__force __u32) cpu_to_le32(v),__io(p)); &#125;)
+#define inb(p)  (&#123; __u8 __v = __raw_readb(__io(p)); __iormb(); __v; &#125;)
+#define inw(p)  (&#123; __u16 __v = le16_to_cpu((__force __le16) __raw_readw(__io(p))); __iormb(); __v; &#125;)
+#define inl(p)  (&#123; __u32 __v = le32_to_cpu((__force __le32) __raw_readl(__io(p))); __iormb(); __v; &#125;)
+
+#define outsb(p,d,l)        __raw_writesb(__io(p),d,l)
+#define outsw(p,d,l)        __raw_writesw(__io(p),d,l)
+#define outsl(p,d,l)        __raw_writesl(__io(p),d,l)
+#define insb(p,d,l)     __raw_readsb(__io(p),d,l)
+#define insw(p,d,l)     __raw_readsw(__io(p),d,l)
+#define insl(p,d,l)     __raw_readsl(__io(p),d,l)
+
+/* __force表示所定义的变量类型是可以做强制类型转换的 */
+#define __force __attribute__((force))      
+
+/* __io是端口到内存的映射，可以作为ioport_map的实现*/
+#ifdef CONFIG_NEED_MACH_IO_H
+#include &lt;mach/io.h&gt;
+#elif defined(CONFIG_PCI)
+#define IO_SPACE_LIMIT    ((resource_size_t)0xfffff)
+#define __io(a)        __typesafe_io(PCI_IO_VIRT_BASE + ((a) &amp; IO_SPACE_LIMIT))
+#else
+#define __io(a)        __typesafe_io((a) &amp; IO_SPACE_LIMIT)
+#endif</code></pre><h2 id="IO-Memory-1"><a href="#IO-Memory-1" class="headerlink" title="IO Memory"></a>IO Memory</h2><pre><code>#define readb_relaxed(c) (&#123; u8  __r = __raw_readb(c); __r; &#125;)
+#define readw_relaxed(c) (&#123; u16 __r = le16_to_cpu((__force __le16) __raw_readw(c)); __r; &#125;)
+#define readl_relaxed(c) (&#123; u32 __r = le32_to_cpu((__force __le32) __raw_readl(c)); __r; &#125;)
+#define writeb_relaxed(v,c) __raw_writeb(v,c)
+#define writew_relaxed(v,c) __raw_writew((__force u16) cpu_to_le16(v),c)
+#define writel_relaxed(v,c) __raw_writel((__force u32) cpu_to_le32(v),c)
+
+#define readb(c)        (&#123; u8  __v = readb_relaxed(c); __iormb(); __v; &#125;)
+#define readw(c)        (&#123; u16 __v = readw_relaxed(c); __iormb(); __v; &#125;)
+#define readl(c)        (&#123; u32 __v = readl_relaxed(c); __iormb(); __v; &#125;)
+#define writeb(v,c)     (&#123; __iowmb(); writeb_relaxed(v,c); &#125;)
+#define writew(v,c)     (&#123; __iowmb(); writew_relaxed(v,c); &#125;)
+#define writel(v,c)     (&#123; __iowmb(); writel_relaxed(v,c); &#125;)
+/*就是relaxed系列添加了内存障碍*/    
+
+#define readsb(p,d,l)       __raw_readsb(p,d,l)
+#define readsw(p,d,l)       __raw_readsw(p,d,l)
+#define readsl(p,d,l)       __raw_readsl(p,d,l)
+#define writesb(p,d,l)      __raw_writesb(p,d,l)
+#define writesw(p,d,l)      __raw_writesw(p,d,l)
+#define writesl(p,d,l)      __raw_writesl(p,d,l)
+
+#define ioread16be(p)       (&#123; __u16 __v = be16_to_cpu((__force __be16)__raw_readw(p)); __iormb(); __v; &#125;)
+#define ioread32be(p)       (&#123; __u32 __v = be32_to_cpu((__force __be32)__raw_readl(p)); __iormb(); __v; &#125;)
+#define iowrite16be(v,p)    (&#123; __iowmb(); __raw_writew((__force __u16)cpu_to_be16(v), p); &#125;)
+#define iowrite32be(v,p)    (&#123; __iowmb(); __raw_writel((__force __u32)cpu_to_be32(v), p); &#125;)
+
+static inline void memset_io(volatile void __iomem *dst, unsigned c, size_t count)
+static inline void memcpy_fromio(void *to, const volatile void __iomem *from, size_t count)
+static inline void memcpy_toio(volatile void __iomem *to, const void *from, size_t count)</code></pre><h2 id="Memory-Barrier"><a href="#Memory-Barrier" class="headerlink" title="Memory Barrier"></a>Memory Barrier</h2><p>IO寄存器和RAM的主要区别就是IO操作具有side effect，而内存操作没有：内存写操作的唯一结果就是在指定位置存储一个数值；内存读操作则仅仅返回指定位置最后一次写入的数值。在CPU或编译器对RAM进行优化的时候，效果良好；但对IO操作来说这些优化可能造成致命的错误，这是因为IO操作具有side effect，在访问寄存器时，不仅会像访问RAM一样影响存储单元的值，还有可能改变寄存器的状态、IO端口电平或输出时序等，所以在驱动程序中必须确保不使用cache，同时不对读写指令进行优化。</p>
+<pre><code>#include &lt;asm/system.h&gt;
+void rmb(void)
+void wmb(void)
+void mb(void)</code></pre>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/29/OP-TEE-on-Hikey960/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ForeverMZY">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/29/OP-TEE-on-Hikey960/" class="post-title-link" itemprop="url">OP-TEE on Hikey960</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-10-29 14:35:38" itemprop="dateCreated datePublished" datetime="2019-10-29T14:35:38+00:00">2019-10-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-07 09:43:00" itemprop="dateModified" datetime="2019-12-07T09:43:00+00:00">2019-12-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Experience/" itemprop="url" rel="index"><span itemprop="name">Experience</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>记录一下在HiKey960上配置OP-TEE的过程。</p>
+<p>接到任务后，第一步就是买板子。导师给的是官网链接，购买渠道都是国外的。以前没在网上买过国外的东西，而且板子还需要报销，所以没有选择在官网的渠道上购买，而是选择在京东上购买。在京东上卖板子的也有好几家店。为了保险起见，我选择了一家在官网上有链接的中国旗舰店，买的是裸板子，没有其他配件，而没有选择另一家店的套装，当然这也给后来的配置造成了一定麻烦。</p>
+<p>官网链接：<a target="_blank" rel="noopener" href="https://www.96boards.org/product/hikey960/" title="Hikey960">https://www.96boards.org/product/hikey960/</a></p>
+<p>在等待板子到货的这段时间里，我先把其他工作做好。按照OP-TEE官方文档（<a target="_blank" rel="noopener" href="https://optee.readthedocs.io/en/latest/building/gits/build.html#get-and-build-the-solution" title="OP-TEE DOC">https://optee.readthedocs.io/en/latest/building/gits/build.html#get-and-build-the-solution</a>）的步骤，进行如下操作（在VPS上进行，国内网络环境不太好）：</p>
+<p>Step 1 - 安装了一些必要的包</p>
+<p>Step 2 - 安装repo</p>
+<p>Step 3 - 获取源码</p>
+<pre><code>mkdir -p &lt;optee-project&gt;
+cd &lt;optee-project&gt;
+repo init -u https://github.com/OP-TEE/manifest.git -m $&#123;TARGET&#125;.xml [-b $&#123;BRANCH&#125;]
+repo sync -j4 --no-clone-bundle</code></pre><p>Step 4 - 获取工具链</p>
+<pre><code>cd &lt;optee-project&gt;/build
+make -j2 toolchains</code></pre><p>进行完这一步，我将VPS上的文件打包，开启FTP服务，通过本地的FTP客户端（开启Socks5代理）获取了包，拷贝到相应位置。</p>
+<p>Step 5 - Build</p>
+<pre><code>make -j?</code></pre><p>似乎需要make两次才能正确生成文件？</p>
+<p>Step 6 - Flash the device</p>
+<p>板子拿到手以后默认的模式是Normal Mode，即开机进入预装的AOSP界面，但是我们要刷OP-TEE镜像，就要进入FastBoot模式，具体操作就是将板子上控制模式的开关1、3开启，2关闭，这样再连接电源，开启的就是FastBoot模式。</p>
+<img src=".\HiKey960-Mode.PNG">
+
+<p>开启电源进入FastBoot模式后，连接Type-C接口，测试命令</p>
+<pre><code>fastboot devices</code></pre><p>会显示一串数字，此时代表设备已经成功从FastBoot模式启动了。</p>
+<p>然后进入build目录，执行命令（需加入sudo）</p>
+<pre><code>sudo make flash</code></pre><p>信息成功刷写入开发板。</p>
+<p>然后切换回Normal Mode，开机， 这时又遇到一个问题。我此时连接的还是HDMI（板子刚到的时候通过HDMI观察过自带的Android系统），希望通过屏幕来查看设备，然而接入电源后发现板子灯亮着，但是屏幕没有反应。排除了屏幕的故障后，我陷入了沉思……经过google，我找到了类似的问题，作者的回答是这样的：</p>
+<img src=".\HiKey960-Screen.PNG">
+
+<p>看来我想当然了，没想到OP-TEE不支持HDMI，还需要通过串口通信。继续查找资料，找到了HiKey960的接口：</p>
+<img src=".\HiKey960-Interface.PNG">
+
+<p>然后就容易多了，找到一个U转串和三根杜邦线，分别连接TXD-RXD、RXD-TXD、GND-GND三条线，就完成了接口的搭建。重新启动板子，终于在串口控制台中看见了输出！但是当我测试xtest指令时，出现了错误：</p>
+<pre><code>＃xtest
+Run test suite with level=0
+
+TEE test application started with device [(null)]
+######################################################
+#
+regression
+#
+######################################################
+
+* regression_1001 Core self tests
+E/TC:6 0 tee_entry_std:536 Bad arg address 0x217061000
+regression_1000.c:246: res has an unexpected value: 0xffff000e = 
+TEEC_ERROR_COMMUNICATION, expected 0x0 = TEEC_SUCCESS
+Segmentation fault</code></pre><p>又是google一番，发现一篇中文帖子中的问题和我一致（<a target="_blank" rel="noopener" href="https://blog.csdn.net/tulipper/article/details/88651202">https://blog.csdn.net/tulipper/article/details/88651202</a>），粗略地看了一下解决方法，似乎是切换到稳定的release版本。所有我又下载了目前稳定的3.7.0版本，又是一番折腾，重新下载、编译、烧录、开机等，但是还是出现了上述错误。这时我将错误日志输入到搜索栏，查找到了github上相关的issue。看了几个帖子，发现最终的问题不是版本的问题，而是OP-TEE支持的HiKey960是3G RAM，而我买的板子是4G RAM，出现了地址错误。最终解决方法是：</p>
+<img src=".\HiKey960-Solution.PNG">
+
+<p>最终成功运行！xtest成功，optee_example_hello_world成功！</p>
+<pre><code>$ optee_example_hello_world
+D/TC:? 0 tee_ta_init_pseudo_ta_session:280 Lookup pseudo TA 8aaaf200-2450-11e4-abe2-0002a5d5c51b
+D/TC:? 0 load_ldelf:707 ldelf load address 0x40006000
+D/LD:  ldelf:134 Loading TA 8aaaf200-2450-11e4-abe2-0002a5d5c51b
+D/TC:? 0 tee_ta_init_session_with_context:572 Re-open TA 3a2f8978-5dc0-11e8-9c2d-fa7ae01bbebc
+D/TC:? 0 system_open_ta_binary:239 Lookup user TA ELF 8aaaf200-2450-11e4-abe2-0002a5d5c51b (early TA)
+D/TC:? 0 system_open_ta_binary:242 res=0xffff0008
+D/TC:? 0 system_open_ta_binary:239 Lookup user TA ELF 8aaaf200-2450-11e4-abe2-0002a5d5c51b (Secure Storage TA)
+D/TC:? 0 system_open_ta_binary:242 res=0xffff0008
+D/TC:? 0 system_open_ta_binary:239 Lookup user TA ELF 8aaaf200-2450-11e4-abe2-0002a5d5c51b (REE)
+D/TC:? 0 system_open_ta_binary:242 res=0x0
+D/LD:  ldelf:169 ELF (8aaaf200-2450-11e4-abe2-0002a5d5c51b) at 0x40055000
+D/TC:? 0 tee_ta_close_session:498 csess 0x3f079a00 id 1
+D/TC:? 0 tee_ta_close_session:517 Destroy session
+Invoking TA to increment 42
+TA incremented value to 43
+D/TC:? 0 tee_ta_close_session:498 csess 0x3f07a530 id 11
+D/TC:? 0 tee_ta_close_session:517 Destroy session
+D/TC:? 0 destroy_context:297 Destroy TA ctx (0x3f079e70)</code></pre><p>经过一番折腾，最终在HiKey960上配置好了OP-TEE，这次吸取的教训：</p>
+<ol>
+<li>严格按照官网的步骤安装</li>
+<li>开源项目查找issue</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/25/Paper-reading-PeriScope-An-Effective-Probing-and-Fuzzing-Framework-for-the-Hardware-OS-Boundary/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ForeverMZY">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/25/Paper-reading-PeriScope-An-Effective-Probing-and-Fuzzing-Framework-for-the-Hardware-OS-Boundary/" class="post-title-link" itemprop="url">Paper reading: PeriScope An Effective Probing and Fuzzing Framework for the Hardware-OS Boundary</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-10-25 20:15:11" itemprop="dateCreated datePublished" datetime="2019-10-25T20:15:11+00:00">2019-10-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-07 09:44:33" itemprop="dateModified" datetime="2019-12-07T09:44:33+00:00">2019-12-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Paper-Reading/" itemprop="url" rel="index"><span itemprop="name">Paper Reading</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Two different boundaries of the system:</p>
+<ol>
+<li><strong>system call interface</strong>: expose kernel-space drivers to user-space adversaries.</li>
+<li><strong>hardware-OS interface</strong>: expose drivers to potentially compromised peripheral hardware. </li>
+</ol>
+<p><strong>PeriScope</strong>: monitor MMIO or DMA mappings set up by the driver, and then dynamically trap the driver’s accesses to such memory regions.</p>
+<p><strong>PeriFuzz</strong>: a driver fuzzer that simulates attacks originating in untrusted, compromised peripherals. PeriFuzz traps the driver’s read access to MMIO and DMA mappings, and fuzzes the values being read by the driver.</p>
+<p>PeriScope uses a page fault based in-kernel monitoring mechanism, which works with all devices and drivers in their existing testing environment.</p>
+<p>Contributions:</p>
+<ol>
+<li>A probing framework</li>
+<li>A fuzzing framework</li>
+<li>An overlapping fetch fuzzer</li>
+<li>Discoverd vulnerabilities</li>
+<li>An open-source tool</li>
+</ol>
+<h1 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h1><h2 id="Hardware-OS-Interaction"><a href="#Hardware-OS-Interaction" class="headerlink" title="Hardware-OS Interaction"></a>Hardware-OS Interaction</h2><h3 id="Interrupts"><a href="#Interrupts" class="headerlink" title="Interrupts:"></a>Interrupts:</h3><p>Upon receiving an interrupt request, CPU first mask the interrupt line so that another interrupt request cannot be raised on the same line while the first request is being handled. Then the CPU transfers control to the interrupt handler registered by the OS for that interrupt line.</p>
+<p>top-half bottom-half </p>
+<p>hardirq softirq tasklet workqueue</p>
+<h3 id="Memory-Mapped-I-O"><a href="#Memory-Mapped-I-O" class="headerlink" title="Memory-Mapped I/O:"></a>Memory-Mapped I/O:</h3><p>MMIO maps a range of kernel-space virtual addresses to the hardware registers of peripheral devices. This allows the CPU to use normal memory access instructions to communicate with the peripheral device.</p>
+<h3 id="Direct-Memory-Access"><a href="#Direct-Memory-Access" class="headerlink" title="Direct Memory Access:"></a>Direct Memory Access:</h3><p>DMA allows peripheral devices to access physical memory directly.</p>
+<p>Coherent DMA buffers 、 Streaming DMA buffers</p>
+<h2 id="Input-Output-Memory-Management-Unit"><a href="#Input-Output-Memory-Management-Unit" class="headerlink" title="Input/Output Memory Management Unit"></a>Input/Output Memory Management Unit</h2><p>IOMMU could limit which regions of the physical memory each device can access, and translates device-visible virtual addressed to physical addresses.</p>
+<h2 id="Analyzing-Hardware-OS-Interaction"><a href="#Analyzing-Hardware-OS-Interaction" class="headerlink" title="Analyzing Hardware-OS Interaction"></a>Analyzing Hardware-OS Interaction</h2><h3 id="Device-Adaptation"><a href="#Device-Adaptation" class="headerlink" title="Device Adaptation"></a>Device Adaptation</h3><p>To exercise direct control over the data sent from the hardware to the driver, an analyst can adapt the firmware of read devices to include such capabilities. However, these frameworks are typically tailored to specific devices, and given the heterogeneity of peripheral devices.</p>
+<h3 id="Virtual-Machine-Monitor"><a href="#Virtual-Machine-Monitor" class="headerlink" title="Virtual Machine Monitor"></a>Virtual Machine Monitor</h3><p>A driver can be tested in conjunction with virtual devices running in a virtual environment such as QEMU. However, an implementation of a virtual device does not exist for many devices.</p>
+<h3 id="Symbolic-Execution"><a href="#Symbolic-Execution" class="headerlink" title="Symbolic Execution"></a>Symbolic Execution</h3><p>Several tools leverage S2E to analyze the interactions between OS kernel and hardware by selectively converting hardware-provided values into symbolic values. However, symbolic execution in general is prohibitively slow due to the path explosion and constraint solving problem.</p>
+<h1 id="Periscope-Design"><a href="#Periscope-Design" class="headerlink" title="Periscope Design"></a>Periscope Design</h1><p>PeriScope is a dynamic analysis framework that can be used to examine bi-directional communication between devices and their and their drivers over MMIO and DMA by intercepting the driver’s accesses to communication channels. PeriScope does this by hooking into the kernel’s page fault handling mechanism.</p>
+<p>High-level:</p>
+<ol>
+<li>PeriScope automatically detects when the target device driver creates a MMIO or DMA memory mapping, and registers it.</li>
+<li>The analyst selects the registered mappings that he wishes to monitor. PeriScope marks the pages backing these monitored mappings as not present in the kernel page tables.</li>
+</ol>
+<p>Low-level:</p>
+<img src=".\PERISCOPE_fault_handling.png" width="50%" height="50%">
+
+<h2 id="Memory-Access-Monitoring"><a href="#Memory-Access-Monitoring" class="headerlink" title="Memory Access Monitoring"></a>Memory Access Monitoring</h2><h3 id="Tracking-Allocations"><a href="#Tracking-Allocations" class="headerlink" title="Tracking Allocations"></a>Tracking Allocations</h3><p>PeriScope hooks the kernel APIs used to allocate and deallocate DMA and MMIO regions. We use these hooks to maintain a list of all DMA/MMIO allocation contexts and their active mappings.</p>
+<h3 id="Enabling-Monitoring"><a href="#Enabling-Monitoring" class="headerlink" title="Enabling Monitoring"></a>Enabling Monitoring</h3><p>PeriScope exposes a privileged user-space API that enables monitoring of DMA/MMIO regions on a per-allocation-context basis.</p>
+<h3 id="Clearing-Page-Presence"><a href="#Clearing-Page-Presence" class="headerlink" title="Clearing Page Presence"></a>Clearing Page Presence</h3><p>PeriScope marks all pages containing monitored regions as not present in the kernel’s page tables to force accesses to such pages to trigger page faults.</p>
+<h3 id="Trapping-Page-Faults"><a href="#Trapping-Page-Faults" class="headerlink" title="Trapping Page Faults"></a>Trapping Page Faults</h3><p>PeriScope hooks the kernel’s default kernel page fault handler to monitor page faults.</p>
+<h3 id="Instruction-Decoding"><a href="#Instruction-Decoding" class="headerlink" title="Instruction Decoding"></a>Instruction Decoding</h3><p>PeriScope implemented a simple AArch64 instruction decoder to extract the source register, the destination register and the access width of the faulting instruction.</p>
+<h3 id="Pre-instruction-Hook"><a href="#Pre-instruction-Hook" class="headerlink" title="Pre-instruction Hook"></a>Pre-instruction Hook</h3><p>After decoding the instruction, PeriScope calls the pre-instruction look that the user of our framework can register.</p>
+<h3 id="Single-stepping"><a href="#Single-stepping" class="headerlink" title="Single-stepping"></a>Single-stepping</h3><p>PeriScope use the process’s single-stepping support to ensure that only the faulting instruction executes, but none of its successors do.</p>
+<h3 id="Post-instruction-Hook"><a href="#Post-instruction-Hook" class="headerlink" title="Post-instruction Hook"></a>Post-instruction Hook</h3><p>PeriScope calls the post-instruction handler, which has a default implementation that can be overridden through our API.</p>
+<h1 id="PeriFuzz-Design"><a href="#PeriFuzz-Design" class="headerlink" title="PeriFuzz Design"></a>PeriFuzz Design</h1><h2 id="Threat-Model"><a href="#Threat-Model" class="headerlink" title="Threat Model"></a>Threat Model</h2><h3 id="Peripheral-Compromise"><a href="#Peripheral-Compromise" class="headerlink" title="Peripheral Compromise"></a>Peripheral Compromise</h3><p>We assume that the attacker can compromise a peripheral, which can send arbitrary data to its device driver.</p>
+<h3 id="IOMMU-SMMU-Protection"><a href="#IOMMU-SMMU-Protection" class="headerlink" title="IOMMU/SMMU Protection"></a>IOMMU/SMMU Protection</h3><p>IOMMUs can prevent the device from accessing physical memory regions that were not explicityly mapped by the MMU, and they prevent periphearls from accessing streaming DMA buffers while these are mapped for CPU access. We assume that such an IOMMU is in place, and that is being used correctly.</p>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>Above</p>
+<h2 id="Design-Overview"><a href="#Design-Overview" class="headerlink" title="Design Overview"></a>Design Overview</h2><h3 id="Fuzzer"><a href="#Fuzzer" class="headerlink" title="Fuzzer"></a>Fuzzer</h3><p>Fuzzer that runs in user space is responsible for generating inputs for the device driver and processing execution feedback.</p>
+<h3 id="Executor"><a href="#Executor" class="headerlink" title="Executor"></a>Executor</h3><p>The executor is a user-space-resident bridge between the fuzzer and the injector.</p>
+<h3 id="Injector"><a href="#Injector" class="headerlink" title="Injector"></a>Injector</h3><p>The injector is a kernel-space module that interfaces with our PeriScope framework.</p>
+<h2 id="Fuzzer-Input-Consumption"><a href="#Fuzzer-Input-Consumption" class="headerlink" title="Fuzzer Input Consumption"></a>Fuzzer Input Consumption</h2><p>We treat each fuzzer-generated input as as serialized sequence of memory access.</p>
+<h2 id="Register-Value-Injection"><a href="#Register-Value-Injection" class="headerlink" title="Register Value Injection"></a>Register Value Injection</h2><h2 id="Fuzzing-Loop"><a href="#Fuzzing-Loop" class="headerlink" title="Fuzzing Loop"></a>Fuzzing Loop</h2><p>Each iteration of the fuzzing loop consumes a single fuzzer-generated input. We align each iteration of the fuzzing loop to the software interrupt handler.</p>
+<h2 id="Interfacing-with-AFL"><a href="#Interfacing-with-AFL" class="headerlink" title="Interfacing with AFL"></a>Interfacing with AFL</h2><h3 id="Coverage-guidance"><a href="#Coverage-guidance" class="headerlink" title="Coverage-guidance"></a>Coverage-guidance</h3><p>We modified and used KCOV to provide coverage feedback while executing inputs. Then the executor copies this coverage information to a memory region shared with the parent AFL fuzzer process, after which we signal KCOV to clear the coverage buffer for the next fuzzing iteration.</p>
+<h3 id="Automated-Seed-Generation"><a href="#Automated-Seed-Generation" class="headerlink" title="Automated Seed Generation"></a>Automated Seed Generation</h3><p>We use PeriScope framework to log all accesses to a user-selected set of buffers.</p>
+<h1 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h1><h2 id="PeriScope"><a href="#PeriScope" class="headerlink" title="PeriScope"></a>PeriScope</h2><h3 id="Tracking-Allocations-1"><a href="#Tracking-Allocations-1" class="headerlink" title="Tracking Allocations"></a>Tracking Allocations</h3><p>insert hooks</p>
+<ol>
+<li><strong>coherent DMA mapping</strong>: dma_alloc_coherent dma_free_coherent</li>
+<li><strong>streaming DMS mapping</strong>: dma_unmap_page dma_map_page</li>
+<li><strong>MMIO mapping</strong>: ioremap iounmap</li>
+</ol>
+<h3 id="Monitoring-Interface"><a href="#Monitoring-Interface" class="headerlink" title="Monitoring Interface"></a>Monitoring Interface</h3><p>PeriScope provides a user-space interface by exposing <em>debugfs</em> and <em>tracefs</em> file system entries. Through this interface, a user can list all allocation contexts and their active mappings, enable or disable monitoring, and read the circular buffer where PeriScope logs all accesses to the monitored mappings.</p>
+<h2 id="PeriFuzz"><a href="#PeriFuzz" class="headerlink" title="PeriFuzz"></a>PeriFuzz</h2><h3 id="Kernel-User-Interface"><a href="#Kernel-User-Interface" class="headerlink" title="Kernel-User Interface"></a>Kernel-User Interface</h3><p>The injector registers a device node that exposes device-specific <em>mmap</em> and <em>ioctl</em> system calls to the user-space executor.</p>
+<h3 id="Persisting-Fuzzer-Files"><a href="#Persisting-Fuzzer-Files" class="headerlink" title="Persisting Fuzzer Files"></a>Persisting Fuzzer Files</h3><p>PeriScope ensure that all the fuzzer files are made persistent, by modifying AFL to call <em>fsync</em> after all file writes.</p>
+<h3 id="Fuzzing-Manager"><a href="#Fuzzing-Manager" class="headerlink" title="Fuzzing Manager"></a>Fuzzing Manager</h3><p>The fuzzing procedure is completely automated through Python scripts that run on a host separate from the target device.</p>
+<h1 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h1><h2 id="Target-Drivers"><a href="#Target-Drivers" class="headerlink" title="Target Drivers"></a>Target Drivers</h2><p>Wi-Fi drivers</p>
+<h2 id="Target-Attack-Surface"><a href="#Target-Attack-Surface" class="headerlink" title="Target Attack Surface"></a>Target Attack Surface</h2><p>We assume that the driver has reached a steady state where it has established a stable connection with a network.</p>
+<h2 id="Target-Mappings"><a href="#Target-Mappings" class="headerlink" title="Target Mappings"></a>Target Mappings</h2><p>We used PeriScope to determine which regions the driver accesses frequently, and we manually investigated the driver’s code to determine the purpose of each region.</p>
+<h2 id="Fuzzer-Seed-Generation"><a href="#Fuzzer-Seed-Generation" class="headerlink" title="Fuzzer Seed Generation"></a>Fuzzer Seed Generation</h2><p>We used PeriScope’s default tracing facilities to generate initial seed input files.</p>
+<h2 id="Vulnerabilities-Discovered"><a href="#Vulnerabilities-Discovered" class="headerlink" title="Vulnerabilities Discovered"></a>Vulnerabilities Discovered</h2><h3 id="Disclosure"><a href="#Disclosure" class="headerlink" title="Disclosure"></a>Disclosure</h3><h3 id="Error-Type-and-Impact"><a href="#Error-Type-and-Impact" class="headerlink" title="Error Type and Impact"></a>Error Type and Impact</h3><ol>
+<li>buffer overflows</li>
+<li>address leaks</li>
+<li>reachable assertions</li>
+<li>null-pointer dereference</li>
+</ol>
+<h3 id="Double-fetch-Bugs"><a href="#Double-fetch-Bugs" class="headerlink" title="Double-fetch Bugs"></a>Double-fetch Bugs</h3><h2 id="Case-Study-I-Design-Bug-in-qcacld-3-0"><a href="#Case-Study-I-Design-Bug-in-qcacld-3-0" class="headerlink" title="Case Study I: Design Bug in qcacld-3.0"></a>Case Study I: Design Bug in qcacld-3.0</h2><h2 id="Case-Study-II-Double-fetch-Bugs-in-bcmdhd4358"><a href="#Case-Study-II-Double-fetch-Bugs-in-bcmdhd4358" class="headerlink" title="Case Study II: Double-fetch Bugs in bcmdhd4358"></a>Case Study II: Double-fetch Bugs in bcmdhd4358</h2><h1 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a>Discussion</h1><h1 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h1><h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
 
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ForeverMZY"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">ForeverMZY</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ForeverMZY</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
 
 </body>
-
 </html>
