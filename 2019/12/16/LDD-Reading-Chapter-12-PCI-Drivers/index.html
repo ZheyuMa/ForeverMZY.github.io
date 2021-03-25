@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="PCI驱动程序PCI接口PCI寻址每个PCI外设由一个总线编号、一个设备编号和一个功能编号来标识。
+Linux目前支持PCI域，每个PCI域可以拥有最多256个总线。每个总线可以支持32个设备，每个设备都可以是多功能板，最多可以有8种功能。
+在显示硬件地址时，有时显示为两个值（一个8位的总线编号和一">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="LDD Reading: Chapter 12: PCI Drivers"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Hexo"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>LDD Reading: Chapter 12: PCI Drivers - Hexo</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Google Analytics -->
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="Hexo">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="Hexo">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/" 
+                    title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/archives" 
+                    title="Archives">
+                    Archives
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/tags" 
+                    title="Tags">
+                    Tags
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/categories" 
+                    title="Categories">
+                    Categories
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/about.html" 
+                    title="About">
+                    About
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/contact.html" 
+                    title="Contact">
+                    Contact
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">LDD Reading: Chapter 12: PCI Drivers</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-12-16</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+                        <div class="tags-container-vertical">
+                            <div class="tags-sub-container">
+                                <a class="fw3 ph1 dib" href="/tags/Linux/">#Linux</a> <a class="fw3 ph1 dib" href="/tags/ARM/">#ARM</a>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Main Post Content -->
+                    <h1 id="PCI驱动程序"><a href="#PCI驱动程序" class="headerlink" title="PCI驱动程序"></a>PCI驱动程序</h1><h2 id="PCI接口"><a href="#PCI接口" class="headerlink" title="PCI接口"></a>PCI接口</h2><h3 id="PCI寻址"><a href="#PCI寻址" class="headerlink" title="PCI寻址"></a>PCI寻址</h3><p>每个PCI外设由一个总线编号、一个设备编号和一个功能编号来标识。</p>
+<p>Linux目前支持PCI域，每个PCI域可以拥有最多256个总线。每个总线可以支持32个设备，每个设备都可以是多功能板，最多可以有8种功能。</p>
+<p>在显示硬件地址时，有时显示为两个值（一个8位的总线编号和一个8位的设备及功能编号），有时显示为三个值（总线、设备和功能），有时显示为四个值（域、总线、设备和功能）；所有的值通常都以16进制显示。</p>
+<h3 id="引导阶段"><a href="#引导阶段" class="headerlink" title="引导阶段"></a>引导阶段</h3><p>当PCI设备上电时，硬件保持未激活状态。该设备只会对配置事务做出响应。上电时，设备上不会有内核和IO端口映射到计算机的地址空间。系统引导时，固件/Linux内核在每个PCI外设上执行配置事务，以便为它提供的每个地址区域分配一个安全的位置。当驱动程序访问设备时，它的内存和IO区域已经被映射到了处理器的地址空间。</p>
+<h3 id="配置寄存器和初始化"><a href="#配置寄存器和初始化" class="headerlink" title="配置寄存器和初始化"></a>配置寄存器和初始化</h3><p>所有的PCI设备都有至少256个字节的地址空间。前64字节是标准化的，而其余的是设备相关的。</p>
+<p>PCI寄存器使用小端方式存储。</p>
+<p>vendorID、deviceID、class</p>
+<h3 id="注册PCI驱动程序"><a href="#注册PCI驱动程序" class="headerlink" title="注册PCI驱动程序"></a>注册PCI驱动程序</h3><p>所有的PCI驱动程序都必须创建的主要结构体是struct pci_driver结构体。该结构体由许多回调函数和变量组成，向PCI核心描述了PCI驱动程序。</p>
+<p>注册：</p>
+<pre><code>static int __init pci_skel_init(void) &#123;
+    return pci_register_driver(&amp;pci_driver);
+&#125;</code></pre><p>如果注册成功，pci_register_driver函数返回0；否则，返回一个负的错误的编号。</p>
+<p>移除：</p>
+<pre><code>static void __exit pci_skel_exit(void) &#123;
+    pci_unregister_driver(&amp;pci_driver);
+&#125;</code></pre><h3 id="访问配置空间"><a href="#访问配置空间" class="headerlink" title="访问配置空间"></a>访问配置空间</h3><p>在驱动程序检测到设备后，它通常需要读取或写入三个地址空间：内存、端口和配置。</p>
+<pre><code>#include &lt;linux/pci.h&gt;
+
+int pci_read_config_byte(struct pci_dev *dev, int where, u8 *val);
+int pci_read_config_word(struct pci_dev *dev, int where, u16 *val);
+int pci_read_config_dword(struct pci_dev *dev, int where, u32 *val);
+
+int pci_write_config_byte(struct pci_dev *dev, int where, u8 val);
+int pci_write_config_word(struct pci_dev *dev, int where, u16 val);
+int pci_write_config_dword(struct pci_dev *dev, int where, u32 val);</code></pre><h3 id="访问IO和内存空间"><a href="#访问IO和内存空间" class="headerlink" title="访问IO和内存空间"></a>访问IO和内存空间</h3><pre><code>unsigned long pci_resource_start(struct pci_dev *dev, int bar);
+unsigned long pci_resource_end(struct pci_dev *dev, int bar);
+unsigned long pci_resource_flags(strcut pci_dev *dev, int bar);</code></pre><h3 id="PCI中断"><a href="#PCI中断" class="headerlink" title="PCI中断"></a>PCI中断</h3><p>在LinUC的引导阶段，计算机固件已经为设备分配了一个唯一的中断号，驱动程序只需使用该中断号。中断号保存在配置寄存器60（PCI_INTERRUPT_LINE）中。该寄存器为一个字节宽。这允许多达256个中断线。</p>
+<h2 id="ISA回顾"><a href="#ISA回顾" class="headerlink" title="ISA回顾"></a>ISA回顾</h2><h3 id="硬件资源"><a href="#硬件资源" class="headerlink" title="硬件资源"></a>硬件资源</h3><p>一个ISA设备可配备有IO端口、内存区域以及中断线</p>
+<h3 id="即插即用规范"><a href="#即插即用规范" class="headerlink" title="即插即用规范"></a>即插即用规范</h3><h2 id="PC-104和PC-104"><a href="#PC-104和PC-104" class="headerlink" title="PC/104和PC/104+"></a>PC/104和PC/104+</h2><h2 id="其他的PC总线"><a href="#其他的PC总线" class="headerlink" title="其他的PC总线"></a>其他的PC总线</h2><p>MCA、VLB、SBus、NuBus</p>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+                        <div class="tags-container-bottom">
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Linux/">#Linux</a> <a class="fw3 ph1 dib" href="/tags/ARM/">#ARM</a>
+                        </div>
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="John Doe">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            My name is Jonathan Klughertz and this is my blog.<br>I am a full stack software engineer with a strong front-end focus.<br> I currently live and work in Singapore, hit me up if you are in the region.
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 2: Categories -->
+                    
+                        <div class="mt5 tc tl-l">
+    <h3>Categories</h3>
+    
+        <p>
+            <a href="/categories/LDD-Reading/">LDD Reading</a>
+        </p>
+    
+</div>
+
+
+                        <hr class="dn-l mw4 black-50 mt5" />
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/2021/03/25/hello-world/">Hello World</a>
+        </p>
+    
+        <p>
+            <a href="/2020/09/01/add-a-hypercall/">add a hypercall</a>
+        </p>
+    
+        <p>
+            <a href="/2020/08/26/add-a-syscall/">add a syscall</a>
+        </p>
+    
+        <p>
+            <a href="/2020/03/05/Build-pixel-for-goldfish/">Build pixel for goldfish</a>
+        </p>
+    
+        <p>
+            <a href="/2020/03/05/The-content-of-Linux-Driver/">The content of Linux Driver</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://twitter.com/?lang=en" target="_blank">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://dribbble.com/" target="_blank">
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://plus.google.com/" target="_blank">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.behance.net/" target="_blank">
+                            <i class="fa fa-behance"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://500px.com/" target="_blank">
+                            <i class="fa fa-500px"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="mailto:test@example.com" target="_blank">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="/#" target="_blank">
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                @Untitled. All right reserved | Design & Hexo <a class="link dim white" target="_blank" rel="noopener" href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

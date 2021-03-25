@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="第六章 高级字符驱动程序操作ioctl函数原型：int (*ioctl) (struct inode *inode, struct file *filp, unsigned int cmd, unsigned long arg);
+选择ioctl命令 头文件：&amp;lt;linux/ioctl.h&amp;gt">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="LDD Reading: Chapter 6: Advanced Char Driver Operations"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Hexo"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>LDD Reading: Chapter 6: Advanced Char Driver Operations - Hexo</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Google Analytics -->
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="Hexo">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="Hexo">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/" 
+                    title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/archives" 
+                    title="Archives">
+                    Archives
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/tags" 
+                    title="Tags">
+                    Tags
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/categories" 
+                    title="Categories">
+                    Categories
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/about.html" 
+                    title="About">
+                    About
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/contact.html" 
+                    title="Contact">
+                    Contact
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">LDD Reading: Chapter 6: Advanced Char Driver Operations</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-12-10</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+                        <div class="tags-container-vertical">
+                            <div class="tags-sub-container">
+                                <a class="fw3 ph1 dib" href="/tags/Linux/">#Linux</a> <a class="fw3 ph1 dib" href="/tags/ARM/">#ARM</a>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Main Post Content -->
+                    <h1 id="第六章-高级字符驱动程序操作"><a href="#第六章-高级字符驱动程序操作" class="headerlink" title="第六章 高级字符驱动程序操作"></a>第六章 高级字符驱动程序操作</h1><h2 id="ioctl"><a href="#ioctl" class="headerlink" title="ioctl"></a>ioctl</h2><p>函数原型：int (*ioctl) (struct inode *inode, struct file *filp, unsigned int cmd, unsigned long arg);</p>
+<h3 id="选择ioctl命令"><a href="#选择ioctl命令" class="headerlink" title="选择ioctl命令"></a>选择ioctl命令</h3><p> 头文件：&lt;linux/ioctl.h&gt;</p>
+<p> type：8位宽。幻数。</p>
+<p> number：8位宽。序数。</p>
+<p> direction：如果相关命令涉及到数据的传输，则该位字段定义数据传输的方向。_IOC_NONE、_IOC_READ、IOC_WRITE以及_IOC_READ | _IOC_WRITE</p>
+<p> size：所涉及的用户数据大小。</p>
+<h3 id="预定义命令"><a href="#预定义命令" class="headerlink" title="预定义命令"></a>预定义命令</h3><h2 id="阻塞型IO"><a href="#阻塞型IO" class="headerlink" title="阻塞型IO"></a>阻塞型IO</h2><h3 id="休眠的简单介绍"><a href="#休眠的简单介绍" class="headerlink" title="休眠的简单介绍"></a>休眠的简单介绍</h3><p>当一个进程被置入休眠时，它会被标记为一种特殊状态并从调度器的运行队列中移走。直到某种情况下修改了这个状态，进程才会在任意CPU上调度，也即运行该进程。</p>
+<p>原则：</p>
+<ol>
+<li>永远不要在原子上下文中进入休眠</li>
+<li>当我们被唤醒时，我们永远无法知道休眠了多长时间，或者休眠期间都发生了些什么事情。</li>
+<li>除非我们知道有其他人会在其他地方唤醒我们，否则进程不能休眠</li>
+</ol>
+<p>一个等待队列通过一个“等待队列头”来管理，等待队列头是一个类型为wait_queue_head_t的结构体，定义在&lt;linux/wait.h&gt;中</p>
+<p>DECLARE_WAIT_QUEUE_HEAD(name);</p>
+<p>or</p>
+<p>wait_queue_head_t my_queue;<br>init_waitqueue_head(&amp;my_queue);</p>
+<h3 id="简单休眠"><a href="#简单休眠" class="headerlink" title="简单休眠"></a>简单休眠</h3><p>休眠：</p>
+<p>wait_event(queue, condition);<br>wait_event_interruptible(queue, condition);<br>wait_event_timeout(queue, condition, timeout);<br>wait_event_interruptible_timeout(queue, condition, timeout);</p>
+<p>唤醒：</p>
+<p>void wake_up(wait_queue_head_t *queue);<br>void wake_up_interruptible(wait_queue_head_t *queue);</p>
+<h3 id="进程如何休眠"><a href="#进程如何休眠" class="headerlink" title="进程如何休眠"></a>进程如何休眠</h3><ol>
+<li>分配并初始化一个wait_queue_t结构，然后将其加入到对应的等待队列。</li>
+<li>设置进程的状态，将其标记为休眠</li>
+<li>检查休眠等待的条件</li>
+<li>放弃处理器</li>
+</ol>
+<h3 id="阻塞和非阻塞型操作"><a href="#阻塞和非阻塞型操作" class="headerlink" title="阻塞和非阻塞型操作"></a>阻塞和非阻塞型操作</h3><p>显式的非阻塞IO由filp-&gt;f_flags中的O_NONBLOCK标志决定。</p>
+<p>非阻塞型操作会立即返回，使得应用程序可以查询数据。在处理非阻塞型文件时，应用程序调用stdio函数必须非常小心，因为很容易把一个非阻塞返回误认为是EOF，所以必须始终检查errno。</p>
+<p>只有read、write、open文件操作受非阻塞标志的影响</p>
+<h3 id="poll和select"><a href="#poll和select" class="headerlink" title="poll和select"></a>poll和select</h3><p>功能：都允许进程决定是否可以对一个或多个打开的文件做非阻塞的读取或写入。</p>
+<p>头文件：&lt;linux/poll.h&gt;</p>
+<p>原型：unsigned int (*poll) (struct file *filp, poll_table *wait);</p>
+<p>步骤：</p>
+<ol>
+<li>在一个或多个可指示poll状态变化的等待队列上调用poll_wait。如果当前没有文件描述符可用来执行IO，则内核将使进程在传递到该系统调用的所有文件描述符对应的等待队列上等待。</li>
+<li>返回一个用来描述操作是否可以立即无阻塞执行的位掩码。</li>
+</ol>
+<h3 id="与read和write的交互"><a href="#与read和write的交互" class="headerlink" title="与read和write的交互"></a>与read和write的交互</h3><h4 id="从设备读取数据"><a href="#从设备读取数据" class="headerlink" title="从设备读取数据"></a>从设备读取数据</h4><ul>
+<li>如果缓冲区有数据，那么即使就绪的数据比程序所请求的少，并且驱动程序保证剩下的数据马上就能到达，read调用仍然应该以难以察觉的延迟立即返回。</li>
+<li>如果输入缓冲区没有数据，那么默认情况下read必须阻塞等待，直到至少有一个字节到达。另一方面，如果设置了O_NONBLOCK标志，read应该立即返回，返回值是-EAGAIN。在这种情况下poll必须报告设备不可读，直到至少有一个字节到达。</li>
+<li>如果已经到达了文件尾，read应该立即返回0，无论O_NONBLOCK是否设置。此时poll报告POLLUP。</li>
+</ul>
+<h4 id="向设备写数据"><a href="#向设备写数据" class="headerlink" title="向设备写数据"></a>向设备写数据</h4><p>同上</p>
+<h4 id="刷新待处理输出"><a href="#刷新待处理输出" class="headerlink" title="刷新待处理输出"></a>刷新待处理输出</h4><p>int (*fsync) (struct file *file, struct dentry *dentry, int datasync);</p>
+<h2 id="异步通知"><a href="#异步通知" class="headerlink" title="异步通知"></a>异步通知</h2><h2 id="设备文件的访问控制"><a href="#设备文件的访问控制" class="headerlink" title="设备文件的访问控制"></a>设备文件的访问控制</h2><ol>
+<li>独享设备</li>
+<li>限制每次只由一个用户访问</li>
+<li>打开时复制设备</li>
+</ol>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+                        <div class="tags-container-bottom">
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Linux/">#Linux</a> <a class="fw3 ph1 dib" href="/tags/ARM/">#ARM</a>
+                        </div>
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="John Doe">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            My name is Jonathan Klughertz and this is my blog.<br>I am a full stack software engineer with a strong front-end focus.<br> I currently live and work in Singapore, hit me up if you are in the region.
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 2: Categories -->
+                    
+                        <div class="mt5 tc tl-l">
+    <h3>Categories</h3>
+    
+        <p>
+            <a href="/categories/LDD-Reading/">LDD Reading</a>
+        </p>
+    
+</div>
+
+
+                        <hr class="dn-l mw4 black-50 mt5" />
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/2021/03/25/hello-world/">Hello World</a>
+        </p>
+    
+        <p>
+            <a href="/2020/09/01/add-a-hypercall/">add a hypercall</a>
+        </p>
+    
+        <p>
+            <a href="/2020/08/26/add-a-syscall/">add a syscall</a>
+        </p>
+    
+        <p>
+            <a href="/2020/03/05/Build-pixel-for-goldfish/">Build pixel for goldfish</a>
+        </p>
+    
+        <p>
+            <a href="/2020/03/05/The-content-of-Linux-Driver/">The content of Linux Driver</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://twitter.com/?lang=en" target="_blank">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://dribbble.com/" target="_blank">
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://plus.google.com/" target="_blank">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.behance.net/" target="_blank">
+                            <i class="fa fa-behance"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://500px.com/" target="_blank">
+                            <i class="fa fa-500px"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="mailto:test@example.com" target="_blank">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="/#" target="_blank">
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                @Untitled. All right reserved | Design & Hexo <a class="link dim white" target="_blank" rel="noopener" href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Introduction每个外设都是通过读写其寄存器来控制的，外设寄存器也称为IO端口，通常包括：控制寄存器、状态寄存器和数据寄存器三大类。
+CPU访问外设寄存器的方式分为两种：
+
+通过IO端口方式访问：一类CPU（如X86），将外设的寄存器看成一个独立的地址空间，所以访问内存的指令不能用来访问这些">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="IO port &amp; IO memory"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Hexo"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>IO port &amp; IO memory - Hexo</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Google Analytics -->
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="Hexo">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="Hexo">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/" 
+                    title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/archives" 
+                    title="Archives">
+                    Archives
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/tags" 
+                    title="Tags">
+                    Tags
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/categories" 
+                    title="Categories">
+                    Categories
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/about.html" 
+                    title="About">
+                    About
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/contact.html" 
+                    title="Contact">
+                    Contact
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">IO port & IO memory</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-11-11</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+                        <div class="tags-container-vertical">
+                            <div class="tags-sub-container">
+                                <a class="fw3 ph1 dib" href="/tags/Linux/">#Linux</a> <a class="fw3 ph1 dib" href="/tags/ARM/">#ARM</a>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Main Post Content -->
+                    <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>每个外设都是通过读写其寄存器来控制的，外设寄存器也称为IO端口，通常包括：控制寄存器、状态寄存器和数据寄存器三大类。</p>
+<p>CPU访问外设寄存器的方式分为两种：</p>
+<ul>
+<li><strong>通过IO端口方式访问：</strong>一类CPU（如X86），将外设的寄存器看成一个独立的地址空间，所以访问内存的指令不能用来访问这些寄存器，而要为对外设寄存器的读／写设置专用指令，如IN和OUT指令，用一个引脚M/IO来区分当前访问的是内存还是其他外设。这种设计十分不灵活，由于地址范围限制（64K）导致外设接口受限。</li>
+<li><strong>通过IO内存方式访问：</strong>一类CPU把这些寄存器看作内存的一部分，寄存器参与内存统一编址，访问寄存器就通过访问一般的内存指令进行，所以，这种CPU没有专门用于设备I/O的指令。</li>
+</ul>
+<p>ISA设备普遍使用IO端口，PCI设备大多数使用IO内存方式访问外设。</p>
+<h1 id="IO-Port"><a href="#IO-Port" class="headerlink" title="IO Port"></a>IO Port</h1><h2 id="IO-Port-Allocation"><a href="#IO-Port-Allocation" class="headerlink" title="IO Port Allocation"></a>IO Port Allocation</h2><p>在驱动还未独占设备之前，不应对端口进行操作。内核提供了一个注册接口，以允许驱动声明其需要的端口：</p>
+<pre><code>#include &lt;linux/ioport.h&gt;
+/* request_region告诉内核：要使用first开始的n个端口。参数name为设备名。如果分配成功返回值是非NULL；否则无法使用需要的端口*/
+struct resource *request_region(unsigned long first, unsigned long n, const char *name);
+/* 用完I/O端口后(可能在模块卸载时)，应当调用release_region将I/O端口返还给系统。参数start和n应与之前传递给request_region一致 */
+void release_region(unsigned long start, unsigned long n); </code></pre><h2 id="Manipulating-I-O-ports"><a href="#Manipulating-I-O-ports" class="headerlink" title="Manipulating I/O ports"></a>Manipulating I/O ports</h2><p>在驱动成功请求到I/O 端口后，就可以读写这些端口了。大部分硬件会将8位、16位和32位端口区分开，无法像访问内存那样混淆使用。驱动程序必须调用不同的函数来访问不同大小的端口。</p>
+<pre><code>/* inb/outb:读/写字节端口(8位宽)。*/
+unsigned inb(unsigned port);
+void outb(unsigned char byte, unsigned port);
+/* inw/outw:读/写字端口(16位宽） */
+unsigned inw(unsigned port);
+void outw(unsigned short word, unsigned port);
+/* inl/outl:读/写32位端口。 */
+unsigned inl(unsigned port);
+void outl(unsigned longword, unsigned port);</code></pre><p>注意，没有64位的I/O端口操作函数。即便在64位体系中，端口地址空间使用一个32位(最大)的数据通路。</p>
+<h2 id="String-Operations"><a href="#String-Operations" class="headerlink" title="String Operations"></a>String Operations</h2><p>除了一次传递一个数据的I/O操作，某些处理器实现了一次传递一个序列的数据（单位可以是字节、字和双字）的特殊指令。这些所谓的字串指令，它们完成任务比一个C语言循环更快。</p>
+<pre><code>/* insb:从I/O端口port读取count个数据(单位字节)到以内存地址addr为开始的内存空间 */
+void insb(unsigned port, void *addr, unsigned long count);
+/* outsb:将内存地址addr开始的count个数据(单位字节)写到I/O端口port */
+void outsb(unsigned port, void *addr, unsigned long count);
+/* insw:从I/O端口port读取count个数据(单位字)到以内存地址addr为开始的内存空间 */
+void insw(unsigned port, void *addr, unsigned long count);
+/* outsw:将内存地址addr开始的count个数据(单位字)写到I/O端口port */
+void outsw(unsigned port, void *addr, unsigned long count);
+/* insl:从I/O端口port读取count个数据(单位双字)到以内存地址addr为开始的内存空间 */
+void insl(unsigned port, void *addr, unsigned long count);
+/* outsl:将内存地址addr开始的count个数据(单位双字)写到I/O端口port */
+void outsl(unsigned port, void *addr, unsigned long count);</code></pre><h2 id="Port-as-IO-Memory"><a href="#Port-as-IO-Memory" class="headerlink" title="Port as IO Memory"></a>Port as IO Memory</h2><p>为了统一编程接口，使驱动程序易于编写，Linux提供了一个ioport_map函数:</p>
+<pre><code>/* ioport_map重新映射count个I/O端口，使它们看起来I/O内存。
+此后，驱动程序可以在ioport_map返回的地址上使用ioread8和同类函数。
+这样，就可以在编程时，消除了I/O端口和I/O 内存的区别 */
+void *ioport_map(unsigned long port, unsigned int count); 
+/* ioport_unmap用于释放不再需要的映射 */
+void ioport_unmap(void *addr);</code></pre><h2 id="IO-Port-Accessing-Process"><a href="#IO-Port-Accessing-Process" class="headerlink" title="IO Port Accessing Process"></a>IO Port Accessing Process</h2><p>直接访问IO端口的流程：</p>
+<img src = "IO-port-IO-memory/1.png" width=50%>
+
+<p>使用IO端口映射后再访问的流程：</p>
+<img src = "IO-port-IO-memory/2.png" width=50%>
+
+<h1 id="IO-Memory"><a href="#IO-Memory" class="headerlink" title="IO Memory"></a>IO Memory</h1><p>尽管 I/O 端口在x86世界中非常流行，但是用来和设备通讯的主要机制是通过内存映射的寄存器和设备内存，两者都称为I/O 内存，因为寄存器和内存之间的区别对软件是透明的。</p>
+<h2 id="IO-Memory-Allocation-and-Mapping"><a href="#IO-Memory-Allocation-and-Mapping" class="headerlink" title="IO Memory Allocation and Mapping"></a>IO Memory Allocation and Mapping</h2><p>I/O 内存区在使用前必须先分配。分配内存区的函数接口在&lt;linux/ioport.h&gt;定义中：</p>
+<pre><code>/* request_mem_region分配一个开始于start,len字节的I/O内存区。
+分配成功，返回一个非NULL指针；否则返回NULL。
+系统当前所有I/O内存分配信息都在/proc/iomem文件中列出。 */
+struct resource *request_mem_region(unsigned long start, unsigned long len, char *name);
+/* release_mem_region用于释放不再需要的I/O内存区 */
+void release_mem_region(unsigned long start, unsigned long len); </code></pre><p>访问I/O内存并不只是简单解引用指针，你还必须保证内核可存取该I/O内存。因此，还必须通过ioremap 函数设置一个映射。</p>
+<pre><code>/* ioremap用于将I/O内存区映射到虚拟地址。
+参数phys_addr为要映射的I/O内存起始地址，参数size为要映射的I/O内存的大小，返回值为被映射到的虚拟地址 */
+void *ioremap(unsigned long phys_addr, unsigned long size);
+/* iounmap用于释放不再需要的映射 */
+void iounmap(void * addr);</code></pre><p>注意，ioremap返回的地址不可以直接解引用；相反，应当使用内核提供的访问函数。</p>
+<h2 id="Accessing-IO-Memory"><a href="#Accessing-IO-Memory" class="headerlink" title="Accessing IO Memory"></a>Accessing IO Memory</h2><pre><code>/* I/O内存读函数。参数addr应当是从ioremap获得的地址(可能包含一个整型偏移); 返回值是从给定I/O内存读取到的值 */
+unsigned int ioread8(void *addr);
+unsigned int ioread16(void *addr);
+unsigned int ioread32(void *addr);
+/* I/O内存写函数。参数addr同I/O内存读函数，参数value为要写的值 */
+void iowrite8(u8 value, void *addr);
+void iowrite16(u16 value, void *addr);
+void iowrite32(u32 value, void *addr);
+
+unsigned readb(address);
+unsigned readw(address);
+unsigned readl(address); 
+void writeb(unsigned value, address);
+void writew(unsigned value, address);
+void writel(unsigned value, address); 
+
+/* 需要操作一块I/O 地址时，使用下列函数(这些函数的行为类似于它们的C库类似函数): */
+void memset_io(void *addr, u8 value, unsigned int count);
+void memcpy_fromio(void *dest, void *source, unsigned int count);
+void memcpy_toio(void *dest, void *source, unsigned int count);</code></pre><h2 id="IO-Memory-Accessing-Process"><a href="#IO-Memory-Accessing-Process" class="headerlink" title="IO Memory Accessing Process"></a>IO Memory Accessing Process</h2><p>直接访问IO内存的流程：</p>
+<img src = "IO-port-IO-memory/3.png" width=50%>
+
+<h1 id="ARM’s-IO-Interface"><a href="#ARM’s-IO-Interface" class="headerlink" title="ARM’s IO Interface"></a>ARM’s IO Interface</h1><p>ARM 体系下相关IO操作函数都定义在/arch/arm/include/asm/io.h中。对于ARM体系来说，没有IO端口，只有IO内存。</p>
+<h2 id="IO-Operation-Primitive"><a href="#IO-Operation-Primitive" class="headerlink" title="IO Operation Primitive"></a>IO Operation Primitive</h2><p>其他I/O操作函数都是对这些函数的再封装。</p>
+<pre><code>void __raw_writesb(volatile void __iomem *addr, const void *data, int bytelen);
+void __raw_writesw(volatile void __iomem *addr, const void *data, int wordlen);
+void __raw_writesl(volatile void __iomem *addr, const void *data, int longlen);
+void __raw_readsb(const volatile void __iomem *addr, void *data, int bytelen);
+void __raw_readsw(const volatile void __iomem *addr, void *data, int wordlen);
+void __raw_readsl(const volatile void __iomem *addr, void *data, int longlen);
+/*在/arch/arm/lib中的汇编文件中定义*/     
+
+static inline void __raw_writeb(u8 val, volatile void __iomem *addr)
+static inline void __raw_writew(u16 val, volatile void __iomem *addr)
+static inline void __raw_writel(u32 val, volatile void __iomem *addr)
+static inline u8 __raw_readb(const volatile void __iomem *addr)
+static inline u32 __raw_readl(const volatile void __iomem *addr)
+static inline u16 __raw_readw(const volatile void __iomem *addr)
+/*使用ARM指令STR LDR实现*/
+
+/* __iomem是用来修饰一个变量的，这个变量必须是非解引用（no dereference）的，即这个变量地址必须是有效的.
+而且变量所在的地址空间必须是2，即设备地址映射空间。
+0表示normal space，即普通地址空间，对内核代码来说，当然就是内核空间地址了。1表示用户地址空间，2表示是设备地址映射空间 */
+#define __iomem __attribute__((noderef, address_space(2)))</code></pre><h2 id="IO-Port-1"><a href="#IO-Port-1" class="headerlink" title="IO Port"></a>IO Port</h2><p>Linux中的ARM为了兼容性，模拟了X86下的IO端口访问</p>
+<pre><code>#define outb(v,p)   (&#123; __iowmb(); __raw_writeb(v,__io(p)); &#125;)
+#define outw(v,p)   (&#123; __iowmb(); __raw_writew((__force __u16) cpu_to_le16(v),__io(p)); &#125;)
+#define outl(v,p)   (&#123; __iowmb(); __raw_writel((__force __u32) cpu_to_le32(v),__io(p)); &#125;)
+#define inb(p)  (&#123; __u8 __v = __raw_readb(__io(p)); __iormb(); __v; &#125;)
+#define inw(p)  (&#123; __u16 __v = le16_to_cpu((__force __le16) __raw_readw(__io(p))); __iormb(); __v; &#125;)
+#define inl(p)  (&#123; __u32 __v = le32_to_cpu((__force __le32) __raw_readl(__io(p))); __iormb(); __v; &#125;)
+
+#define outsb(p,d,l)        __raw_writesb(__io(p),d,l)
+#define outsw(p,d,l)        __raw_writesw(__io(p),d,l)
+#define outsl(p,d,l)        __raw_writesl(__io(p),d,l)
+#define insb(p,d,l)     __raw_readsb(__io(p),d,l)
+#define insw(p,d,l)     __raw_readsw(__io(p),d,l)
+#define insl(p,d,l)     __raw_readsl(__io(p),d,l)
+
+/* __force表示所定义的变量类型是可以做强制类型转换的 */
+#define __force __attribute__((force))      
+
+/* __io是端口到内存的映射，可以作为ioport_map的实现*/
+#ifdef CONFIG_NEED_MACH_IO_H
+#include &lt;mach/io.h&gt;
+#elif defined(CONFIG_PCI)
+#define IO_SPACE_LIMIT    ((resource_size_t)0xfffff)
+#define __io(a)        __typesafe_io(PCI_IO_VIRT_BASE + ((a) &amp; IO_SPACE_LIMIT))
+#else
+#define __io(a)        __typesafe_io((a) &amp; IO_SPACE_LIMIT)
+#endif</code></pre><h2 id="IO-Memory-1"><a href="#IO-Memory-1" class="headerlink" title="IO Memory"></a>IO Memory</h2><pre><code>#define readb_relaxed(c) (&#123; u8  __r = __raw_readb(c); __r; &#125;)
+#define readw_relaxed(c) (&#123; u16 __r = le16_to_cpu((__force __le16) __raw_readw(c)); __r; &#125;)
+#define readl_relaxed(c) (&#123; u32 __r = le32_to_cpu((__force __le32) __raw_readl(c)); __r; &#125;)
+#define writeb_relaxed(v,c) __raw_writeb(v,c)
+#define writew_relaxed(v,c) __raw_writew((__force u16) cpu_to_le16(v),c)
+#define writel_relaxed(v,c) __raw_writel((__force u32) cpu_to_le32(v),c)
+
+#define readb(c)        (&#123; u8  __v = readb_relaxed(c); __iormb(); __v; &#125;)
+#define readw(c)        (&#123; u16 __v = readw_relaxed(c); __iormb(); __v; &#125;)
+#define readl(c)        (&#123; u32 __v = readl_relaxed(c); __iormb(); __v; &#125;)
+#define writeb(v,c)     (&#123; __iowmb(); writeb_relaxed(v,c); &#125;)
+#define writew(v,c)     (&#123; __iowmb(); writew_relaxed(v,c); &#125;)
+#define writel(v,c)     (&#123; __iowmb(); writel_relaxed(v,c); &#125;)
+/*就是relaxed系列添加了内存障碍*/    
+
+#define readsb(p,d,l)       __raw_readsb(p,d,l)
+#define readsw(p,d,l)       __raw_readsw(p,d,l)
+#define readsl(p,d,l)       __raw_readsl(p,d,l)
+#define writesb(p,d,l)      __raw_writesb(p,d,l)
+#define writesw(p,d,l)      __raw_writesw(p,d,l)
+#define writesl(p,d,l)      __raw_writesl(p,d,l)
+
+#define ioread16be(p)       (&#123; __u16 __v = be16_to_cpu((__force __be16)__raw_readw(p)); __iormb(); __v; &#125;)
+#define ioread32be(p)       (&#123; __u32 __v = be32_to_cpu((__force __be32)__raw_readl(p)); __iormb(); __v; &#125;)
+#define iowrite16be(v,p)    (&#123; __iowmb(); __raw_writew((__force __u16)cpu_to_be16(v), p); &#125;)
+#define iowrite32be(v,p)    (&#123; __iowmb(); __raw_writel((__force __u32)cpu_to_be32(v), p); &#125;)
+
+static inline void memset_io(volatile void __iomem *dst, unsigned c, size_t count)
+static inline void memcpy_fromio(void *to, const volatile void __iomem *from, size_t count)
+static inline void memcpy_toio(volatile void __iomem *to, const void *from, size_t count)</code></pre><h2 id="Memory-Barrier"><a href="#Memory-Barrier" class="headerlink" title="Memory Barrier"></a>Memory Barrier</h2><p>IO寄存器和RAM的主要区别就是IO操作具有side effect，而内存操作没有：内存写操作的唯一结果就是在指定位置存储一个数值；内存读操作则仅仅返回指定位置最后一次写入的数值。在CPU或编译器对RAM进行优化的时候，效果良好；但对IO操作来说这些优化可能造成致命的错误，这是因为IO操作具有side effect，在访问寄存器时，不仅会像访问RAM一样影响存储单元的值，还有可能改变寄存器的状态、IO端口电平或输出时序等，所以在驱动程序中必须确保不使用cache，同时不对读写指令进行优化。</p>
+<pre><code>#include &lt;asm/system.h&gt;
+void rmb(void)
+void wmb(void)
+void mb(void)</code></pre>
+                    
+                    <!-- Tags Bottom -->
+                    
+                        <div class="tags-container-bottom">
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Linux/">#Linux</a> <a class="fw3 ph1 dib" href="/tags/ARM/">#ARM</a>
+                        </div>
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="John Doe">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            My name is Jonathan Klughertz and this is my blog.<br>I am a full stack software engineer with a strong front-end focus.<br> I currently live and work in Singapore, hit me up if you are in the region.
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 2: Categories -->
+                    
+                        <div class="mt5 tc tl-l">
+    <h3>Categories</h3>
+    
+        <p>
+            <a href="/categories/LDD-Reading/">LDD Reading</a>
+        </p>
+    
+</div>
+
+
+                        <hr class="dn-l mw4 black-50 mt5" />
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/2021/03/25/hello-world/">Hello World</a>
+        </p>
+    
+        <p>
+            <a href="/2020/09/01/add-a-hypercall/">add a hypercall</a>
+        </p>
+    
+        <p>
+            <a href="/2020/08/26/add-a-syscall/">add a syscall</a>
+        </p>
+    
+        <p>
+            <a href="/2020/03/05/Build-pixel-for-goldfish/">Build pixel for goldfish</a>
+        </p>
+    
+        <p>
+            <a href="/2020/03/05/The-content-of-Linux-Driver/">The content of Linux Driver</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://twitter.com/?lang=en" target="_blank">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://dribbble.com/" target="_blank">
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://plus.google.com/" target="_blank">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.behance.net/" target="_blank">
+                            <i class="fa fa-behance"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://500px.com/" target="_blank">
+                            <i class="fa fa-500px"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="mailto:test@example.com" target="_blank">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="/#" target="_blank">
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                @Untitled. All right reserved | Design & Hexo <a class="link dim white" target="_blank" rel="noopener" href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="IntroductionTwo different boundaries of the system:
+
+system call interface: expose kernel-space drivers to user-space adversaries.
+hardware-OS interfa">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Paper reading: PeriScope An Effective Probing and Fuzzing Framework for the Hardware-OS Boundary"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Hexo"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Paper reading: PeriScope An Effective Probing and Fuzzing Framework for the Hardware-OS Boundary - Hexo</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Google Analytics -->
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="Hexo">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="Hexo">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/" 
+                    title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/archives" 
+                    title="Archives">
+                    Archives
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/tags" 
+                    title="Tags">
+                    Tags
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/categories" 
+                    title="Categories">
+                    Categories
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/about.html" 
+                    title="About">
+                    About
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/contact.html" 
+                    title="Contact">
+                    Contact
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">Paper reading: PeriScope An Effective Probing and Fuzzing Framework for the Hardware-OS Boundary</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-10-25</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+                        <div class="tags-container-vertical">
+                            <div class="tags-sub-container">
+                                <a class="fw3 ph1 dib" href="/tags/Fuzzing/">#Fuzzing</a> <a class="fw3 ph1 dib" href="/tags/Drivers/">#Drivers</a>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Main Post Content -->
+                    <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Two different boundaries of the system:</p>
+<ol>
+<li><strong>system call interface</strong>: expose kernel-space drivers to user-space adversaries.</li>
+<li><strong>hardware-OS interface</strong>: expose drivers to potentially compromised peripheral hardware. </li>
+</ol>
+<p><strong>PeriScope</strong>: monitor MMIO or DMA mappings set up by the driver, and then dynamically trap the driver’s accesses to such memory regions.</p>
+<p><strong>PeriFuzz</strong>: a driver fuzzer that simulates attacks originating in untrusted, compromised peripherals. PeriFuzz traps the driver’s read access to MMIO and DMA mappings, and fuzzes the values being read by the driver.</p>
+<p>PeriScope uses a page fault based in-kernel monitoring mechanism, which works with all devices and drivers in their existing testing environment.</p>
+<p>Contributions:</p>
+<ol>
+<li>A probing framework</li>
+<li>A fuzzing framework</li>
+<li>An overlapping fetch fuzzer</li>
+<li>Discoverd vulnerabilities</li>
+<li>An open-source tool</li>
+</ol>
+<h1 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h1><h2 id="Hardware-OS-Interaction"><a href="#Hardware-OS-Interaction" class="headerlink" title="Hardware-OS Interaction"></a>Hardware-OS Interaction</h2><h3 id="Interrupts"><a href="#Interrupts" class="headerlink" title="Interrupts:"></a>Interrupts:</h3><p>Upon receiving an interrupt request, CPU first mask the interrupt line so that another interrupt request cannot be raised on the same line while the first request is being handled. Then the CPU transfers control to the interrupt handler registered by the OS for that interrupt line.</p>
+<p>top-half bottom-half </p>
+<p>hardirq softirq tasklet workqueue</p>
+<h3 id="Memory-Mapped-I-O"><a href="#Memory-Mapped-I-O" class="headerlink" title="Memory-Mapped I/O:"></a>Memory-Mapped I/O:</h3><p>MMIO maps a range of kernel-space virtual addresses to the hardware registers of peripheral devices. This allows the CPU to use normal memory access instructions to communicate with the peripheral device.</p>
+<h3 id="Direct-Memory-Access"><a href="#Direct-Memory-Access" class="headerlink" title="Direct Memory Access:"></a>Direct Memory Access:</h3><p>DMA allows peripheral devices to access physical memory directly.</p>
+<p>Coherent DMA buffers 、 Streaming DMA buffers</p>
+<h2 id="Input-Output-Memory-Management-Unit"><a href="#Input-Output-Memory-Management-Unit" class="headerlink" title="Input/Output Memory Management Unit"></a>Input/Output Memory Management Unit</h2><p>IOMMU could limit which regions of the physical memory each device can access, and translates device-visible virtual addressed to physical addresses.</p>
+<h2 id="Analyzing-Hardware-OS-Interaction"><a href="#Analyzing-Hardware-OS-Interaction" class="headerlink" title="Analyzing Hardware-OS Interaction"></a>Analyzing Hardware-OS Interaction</h2><h3 id="Device-Adaptation"><a href="#Device-Adaptation" class="headerlink" title="Device Adaptation"></a>Device Adaptation</h3><p>To exercise direct control over the data sent from the hardware to the driver, an analyst can adapt the firmware of read devices to include such capabilities. However, these frameworks are typically tailored to specific devices, and given the heterogeneity of peripheral devices.</p>
+<h3 id="Virtual-Machine-Monitor"><a href="#Virtual-Machine-Monitor" class="headerlink" title="Virtual Machine Monitor"></a>Virtual Machine Monitor</h3><p>A driver can be tested in conjunction with virtual devices running in a virtual environment such as QEMU. However, an implementation of a virtual device does not exist for many devices.</p>
+<h3 id="Symbolic-Execution"><a href="#Symbolic-Execution" class="headerlink" title="Symbolic Execution"></a>Symbolic Execution</h3><p>Several tools leverage S2E to analyze the interactions between OS kernel and hardware by selectively converting hardware-provided values into symbolic values. However, symbolic execution in general is prohibitively slow due to the path explosion and constraint solving problem.</p>
+<h1 id="Periscope-Design"><a href="#Periscope-Design" class="headerlink" title="Periscope Design"></a>Periscope Design</h1><p>PeriScope is a dynamic analysis framework that can be used to examine bi-directional communication between devices and their and their drivers over MMIO and DMA by intercepting the driver’s accesses to communication channels. PeriScope does this by hooking into the kernel’s page fault handling mechanism.</p>
+<p>High-level:</p>
+<ol>
+<li>PeriScope automatically detects when the target device driver creates a MMIO or DMA memory mapping, and registers it.</li>
+<li>The analyst selects the registered mappings that he wishes to monitor. PeriScope marks the pages backing these monitored mappings as not present in the kernel page tables.</li>
+</ol>
+<p>Low-level:</p>
+<img src=".\PERISCOPE_fault_handling.png" width="50%" height="50%">
+
+<h2 id="Memory-Access-Monitoring"><a href="#Memory-Access-Monitoring" class="headerlink" title="Memory Access Monitoring"></a>Memory Access Monitoring</h2><h3 id="Tracking-Allocations"><a href="#Tracking-Allocations" class="headerlink" title="Tracking Allocations"></a>Tracking Allocations</h3><p>PeriScope hooks the kernel APIs used to allocate and deallocate DMA and MMIO regions. We use these hooks to maintain a list of all DMA/MMIO allocation contexts and their active mappings.</p>
+<h3 id="Enabling-Monitoring"><a href="#Enabling-Monitoring" class="headerlink" title="Enabling Monitoring"></a>Enabling Monitoring</h3><p>PeriScope exposes a privileged user-space API that enables monitoring of DMA/MMIO regions on a per-allocation-context basis.</p>
+<h3 id="Clearing-Page-Presence"><a href="#Clearing-Page-Presence" class="headerlink" title="Clearing Page Presence"></a>Clearing Page Presence</h3><p>PeriScope marks all pages containing monitored regions as not present in the kernel’s page tables to force accesses to such pages to trigger page faults.</p>
+<h3 id="Trapping-Page-Faults"><a href="#Trapping-Page-Faults" class="headerlink" title="Trapping Page Faults"></a>Trapping Page Faults</h3><p>PeriScope hooks the kernel’s default kernel page fault handler to monitor page faults.</p>
+<h3 id="Instruction-Decoding"><a href="#Instruction-Decoding" class="headerlink" title="Instruction Decoding"></a>Instruction Decoding</h3><p>PeriScope implemented a simple AArch64 instruction decoder to extract the source register, the destination register and the access width of the faulting instruction.</p>
+<h3 id="Pre-instruction-Hook"><a href="#Pre-instruction-Hook" class="headerlink" title="Pre-instruction Hook"></a>Pre-instruction Hook</h3><p>After decoding the instruction, PeriScope calls the pre-instruction look that the user of our framework can register.</p>
+<h3 id="Single-stepping"><a href="#Single-stepping" class="headerlink" title="Single-stepping"></a>Single-stepping</h3><p>PeriScope use the process’s single-stepping support to ensure that only the faulting instruction executes, but none of its successors do.</p>
+<h3 id="Post-instruction-Hook"><a href="#Post-instruction-Hook" class="headerlink" title="Post-instruction Hook"></a>Post-instruction Hook</h3><p>PeriScope calls the post-instruction handler, which has a default implementation that can be overridden through our API.</p>
+<h1 id="PeriFuzz-Design"><a href="#PeriFuzz-Design" class="headerlink" title="PeriFuzz Design"></a>PeriFuzz Design</h1><h2 id="Threat-Model"><a href="#Threat-Model" class="headerlink" title="Threat Model"></a>Threat Model</h2><h3 id="Peripheral-Compromise"><a href="#Peripheral-Compromise" class="headerlink" title="Peripheral Compromise"></a>Peripheral Compromise</h3><p>We assume that the attacker can compromise a peripheral, which can send arbitrary data to its device driver.</p>
+<h3 id="IOMMU-SMMU-Protection"><a href="#IOMMU-SMMU-Protection" class="headerlink" title="IOMMU/SMMU Protection"></a>IOMMU/SMMU Protection</h3><p>IOMMUs can prevent the device from accessing physical memory regions that were not explicityly mapped by the MMU, and they prevent periphearls from accessing streaming DMA buffers while these are mapped for CPU access. We assume that such an IOMMU is in place, and that is being used correctly.</p>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>Above</p>
+<h2 id="Design-Overview"><a href="#Design-Overview" class="headerlink" title="Design Overview"></a>Design Overview</h2><h3 id="Fuzzer"><a href="#Fuzzer" class="headerlink" title="Fuzzer"></a>Fuzzer</h3><p>Fuzzer that runs in user space is responsible for generating inputs for the device driver and processing execution feedback.</p>
+<h3 id="Executor"><a href="#Executor" class="headerlink" title="Executor"></a>Executor</h3><p>The executor is a user-space-resident bridge between the fuzzer and the injector.</p>
+<h3 id="Injector"><a href="#Injector" class="headerlink" title="Injector"></a>Injector</h3><p>The injector is a kernel-space module that interfaces with our PeriScope framework.</p>
+<h2 id="Fuzzer-Input-Consumption"><a href="#Fuzzer-Input-Consumption" class="headerlink" title="Fuzzer Input Consumption"></a>Fuzzer Input Consumption</h2><p>We treat each fuzzer-generated input as as serialized sequence of memory access.</p>
+<h2 id="Register-Value-Injection"><a href="#Register-Value-Injection" class="headerlink" title="Register Value Injection"></a>Register Value Injection</h2><h2 id="Fuzzing-Loop"><a href="#Fuzzing-Loop" class="headerlink" title="Fuzzing Loop"></a>Fuzzing Loop</h2><p>Each iteration of the fuzzing loop consumes a single fuzzer-generated input. We align each iteration of the fuzzing loop to the software interrupt handler.</p>
+<h2 id="Interfacing-with-AFL"><a href="#Interfacing-with-AFL" class="headerlink" title="Interfacing with AFL"></a>Interfacing with AFL</h2><h3 id="Coverage-guidance"><a href="#Coverage-guidance" class="headerlink" title="Coverage-guidance"></a>Coverage-guidance</h3><p>We modified and used KCOV to provide coverage feedback while executing inputs. Then the executor copies this coverage information to a memory region shared with the parent AFL fuzzer process, after which we signal KCOV to clear the coverage buffer for the next fuzzing iteration.</p>
+<h3 id="Automated-Seed-Generation"><a href="#Automated-Seed-Generation" class="headerlink" title="Automated Seed Generation"></a>Automated Seed Generation</h3><p>We use PeriScope framework to log all accesses to a user-selected set of buffers.</p>
+<h1 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h1><h2 id="PeriScope"><a href="#PeriScope" class="headerlink" title="PeriScope"></a>PeriScope</h2><h3 id="Tracking-Allocations-1"><a href="#Tracking-Allocations-1" class="headerlink" title="Tracking Allocations"></a>Tracking Allocations</h3><p>insert hooks</p>
+<ol>
+<li><strong>coherent DMA mapping</strong>: dma_alloc_coherent dma_free_coherent</li>
+<li><strong>streaming DMS mapping</strong>: dma_unmap_page dma_map_page</li>
+<li><strong>MMIO mapping</strong>: ioremap iounmap</li>
+</ol>
+<h3 id="Monitoring-Interface"><a href="#Monitoring-Interface" class="headerlink" title="Monitoring Interface"></a>Monitoring Interface</h3><p>PeriScope provides a user-space interface by exposing <em>debugfs</em> and <em>tracefs</em> file system entries. Through this interface, a user can list all allocation contexts and their active mappings, enable or disable monitoring, and read the circular buffer where PeriScope logs all accesses to the monitored mappings.</p>
+<h2 id="PeriFuzz"><a href="#PeriFuzz" class="headerlink" title="PeriFuzz"></a>PeriFuzz</h2><h3 id="Kernel-User-Interface"><a href="#Kernel-User-Interface" class="headerlink" title="Kernel-User Interface"></a>Kernel-User Interface</h3><p>The injector registers a device node that exposes device-specific <em>mmap</em> and <em>ioctl</em> system calls to the user-space executor.</p>
+<h3 id="Persisting-Fuzzer-Files"><a href="#Persisting-Fuzzer-Files" class="headerlink" title="Persisting Fuzzer Files"></a>Persisting Fuzzer Files</h3><p>PeriScope ensure that all the fuzzer files are made persistent, by modifying AFL to call <em>fsync</em> after all file writes.</p>
+<h3 id="Fuzzing-Manager"><a href="#Fuzzing-Manager" class="headerlink" title="Fuzzing Manager"></a>Fuzzing Manager</h3><p>The fuzzing procedure is completely automated through Python scripts that run on a host separate from the target device.</p>
+<h1 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h1><h2 id="Target-Drivers"><a href="#Target-Drivers" class="headerlink" title="Target Drivers"></a>Target Drivers</h2><p>Wi-Fi drivers</p>
+<h2 id="Target-Attack-Surface"><a href="#Target-Attack-Surface" class="headerlink" title="Target Attack Surface"></a>Target Attack Surface</h2><p>We assume that the driver has reached a steady state where it has established a stable connection with a network.</p>
+<h2 id="Target-Mappings"><a href="#Target-Mappings" class="headerlink" title="Target Mappings"></a>Target Mappings</h2><p>We used PeriScope to determine which regions the driver accesses frequently, and we manually investigated the driver’s code to determine the purpose of each region.</p>
+<h2 id="Fuzzer-Seed-Generation"><a href="#Fuzzer-Seed-Generation" class="headerlink" title="Fuzzer Seed Generation"></a>Fuzzer Seed Generation</h2><p>We used PeriScope’s default tracing facilities to generate initial seed input files.</p>
+<h2 id="Vulnerabilities-Discovered"><a href="#Vulnerabilities-Discovered" class="headerlink" title="Vulnerabilities Discovered"></a>Vulnerabilities Discovered</h2><h3 id="Disclosure"><a href="#Disclosure" class="headerlink" title="Disclosure"></a>Disclosure</h3><h3 id="Error-Type-and-Impact"><a href="#Error-Type-and-Impact" class="headerlink" title="Error Type and Impact"></a>Error Type and Impact</h3><ol>
+<li>buffer overflows</li>
+<li>address leaks</li>
+<li>reachable assertions</li>
+<li>null-pointer dereference</li>
+</ol>
+<h3 id="Double-fetch-Bugs"><a href="#Double-fetch-Bugs" class="headerlink" title="Double-fetch Bugs"></a>Double-fetch Bugs</h3><h2 id="Case-Study-I-Design-Bug-in-qcacld-3-0"><a href="#Case-Study-I-Design-Bug-in-qcacld-3-0" class="headerlink" title="Case Study I: Design Bug in qcacld-3.0"></a>Case Study I: Design Bug in qcacld-3.0</h2><h2 id="Case-Study-II-Double-fetch-Bugs-in-bcmdhd4358"><a href="#Case-Study-II-Double-fetch-Bugs-in-bcmdhd4358" class="headerlink" title="Case Study II: Double-fetch Bugs in bcmdhd4358"></a>Case Study II: Double-fetch Bugs in bcmdhd4358</h2><h1 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a>Discussion</h1><h1 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h1><h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1>
+                    
+                    <!-- Tags Bottom -->
+                    
+                        <div class="tags-container-bottom">
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Fuzzing/">#Fuzzing</a> <a class="fw3 ph1 dib" href="/tags/Drivers/">#Drivers</a>
+                        </div>
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="John Doe">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            My name is Jonathan Klughertz and this is my blog.<br>I am a full stack software engineer with a strong front-end focus.<br> I currently live and work in Singapore, hit me up if you are in the region.
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 2: Categories -->
+                    
+                        <div class="mt5 tc tl-l">
+    <h3>Categories</h3>
+    
+        <p>
+            <a href="/categories/Paper-Reading/">Paper Reading</a>
+        </p>
+    
+</div>
+
+
+                        <hr class="dn-l mw4 black-50 mt5" />
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/2021/03/25/hello-world/">Hello World</a>
+        </p>
+    
+        <p>
+            <a href="/2020/09/01/add-a-hypercall/">add a hypercall</a>
+        </p>
+    
+        <p>
+            <a href="/2020/08/26/add-a-syscall/">add a syscall</a>
+        </p>
+    
+        <p>
+            <a href="/2020/03/05/Build-pixel-for-goldfish/">Build pixel for goldfish</a>
+        </p>
+    
+        <p>
+            <a href="/2020/03/05/The-content-of-Linux-Driver/">The content of Linux Driver</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://twitter.com/?lang=en" target="_blank">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://dribbble.com/" target="_blank">
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://plus.google.com/" target="_blank">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.behance.net/" target="_blank">
+                            <i class="fa fa-behance"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://500px.com/" target="_blank">
+                            <i class="fa fa-500px"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="mailto:test@example.com" target="_blank">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="/#" target="_blank">
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                @Untitled. All right reserved | Design & Hexo <a class="link dim white" target="_blank" rel="noopener" href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
